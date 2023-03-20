@@ -1,8 +1,70 @@
+/*
+    BLUE COLOR: #4589FF;
+*/
+
 * {
     margin:0;
     padding:0;
 }
 
+body {
+    font-family: 'PT Sans', sans-serif;
+    font-weight: 400; /* 700 == BOLD */
+}
+
+.container .center {
+    max-width: 1440px;
+    margin:0 auto;
+    padding: 50px;
+}
+
+/* BODY STYLES */
 .layout01 {
     background: #fff;
+}
+
+.blue_bg {
+    background:#4589FF;
+}
+
+.layout01 .header {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.layout01 .logo img {
+    width: 101px;
+    height: auto;
+}
+
+.blue_bg .logo img {
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(200%) contrast(100%);
+}
+
+.blue_bg .sign-up-block {
+    display: none;
+}
+
+/* END BODY STYLES */
+
+.sign-up-block {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    font-size: 23px;
+    gap: 35px;
+    height: 48px;
+    line-height: 48px;
+}
+
+.sign-up {
+    background: #4589FF;
+    width: 112px;
+    box-sizing: border-box;
+    text-align: center;
+    color: #fff;
+    border-radius: 8px;
+    text-decoration: none;
+    padding: 0px 16px;
 }
