@@ -97,8 +97,5 @@ function startPwChangeAnimation(email) {
  */
 function redirectToPwChange(email) {
     let formElement = document.getElementById("forgot-pw-form");
-    console.log(email);
-    formElement.submit(); //TODO submit form
-    //window.location.href = "index.html";
-    //alert("hi");
+    formElement.submit();
 }
