@@ -17,6 +17,8 @@
         transform: translate(-50%, -50%);
         transform: scale(3);
         filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(200%) contrast(100%);
+        position: fixed;
+        z-index: 999;
     }
 
     55% {
@@ -25,6 +27,8 @@
         transform: translate(-50%, -50%);
         transform: scale(3);
         filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(200%) contrast(100%);
+        position: fixed;
+        z-index: 999;
     }
 
     100% {
@@ -32,5 +36,7 @@
         left: 45px;
         transform: scale(1);
         filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(200%) contrast(100%);
+        position: fixed;
+        z-index: 999;
     }
 }
