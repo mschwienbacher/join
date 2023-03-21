@@ -276,3 +276,7 @@ h1 a {
 #success p {
     padding: 10px 0 0 0;
 }
+
+#success p.red {
+    color: #DC143C;
+}

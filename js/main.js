@@ -15,9 +15,17 @@ checkIfUserIsRegistered();
 function checkIfUserIsRegistered() {
     const urlParams = new URLSearchParams(window.location.search);
     const success = urlParams.get("success");
+    printSuccessMessage(success);
+}
+
+/**
+ * This function prints the success message if the users register successfully
+ * @param success - URL parameter "success"
+ */
+function printSuccessMessage(success) {
     let successMsg = document.getElementById("success");
     if(success) {
         successMsg.innerHTML = "<p>" + success + "</p>";
-        setTimeout(()=>{successMsg.style.display="none";},5000);
+        setTimeout(()=>{successMsg.style.display="none";},3000);
     }
 }
