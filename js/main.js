@@ -1,4 +1,5 @@
 setURL('https://michael-schwienbacher.developerakademie.net/modul-10/backend');
+let users = [];
 /**
  * This function is used to init the backend.
  *
@@ -6,6 +7,17 @@ setURL('https://michael-schwienbacher.developerakademie.net/modul-10/backend');
  */
 async function initBackend() {
     await downloadFromServer();
-    users = JSON.parse(backend.getItem('users')) || [];
-    console.log(users);
+}
+checkIfUserIsRegistered();
+/**
+ * This function is used to show the success message after registration and will be hidden after 5 seconds
+ */
+function checkIfUserIsRegistered() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const success = urlParams.get("success");
+    let successMsg = document.getElementById("success");
+    if(success) {
+        successMsg.innerHTML = "<p>" + success + "</p>";
+        setTimeout(()=>{successMsg.style.display="none";},5000);
+    }
 }
