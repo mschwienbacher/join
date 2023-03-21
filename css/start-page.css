@@ -100,6 +100,7 @@ h1 a {
 
 .forgot_pw .pop-up {
     width:761px;
+    position: relative;
 }
 
 .forgot_pw .pop-up .center {
@@ -279,4 +280,33 @@ h1 a {
 
 #success p.red {
     color: #DC143C;
+}
+
+#successMsgEmail {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background:#ffffffc9;
+    display: none;
+}
+
+#emailSuccess {
+    position: absolute;
+    font-size: 23px;
+    bottom: 50%;
+    left: 50%;
+    margin-left: -193px;
+    margin-bottom:-37px;
+    color: #fff;
+    width:386px;
+    height: 74px;
+    line-height: 74px;
+    border-radius: 8px;
+    text-align: center;
+    background:#4589FF url(../assets/img/sent.svg) no-repeat 10px 20px;
+    animation: animate-email-success ease-out 1000ms;
+    padding: 0 15px 0 65px;
+    box-sizing: border-box;
 }

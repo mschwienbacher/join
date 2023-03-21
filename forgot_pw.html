@@ -32,10 +32,11 @@
                         <h1><span>I forgot my password</span>
                             <a href="index.html" class="back" title="Go Back"><img src="assets/img/arrow-back.svg" width="24" height="24" alt=""></a>
                         </h1>
+                        <div id="success"></div>
                         <div class="pop-up-content">
-                            <form action="">
+                            <form action="includes/send_mail.php" onsubmit="recoverPassword(); return false;" id="forgot-pw-form" method="POST">
                                 <p>Don't worry! We will send you an email with the instructions to reset your password.</p>
-                                <div class="input email"><input type="email" id="login-mail" placeholder="Email" required></div>
+                                <div class="input email"><input type="email" id="password-reset-email" name="email" placeholder="Email" required></div>
                                 <div class="login-box flex">
                                     <button id="login-button" class="cta">Send me the email</button>
                                 </div>
@@ -45,8 +46,12 @@
                 </div>
             </div>
         </div>
+        <div id="successMsgEmail">
+                <div id="emailSuccess">An E-Mail has been sent to you</div>
+        </div>
     </div>
 <script src="js/mini_backend.js"></script>
 <script src="js/main.js"></script>
+<script src="js/sign_up.js"></script>
 </body>
 </html>
