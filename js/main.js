@@ -16,9 +16,19 @@ checkIfUserIsRegistered();
  */
 
 function checkIfUserIsRegistered() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const success = urlParams.get("success");
+    let success = getUrlParameters("success");
     printSuccessMessage(success);
+}
+
+/**
+ * This function is used to get the parameter of the URL
+ * @param param - "email" or "success" parameters
+ * @returns {string} - returns the value of the URL
+ */
+function getUrlParameters(param) {
+    let urlParams = new URLSearchParams(window.location.search);
+    let success = urlParams.get(param);
+    return success;
 }
 
 /**

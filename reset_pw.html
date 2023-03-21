@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="css/start-page.css">
     <link rel="stylesheet" href="css/animations.css">
 </head>
-<body class="start-page blue_bg reset_pw" onload="initBackend()">
+<body class="start-page blue_bg reset_pw" onload="initBackend(); checkIfUserCanResetPw();">
     <div class="container">
         <div class="center">
             <div class="header">
@@ -32,6 +32,7 @@
                         <h1><span>Reset your password</span>
                             <a href="index.html" class="back" title="Go Back"><img src="assets/img/arrow-back.svg" width="24" height="24" alt=""></a>
                         </h1>
+                        <div id="success"></div>
                         <div class="pop-up-content">
                             <form action="">
                                 <p>Change your account password here</p>
@@ -49,5 +50,7 @@
     </div>
 <script src="js/mini_backend.js"></script>
 <script src="js/main.js"></script>
+<script src="js/sign_up.js"></script>
+<script>window.onload = checkIfUserCanResetPw();</script>
 </body>
 </html>

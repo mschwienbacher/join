@@ -99,3 +99,36 @@ function redirectToPwChange(email) {
     let formElement = document.getElementById("forgot-pw-form");
     formElement.submit();
 }
+
+function checkIfUserCanResetPw() {
+    let email = getUrlParameters("email");
+    if(email) {
+        userCanReset(email);
+    } else {
+        printErrorMessage("You are not allowed to stay here!");
+        readOnlyPwInputs();
+        setTimeout(function() {
+            window.location.href = "index.html";
+        }, 3000)
+    }
+}
+
+/**
+ * This function is used to reset definitely your password
+ */
+function userCanReset(email) {
+    // Example http://localhost:63342/modul-10/reset_pw.html?email=me@schwim.me
+    console.log(email); // passed email
+    // TODO: GET the passed email, check if the PW is NOT the same, when not, change it!
+
+}
+
+/**
+ * This function is used to set the PW inputs to ReadOnly, if no parameter is given the user is not allowed to used this page
+ */
+function readOnlyPwInputs() {
+    let pwInput01 = document.getElementById("new-password");
+    let pwInput02 = document.getElementById("confirm-password");
+    pwInput01.readOnly = true;
+    pwInput02.readOnly = true;
+}
