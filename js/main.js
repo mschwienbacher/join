@@ -1,9 +1,11 @@
+setURL('https://michael-schwienbacher.developerakademie.net/modul-10/backend');
 /**
- * This function is used to greet someone on the command line
+ * This function is used to init the backend.
  *
- * @param {string} name - This is the name of the person that you want to greet
+ * @returns {JSON} - Will return a JSON of all elements
  */
-
-function greet(name) {
-    console.log("Hallo " + name);
+async function initBackend() {
+    await downloadFromServer();
+    users = JSON.parse(backend.getItem('users')) || [];
+    console.log(users);
 }
