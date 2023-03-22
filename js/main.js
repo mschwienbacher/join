@@ -10,7 +10,6 @@ let users = [];
 async function initBackend() {
     await downloadFromServer();
 }
-
 checkIfUserIsRegistered();
 
 /**
