@@ -27,7 +27,7 @@ function login() {
 }
 
 /**
- * This function is used to check all possibilities for the login
+ * This function is used to check all possibilities for login
  * @param allUsersAsArray
  * @param email
  * @param password
