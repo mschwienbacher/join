@@ -2,9 +2,9 @@
 
 ########### CONFIG ###############
 
-$recipient = 'me@schwim.me';
+$recipient = $_POST['email'];
 $link = "https://michael-schwienbacher.developerakademie.net/modul-10/reset_pw.html?email=" . $recipient;
-$message = 'Someone requested to reset the password for the account ' . $_POST['email'] . '. Please click on ' . $link . ' to reset your password. If it wasn\'t you, just ignore this email.';
+$message = 'Someone requested to reset the password for the account ' . $recipient . '. Please click on ' . $link . ' to reset your password. If it wasn\'t you, just ignore this email.';
 $redirect = 'https://michael-schwienbacher.developerakademie.net/modul-10/index.html';
 ########### CONFIG END ###########
 
