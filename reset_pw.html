@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="css/start-page.css">
     <link rel="stylesheet" href="css/animations.css">
 </head>
-<body class="start-page blue_bg reset_pw" onload="initBackend(); checkIfUserCanResetPw();">
+<body class="start-page blue_bg reset_pw" onload="initBackend();">
     <div class="container">
         <div class="center">
             <div class="header">
@@ -34,7 +34,7 @@
                         </h1>
                         <div id="success"></div>
                         <div class="pop-up-content">
-                            <form action="">
+                            <form onsubmit="userCanReset(); return false;">
                                 <p>Change your account password here</p>
                                 <div class="input new-password"><input type="password" id="new-password" placeholder="New password" required></div>
                                 <div class="input confirm-password"><input type="password" id="confirm-password" placeholder="Confirm password" required></div>
@@ -51,6 +51,6 @@
 <script src="js/mini_backend.js"></script>
 <script src="js/main.js"></script>
 <script src="js/sign_up.js"></script>
-<script>window.onload = checkIfUserCanResetPw();</script>
+<script>window.addEventListener("load", checkIfUserCanResetPw, true);</script>
 </body>
 </html>

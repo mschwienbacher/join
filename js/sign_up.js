@@ -2,7 +2,7 @@
  * This function is used to get all values of the registration part and to push all the information in an ARRAY.
  */
 
-function registerUser() {
+async function registerUser() {
     let name = document.getElementById("signup-name");
     let email = document.getElementById("signup-mail");
     let password = document.getElementById("signup-password");
@@ -12,19 +12,20 @@ function registerUser() {
         password: password.value
     });
     if(users) {
-        saveUsersToBackend();
+        await saveUsersToBackend();
+        //TODO es speichert mir immer nur 1nen user
+        //window.location.href = "index.html?success=You have registered successfully";
     }
 }
 
 /**
- * This function is used to save all the user information in the backend and to redirect to the login page
+ * This function is used to save all the user information in the backend
  * @returns {Promise<void>}
  */
 
 async function saveUsersToBackend() {
     let allUsersAsString = JSON.stringify(users);
     await backend.setItem("registeredUsers", allUsersAsString);
-    window.location.href = "index.html?success=You have registered successfully";
 }
 
 /**
@@ -35,12 +36,28 @@ function loginUser() {
     let email = document.getElementById("login-mail");
     let password = document.getElementById("login-password");
     let allUsersAsArray = getUsersAsArray();
-    let singleUser = allUsersAsArray.find(u => u.email == email.value && u.password == password.value);
-    if(singleUser) {
+    let canLogin = allUsersAsArray.find(u => u.email == email.value && u.password == password.value);
+    let noUser = allUsersAsArray.find(us => us.email != email.value);
+    if(canLogin) {
         window.location.href = "summary.html";
+    } else if(noUser) {
+        printErrorMessage("No user was found!");
+        emptyValues(email, password);
+
     } else {
-        printErrorMessage("No user found!");
+        printErrorMessage("Credentials incorrect!");
+        emptyValues(email, password);
     }
+}
+
+/**
+ * This function is to reset the values of the input fields
+ * @param email
+ * @param password
+ */
+function emptyValues(email, password) {
+    email.value = "";
+    password.value = "";
 }
 
 /**
@@ -59,7 +76,7 @@ function getUsersAsArray() {
 function printErrorMessage(msg) {
     let errorMessage = document.getElementById("success");
     errorMessage.innerHTML = `<p class="red">${msg}</p>`;
-    setTimeout(()=>{errorMessage.style.display="none";},3000);
+    setTimeout(()=>{errorMessage.innerHTML = "";},3000);
 }
 
 function recoverPassword() {
@@ -100,11 +117,12 @@ function redirectToPwChange(email) {
     formElement.submit();
 }
 
+/**
+ * This functions checks if you are allowed to stay on the page
+ */
 function checkIfUserCanResetPw() {
     let email = getUrlParameters("email");
-    if(email) {
-        userCanReset(email);
-    } else {
+    if(!email) {
         printErrorMessage("You are not allowed to stay here!");
         readOnlyPwInputs();
         setTimeout(function() {
@@ -114,13 +132,47 @@ function checkIfUserCanResetPw() {
 }
 
 /**
+ * This function is used to check if the user can reset the PW or not
+ */
+function userCanReset() {
+    let email = getUrlParameters("email");
+    let checked = checkPasswordIdentity(email);
+    if(checked) {
+        finalResetPw(email, checked[1]);
+    } else {
+        printErrorMessage("The passwords do not match, please retry!");
+    }
+}
+
+/**
+ * This function is used to check IF the user was found and the insert PWs are the same
+ *
+ * @param email - The value of the parameter of the URL (The email address)
+ */
+function checkPasswordIdentity(email) {
+    let firstPwField = document.getElementById("new-password");
+    let secondPwField = document.getElementById("confirm-password");
+    let allUsersAsArray = getUsersAsArray();
+    let emailIdentity = allUsersAsArray.find(u => u.email == email);
+
+    if(emailIdentity && firstPwField.value == secondPwField.value) {
+        return [true, firstPwField.value];
+    } else {
+        return false;
+    }
+}
+
+/**
  * This function is used to reset definitely your password
  */
-function userCanReset(email) {
-    // Example http://localhost:63342/modul-10/reset_pw.html?email=me@schwim.me
-    console.log(email); // passed email
-    // TODO: GET the passed email, check if the PW is NOT the same, when not, change it!
+async function finalResetPw(email, newPw) {
+    let allUsersAsArray = getUsersAsArray();
+    let userToReset = allUsersAsArray.find(u => u.email == email);
 
+    userToReset.password = newPw;
+    users.push(userToReset); // PUSH the new values in ARRAY
+    await saveUsersToBackend();
+    window.location.href = "index.html?success=Password changed correctly";
 }
 
 /**

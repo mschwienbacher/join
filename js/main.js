@@ -40,6 +40,6 @@ function printSuccessMessage(success) {
     let successMsg = document.getElementById("success");
     if(success) {
         successMsg.innerHTML = "<p>" + success + "</p>";
-        setTimeout(()=>{successMsg.style.display="none";},3000);
+        setTimeout(()=>{successMsg.innerHTML = "";},3000);
     }
 }
