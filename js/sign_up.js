@@ -11,10 +11,11 @@ function login() {
         let userCanLogin = loginValidation(allUsersAsArray, email, password, 1);
         let notFound = loginValidation(allUsersAsArray, email, password, 2);
         let incorrectUserDetail = loginValidation(allUsersAsArray, email, password, 3);
+        //TODO wenn ich 2 Personen in der Datenbank habe und ich die Logindaten falsch eingeben, hüpft er mir immer auf USER NOT FOUND, müsste aber auf CREDENTIALS INCORRECT hüpfen
         if(userCanLogin) {
             window.location.href = "summary.html";
         } else if(notFound) {
-            printErrorMessage("User not found!");
+            printErrorMessage("User not found");
             emptyValues(email, password);
         } else if(incorrectUserDetail) {
             printErrorMessage("Credentials incorrect!");
