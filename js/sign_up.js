@@ -22,6 +22,7 @@ function login() {
         }
     } else {
         printErrorMessage("User not found!");
+        emptyValues(email, password);
     }
 }
 
@@ -56,10 +57,16 @@ async function register() {
     let password = document.getElementById("signup-password");
     getSavedUsersFromBackend();
     let allUsersAsArray = getUsersAsArray();
-    let userAlreadyExists = allUsersAsArray.some(obj => obj.email === email.value);
-    if(userAlreadyExists) {
-        printErrorMessage("User already exists!");
-        emptyValues(email, password);
+
+    if(allUsersAsArray != null) {
+        let userAlreadyExists = allUsersAsArray.some(obj => obj.email === email.value);
+        if(userAlreadyExists) {
+            printErrorMessage("User already exists!");
+            emptyValues(email, password);
+        } else {
+            await pushToUsersArray(users, name, email, password);
+        }
+
     } else {
         await pushToUsersArray(users, name, email, password);
     }
