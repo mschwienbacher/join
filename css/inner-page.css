@@ -102,12 +102,15 @@ h2 {
 
 .sidebar {
     width:29%;
+    box-shadow: 5px 2px 5px #ececec;
+    height: 100vh;
 }
 
 .content {
     width:71%;
     font-size: 16px;
     color: #000;
+    height: 100vh;
 }
 
 .content p {
@@ -144,6 +147,11 @@ h2 {
 .content .wrapper {
     margin: 73px;
     position: relative;
+}
+
+.content .wrapper p a {
+    text-decoration: underline;
+    color: #005DFF;
 }
 
 .go-back {
