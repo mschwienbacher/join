@@ -119,8 +119,8 @@ function printErrorMessage(msg) {
 
 function recoverPassword() {
     let email = document.getElementById("password-reset-email");
-    if(email) {
-        let allUsersAsArray = getUsersAsArray();
+    let allUsersAsArray = getUsersAsArray();
+    if(email && allUsersAsArray != null) {
         let userExists = allUsersAsArray.find(u => u.email == email.value);
         if(userExists) {
             startPwChangeAnimation(email);
@@ -128,8 +128,11 @@ function recoverPassword() {
                 redirectToPwChange(email.value);
             }, 3000)
         } else {
-            printErrorMessage("Email does not exist!");
+            printErrorMessage("User not found!");
         }
+    } else {
+        printErrorMessage("User not found!");
+        emptyValues(email, "");
     }
 }
 
@@ -157,13 +160,16 @@ function redirectToPwChange(email) {
 }
 
 /**
- * This functions checks if you are allowed to stay on the page
+ * This functions checks if you are allowed to stay on the page (checks also if email exists)
  */
 
 function validatePermission() {
+    let allUsersAsArray = getUsersAsArray();
     let email = getUrlParameters("email");
-    if(!email) {
-        printErrorMessage("You are not allowed to stay here!");
+    let userExists = allUsersAsArray.some(obj => obj.email === email);
+
+    if(!email || !userExists) {
+        printErrorMessage("Not allowed or your email does not exists!");
         readOnlyPwInputs();
         setTimeout(function() {
             window.location.href = "index.html";
