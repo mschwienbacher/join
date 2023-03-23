@@ -1,3 +1,17 @@
+h1 {
+    color: #4589FF;
+    font-size: 61px;
+    font-weight: 700;
+    padding: 0 0 30px 0;
+}
+
+h2 {
+    color: #005DFF;
+    font-size: 33px;
+    font-weight: 700;
+    padding: 0 0 10px 0;
+}
+
 .header .container .center, .main .container .center {
     padding: 0 33px;
 }
@@ -92,6 +106,35 @@
 
 .content {
     width:71%;
+    font-size: 16px;
+    color: #000;
+}
+
+.content p {
+    line-height: 160%;
+    padding: 0 0 35px 0;
+}
+
+.content ol, .content ul {
+    line-height: 160%;
+    list-style: none;
+}
+
+.content ol {
+    padding: 25px 0 0 0;
+}
+
+.content ol li {
+    display: flex;
+    align-items: flex-start;
+    margin:0 0 10px 0;
+}
+
+.content ol li span {
+    font-size: 33px;
+    font-weight: bold;
+    color: #005DFF;
+    padding:5px 35px 0 0;
 }
 
 .sidebar .wrapper {
@@ -99,5 +142,12 @@
 }
 
 .content .wrapper {
-    padding: 73px;
+    margin: 73px;
+    position: relative;
+}
+
+.go-back {
+    position: absolute;
+    top:0;
+    right: 0;
 }
