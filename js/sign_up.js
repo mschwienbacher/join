@@ -1,4 +1,32 @@
 /**
+ * This function is used to SAVE the users into the backend
+ * @returns {Promise<void>}
+ */
+
+async function saveUsersToBackend() {
+    let allUsersAsString = JSON.stringify(users);
+    await backend.setItem("registeredUsers", allUsersAsString);
+}
+
+/**
+ * This function is used to GET all the users from the backend
+ * @returns {Promise<void>}
+ */
+
+function getSavedUsersFromBackend() {
+    users = JSON.parse(backend.getItem('registeredUsers')) || [];
+}
+
+/**
+ *  This function RETURNS all registered users as an ARRAY
+ * @returns {array} - All registred users
+ */
+
+function getUsersAsArray() {
+    return JSON.parse(backend.getItem("registeredUsers"));
+}
+
+/**
  * This MAIN function is used to verify if the login details are existing/correct
  */
 
@@ -27,11 +55,11 @@ function login() {
 }
 
 /**
- * This function is used to check all possibilities for login
+ * This function is used to check all login possibilities
  * @param allUsersAsArray
  * @param email
  * @param password
- * @param param - case 1,2 or 3
+ * @param param - case 1 or 2
  * @returns {*}
  */
 function loginValidation(userToReset, email, password, param) {
@@ -48,7 +76,7 @@ function loginValidation(userToReset, email, password, param) {
 }
 
 /**
- * This MAIN function is used to push all the sign-up information in an ARRAY.
+ * This MAIN function is used to push all the sign-up information in an ARRAY
  */
 
 async function register() {
@@ -88,37 +116,15 @@ async function pushToUsersArray(users, name, email, password) {
     });
     if(users) {
         await saveUsersToBackend();
-        window.location.href = "index.html?success=You have registered successfully";
+        printSuccessMessage("You have registered successfully");
+        setTimeout(function() {window.location.href = "index.html";}, 1000)
     }
 }
 
 /**
- * This function is used to save all the user information in the backend
- * @returns {Promise<void>}
- */
-
-function getSavedUsersFromBackend() {
-    users = JSON.parse(backend.getItem('registeredUsers')) || [];
-}
-
-/**
- *  This function returns all registered users as an array and must be saved in a variable
- * @returns {array}
- */
-
-function getUsersAsArray() {
-    return JSON.parse(backend.getItem("registeredUsers"));
-}
-
-async function saveUsersToBackend() {
-    let allUsersAsString = JSON.stringify(users);
-    await backend.setItem("registeredUsers", allUsersAsString);
-}
-
-/**
- * This function is to reset the values of the input fields
- * @param element01
- * @param element02
+ * This function is used to reset the values of the passed input fields
+ * @param element01 - field 01
+ * @param element02 - field 01
  */
 
 function emptyValues(element01, element02) {
@@ -136,6 +142,19 @@ function printErrorMessage(msg) {
     let errorMessage = document.getElementById("success");
     errorMessage.innerHTML = `<p class="red">${msg}</p>`;
     setTimeout(()=>{errorMessage.innerHTML = "";},3000);
+}
+
+/**
+ * This function prints a success message
+ * @param success - URL parameter "success"
+ */
+
+function printSuccessMessage(success) {
+    let successMsg = document.getElementById("success");
+    if(success) {
+        successMsg.innerHTML = "<p>" + success + "</p>";
+        setTimeout(()=>{successMsg.innerHTML = "";},3000);
+    }
 }
 
 /**
@@ -220,6 +239,7 @@ function userCanReset() {
  * This function is used to check IF the user was found and the insert PWs are the same
  * @param email - The value of the parameter of the URL (The email address)
  */
+
 function checkPasswordIdentity(email) {
     let firstPwField = document.getElementById("new-password");
     let secondPwField = document.getElementById("confirm-password");
@@ -258,16 +278,6 @@ function readOnlyPwInputs() {
     pwInput02.readOnly = true;
 }
 
-
-/**
- * This function is used to show the success message after registration and will be hidden after 5 seconds
- */
-
-function checkIfUserIsRegistered() {
-    let success = getUrlParameters("success");
-    printSuccessMessage(success);
-}
-
 /**
  * This function is used to get the parameter of the URL
  * @param param - "email" or "success" parameters
@@ -277,17 +287,4 @@ function getUrlParameters(param) {
     let urlParams = new URLSearchParams(window.location.search);
     let success = urlParams.get(param);
     return success;
-}
-
-/**
- * This function prints the success message if the users register successfully
- * @param success - URL parameter "success"
- */
-
-function printSuccessMessage(success) {
-    let successMsg = document.getElementById("success");
-    if(success) {
-        successMsg.innerHTML = "<p>" + success + "</p>";
-        setTimeout(()=>{successMsg.innerHTML = "";},3000);
-    }
 }
