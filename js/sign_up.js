@@ -8,17 +8,16 @@ function login() {
     let allUsersAsArray = getUsersAsArray();
 
     if(allUsersAsArray != null) { // If users exists in the backend
-        let userCanLogin = loginValidation(allUsersAsArray, email, password, 1);
-        let notFound = loginValidation(allUsersAsArray, email, password, 2);
-        let incorrectUserDetail = loginValidation(allUsersAsArray, email, password, 3);
-        //TODO wenn ich 2 Personen in der Datenbank habe und ich die Logindaten falsch eingeben, hüpft er mir immer auf USER NOT FOUND, müsste aber auf CREDENTIALS INCORRECT hüpfen
+        let userToReset = allUsersAsArray.filter((user) => user.email == email.value);
+        let userCanLogin = loginValidation(userToReset, email, password, 1);
+        let incorrectUserDetail = loginValidation(userToReset, email, password, 2);
         if(userCanLogin) {
             window.location.href = "summary.html";
-        } else if(notFound) {
-            printErrorMessage("User not found");
-            emptyValues(email, password);
         } else if(incorrectUserDetail) {
             printErrorMessage("Credentials incorrect!");
+            emptyValues(email, password);
+        } else {
+            printErrorMessage("User not found");
             emptyValues(email, password);
         }
     } else {
@@ -35,16 +34,13 @@ function login() {
  * @param param - case 1,2 or 3
  * @returns {*}
  */
-function loginValidation(allUsersAsArray, email, password, param) {
+function loginValidation(userToReset, email, password, param) {
     switch(param) {
         case 1:
-            return allUsersAsArray.find(u => u.email == email.value && u.password == password.value);
+            return userToReset.find(u => u.email == email.value && u.password == password.value);
             break;
         case 2:
-            return allUsersAsArray.find(u => u.email != email.value);
-            break;
-        case 3:
-            return allUsersAsArray.find(us => us.email != email.value || us.password != password.value);
+            return userToReset.find(us => us.email != email.value || us.password != password.value);
             break;
         default:
             return 0;
