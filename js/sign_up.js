@@ -208,21 +208,16 @@ function checkPasswordIdentity(email) {
 
 /**
  * This function is used to reset definitely your password
+ * @param email - The email address for resetting the pw
+ * @param newPw - The value of the new PW
  */
 
 async function finalResetPw(email, newPw) {
-    let allUsersAsArray = getUsersAsArray();
-    let userToReset = allUsersAsArray.find(u => u.email == email);
     getSavedUsersFromBackend();
-    //TODO nicht POP benutzen sondern MAP/FILTER
-    let filteredUsers = users.filter((user) => user.email !== email); //enthält alle Benutzer außer dem, der die E-Mail-Adresse
-    console.log(filteredUsers);
-
-    /*userToReset.password = newPw; // "userToReset" PW ändern
-    users.push(userToReset);
+    let userToReset = users.filter((user) => user.email == email);
+    userToReset[0].password = newPw;
     await saveUsersToBackend();
     window.location.href = "index.html?success=Password changed correctly";
-    */
 }
 
 /**
