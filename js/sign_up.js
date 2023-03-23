@@ -22,7 +22,6 @@ function login() {
         }
     } else {
         printErrorMessage("User not found!");
-        emptyValues(email, password);
     }
 }
 
@@ -56,6 +55,25 @@ async function register() {
     let email = document.getElementById("signup-mail");
     let password = document.getElementById("signup-password");
     getSavedUsersFromBackend();
+    let allUsersAsArray = getUsersAsArray();
+    let userAlreadyExists = allUsersAsArray.some(obj => obj.email === email.value);
+    if(userAlreadyExists) {
+        printErrorMessage("User already exists!");
+        emptyValues(email, password);
+    } else {
+        await pushToUsersArray(users, name, email, password);
+    }
+}
+
+/**
+ * This function is used to definitely push the users to the array
+ * @param users - users array
+ * @param name - The name
+ * @param email - The email
+ * @param password - The password
+ * @returns {Promise<void>} - final array
+ */
+async function pushToUsersArray(users, name, email, password) {
     users.push({
         name: name.value,
         email: email.value,
@@ -67,14 +85,23 @@ async function register() {
     }
 }
 
+/**
+ * This function is used to save all the user information in the backend
+ * @returns {Promise<void>}
+ */
+
 function getSavedUsersFromBackend() {
     users = JSON.parse(backend.getItem('registeredUsers')) || [];
 }
 
 /**
- * This function is used to save all the user information in the backend
- * @returns {Promise<void>}
+ *  This function returns all registered users as an array and must be saved in a variable
+ * @returns {array}
  */
+
+function getUsersAsArray() {
+    return JSON.parse(backend.getItem("registeredUsers"));
+}
 
 async function saveUsersToBackend() {
     let allUsersAsString = JSON.stringify(users);
@@ -90,15 +117,6 @@ async function saveUsersToBackend() {
 function emptyValues(element01, element02) {
     element01.value = "";
     element02.value = "";
-}
-
-/**
- *  This function returns all registered users as an array and must be saved in a variable
- * @returns {array}
- */
-
-function getUsersAsArray() {
-    return JSON.parse(backend.getItem("registeredUsers"));
 }
 
 /**
