@@ -1,1 +1,103 @@
-/*TODO*/
+.header .container .center, .main .container .center {
+    padding: 0 33px;
+}
+
+.header .container .center {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.header {
+    background: #4589FF;
+    color: #fff;
+}
+
+.main {
+    background: #fff;
+}
+
+.inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.reverse {
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    align-items: start;
+}
+
+.right-bar {
+    display: flex;
+    align-items: center;
+}
+
+.right-bar p {
+    font-size: 19px;
+}
+
+.help {
+    margin: 0 26px;
+}
+
+.help img {
+    display: block;
+}
+
+.user-info {
+    cursor: pointer;
+    position: relative;
+}
+
+.user-img {
+    background: #fff;
+    display: block;
+    width:50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-img img {
+    border-radius: 50%;
+    border:3px solid #4589FF;
+}
+
+.more-details {
+    width: 100px;
+    background: #fff;
+    position: absolute;
+    top: 76px;
+    right: 0;
+    padding: 15px 10px;
+    text-align: center;
+    box-shadow: 0px 2px 5px #ececec;
+}
+
+.more-details a {
+    text-decoration: none;
+    color: #000;
+}
+
+.more-details ul {
+    list-style: none;
+}
+
+.sidebar {
+    width:29%;
+}
+
+.content {
+    width:71%;
+}
+
+.sidebar .wrapper {
+    padding: 73px 23px;
+}
+
+.content .wrapper {
+    padding: 73px;
+}

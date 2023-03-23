@@ -15,7 +15,54 @@
     <link rel="stylesheet" href="css/inner-page-responsive.css">
     <link rel="stylesheet" href="css/animations.css">
 </head>
-<body class="summary" onload="initBackend()">
+<body class="summary-page" onload="initBackend()">
+<header class="header">
+    <div class="container">
+        <div class="center">
+            <div class="inner">
+                <a href="summary.html" title="Summary"><img src="assets/img/logo-join-small.svg" width="47" height="58" alt="JOIN"></a>
+                <div class="right-bar">
+                    <p>Kanban Project Management Tool</p>
+                    <a href="help.html" title="Need help?" class="help"><img src="assets/img/help.svg" width="31" height="31" alt="Help"></a>
+                    <div class="user-info">
+                        <span class="user-img">
+                            <img src="assets/img/dummy.png" width="37" height="37" alt="">
+                        </span>
+                        <div class="more-details" id="more-details">
+                            <ul>
+                                <li><a href="index.html">Log out</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<main id="main" class="main">
+    <div class="container">
+        <div class="center">
+            <div class="inner reverse">
+                <div class="content">
+                    <div class="wrapper">Content - Summary</div>
+                </div>
+                <div class="sidebar">
+                    <div class="wrapper">
+                        <ul class="navigation" id="main-navigation">
+                            <li><a href="summary.html" title="Summary">Summary</a></li>
+                            <li><a href="board.html" title="Board">Board</a></li>
+                            <li><a href="add_task.html" title="Add Task">Add Task</a></li>
+                            <li><a href="contacts.html" title="Contacts">Contacts</a></li>
+                        </ul>
+                        <ul class="navigation" id="secondary-navigation">
+                            <li><a href="legal_notice.html" title="Legal notice">Legal notice</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
 <script src="js/mini_backend.js"></script>
 <!-- Insert dedicated JS script -->
 <script src="js/main.js"></script>
