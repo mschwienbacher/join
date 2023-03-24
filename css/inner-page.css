@@ -98,6 +98,11 @@ h2 {
     padding: 15px 10px;
     text-align: center;
     box-shadow: 0px 2px 5px #ececec;
+    display: none;
+}
+
+.showit {
+    display: block;
 }
 
 .more-details a {

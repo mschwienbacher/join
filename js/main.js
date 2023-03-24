@@ -62,3 +62,11 @@ function getUrlParameters(param) {
     let success = urlParams.get(param);
     return success;
 }
+
+/**
+ * This function is used to show/hide the log off menu (toggle class)
+ */
+function showLogOffBox() {
+    let logOffBox = document.getElementById("more-details");
+    logOffBox.classList.toggle("showit");
+}
