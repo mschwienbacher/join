@@ -27,16 +27,16 @@
     justify-content: space-between;
 }
 
-.task-text-size{
+.task-text-size {
     font-size: 23px;
     font-weight: 400;
 }
 
-.task-line-height{
+.task-line-height {
     line-height: 27.6px;
 }
 
-.task-color-center{
+.task-color-center {
     color: #4589FF;
     display: flex;
     flex-direction: column;
@@ -48,7 +48,7 @@
     align-items: center;
 }
 
-#task-urgent-text{
+#task-urgent-text {
     color: white;
     font-size: 23px;
     font-weight: 400;
@@ -140,7 +140,7 @@
     padding: 40px;
 }
 
-.task-container p{
+.task-container p {
     padding: 0;
 }
 
