@@ -123,6 +123,7 @@ function toggleClass(theClass) {
 function drawSingleContact(singleContact) {
     let nameInitials = singleContact.name.charAt(0);
     let surnameInitials = singleContact.surname.charAt(0);
+
     return `
     <div class="the-user">
         <div class="the-user-head">
@@ -138,7 +139,7 @@ function drawSingleContact(singleContact) {
             <div class="the-user-info">
                 <div class="the-user-title">Contact Information</div>
                 <div class="the-user-edit">
-                    <a href="javascript:void(0);" onclick="alert('Noch zu machen');">
+                    <a href="javascript:void(0);" onclick="editContact('${encodeURIComponent(JSON.stringify(singleContact))}')">
                         <img src="../assets/img/pencil.svg" width="31" height="24" alt="Modify">
                         <span>Edit contact</span>
                     </a>
@@ -153,4 +154,9 @@ function drawSingleContact(singleContact) {
         </div>
     </div>
 `;
+}
+
+function editContact(singleContact) {
+    let contactAsObject = JSON.parse(decodeURIComponent(singleContact));
+
 }

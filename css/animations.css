@@ -53,3 +53,7 @@
         margin-bottom:-37px;
     }
 }
+
+@keyframes slide {
+    100% { right: 0; }
+}
