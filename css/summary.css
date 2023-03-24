@@ -1,0 +1,126 @@
+#center-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 89vh;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#greeting {}
+
+#time-and-tasks {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#tasks-and-status {
+    display: flex;
+    width: 97%;
+    margin-top: 17.5px;
+    justify-content: space-between;
+}
+
+.align-center {
+    display: flex;
+    align-items: center;
+}
+
+#task-urgent-emblem-number {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#task-urgent-emblem-number img {
+    background-color: white;
+    border-radius: 35px;
+}
+
+#taks-urgent {
+    display: flex;
+    background-color: #4589FF;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 682px;
+    margin: 17.5px;
+    border-radius: 30px;
+    padding: 28px 48px 28px 48px;
+}
+
+#taks-urgent p {
+    padding: 10px;
+}
+
+#tasks-urgent-counter {
+    color: white;
+}
+
+.task-number-size {
+    font-size: 48px;
+    font-weight: 700;
+}
+
+.center-tasks {
+    display: flex;
+    align-items: center;
+}
+
+
+#tasks-to-to {
+    display: flex;
+    background-color: #D2E3FF;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 17.5px;
+    border-radius: 30px;
+}
+
+#tasks-to-to p {
+    padding: 0;
+}
+
+#deadline-date {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 33px;
+    color: white;
+}
+
+#deadline-upcoming {
+    font-weight: 400;
+    font-size: 23px;
+    color: white;
+}
+
+#hr-line-tasks-urgent {
+    height: 80%;
+}
+
+.task-container {
+    border: solid rgba(0, 0, 0, 0.048) 3px;
+    border-radius: 30px;
+    width: 204px;
+    height: 219px;
+}
+
+.img-size {
+    width: 76px;
+    height: 76px;
+    margin-right: 20px;
+    margin-bottom: 7px;
+}
