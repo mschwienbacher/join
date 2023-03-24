@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="css/inner-page.css">
     <link rel="stylesheet" href="css/inner-page-responsive.css">
     <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/add-task.css">
 </head>
 <body class="task-page" onload="initBackend()">
 <header class="header">
@@ -44,7 +45,33 @@
         <div class="center">
             <div class="inner reverse">
                 <div class="content">
-                    <div class="wrapper">Content - Add task</div>
+                    <div class="wrapper">
+                        <div class="title">
+                            Enter a title
+                        </div>
+                        <select name="select contacts to assign" id="select-contacts-to-assign" class="select-contacts-to-assign">
+                            <option value="">Select contacts to assign</option>
+                            <option value="0">contact0</option>
+                            <option value="1">contact1</option>
+                            <option value="2">contact2</option>
+                            <option value="3">contact3</option>
+                        </select>
+                        <div class="due-date">
+                           <span>Due date</span>
+                           <input type="date" id="start" name="trip-start"
+                                    value="dd/mm/yyyy">
+                        </div>  
+                        <div class="category">
+                            <span>Category</span>
+                            <select name="select category" id="select-category" class="select-category">
+                                <option value="">Select task category</option>
+                                <option value="0">category0</option>
+                                <option value="1">category1</option>
+                                <option value="2">category2</option>
+                                <option value="3">category3</option>
+                            </select>
+                        </div>
+                </div>
                 </div>
                 <div class="sidebar">
                     <div class="wrapper">
