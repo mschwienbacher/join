@@ -1,3 +1,7 @@
+html, body {
+    height: 100%;
+}
+
 h1 {
     color: #4589FF;
     font-size: 61px;
@@ -12,7 +16,7 @@ h2 {
     padding: 0 0 10px 0;
 }
 
-.header .container .center, .main .container .center {
+.header .container .center {
     padding: 0 33px;
 }
 
@@ -28,6 +32,10 @@ h2 {
 
 .main {
     background: #fff;
+}
+
+.main .container .center {
+    padding:0;
 }
 
 .inner {
@@ -63,6 +71,7 @@ h2 {
     cursor: pointer;
     position: relative;
 }
+
 
 .user-img {
     background: #fff;
@@ -101,16 +110,14 @@ h2 {
 }
 
 .sidebar {
-    width:29%;
-    box-shadow: 5px 2px 5px #ececec;
-    height: 100vh;
+    width:20%;
+    height: calc(100vh - 102.5px);
 }
 
 .content {
-    width:71%;
+    width:80%;
     font-size: 16px;
     color: #000;
-    height: 100vh;
 }
 
 .content p {
@@ -142,6 +149,12 @@ h2 {
 
 .sidebar .wrapper {
     padding: 73px 23px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 5px 2px 5px #ececec;
+    height: 100%;
+    box-sizing: border-box;
 }
 
 .content .wrapper {
@@ -158,4 +171,59 @@ h2 {
     position: absolute;
     top:0;
     right: 0;
+}
+
+.navigation {
+    list-style: none;
+}
+
+.navigation li {
+    margin-top:20px;
+}
+
+.navigation li:first-child {
+    margin-top:0;
+}
+
+.navigation a {
+    font-size: 16px;
+    color: #42526E;
+    text-decoration: none;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 46px;
+    line-height: 46px;
+    padding: 0 50px;
+}
+
+.navigation a.active-menu, .navigation a:hover {
+    background:#D2E3FF;
+    border-radius: 8px;
+}
+
+.navigation span.m-img {
+    width:30px;
+    margin-right: 20px;
+}
+
+.navigation img {
+    display: block;
+    margin: 0 0 0 auto;
+}
+
+#secondary-navigation a:hover {
+    background:#005DFF;
+    color: #fff;
+}
+
+#secondary-navigation a.active-menu {
+    background:#005DFF;
+    border-radius: 8px;
+    color: #fff;
+}
+
+
+#secondary-navigation a:hover img, #secondary-navigation a.active-menu img {
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(200%) contrast(100%);
 }
