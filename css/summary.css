@@ -37,7 +37,7 @@
 }
 
 .task-color-center {
-    color: #4589FF;
+    
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -49,7 +49,6 @@
 }
 
 #task-urgent-text {
-    color: white;
     font-size: 23px;
     font-weight: 400;
 }
@@ -68,21 +67,37 @@
 #taks-urgent {
     display: flex;
     background-color: #4589FF;
+    color: white;
     justify-content: space-evenly;
     align-items: center;
     width: 682px;
+    height: 191px;
     margin: 17.5px;
     border-radius: 30px;
     padding: 28px 48px 28px 48px;
+    transition: 125ms;
+}
+
+#taks-urgent:hover {
+    display: flex;
+    background-color: white;
+    color: #4589FF;
+    transition: 125ms;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 682px;
+    height: 191px;
+    margin: 17.5px;
+    border-radius: 0px 30px 30px 30px;
+    padding: 28px 48px 28px 48px;
+    cursor: pointer;
+    border: solid rgba(0, 0, 0, 0.103) 1px;
 }
 
 #taks-urgent p {
     padding: 10px;
 }
 
-#tasks-urgent-counter {
-    color: white;
-}
 
 .task-number-size {
     font-size: 48px;
@@ -96,17 +111,44 @@
 
 
 #tasks-to-to {
+    transition: 125ms;
     display: flex;
     background-color: #D2E3FF;
     width: 200px;
-    height: 200px;
+    height: 191px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: 17.5px;
     border-radius: 30px;
-    padding: 40px;
+    padding: 30px;
+    border: solid rgba(0, 0, 0, 0) 1px;
+}
+
+#tasks-to-to:hover {
+    transition: 125ms;
+    display: flex;
+    background-color: white;
+    width: 200px;
+    height: 191px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 17.5px;
+    border-radius: 0px 30px 30px 30px;
+    padding: 30px;
+    cursor: pointer;
+    border: solid rgba(0, 0, 0, 0.103) 1px;
+}
+
+#tasks-to-to:hover .task-number-size{
+    color: #4589FF;
+}
+
+#tasks-to-to:hover p{
+    color: #4589FF;
 }
 
 #tasks-to-to p {
@@ -119,13 +161,12 @@
     align-items: center;
     font-weight: 700;
     font-size: 33px;
-    color: white;
+    
 }
 
 #deadline-upcoming {
     font-weight: 400;
     font-size: 23px;
-    color: white;
 }
 
 #hr-line-tasks-urgent {
@@ -138,6 +179,29 @@
     width: 204px;
     height: 219px;
     padding: 40px;
+    transition: 125ms;
+    color: #4589FF;
+}
+
+
+.task-container:hover {
+    border: solid rgba(0, 0, 0, 0) 3px;
+    border-radius: 0px 30px 30px 30px;
+    background-color: rgb(54, 54, 255);
+    width: 204px;
+    height: 219px;
+    padding: 40px;
+    cursor: pointer;
+    transition: 125ms;
+    color: white;
+}
+
+.task-container .task-number-size{
+    color: black;
+}
+
+.task-container:hover .task-number-size{
+    color: white;
 }
 
 .task-container p {
@@ -149,4 +213,6 @@
     height: 76px;
     margin-right: 20px;
     margin-bottom: 7px;
+    border: solid white 3px;
+    border-radius: 40px;
 }
