@@ -20,11 +20,19 @@
     width: 100%;
 }
 
+#time-and-tasks a{
+    text-decoration: none;
+}
+
 #tasks-and-status {
     display: flex;
     width: 97%;
     margin-top: 17.5px;
     justify-content: space-between;
+}
+
+#tasks-and-status a {
+    text-decoration: none; 
 }
 
 .task-text-size {
@@ -37,7 +45,6 @@
 }
 
 .task-color-center {
-    
     display: flex;
     flex-direction: column;
     align-items: center;
