@@ -1,4 +1,4 @@
-setURL('https://michael-schwienbacher.developerakademie.net/modul-10/backend');
+setURL('https://gruppenarbeit-503-join.developerakademie.net/backend');
 let users = [];
 
 /**
