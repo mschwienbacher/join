@@ -1,7 +1,26 @@
 body{
     font-family: 'Open Sans';
+    background-color: #F5F5F5;
+}
+
+.bg1{
+    background-color: #F5F5F5;
 }
 .title{
+    /* width: 215px;
+    height: 48px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 120%;
+    border-bottom: 1px solid;
+    padding-top: 13px;
+    padding-bottom: 13px;
+    padding-left: 21px; */
+}
+
+.title input{
+    background-color: #F5F5F5;
     width: 215px;
     height: 48px;
     font-style: normal;
@@ -12,9 +31,12 @@ body{
     padding-top: 13px;
     padding-bottom: 13px;
     padding-left: 21px;
+    border: none;
+    border-bottom: 1px solid;
 }
 
 .select-contacts-to-assign{
+    background-color: #F5F5F5;
     border-bottom: 1px solid;
     font-style: normal;
     font-weight: 400;
@@ -31,21 +53,22 @@ body{
 }
 
 .due-date{
+    background-color: #F5F5F5;
     margin-top: 25px;
     font-weight: 700;
     font-size: 19px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    /* gap: 10px; */
-    /* isolation: isolate; */
     width: 422px;
-    height: 51px;
-    background: #FFFFFF;
 }
 
 .due-date input{
-    padding: 18px 21px;
+    background-color: #F5F5F5;
+    padding-top: 18px;
+    padding-bottom: 18px;
+    padding-left: 21px;
+    padding-right: 0px;
     border: none;
     border-bottom: 1px solid;
     cursor: pointer;
@@ -53,10 +76,7 @@ body{
     flex-direction: row;
     align-items: center;
     gap: 10px;
-    /* border: 1px solid #D1D1D1;
-    border-radius: 10px;
-    font-family: 'Inter'; */
-    width: 380px;
+    width: 400px;
     height: 13px;
     font-style: normal;
     font-weight: 400;
@@ -71,14 +91,13 @@ body{
     display: flex;
     flex-direction: column;
     align-items:  flex-start;
-    /* padding-left: 0; */
     padding-top: 12px;
     width: 422px;
-    height: 51px;
-    background: #FFFFFF;
+    background-color: #F5F5F5;
 }
 
 .select-category{
+    background-color: #F5F5F5;
     border-bottom: 1px solid;
     font-style: normal;
     font-weight: 400;
@@ -90,4 +109,90 @@ body{
     padding-bottom: 13px;
     border: none;
     border-bottom: 1px solid;
+}
+
+.priority{
+    background-color: #F5F5F5;
+    width: 422px;
+    display: flex;
+    margin-top: 25px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.priority button{
+    margin-top: 50px;
+    width: 133px;
+    height: 46px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 120%;
+    padding: 12px;
+    border-radius: 8px;
+}
+
+.description{
+    margin-top: 25px;
+    font-weight: 700;
+    font-size: 19px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 422px;
+    background-color: #F5F5F5;
+}
+
+.description textarea{
+    background-color: #F5F5F5;
+    margin-top: 8px;
+    width: 422px;
+    height: 103px;
+    padding-left: 21px;
+    padding-top: 13px;
+}
+
+.subtasks{
+    margin-top: 25px;
+    font-weight: 700;
+    font-size: 19px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 422px;
+    background-color: #F5F5F5;
+}
+
+.subtasks input{
+    background-color: #F5F5F5;
+    border: none;
+    font-weight: 400;
+    font-size: 16px;
+    width: 406px;
+    padding-left: 21px;
+    padding-top: 13px;
+    padding-bottom: 13px;
+}
+
+.input-subtasks{
+    background-color: #F5F5F5;
+    display: flex;
+    flex-direction: row;
+    border: none;
+    border-bottom: 1px solid;
+}
+
+.checkbox-subtasks{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-top: 8px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.checkbox-subtasks input{
+    display: flex;
+    justify-content: flex-start;
 }
