@@ -14,8 +14,6 @@
     flex-direction: column;
 }
 
-#greeting {}
-
 #time-and-tasks {
     display: flex;
     justify-content: space-between;
@@ -29,9 +27,31 @@
     justify-content: space-between;
 }
 
+.task-text-size{
+    font-size: 23px;
+    font-weight: 400;
+}
+
+.task-line-height{
+    line-height: 27.6px;
+}
+
+.task-color-center{
+    color: #4589FF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .align-center {
     display: flex;
     align-items: center;
+}
+
+#task-urgent-text{
+    color: white;
+    font-size: 23px;
+    font-weight: 400;
 }
 
 #task-urgent-emblem-number {
@@ -41,8 +61,8 @@
 }
 
 #task-urgent-emblem-number img {
-    background-color: white;
-    border-radius: 35px;
+    border-radius: 40px;
+    border: solid white 3px;
 }
 
 #taks-urgent {
@@ -86,6 +106,7 @@
     align-items: center;
     margin: 17.5px;
     border-radius: 30px;
+    padding: 40px;
 }
 
 #tasks-to-to p {
@@ -116,6 +137,11 @@
     border-radius: 30px;
     width: 204px;
     height: 219px;
+    padding: 40px;
+}
+
+.task-container p{
+    padding: 0;
 }
 
 .img-size {
