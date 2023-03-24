@@ -117,12 +117,15 @@ h2 {
 .sidebar {
     width:20%;
     height: calc(100vh - 102.5px);
+    box-shadow: 0px 2px 5px #ececec;
+    position: relative;
 }
 
 .content {
     width:80%;
     font-size: 16px;
     color: #000;
+    background:#f9f9f9;
 }
 
 .content p {
@@ -157,7 +160,6 @@ h2 {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    box-shadow: 5px 2px 5px #ececec;
     height: 100%;
     box-sizing: border-box;
 }

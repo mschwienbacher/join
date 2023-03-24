@@ -18,17 +18,36 @@
         .contacts-page .content .wrapper {
             display: flex;
             align-items: flex-start;
+            margin:0;
+        }
+
+        .contact-list {
+            background: #ffffff;
+            box-shadow: 0px 2px 5px #ececec;
+        }
+
+        .contacts {
+            padding:73px 35px;
         }
 
         .single-contact {
             padding:15px 0;
         }
         .single-contact a {
-            display: inline-flex;
-            flex-wrap: wrap;
+            display: flex;
             text-decoration: none;
             color: #fff;
             align-items: center;
+            padding: 8px;
+        }
+
+        .single-contact a:hover {
+            background:#4589FF;
+            border-radius: 8px;
+        }
+
+        .single-contact a:hover .contact-names, .single-contact a:hover .contact-names strong {
+            color: #fff;
         }
 
         .letter-breadcrumb {
@@ -68,9 +87,88 @@
         .jb {
             background: #EE4E34;
         }
+
+        .jl {
+            background: #62b379;
+        }
+
+        .md {
+            background: #ca76cc;
+        }
+
+        .tm {
+            background: #16603a;
+        }
+
+        .contact-details {
+            padding: 0 65px;
+            margin: 73px 0;
+        }
+
+        .the-user-head, .the-user-info {
+            display: flex;
+            align-items:center;
+        }
+
+        .the-user-img {
+            width:120px;
+            height: 120px;
+            margin-right: 55px;
+        }
+
+        .the-user-img .contact-initial {
+            width: 100%;
+            height: 100%;
+            display: block;
+            line-height: 120px;
+            font-size: 47px;
+            color: #fff;
+            border:3px solid #fff;
+        }
+
+        .the-user-name {
+            font-size: 48px;
+            margin-bottom:10px;
+        }
+
+        .user-tasks a, .the-user-edit a {
+            text-decoration: none;
+            font-size: 16px;
+            color: #005DFF;
+            display: flex;
+            align-items: center;
+        }
+        .the-user-edit a {
+            color:#2A3647;
+            font-size: 16px;
+        }
+
+        .user-tasks a img {
+            margin-right: 10px;
+        }
+
+        .the-user-info {
+            margin: 20px 0;
+        }
+
+        .the-user-title {
+            font-size: 23px;
+            font-weight: 700;
+            margin-right: 60px;
+        }
+
+        .the-user-contacts {
+            font-size: 16px;
+            line-height: 190%;
+        }
+
+        .the-user-contacts a {
+            text-decoration: none;
+            color: #007CEE;
+        }
     </style>
 </head>
-<body class="contacts-page" onload="saveContactsToBackend();">
+<body class="contacts-page" onload="initContactBackend();">
 <header class="header">
     <div class="container">
         <div class="center">
@@ -100,12 +198,12 @@
             <div class="inner reverse">
                 <div class="content">
                     <div class="wrapper">
-                        <div class="contact-list" id="contact-list"></div>
-                        <div class="contact-details" id="contact-details">
-
+                        <div class="contact-list">
+                            <div class="contacts" id="contact-list"></div>
                         </div>
-                        <p>Page for "add contact" NOT created right now. <br>
-                    The file is to put in the "assets/templates" folder and to include after button click</p>
+                        <div class="contact-details" id="contact-details">
+                            <div w3-include-html="assets/templates/add_contact_michael.html"></div>
+                        </div>
                     </div>
                 </div>
                 <div class="sidebar">
@@ -130,6 +228,7 @@
 <script src="js/main.js"></script>
 <script>
     loadContactList();
+    includeHTML();
 </script>
 </body>
 </html>
