@@ -92,14 +92,32 @@ function drawSmallSingleContact(singleContact, i) {
 }
 
 function showContact(id) {
-    let clickedElement = document.getElementById("showed-" + id);
-    clickedElement.classList.add("active");
-    //TODO fix add/remove class
+    toggleClass(".contact-mail");
     let container = document.getElementById("the-contact");
     container.innerHTML = "";
-
     let singleContact = contacts[id];
     container.innerHTML += drawSingleContact(singleContact);
+}
+
+/**
+ * This function is used to toggle a class
+ * @param theClass - The class to search
+ */
+function toggleClass(theClass) {
+    const allLinks = document.querySelectorAll(theClass);
+    allLinks.forEach((link, index) => {
+        link.addEventListener('click', (event) => {
+            event.preventDefault();
+            let currentActiveLink = document.querySelector('.active');
+            if (currentActiveLink) {
+                currentActiveLink.classList.remove('active');
+            }
+            link.classList.add('active');
+        });
+        if (index === 0 && !document.querySelector('.active')) {
+            link.classList.add('active');
+        }
+    });
 }
 
 function drawSingleContact(singleContact) {
