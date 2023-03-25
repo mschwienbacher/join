@@ -7,16 +7,11 @@ body{
     background-color: #F5F5F5;
 }
 .title{
-    /* width: 215px;
+    width: 215px;
     height: 48px;
     font-style: normal;
     font-weight: 400;
-    font-size: 40px;
-    line-height: 120%;
-    border-bottom: 1px solid;
-    padding-top: 13px;
-    padding-bottom: 13px;
-    padding-left: 21px; */
+    font-size: 40px;    
 }
 
 .title input{
@@ -27,7 +22,6 @@ body{
     font-weight: 400;
     font-size: 40px;
     line-height: 120%;
-    border-bottom: 1px solid;
     padding-top: 13px;
     padding-bottom: 13px;
     padding-left: 21px;
@@ -129,7 +123,9 @@ body{
     font-size: 19px;
     line-height: 120%;
     padding: 12px;
-    border-radius: 8px;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.16);
+    border-radius: 10px;
+    border-color: white;
 }
 
 .description{
@@ -195,4 +191,24 @@ body{
 .checkbox-subtasks input{
     display: flex;
     justify-content: flex-start;
+}
+
+.execute-buttons{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.execute-buttons button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    Width:136px;
+    Height:61px;
+    border-radius:10px;
+    Padding:18px, 10px, 18px, 10px;
+    Gap:10px;
+    margin-right: 35px;
+    font-weight: 400;
+    font-size: 23px;
 }

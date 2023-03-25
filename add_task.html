@@ -1,8 +1,10 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>JOIN - Add Task</title>
     <meta name="description" content="Groupwork - JOIN - Add Task">
@@ -16,104 +18,123 @@
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/add-task.css">
 </head>
+
 <body class="task-page" onload="initBackend()">
-<header class="header">
-    <div class="container">
-        <div class="center">
-            <div class="inner">
-                <a href="summary.html" title="Summary"><img src="assets/img/logo-join-small.svg" width="47" height="58" alt="JOIN"></a>
-                <div class="right-bar">
-                    <p>Kanban Project Management Tool</p>
-                    <a href="help.html" title="Need help?" class="help"><img src="assets/img/help.svg" width="31" height="31" alt="Help"></a>
-                    <div class="user-info">
-                        <span class="user-img" id="user-img" onclick="showLogOffBox();">
-                            <img src="assets/img/dummy.png" width="37" height="37" alt="">
-                        </span>
-                        <div class="more-details" id="more-details">
-                            <ul>
-                                <li><a href="index.html">Log out</a></li>
+    <header class="header">
+        <div class="container">
+            <div class="center">
+                <div class="inner">
+                    <a href="summary.html" title="Summary"><img src="assets/img/logo-join-small.svg" width="47"
+                            height="58" alt="JOIN"></a>
+                    <div class="right-bar">
+                        <p>Kanban Project Management Tool</p>
+                        <a href="help.html" title="Need help?" class="help"><img src="assets/img/help.svg" width="31"
+                                height="31" alt="Help"></a>
+                        <div class="user-info">
+                            <span class="user-img" id="user-img" onclick="showLogOffBox();">
+                                <img src="assets/img/dummy.png" width="37" height="37" alt="">
+                            </span>
+                            <div class="more-details" id="more-details">
+                                <ul>
+                                    <li><a href="index.html">Log out</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main id="main" class="main">
+        <div class="container">
+            <div class="center">
+                <div class="inner reverse">
+                    <div class="content bg1">
+                        <div class="wrapper bg1">
+                            <form onsubmit="addTask(); return false;">
+                                <div class="title">
+                                    <input type="text" placeholder="Enter a title" id="task-title" required>
+                                </div>
+                                <select name="select contacts to assign" id="select-contacts-to-assign"
+                                    class="select-contacts-to-assign" required>
+                                    <option value="">Select contacts to assign</option>
+                                    <option value="0">contact0</option>
+                                    <option value="1">contact1</option>
+                                    <option value="2">contact2</option>
+                                    <option value="3">contact3</option>
+                                </select>
+                                <div class="due-date">
+                                    <span>Due date</span>
+                                    <input type="date" id="due-date" name="trip-start" value="dd/mm/yyyy" required>
+                                </div>
+                                <div class="category">
+                                    <span>Category</span>
+                                    <select name="select category" id="task-category" class="select-category" required>
+                                        <option value="">Select task category</option>
+                                        <option value="0">category0</option>
+                                        <option value="1">category1</option>
+                                        <option value="2">category2</option>
+                                        <option value="3">category3</option>
+                                    </select>
+                                </div>
+                                <div class="priority" id="task-priority">
+                                    <button>Urgent <img src="assets/img/urgent.svg" alt="urgent"></button>
+                                    <button>Medium <img src="assets/img/medium.svg" alt="medium"></button>
+                                    <button>Low <img src="assets/img/low.svg" alt="low"></button>
+                                </div>
+                                <div class="description">
+                                    <span>Description</span>
+                                    <textarea name="description" placeholder="Enter a description" id="task-description"
+                                        cols="55" rows="100" required></textarea>
+                                </div>
+                                <div class="subtasks">
+                                    <span>Subtasks</span>
+                                    <div class="input-subtasks">
+                                        <input type="text" placeholder="add new subtask" id="task-subtask">
+                                        <img src="assets/img/plus.svg" alt="add">
+                                    </div>
+                                </div>
+                                <div class="checkbox-subtasks">
+                                    <input type="checkbox"> &nbsp;
+                                    <span>Subtask 1</span>
+                                </div>
+                                <div class="execute-buttons">
+                                    <button style="color: #647188">Clear X</button>
+                                    <button style="background-color: #4589FF; color: white;">Create <img src="assets/img/check.svg" alt="check"></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="sidebar">
+                        <div class="wrapper">
+                            <ul class="navigation" id="main-navigation">
+                                <li><a href="summary.html" title="Summary"><span class="m-img"><img
+                                                src="assets/img/menu-summary.svg" width="22" height="22"
+                                                alt="Summary"></span><span>Summary</span></a></li>
+                                <li><a href="board.html" title="Board"><span class="m-img"><img
+                                                src="assets/img/menu-board.svg" width="22" height="26"
+                                                alt="Board"></span><span>Board</span></a></li>
+                                <li><a href="add_task.html" title="Add Task" class="active-menu"><span
+                                            class="m-img"><img src="assets/img/menu-task.svg" width="30" height="30"
+                                                alt="Task"></span><span>Add Task</span></a></li>
+                                <li><a href="contacts.html" title="Contacts"><span class="m-img"><img
+                                                src="assets/img/menu-contact.svg" width="20" height="22"
+                                                alt="Contact"></span><span>Contacts</span></a></li>
+                            </ul>
+                            <ul class="navigation" id="secondary-navigation">
+                                <li><a href="legal_notice.html" title="Legal notice"><span class="m-img"><img
+                                                src="assets/img/menu-legal.svg" width="18" height="18"
+                                                alt="Legal notice"></span><span>Legal notice</span></a></li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</header>
-<main id="main" class="main">
-    <div class="container">
-        <div class="center">
-            <div class="inner reverse">
-                <div class="content bg1">
-                    <div class="wrapper bg1">
-                        <div class="title">
-                            <input type="text" placeholder="Enter a title">
-                        </div>
-                        <select name="select contacts to assign" id="select-contacts-to-assign" class="select-contacts-to-assign">
-                            <option value="">Select contacts to assign</option>
-                            <option value="0">contact0</option>
-                            <option value="1">contact1</option>
-                            <option value="2">contact2</option>
-                            <option value="3">contact3</option>
-                        </select>
-                        <div class="due-date">
-                           <span>Due date</span>
-                           <input type="date" id="start" name="trip-start"
-                                    value="dd/mm/yyyy">
-                        </div>  
-                        <div class="category">
-                            <span>Category</span>
-                            <select name="select category" id="select-category" class="select-category">
-                                <option value="">Select task category</option>
-                                <option value="0">category0</option>
-                                <option value="1">category1</option>
-                                <option value="2">category2</option>
-                                <option value="3">category3</option>
-                            </select>
-                        </div>
-                        <div class="priority">
-                            <button>Urgent <img src="assets/img/urgent.svg" alt="urgent"></button>
-                            <button>Medium <img src="assets/img/medium.svg" alt="medium"></button>
-                            <button>Low <img src="assets/img/low.svg" alt="low"></button>
-                        </div>
-                        <div class="description">
-                            <span>Description</span>
-                            <textarea name="description" placeholder="Enter a description" id="description" cols="55" rows="100"></textarea>
-                        </div>
-                        <div class="subtasks">
-                            <span>Subtasks</span>
-                            <div class="input-subtasks">
-                                <input type="text" placeholder="add new subtask">
-                                <img src="assets/img/plus.svg" alt="add">
-                            </div>
-                        </div>
-                        <div class="checkbox-subtasks"> 
-                            <input type="checkbox">  &nbsp;                            
-                            <span>Subtask 1</span> 
-                            
-                        </div>                            
-                        
-                </div>
-                </div>
-                <div class="sidebar">
-                    <div class="wrapper">
-                        <ul class="navigation" id="main-navigation">
-                            <li><a href="summary.html" title="Summary"><span class="m-img"><img src="assets/img/menu-summary.svg" width="22" height="22" alt="Summary"></span><span>Summary</span></a></li>
-                            <li><a href="board.html" title="Board"><span class="m-img"><img src="assets/img/menu-board.svg" width="22" height="26" alt="Board"></span><span>Board</span></a></li>
-                            <li><a href="add_task.html" title="Add Task" class="active-menu"><span class="m-img"><img src="assets/img/menu-task.svg" width="30" height="30" alt="Task"></span><span>Add Task</span></a></li>
-                            <li><a href="contacts.html" title="Contacts"><span class="m-img"><img src="assets/img/menu-contact.svg" width="20" height="22" alt="Contact"></span><span>Contacts</span></a></li>
-                        </ul>
-                        <ul class="navigation" id="secondary-navigation">
-                            <li><a href="legal_notice.html" title="Legal notice"><span class="m-img"><img src="assets/img/menu-legal.svg" width="18" height="18" alt="Legal notice"></span><span>Legal notice</span></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</main>
-<script src="js/mini_backend.js"></script>
-<!-- Insert dedicated JS script -->
-<script src="js/main.js"></script>
+    </main>
+    <script src="js/mini_backend.js"></script>
+    <!-- Insert dedicated JS script -->
+    <script src="js/main.js"></script>
 </body>
+
 </html>
