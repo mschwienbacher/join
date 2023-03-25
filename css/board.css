@@ -135,9 +135,24 @@ height: 15px;
     margin-right: 4px;
 }
 
+.footer-task-detail{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;    
+}
+
 .selected-person img{
     border-radius: 100%;
-    margin-left: -6px;
+    margin-left: -16px;
     margin-right: -6px;
+    margin-top: 10px;
+    border: none;
+    width: 35px;
+    height: 35px;
+}
+
+.priority-task-detail img{
+    border: none;
     margin-top: 10px;
 }
