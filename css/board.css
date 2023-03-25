@@ -37,3 +37,107 @@ margin-right: 35px;
     border-radius: 10px;
     font-size: 23px;
 }
+
+.status-bar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.status{
+    display: flex;
+    flex-direction: column;  
+    width: 250px;  
+}
+
+.status-headline{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 23px;
+    font-weight: 700;
+    color: #42526E;
+    width: 217px;
+    margin-left: 10px;
+    margin-top: 50px;
+}
+
+.status img{
+border: #4589FF 2px solid;
+border-radius: 5px;
+padding: 5px;
+height: 15px;
+}
+
+.task-container-detail{
+    background: #FFFFFF;    
+    box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
+    border-radius: 30px;
+    padding: 18px;
+    margin-right: 26px;
+    margin-top: 26px;
+}
+
+.category{
+    padding: 4px 20px;
+    width: 80px;
+    border-radius: 10px;
+    color: white;
+}
+
+.category-design{
+    background: #FF7A00;
+    
+}
+
+.category-sales{
+    background: #FC71FF;
+}
+
+.category-backoffice{
+    background: #1FD7C1;
+}
+
+.category-media{
+    background: #FFC701;
+}
+
+.category-marketing{
+    background: #0038FF;
+}
+
+.headline-task-detail{
+    color: #4589FF;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    margin-top: 8px;
+}
+
+.text-task-detail{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.progress-bar-task-detail{
+    height: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.progress-bar{
+    width: 158px;
+    height: 10px;
+    background-color: lightgray;
+    margin-right: 4px;
+}
+
+.selected-person img{
+    border-radius: 100%;
+    margin-left: -6px;
+    margin-right: -6px;
+    margin-top: 10px;
+}
