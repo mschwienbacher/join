@@ -51,9 +51,25 @@ async function saveContactsToBackend() {
 }
 
 function updateContact(singleContact){
-    let userToUpdate = contacts.find(u => u.email == singleContact.email);
-    //TODO update contact information
+    let contactAsObject = JSON.parse(decodeURIComponent(singleContact));
+    let userToUpdate = contacts.find((user) => user.email == contactAsObject.email);
 
+    let theName = document.getElementById("change-name");
+    let theSurname = document.getElementById("change-surname");
+    let theEmail = document.getElementById("change-mail");
+    let thePhone = document.getElementById("change-phone");
+
+    userToUpdate.name = theName.value;
+    userToUpdate.surname = theSurname.value;
+    userToUpdate.email = theEmail.value;
+    userToUpdate.phone = thePhone.value;
+
+    let index = contacts.findIndex((user) => user.email == userToUpdate.email);
+    contacts[index] = userToUpdate;
+    console.log(contacts);
+    closePopUp('p-container');
+    saveContactsToBackend();
+    //TODO beim refresh überschreibt es mir das Array - muss einfacher gehen
 }
 
 /**
@@ -172,7 +188,6 @@ function closePopUp(containerToClose) {
 function drawSingleContact(singleContact) {
     let nameInitials = getInitials(singleContact.name);
     let surnameInitials = getInitials(singleContact.surname);
-
     return `
     <div class="the-user">
         <div class="the-user-head">
@@ -216,7 +231,7 @@ function drawModifyContactTemplate(singleContact) {
     </div>
     <div class="contact-popup-content">
         <span class="contact-initial ${getInitials(singleContact.name).toLowerCase()}${getInitials(singleContact.surname).toLowerCase()}">${getInitials(singleContact.name)}${getInitials(singleContact.surname)}</span>
-        <form onsubmit="${updateContact(singleContact)}">
+        <form id="edit-form">
             <div class="input name">
                 <input type="text" id="change-name" value="${singleContact.name}" placeholder="Name" required>
             </div>
@@ -229,7 +244,7 @@ function drawModifyContactTemplate(singleContact) {
             <div class="input phone">
                 <input type="tel" id="change-phone" value="${singleContact.phone}" placeholder="Phone" required>
             </div>
-            <button id="login-button" class="cta">Save</button>
+            <button id="login-button" class="cta" onclick="updateContact('${encodeURIComponent(JSON.stringify(singleContact))}');">Save</button>
         </form>
     </div>
     `;
