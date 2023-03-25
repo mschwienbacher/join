@@ -50,6 +50,12 @@ async function saveContactsToBackend() {
     await backend.setItem("userContacts", contactsAsString);
 }
 
+function updateContact(singleContact){
+    let userToUpdate = contacts.find(u => u.email == singleContact.email);
+    //TODO update contact information
+
+}
+
 /**
  * This function is used to load the whole contact list
  */
@@ -157,7 +163,6 @@ function closePopUp(containerToClose) {
     element.style.display = "none";
 }
 
-
 /**
  * This function is used to draw the single contact
  * @param singleContact - The single contact
@@ -211,7 +216,7 @@ function drawModifyContactTemplate(singleContact) {
     </div>
     <div class="contact-popup-content">
         <span class="contact-initial ${getInitials(singleContact.name).toLowerCase()}${getInitials(singleContact.surname).toLowerCase()}">${getInitials(singleContact.name)}${getInitials(singleContact.surname)}</span>
-        <form onsubmit="">
+        <form onsubmit="${updateContact(singleContact)}">
             <div class="input name">
                 <input type="text" id="change-name" value="${singleContact.name}" placeholder="Name" required>
             </div>
