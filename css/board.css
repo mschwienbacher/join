@@ -1,0 +1,39 @@
+.menu-bar{
+    display: flex;
+    flex-direction: row;
+}
+.search-bar{
+display: flex;
+justify-content: center;
+align-items: center;
+width: 251px;
+height: 51px;
+border: 1px solid;
+border-radius: 10px;
+margin-right: 35px;
+}
+
+.search-bar input{
+    border: none;
+    border-right: 1px solid;
+    border-color: #D1D1D1;
+    margin-right: 20px;
+    background-color: f9f9f9;
+    font-size: 16px;
+}
+
+.add-task-btn button{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 10px;
+    gap: 10px;
+    width: 138px;
+    height: 51px;
+    background: #4589FF;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 23px;
+}
