@@ -32,6 +32,7 @@ h2 {
 
 .main {
     background: #fff;
+    position: relative;
 }
 
 .main .container .center {

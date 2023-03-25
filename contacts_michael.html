@@ -180,6 +180,130 @@
         .slideAnimation {
             animation: slide 0.5s forwards;
         }
+
+        .contact-popup {
+            position: absolute;
+            left:0;
+            top: 0;
+            z-index: 10;
+            background:#ffffffc9;
+            width: 100%;
+            height: 100%;
+            display: none;
+
+        }
+
+        .contact-popup-wrapper {
+            background: #fff;
+            width:40%;
+            height: 100vh;
+        }
+
+        .contact-popup-header {
+            background: #005DFF;
+            padding: 80px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .close-it {
+            cursor: pointer;
+            position: absolute;
+            top:21px;
+            right: 21px;
+        }
+
+        .contact-popup-title {
+            font-size: 48px;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .contact-popup-content {
+            background:#fff;
+            padding: 55px 80px;
+        }
+
+        .contact-popup-content .contact-initial {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin:0 auto;
+            width:120px;
+            height: 120px;
+            font-size: 47px;
+            line-height: 47px;
+            color: #fff;
+        }
+
+        .contact-popup-content .input {
+            display: block;
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        .contact-popup-content input {
+            width:100%;
+            padding:13px 21px;
+            box-sizing: border-box;
+            border:0;
+            border-bottom: 1px solid #D1D1D1;
+            font-size: 19px;
+            color: #000;
+        }
+
+        .contact-popup-content ::-webkit-input-placeholder {
+            font-size: 19px;
+            color: #D1D1D1;
+        }
+        .contact-popup-content :-ms-input-placeholder {
+            font-size: 19px;
+            color: #D1D1D1;
+        }
+        .contact-popup-content ::placeholder {
+            font-size: 19px;
+            color: #D1D1D1;
+        }
+
+        .contact-popup-content .name:after, .contact-popup-content .surname:after, .contact-popup-content .email:after, .contact-popup-content .phone:after {
+            display: block;
+            content:"";
+            width:20px;
+            height:21px;
+            position: absolute;
+            right: 20px;
+            top:14px;
+        }
+
+        .contact-popup-content .name:after, .contact-popup-content .surname:after {
+            background:url("../assets/img/login.svg") no-repeat;
+        }
+
+        .contact-popup-content .email:after {
+            background:url("../assets/img/mail.svg") no-repeat;
+        }
+
+        .contact-popup-content .phone:after {
+            background:url("../assets/img/phone.svg") no-repeat;
+        }
+
+        .cta {
+            padding: 10px 35px;
+            background: #4589FF;
+            border-radius: 8px;
+            border: 0;
+            font-size: 23px;
+            color: #fff;
+            cursor: pointer;
+            height: 47px;
+            display: block;
+            margin:0 auto;
+        }
+
+        .cta:hover {
+            background:#005eff;
+            box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.4)
+        }
     </style>
 </head>
 <body class="contacts-page" onload="initContactBackend();">
@@ -207,6 +331,35 @@
     </div>
 </header>
 <main id="main" class="main">
+    <div class="contact-popup" id="p-container">
+        <div class="contact-popup-wrapper" id="contact-popup">
+            <div class="contact-popup-header">
+                <img src="assets/img/close.svg" width="31" height="31" alt="Close" class="close-it" onclick="closePopUp('p-container');">
+                <div class="small-logo"><img src="assets/img/logo-join-small.svg" width="47" height="58" alt="JOIN"></div>
+                <div class="contact-popup-title">
+                    <p>Edit contact</p>
+                </div>
+            </div>
+            <div class="contact-popup-content">
+                <span class="contact-initial">MS</span>
+                <form onsubmit="">
+                    <div class="input name">
+                        <input type="text" id="change-name" placeholder="Name" required>
+                    </div>
+                    <div class="input surname">
+                        <input type="text" id="change-surname" placeholder="Surname" required>
+                    </div>
+                    <div class="input email">
+                        <input type="email" id="change-mail" placeholder="Email" required>
+                    </div>
+                    <div class="input phone">
+                        <input type="tel" id="change-phone" placeholder="Phone" required>
+                    </div>
+                    <button id="login-button" class="cta">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
     <div class="container">
         <div class="center">
             <div class="inner reverse">

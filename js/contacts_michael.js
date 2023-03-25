@@ -70,8 +70,8 @@ async function loadContactList() {
  * @returns {string} - returns the HTML structure
  */
 function drawSmallSingleContact(singleContact, i) {
-    let nameInitials = singleContact.name.charAt(0);
-    let surnameInitials = singleContact.surname.charAt(0);
+    let nameInitials = getInitials(singleContact.name);
+    let surnameInitials = getInitials(singleContact.surname);
     //TODO Breadcrumb nur 1x anzeigen wenn die Anfangsbuchstaben vom Namen identisch sind
     // 1. return `
     // 2.     ${nameInitials == lastInitial ?
@@ -120,9 +120,53 @@ function toggleClass(theClass) {
     });
 }
 
+function editContact(singleContact) {
+    let contactAsObject = JSON.parse(decodeURIComponent(singleContact));
+    let mainContainer = document.getElementById("contact-popup");
+    showPopUp("p-container");
+    mainContainer.innerHTML = "";
+    mainContainer.innerHTML += drawModifyContactTemplate(contactAsObject);
+}
+
+/**
+ * This functions is used to get the Initials of an element
+ * @param element - The element to get the initials
+ * @returns {string} - Returns the string
+ */
+function getInitials(element) {
+    return element.charAt(0);
+}
+
+/**
+ * This function is used to open/show a container/element
+ * @param containerToOpen - The element to show
+ */
+
+function showPopUp(containerToOpen) {
+    let element = document.getElementById(containerToOpen);
+    element.style.display = "block";
+}
+
+/**
+ * This function is used to close/hide a container/element
+ * @param containerToClose - The element to close
+ */
+
+function closePopUp(containerToClose) {
+    let element = document.getElementById(containerToClose);
+    element.style.display = "none";
+}
+
+
+/**
+ * This function is used to draw the single contact
+ * @param singleContact - The single contact
+ * @returns {string}
+ */
+
 function drawSingleContact(singleContact) {
-    let nameInitials = singleContact.name.charAt(0);
-    let surnameInitials = singleContact.surname.charAt(0);
+    let nameInitials = getInitials(singleContact.name);
+    let surnameInitials = getInitials(singleContact.surname);
 
     return `
     <div class="the-user">
@@ -156,7 +200,32 @@ function drawSingleContact(singleContact) {
 `;
 }
 
-function editContact(singleContact) {
-    let contactAsObject = JSON.parse(decodeURIComponent(singleContact));
-
+function drawModifyContactTemplate(singleContact) {
+    return `
+    <div class="contact-popup-header">
+        <img src="assets/img/close.svg" width="31" height="31" alt="Close" class="close-it" onclick="closePopUp('p-container');">
+        <div class="small-logo"><img src="assets/img/logo-join-small.svg" width="47" height="58" alt="JOIN"></div>
+        <div class="contact-popup-title">
+            <p>Edit contact</p>
+        </div>
+    </div>
+    <div class="contact-popup-content">
+        <span class="contact-initial ${getInitials(singleContact.name).toLowerCase()}${getInitials(singleContact.surname).toLowerCase()}">${getInitials(singleContact.name)}${getInitials(singleContact.surname)}</span>
+        <form onsubmit="">
+            <div class="input name">
+                <input type="text" id="change-name" value="${singleContact.name}" placeholder="Name" required>
+            </div>
+            <div class="input surname">
+                <input type="text" id="change-surname" value="${singleContact.surname}" placeholder="Surname" required>
+            </div>
+            <div class="input email">
+                <input type="email" id="change-mail" value="${singleContact.email}" placeholder="Email" required>
+            </div>
+            <div class="input phone">
+                <input type="tel" id="change-phone" value="${singleContact.phone}" placeholder="Phone" required>
+            </div>
+            <button id="login-button" class="cta">Save</button>
+        </form>
+    </div>
+    `;
 }
