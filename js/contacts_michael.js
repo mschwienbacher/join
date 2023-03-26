@@ -1,42 +1,33 @@
-let contacts = [];
-
-function createContact() {
-    let name = document.getElementById("create-name");
-    let surname = document.getElementById("create-surname");
-    let email = document.getElementById("create-mail");
-    let phone = document.getElementById("create-phone");
-
-    getSavedContactsFromBackend();
-
-    contacts.push({
-        name: name.value,
-        surname: surname.value,
-        email: email.value,
-        phone: phone.value
-    });
-    saveContactsToBackend();
-    /*
-    if(contacts) {
-        saveContactsToBackend();
-        setTimeout(function() {
-            toggleSideBarContainer('p-container', 'hide');
-
-            }, 1000);
-    }
-     */
-}
+let allContacts = [];
 
 async function saveContactsToBackend() {
-    let contactsToString = JSON.stringify(contacts);
-    await backend.setItem("userContacts", contactsToString);
+    let contactsToString = JSON.stringify(allContacts);
+    await backend.setItem("contacts", contactsToString);
+}
+
+async function getSavedContactsFromBackend() {
+    allContacts = await JSON.parse(backend.getItem('contacts')) || [];
 }
 
 async function getContactsAsArray() {
-    return JSON.parse(backend.getItem("userContacts"));
+    return JSON.parse(backend.getItem("contacts"));
 }
 
-function getSavedContactsFromBackend() {
-    contacts = JSON.parse(backend.getItem('userContacts')) || [];
+function createContact() {
+    let theName = document.getElementById("create-name");
+    let theSurname = document.getElementById("create-surname");
+    let theEmail = document.getElementById("create-mail");
+    let thePhone = document.getElementById("create-phone");
+    getSavedContactsFromBackend();
+
+    allContacts.push({
+        name: theName.value,
+        surname: theSurname.value,
+        email: theEmail.value,
+        phone: thePhone.value
+    });
+    saveContactsToBackend();
+    toggleSideBarContainer('p-container', 'hide');
 }
 
 function toggleSideBarContainer(elementToModify, action) {
