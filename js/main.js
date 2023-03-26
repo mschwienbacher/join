@@ -1,5 +1,6 @@
 setURL('https://gruppenarbeit-503-join.developerakademie.net/backend');
 let users = [];
+let allContacts = [];
 
 /**
  * This function is used to INIT the backend.
