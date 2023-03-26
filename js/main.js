@@ -22,12 +22,30 @@ async function saveUsersToBackend() {
 }
 
 /**
+ * This function is used to save contacts into the backend
+ * @returns {Promise<void>}
+ */
+async function saveContactsToBackend() {
+    let contactsAsString = JSON.stringify(contacts);
+    await backend.setItem("userContacts", contactsAsString);
+}
+
+/**
  * This function is used to GET all the users from the backend
  * @returns {Promise<void>}
  */
 
 function getSavedUsersFromBackend() {
     users = JSON.parse(backend.getItem('registeredUsers')) || [];
+}
+
+/**
+ * This function is used to GET all the contacts from the backend
+ * @returns {Promise<void>}
+ */
+
+function getSavedContactsFromBackend() {
+    contacts = JSON.parse(backend.getItem('userContacts')) || [];
 }
 
 /**

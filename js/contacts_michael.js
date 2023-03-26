@@ -41,35 +41,34 @@ async function initContactBackend() {
     await downloadFromServer();
 }
 
-/**
- * This function is used to save contacts into the backend
- * @returns {Promise<void>}
- */
-async function saveContactsToBackend() {
-    let contactsAsString = JSON.stringify(contacts);
-    await backend.setItem("userContacts", contactsAsString);
-}
 
 function updateContact(singleContact){
     let contactAsObject = JSON.parse(decodeURIComponent(singleContact));
-    let userToUpdate = contacts.find((user) => user.email == contactAsObject.email);
-
     let theName = document.getElementById("change-name");
     let theSurname = document.getElementById("change-surname");
     let theEmail = document.getElementById("change-mail");
     let thePhone = document.getElementById("change-phone");
 
-    userToUpdate.name = theName.value;
-    userToUpdate.surname = theSurname.value;
-    userToUpdate.email = theEmail.value;
-    userToUpdate.phone = thePhone.value;
-
+    let userToUpdate = contacts.find((user) => user.email == contactAsObject.email);
+    contactAsObject.name = theName.value;
+    contactAsObject.surname = theSurname.value;
+    contactAsObject.email = theEmail.value;
+    contactAsObject.phone = thePhone.value;
+    console.log(contactAsObject);
     let index = contacts.findIndex((user) => user.email == userToUpdate.email);
-    contacts[index] = userToUpdate;
+    contacts[index] = contactAsObject;
+    console.log(contacts);
+    /*getSavedContactsFromBackend();
+
+
+
+
+
+    console.log(userToUpdate);
+    saveContactsToBackend();
     console.log(contacts);
     closePopUp('p-container');
-    saveContactsToBackend();
-    //TODO beim refresh überschreibt es mir das Array - muss einfacher gehen
+    */
 }
 
 /**
@@ -94,6 +93,7 @@ async function loadContactList() {
 function drawSmallSingleContact(singleContact, i) {
     let nameInitials = getInitials(singleContact.name);
     let surnameInitials = getInitials(singleContact.surname);
+
     //TODO Breadcrumb nur 1x anzeigen wenn die Anfangsbuchstaben vom Namen identisch sind
     // 1. return `
     // 2.     ${nameInitials == lastInitial ?
