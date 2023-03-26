@@ -42,7 +42,9 @@
 </header>
 <main id="main" class="main">
     <div class="contact-popup" id="p-container">
-        <div class="contact-popup-wrapper" id="contact-popup"></div>
+        <div class="contact-popup-wrapper" id="contact-popup">
+            <div w3-include-html="assets/templates/contacts.html"></div>
+        </div>
     </div>
     <div class="container">
         <div class="center">
@@ -55,7 +57,7 @@
                         <div class="contact-details" id="contact-details">
                             <div w3-include-html="assets/templates/add_contact_michael.html"></div>
                         </div>
-                        <a href="javascript:void(0);" class="new-contact" onclick="addContact();"><span>New contact</span> <img src="assets/img/new-contact.svg" width="33" height="30" alt="Contact"></a>
+                        <a href="javascript:void(0);" class="new-contact" onclick="toggleSideBarContainer('p-container', 'show');"><span>New contact</span> <img src="assets/img/new-contact.svg" width="33" height="30" alt="Contact"></a>
                     </div>
                 </div>
                 <div class="sidebar">
@@ -80,7 +82,7 @@
 <script src="js/main.js"></script>
 <script>
     //loadContactList();
-    //includeHTML();
+    includeHTML();
 </script>
 </body>
 </html>
