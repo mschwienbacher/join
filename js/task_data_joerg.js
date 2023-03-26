@@ -36,7 +36,7 @@ let tasksInProgress = [
         inCharge: ["assets/img/dummy.png", "assets/img/dummy.png", "assets/img/dummy.png"],
         priority: "assets/img/low.svg",
         subtasks: ["subtask1", "subtask2"],
-        alreadyDone: 1,
+        alreadyDone: 0,
     }
 ]
 
@@ -54,7 +54,7 @@ let tasksAwaitFeedback = [
         category: "Design",
         titel: "Design logo",
         text: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-        inCharge: ["assets/img/dummy.png", "assets/img/dummy.png", "assets/img/dummy.png"],
+        inCharge: ["assets/img/dummy.png", "assets/img/dummy.png"],
         priority: "assets/img/low.svg",
         subtasks: ["subtask1", "subtask2"],
         alreadyDone: 1,
@@ -69,14 +69,14 @@ let tasksDone = [
         inCharge: ["assets/img/dummy.png", "assets/img/dummy.png", "assets/img/dummy.png"],
         priority: "assets/img/low.svg",
         subtasks: ["subtask1", "subtask2"],
-        alreadyDone: 1,
+        alreadyDone: 2,
     },
     {
         category: "Backoffice",
         titel: "analyse applications",
         text: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
         inCharge: ["assets/img/dummy.png", "assets/img/dummy.png", "assets/img/dummy.png"],
-        priority: "assets/img/low.svg",
+        priority: "assets/img/medium.svg",
         subtasks: ["subtask1", "subtask2"],
         alreadyDone: 1,
     }

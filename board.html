@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="css/board.css">
 </head>
 
-<body class="board-page" onload="initBackend();renderBoard()">
+<body class="board-page" onload="initBackend(); renderBoard()">
     <header class="header">
         <div class="container">
             <div class="center">
@@ -67,46 +67,7 @@
                                         <img src="assets/img/plus.svg" alt="add">
                                     </div>
                                     <div class="task-container" id="to-do-container">
-                                        <!-- <div class="task-container-detail">
-                                            <div class="category category-design" id="category">Design</div>
-                                            <div class="headline-task-detail">website redisgn</div>
-                                            <div class="text-task-detail">Lorem ipsum dolor sit amet consectetur
-                                                adipisicing elit.</div>
-                                            <div class="progress-bar-task-detail">
-                                                <div class="progress-bar"></div>
-                                                <div>row1</div>
-                                            </div>
-                                            <div class="footer-task-detail">
-                                                <div class="selected-person">
-                                                    <img src="assets/img/dummy.png">
-                                                    <img src="assets/img/dummy.png">
-                                                    <img src="assets/img/dummy.png">
-                                                </div>
-                                                <div class="priority-task-detail">
-                                                    <img src="assets/img/low.svg">
-                                                </div>
-                                            </div>
-                                        </div> -->
-                                        <!-- <div class="task-container-detail">
-                                            <div class="category category-sales">Sales</div>
-                                            <div class="headline-task-detail">analyse sales</div>
-                                            <div class="text-task-detail">Lorem ipsum dolor sit amet consectetur
-                                                adipisicing elit.</div>
-                                            <div class="progress-bar-task-detail">
-                                                <div class="progress-bar"></div>
-                                                <div>row1</div>
-                                            </div>
-                                            <div class="footer-task-detail">
-                                                <div class="selected-person">
-                                                    <img src="assets/img/dummy.png">
-                                                    <img src="assets/img/dummy.png">
-                                                    <img src="assets/img/dummy.png">
-                                                </div>
-                                                <div class="priority-task-detail">
-                                                    <img src="assets/img/low.svg">
-                                                </div>
-                                            </div>
-                                        </div> -->
+                                       <!-- htmlTemplateTasksToDo -->
                                     </div>
                                 </div>
                                 <div class="status">
@@ -115,46 +76,7 @@
                                         <img src="assets/img/plus.svg" alt="add">
                                     </div>
                                     <div class="task-container" id="in-progress-container">
-                                        <div class="task-container-detail">
-                                            <div class="category category-backoffice">Backoffice</div>
-                                            <div class="headline-task-detail">check ads</div>
-                                            <div class="text-task-detail">Lorem ipsum dolor sit amet consectetur
-                                                adipisicing elit.</div>
-                                            <div class="progress-bar-task-detail">
-                                                <div class="progress-bar"></div>
-                                                <div>row1</div>
-                                            </div>
-                                            <div class="footer-task-detail">
-                                                <div class="selected-person">
-                                                    <img src="assets/img/dummy.png">
-                                                    <img src="assets/img/dummy.png">
-                                                    <img src="assets/img/dummy.png">
-                                                </div>
-                                                <div class="priority-task-detail">
-                                                    <img src="assets/img/low.svg">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="task-container-detail">
-                                            <div class="category category-media">Media</div>
-                                            <div class="headline-task-detail">Video cut</div>
-                                            <div class="text-task-detail">Lorem ipsum dolor sit amet consectetur
-                                                adipisicing elit.</div>
-                                            <div class="progress-bar-task-detail">
-                                                <div class="progress-bar"></div>
-                                                <div>row1</div>
-                                            </div>
-                                            <div class="footer-task-detail">
-                                                <div class="selected-person">
-                                                    <img src="assets/img/dummy.png">
-                                                    <img src="assets/img/dummy.png">
-                                                    <img src="assets/img/dummy.png">
-                                                </div>
-                                                <div class="priority-task-detail">
-                                                    <img src="assets/img/low.svg">
-                                                </div>
-                                            </div>
-                                        </div>
+                                       <!-- htmlTemplateTasksInProgress-->
                                     </div>
                                 </div>
                                 <div class="status">
@@ -163,46 +85,7 @@
                                         <img src="assets/img/plus.svg" alt="add">
                                     </div>
                                     <div class="task-container" id="await-feedback-container">
-                                        <div class="task-container-detail">
-                                            <div class="category category-marketing">Marketing</div>
-                                            <div class="headline-task-detail">order ads</div>
-                                            <div class="text-task-detail">Lorem ipsum dolor sit amet consectetur
-                                                adipisicing elit.</div>
-                                            <div class="progress-bar-task-detail">
-                                                <div class="progress-bar"></div>
-                                                <div>row1</div>
-                                            </div>
-                                            <div class="footer-task-detail">
-                                                <div class="selected-person">
-                                                    <img src="assets/img/dummy.png">
-                                                    <img src="assets/img/dummy.png">
-                                                    <img src="assets/img/dummy.png">
-                                                </div>
-                                                <div class="priority-task-detail">
-                                                    <img src="assets/img/low.svg">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="task-container-detail">
-                                            <div class="category category-design">Design</div>
-                                            <div class="headline-task-detail">Design logo</div>
-                                            <div class="text-task-detail">Lorem ipsum dolor sit amet consectetur
-                                                adipisicing elit.</div>
-                                            <div class="progress-bar-task-detail">
-                                                <div class="progress-bar"></div>
-                                                <div>row1</div>
-                                            </div>
-                                            <div class="footer-task-detail">
-                                                <div class="selected-person">
-                                                    <img src="assets/img/dummy.png">
-                                                    <img src="assets/img/dummy.png">
-                                                    <img src="assets/img/dummy.png">
-                                                </div>
-                                                <div class="priority-task-detail">
-                                                    <img src="assets/img/low.svg">
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <!-- htmlTemplateTasksAwaitFeedback -->
                                     </div>
                                 </div>
                                 <div class="status">
@@ -211,47 +94,7 @@
                                         <img src="assets/img/plus.svg" alt="add">
                                     </div>
                                     <div class="task-container" id="done-container">
-                                        <div class="task-container-detail">
-                                            <div class="category category-marketing">Marketing</div>
-                                            <div class="headline-task-detail">book ads</div>
-                                            <div class="text-task-detail">Lorem ipsum dolor sit amet consectetur
-                                                adipisicing elit.</div>
-                                            <div class="progress-bar-task-detail">
-                                                <div class="progress-bar"></div>
-                                                <div>row1</div>
-                                            </div>
-                                            <div class="footer-task-detail">
-                                                <div class="selected-person">
-                                                    <img src="assets/img/dummy.png">
-                                                    <img src="assets/img/dummy.png">
-                                                    <img src="assets/img/dummy.png">
-                                                </div>
-                                                <div class="priority-task-detail">
-                                                    <img src="assets/img/low.svg">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="task-container-detail">
-                                            <div class="category category-backoffice">Backoffice</div>
-                                            <div class="headline-task-detail">analyse applications</div>
-                                            <div class="text-task-detail">Lorem ipsum dolor sit amet consectetur
-                                                adipisicing elit.</div>
-                                            <div class="progress-bar-task-detail">
-                                                <div class="progress-bar"></div>
-                                                <div>row1</div>
-                                            </div>
-                                            <div class="footer-task-detail">
-                                                <div class="selected-person">
-                                                    <img src="assets/img/dummy.png">
-                                                    <img src="assets/img/dummy.png">
-                                                    <img src="assets/img/dummy.png">
-                                                </div>
-                                                <div class="priority-task-detail">
-                                                    <img src="assets/img/low.svg">
-                                                </div>
-                                            </div>
-
-                                        </div>
+                                        <!-- htmlTemplateTasksDone -->
                                     </div>
                                 </div>
                             </div>
