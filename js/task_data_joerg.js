@@ -13,7 +13,7 @@ let tasksToDo = [
         titel: "analyse sales",
         text: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
         inCharge: ["assets/img/dummy.png", "assets/img/dummy.png", "assets/img/dummy.png"],
-        priority: "assets/img/low.svg",
+        priority: "assets/img/urgent.svg",
         subtasks: ["subtask1", "subtask2"],
         alreadyDone: 1,
     }
