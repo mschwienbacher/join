@@ -1,9 +1,12 @@
 let contacts = [];
+
 function createContact() {
     let name = document.getElementById("create-name");
     let surname = document.getElementById("create-surname");
     let email = document.getElementById("create-mail");
     let phone = document.getElementById("create-phone");
+
+    getSavedContactsFromBackend();
 
     contacts.push({
         name: name.value,
@@ -11,18 +14,29 @@ function createContact() {
         email: email.value,
         phone: phone.value
     });
+    saveContactsToBackend();
+    /*
     if(contacts) {
-        saveUsersToBackend();
+        saveContactsToBackend();
         setTimeout(function() {
             toggleSideBarContainer('p-container', 'hide');
-            window.location.href = "contacts_michael.html";
+
             }, 1000);
     }
+     */
 }
 
 async function saveContactsToBackend() {
     let contactsToString = JSON.stringify(contacts);
     await backend.setItem("userContacts", contactsToString);
+}
+
+async function getContactsAsArray() {
+    return JSON.parse(backend.getItem("userContacts"));
+}
+
+function getSavedContactsFromBackend() {
+    contacts = JSON.parse(backend.getItem('userContacts')) || [];
 }
 
 function toggleSideBarContainer(elementToModify, action) {
@@ -32,4 +46,7 @@ function toggleSideBarContainer(elementToModify, action) {
     } else if (action == "hide") {
         element.style.display = "none";
     }
+}
+
+function loadContactList() {
 }

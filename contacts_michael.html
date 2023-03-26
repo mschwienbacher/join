@@ -43,7 +43,7 @@
 <main id="main" class="main">
     <div class="contact-popup" id="p-container">
         <div class="contact-popup-wrapper" id="contact-popup">
-            <div w3-include-html="assets/templates/contacts.html"></div>
+            <div w3-include-html="assets/templates/add_new_contact_michael.html"></div>
         </div>
     </div>
     <div class="container">
@@ -55,7 +55,7 @@
                             <div class="contacts" id="contact-list"></div>
                         </div>
                         <div class="contact-details" id="contact-details">
-                            <div w3-include-html="assets/templates/add_contact_michael.html"></div>
+                            <div w3-include-html="assets/templates/contacts.html"></div>
                         </div>
                         <a href="javascript:void(0);" class="new-contact" onclick="toggleSideBarContainer('p-container', 'show');"><span>New contact</span> <img src="assets/img/new-contact.svg" width="33" height="30" alt="Contact"></a>
                     </div>
@@ -81,8 +81,8 @@
 <script src="js/contacts_michael.js"></script>
 <script src="js/main.js"></script>
 <script>
-    //loadContactList();
     includeHTML();
+    //loadContactList();
 </script>
 </body>
 </html>
