@@ -33,55 +33,53 @@ let contacts = [
 ];
 
 /**
- * This function is used to save first the contact details into the backend and then call download them
+ * This function is used to save contacts into the backend
  * @returns {Promise<void>}
  */
-async function initContactBackend() {
-    saveContactsToBackend();
-    await downloadFromServer();
+async function saveContactsToBackend() {
+    let contactsAsString = JSON.stringify(contacts);
+    await backend.setItem("userContacts", contactsAsString) || [];
 }
 
+/**
+ * This function is used to GET all the contacts from the backend
+ * @returns {Promise<void>}
+ */
 
-function updateContact(singleContact){
-    let contactAsObject = JSON.parse(decodeURIComponent(singleContact));
-    let theName = document.getElementById("change-name");
-    let theSurname = document.getElementById("change-surname");
-    let theEmail = document.getElementById("change-mail");
-    let thePhone = document.getElementById("change-phone");
-
-    let userToUpdate = contacts.find((user) => user.email == contactAsObject.email);
-    contactAsObject.name = theName.value;
-    contactAsObject.surname = theSurname.value;
-    contactAsObject.email = theEmail.value;
-    contactAsObject.phone = thePhone.value;
-    console.log(contactAsObject);
-    let index = contacts.findIndex((user) => user.email == userToUpdate.email);
-    contacts[index] = contactAsObject;
-    console.log(contacts);
-    /*getSavedContactsFromBackend();
-
-
-
-
-
-    console.log(userToUpdate);
-    saveContactsToBackend();
-    console.log(contacts);
-    closePopUp('p-container');
-    */
+function getSavedContactsFromBackend() {
+    contacts = JSON.parse(backend.getItem('userContacts')) || [];
 }
 
 /**
  * This function is used to load the whole contact list
  */
-async function loadContactList() {
+function loadContactList() {
     let contactList = document.getElementById("contact-list");
     contacts = contacts.sort((a, b) => {if (a.name < b.name) {return -1;}}); // Sort the contacts by name
+
     let lastInitial = "";
     for(let i = 0; i < contacts.length; i++) {
         let singleContact = contacts[i];
         contactList.innerHTML += drawSmallSingleContact(singleContact, i);
     }
+}
+
+function updateContact(id){
+    let theName = document.getElementById("change-name");
+    let theSurname = document.getElementById("change-surname");
+    let theEmail = document.getElementById("change-mail");
+    let thePhone = document.getElementById("change-phone");
+
+    contacts[id] = {
+        name: theName.value,
+        surname: theSurname.value,
+        email: theEmail.value,
+        phone: thePhone.value
+
+    };
+    saveContactsToBackend();
+    closePopUp('p-container');
+    showContact(id);
 }
 
 /**
@@ -118,7 +116,7 @@ function showContact(id) {
     let container = document.getElementById("the-contact");
     container.innerHTML = "";
     let singleContact = contacts[id];
-    container.innerHTML += drawSingleContact(singleContact);
+    container.innerHTML += drawSingleContact(singleContact, id);
 }
 
 /**
@@ -140,14 +138,6 @@ function toggleClass(theClass) {
             link.classList.add('active');
         }
     });
-}
-
-function editContact(singleContact) {
-    let contactAsObject = JSON.parse(decodeURIComponent(singleContact));
-    let mainContainer = document.getElementById("contact-popup");
-    showPopUp("p-container");
-    mainContainer.innerHTML = "";
-    mainContainer.innerHTML += drawModifyContactTemplate(contactAsObject);
 }
 
 /**
@@ -179,13 +169,21 @@ function closePopUp(containerToClose) {
     element.style.display = "none";
 }
 
+
+function editContact(id) {
+    let mainContainer = document.getElementById("contact-popup");
+    showPopUp("p-container");
+    mainContainer.innerHTML = "";
+    mainContainer.innerHTML += drawModifyContactTemplate(id);
+}
+
 /**
  * This function is used to draw the single contact
  * @param singleContact - The single contact
  * @returns {string}
  */
 
-function drawSingleContact(singleContact) {
+function drawSingleContact(singleContact, id) {
     let nameInitials = getInitials(singleContact.name);
     let surnameInitials = getInitials(singleContact.surname);
     return `
@@ -203,7 +201,7 @@ function drawSingleContact(singleContact) {
             <div class="the-user-info">
                 <div class="the-user-title">Contact Information</div>
                 <div class="the-user-edit">
-                    <a href="javascript:void(0);" onclick="editContact('${encodeURIComponent(JSON.stringify(singleContact))}')">
+                    <a href="javascript:void(0);" onclick="editContact(${id})">
                         <img src="../assets/img/pencil.svg" width="31" height="24" alt="Modify">
                         <span>Edit contact</span>
                     </a>
@@ -220,7 +218,8 @@ function drawSingleContact(singleContact) {
 `;
 }
 
-function drawModifyContactTemplate(singleContact) {
+function drawModifyContactTemplate(id) {
+    let theContact = contacts[id];
     return `
     <div class="contact-popup-header">
         <img src="assets/img/close.svg" width="31" height="31" alt="Close" class="close-it" onclick="closePopUp('p-container');">
@@ -230,22 +229,26 @@ function drawModifyContactTemplate(singleContact) {
         </div>
     </div>
     <div class="contact-popup-content">
-        <span class="contact-initial ${getInitials(singleContact.name).toLowerCase()}${getInitials(singleContact.surname).toLowerCase()}">${getInitials(singleContact.name)}${getInitials(singleContact.surname)}</span>
-        <form id="edit-form">
+        <span class="contact-initial ${getInitials(theContact.name).toLowerCase()}${getInitials(theContact.surname).toLowerCase()}">${getInitials(theContact.name)}${getInitials(theContact.surname)}</span>
+        <form onsubmit="return false;" id="edit-form">
             <div class="input name">
-                <input type="text" id="change-name" value="${singleContact.name}" placeholder="Name" required>
+                <input type="text" id="change-name" value="${theContact.name}" placeholder="Name" required>
             </div>
             <div class="input surname">
-                <input type="text" id="change-surname" value="${singleContact.surname}" placeholder="Surname" required>
+                <input type="text" id="change-surname" value="${theContact.surname}" placeholder="Surname" required>
             </div>
             <div class="input email">
-                <input type="email" id="change-mail" value="${singleContact.email}" placeholder="Email" required>
+                <input type="email" id="change-mail" value="${theContact.email}" placeholder="Email" required>
             </div>
             <div class="input phone">
-                <input type="tel" id="change-phone" value="${singleContact.phone}" placeholder="Phone" required>
+                <input type="tel" id="change-phone" value="${theContact.phone}" placeholder="Phone" required>
             </div>
-            <button id="login-button" class="cta" onclick="updateContact('${encodeURIComponent(JSON.stringify(singleContact))}');">Save</button>
+            <button id="save-button" class="cta" onclick="updateContact(${id});">Save</button>
         </form>
     </div>
     `;
+}
+
+function addContact() {
+    alert("hi");
 }

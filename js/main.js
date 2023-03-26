@@ -12,25 +12,6 @@ async function initBackend() {
 }
 
 /**
- * This function is used to SAVE the users into the backend
- * @returns {Promise<void>}
- */
-
-async function saveUsersToBackend() {
-    let allUsersAsString = JSON.stringify(users);
-    await backend.setItem("registeredUsers", allUsersAsString);
-}
-
-/**
- * This function is used to save contacts into the backend
- * @returns {Promise<void>}
- */
-async function saveContactsToBackend() {
-    let contactsAsString = JSON.stringify(contacts);
-    await backend.setItem("userContacts", contactsAsString);
-}
-
-/**
  * This function is used to GET all the users from the backend
  * @returns {Promise<void>}
  */
@@ -40,12 +21,13 @@ function getSavedUsersFromBackend() {
 }
 
 /**
- * This function is used to GET all the contacts from the backend
+ * This function is used to SAVE the users into the backend
  * @returns {Promise<void>}
  */
 
-function getSavedContactsFromBackend() {
-    contacts = JSON.parse(backend.getItem('userContacts')) || [];
+async function saveUsersToBackend() {
+    let allUsersAsString = JSON.stringify(users);
+    await backend.setItem("registeredUsers", allUsersAsString);
 }
 
 /**
