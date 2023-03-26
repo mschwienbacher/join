@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="css/board.css">
 </head>
 
-<body class="board-page" onload="initBackend(); renderBoard()">
+<body class="board-page" onload="initBackend()">
     <header class="header">
         <div class="container">
             <div class="center">
@@ -129,8 +129,8 @@
     </main>
     <script src="js/mini_backend.js"></script>
     <script src="js/task_data_joerg.js"></script>
-    <script src="js/board.js"></script>
     <script src="assets/templates/htmlTemplateBoard.js"></script>
+    <script onload="renderBoard()" src="js/board.js"></script>
     <!-- Insert dedicated JS script -->
     <script src="js/main.js"></script>
 </body>
