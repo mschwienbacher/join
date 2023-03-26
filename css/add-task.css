@@ -30,6 +30,8 @@ body{
 }
 
 .select-contacts-to-assign{
+    display: flex;
+    justify-content: space-between;
     background-color: #f9f9f9;
     border-bottom: 1px solid;
     font-style: normal;
@@ -40,10 +42,19 @@ body{
     padding-left: 21px;
     padding-top: 13px;
     padding-bottom: 13px;
-    margin-top: 25px;
+    margin-top: 35px;
     border: none;
     border-bottom: 1px solid;
-    
+    box-sizing: border-box;
+}
+
+.dropdown-check-list{
+    padding-left: 21px;
+    padding-top: 13px;
+    padding-bottom: 13px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 19px;
 }
 
 .due-date{
@@ -109,7 +120,7 @@ body{
     background-color: #f9f9f9;
     width: 422px;
     display: flex;
-    margin-top: 25px;
+    /* margin-top: 25px; */
     justify-content: space-between;
     align-items: center;
 }
@@ -180,7 +191,7 @@ body{
 
 .checkbox-subtasks{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: flex-start;
     margin-top: 8px;
     font-style: normal;
@@ -211,4 +222,22 @@ body{
     margin-right: 35px;
     font-weight: 400;
     font-size: 23px;
+}
+
+.wrapper img:hover{
+    cursor: pointer;    
+}
+
+.wrapper button:hover{
+    cursor: pointer;    
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 6px;
+}
+
+.d-none{
+    display: none;
 }

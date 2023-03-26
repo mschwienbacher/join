@@ -51,31 +51,44 @@
                 <div class="inner reverse">
                     <div class="content bg1">
                         <div class="wrapper bg1">
-                            <form onsubmit="addTask(); return false;">
+                            <!-- <form onsubmit="addTask(); return false;"> -->
                                 <div class="title">
                                     <input type="text" placeholder="Enter a title" id="task-title" required>
                                 </div>
-                                <select name="select contacts to assign" id="select-contacts-to-assign"
-                                    class="select-contacts-to-assign" required>
-                                    <option value="">Select contacts to assign</option>
-                                    <option value="0">contact0</option>
-                                    <option value="1">contact1</option>
-                                    <option value="2">contact2</option>
-                                    <option value="3">contact3</option>
-                                </select>
+                                <div class="select-contacts-to-assign" id="select-contacts-to-assign">
+                                    <span>Select contacts to assign</span> 
+                                    <img src="assets/img/dropdown.svg" onclick="openContactsToAssign()">
+                                </div>
+                                <div id="list-assigned-to" class="dropdown-check-list d-none" tabindex="100">
+                                    <ul class="items">
+                                      <li><input type="checkbox" /> contact</li>
+                                      <li><input type="checkbox" /> contact</li>
+                                      <li><input type="checkbox" /> contact</li>
+                                      <li><input type="checkbox" /> contact</li>
+                                      <li><input type="checkbox" /> contact</li>
+                                      <li><input type="checkbox" /> contact</li>
+                                      <li><input type="checkbox" /> contact</li>
+                                    </ul>
+                                  </div>
                                 <div class="due-date">
                                     <span>Due date</span>
                                     <input type="date" id="due-date" name="trip-start" value="dd/mm/yyyy" required>
                                 </div>
                                 <div class="category">
                                     <span>Category</span>
-                                    <select name="select category" id="task-category" class="select-category" required>
-                                        <option value="">Select task category</option>
-                                        <option value="0">category0</option>
-                                        <option value="1">category1</option>
-                                        <option value="2">category2</option>
-                                        <option value="3">category3</option>
-                                    </select>
+                                    <div class="select-contacts-to-assign" id="select-contacts-to-assign">
+                                        <span>Select task category</span> 
+                                        <img src="assets/img/dropdown.svg" onclick="openTaskCategory()">
+                                    </div>
+                                    <div id="list-task-category" class="dropdown-check-list d-none" tabindex="100">
+                                        <ul class="items">
+                                          <li><input type="checkbox" /> Backoffice</li>
+                                          <li><input type="checkbox" /> Design</li>
+                                          <li><input type="checkbox" /> Marketing</li>
+                                          <li><input type="checkbox" /> Media</li>
+                                          <li><input type="checkbox" /> Sales</li>
+                                        </ul>
+                                      </div>
                                 </div>
                                 <div class="priority" id="task-priority">
                                     <button>Urgent <img src="assets/img/urgent.svg" alt="urgent"></button>
@@ -91,18 +104,18 @@
                                     <span>Subtasks</span>
                                     <div class="input-subtasks">
                                         <input type="text" placeholder="add new subtask" id="task-subtask">
-                                        <img src="assets/img/plus.svg" alt="add">
+                                        <img src="assets/img/plus.svg" alt="add" onclick="renderSubtasks()">
                                     </div>
                                 </div>
-                                <div class="checkbox-subtasks">
-                                    <input type="checkbox"> &nbsp;
-                                    <span>Subtask 1</span>
+                                <div class="checkbox-subtasks" id="ckeckbox-subtasks">
+                                    <!-- <input type="checkbox"> &nbsp;
+                                    <span>Subtask 1</span> -->
                                 </div>
                                 <div class="execute-buttons">
                                     <button style="color: #647188">Clear X</button>
                                     <button style="background-color: #4589FF; color: white;">Create <img src="assets/img/check.svg" alt="check"></button>
                                 </div>
-                            </form>
+                            <!-- </form> -->
                         </div>
                     </div>
                     <div class="sidebar">
@@ -133,8 +146,11 @@
         </div>
     </main>
     <script src="js/mini_backend.js"></script>
+    <script src="assets/templates/htmlTemplateAdd_Task.js"></script>
+    <script src="js/add-task.js"></script>
     <!-- Insert dedicated JS script -->
     <script src="js/main.js"></script>
+    
 </body>
 
 </html>
