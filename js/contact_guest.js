@@ -44,8 +44,7 @@ function renderTheQuestContacts() {
             <span class="contact-card-guest-name">${sortedContacts[i]['name']} ${sortedContacts[i]['second-name']}</span>
             <span class="email-card-quest-designe">${sortedContacts[i]['email']}</span>
         </div>
-    </div>
-   `}
+    </div>`}
 }
 
 
@@ -75,8 +74,24 @@ function sortContactsAndSave(contacts) {
 }
 
 
-function showDetail(x){
-    
+function showDetail(j) {
+    document.getElementById('detail-information-screen').style.padding = '58px 65px'
+    document.getElementById('detail-information-screen').innerHTML = `
+    <div class="name-and-embleme-container">
+        <div class="detail-embleme">
+            <span>A</span>
+            <span>A</span>
+        </div>
+        <div>
+            <p class="detail-name"><span>${sortedContacts[j]['name']}</span><span> ${sortedContacts[j]['second-name']}</span></p>
+            <p class="add-task-desgine">Add Task</p>
+        </div>
+    </div>
+    <div>
+        <p><span class="contact-information-designe">Contact Information</span><span>Edit Contact</span></p>
+        <p class="detail-email-designe"><span class="email-mobile-designe">Email</span><span class="add-task-desgine">${sortedContacts[j]['email']}</span></p>
+        <p class="detail-email-designe"><span class="email-mobile-designe">Mobil</span><span>${sortedContacts[j]['tel']}</span></p>
+    </div>`
 }
 
 let sortedContacts = sortContactsAndSave(contacts);

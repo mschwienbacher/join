@@ -1,3 +1,7 @@
+#contact-content {
+    display: flex;
+}
+
 .email-card-guest {
     width: 453px;
     background-color: antiquewhite;
@@ -8,7 +12,7 @@
 }
 
 .embleme-designe {
-    background-color: aqua;
+    background-color: rgb(81, 255, 0);
     width: 42px;
     height: 42px;
     display: flex;
@@ -39,7 +43,7 @@
     padding: 15px 25px 15px 25px;
     align-items: center;
     width: 357px;
-    
+
 }
 
 .contact-card-quest:hover {
@@ -61,4 +65,62 @@
 
 .email-card-quest-designe {
     color: #4589FF;
+}
+
+
+/*Detail information designe*/
+#detail-information-screen {
+    padding: 58px 865px;
+    position: fixed;
+    width: 100%;
+    transition: 125ms;
+}
+
+.overflow-container{
+    position: relative;
+}
+
+.detail-embleme {
+    display: flex;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid white;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    background-color: orange;
+    font-size: 47px;
+    margin-right: 54px;
+}
+
+.name-and-embleme-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 21px;
+}
+
+.detail-name {
+    font-size: 38px;
+    margin-bottom: 13px;
+}
+
+.add-task-desgine {
+    color: #005DFF;
+}
+
+.contact-information-designe {
+    font-size: 23px;
+    margin-right: 85px;
+    margin-bottom: 21px;
+}
+
+.detail-email-designe {
+    display: flex;
+    flex-direction: column;
+}
+
+.email-mobile-designe {
+    font-size: 16px;
+    font-weight: 700;
 }
