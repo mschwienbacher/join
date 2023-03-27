@@ -33,7 +33,6 @@ async function createContact() {
     });
     await saveContactsToBackend();
     toggleSideBarContainer('p-container', 'hide');
-    console.log(allContacts);
     //setTimeout(function() {window.location.href = "contacts_michael.html";}, 500)
 }
 
@@ -53,11 +52,10 @@ function loadContactList() {
         let singleContact = allContacts[i];
         let nameInitials = getInitials(singleContact.name);
         let surnameInitials = getInitials(singleContact.surname);
-        // TODO hier problem, showFullContact übergibt ein Object...ändern
         container.innerHTML += `
             <div class="letter-breadcrumb">${nameInitials}</div>
             <div class="single-contact"> 
-                <a href="javascript:void(0);" onclick="showFullContact(${singleContact}, ${i});" class="contact-mail" id="showed-${i}" title="${singleContact.name} ${singleContact.surname}">
+                <a href="javascript:void(0);" onclick="showFullContact(${i});" class="contact-mail" id="showed-${i}" title="${singleContact.name} ${singleContact.surname}">
                     <span class="contact-initial ${nameInitials.toLowerCase()}${surnameInitials.toLowerCase()}">${nameInitials}${surnameInitials}</span>
                     <span class="contact-names">
                         ${singleContact.name} ${singleContact.surname} <br><strong>${singleContact.email}</strong>
@@ -72,15 +70,12 @@ function getInitials(element) {
     return element.charAt(0);
 }
 
-function showFullContact(singleContact, id) {
-    console.log(singleContact, id);
+function showFullContact(id) {
     toggleClass(".contact-mail");
     let container = document.getElementById("the-contact");
     container.innerHTML = "";
 
-    //TODO hier problem, singleContact ist leer....
-    let theContact = singleContact[id];
-    console.log(theContact);
+    let theContact = allContacts[id];
     let nameInitials = getInitials(theContact.name);
     let surnameInitials = getInitials(theContact.surname);
 
@@ -91,7 +86,7 @@ function showFullContact(singleContact, id) {
                 <span class="contact-initial ${nameInitials.toLowerCase()}${surnameInitials.toLowerCase()}">${nameInitials}${surnameInitials}</span>
             </div>
             <div class="the-user-names">
-                <div class="the-user-name">${singleContact.name} ${singleContact.surname}</div>
+                <div class="the-user-name">${theContact.name} ${theContact.surname}</div>
                 <div class="user-tasks"><a href="javascript:void(0);" onclick="alert('Noch zu machen');"><img src="../assets/img/plus.svg" width="15" height="15" alt="Plus"> <span>Add tasks</span></a></div>
             </div>
         </div>
@@ -107,14 +102,52 @@ function showFullContact(singleContact, id) {
             </div>
             <div class="the-user-contacts">
                 <strong>E-Mail</strong> <br>
-                <a href="mailto:${singleContact.email}">${singleContact.email}</a><br>
+                <a href="mailto:${theContact.email}">${theContact.email}</a><br>
                 <strong>Phone</strong> <br>
-                ${singleContact.phone}
+                ${theContact.phone}
             </div>
         </div>
     </div>
 `;
 }
+
+function editContact(id) {
+    let mainContainer = document.getElementById("contact-popup");
+    toggleSideBarContainer('p-container', 'show');
+    let theContact = allContacts[id];
+
+    mainContainer.innerHTML = "";
+    mainContainer.innerHTML += `
+    <div class="contact-popup-header">
+        <img src="assets/img/close.svg" width="31" height="31" alt="Close" class="close-it" onclick="toggleSideBarContainer('p-container', 'hide');">
+        <div class="small-logo"><img src="assets/img/logo-join-small.svg" width="47" height="58" alt="JOIN"></div>
+        <div class="contact-popup-title">
+            <p>Edit contact</p>
+        </div>
+    </div>
+    <div class="contact-popup-content">
+        <span class="contact-initial ${getInitials(theContact.name).toLowerCase()}${getInitials(theContact.surname).toLowerCase()}">${getInitials(theContact.name)}${getInitials(theContact.surname)}</span>
+        <form onsubmit="return false;" id="edit-form">
+            <div class="input name">
+                <input type="text" id="change-name" value="${theContact.name}" placeholder="Name" required>
+            </div>
+            <div class="input surname">
+                <input type="text" id="change-surname" value="${theContact.surname}" placeholder="Surname" required>
+            </div>
+            <div class="input email">
+                <input type="email" id="change-mail" value="${theContact.email}" placeholder="Email" required>
+            </div>
+            <div class="input phone">
+                <input type="tel" id="change-phone" value="${theContact.phone}" placeholder="Phone" required>
+            </div>
+            <button id="save-button" class="cta" onclick="updateContact(${id});">Save</button>
+        </form>
+    </div>
+    `;
+}
+
+//TODO updateContact() = NEXT STEP
+
 
 function toggleClass(theClass) {
     const allLinks = document.querySelectorAll(theClass);
