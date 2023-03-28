@@ -88,7 +88,7 @@
 
                     </div>
 
-                    <button class="add-contact-button">New contact</button>
+                    <button onclick="openAdd()" class="add-contact-button">New contact</button>
 
                     <div id="edit-window">
                         <div id="close-container">
@@ -110,6 +110,32 @@
                             <p class="save-edit-btn" id="save-edit-btn">save</p>
                         </div>
                     </div>
+
+                    <div class="add-contact-window" id="add-window">
+                        <div id="close-container">
+                            <p class="close-add-btn" onclick="closeAdd()" id="close-add-btn">
+                                <img src="assets/img/close-btn-edit.svg" alt="close-btn">
+                            </p>
+                        </div>
+                        <div class="edit-join-symbol-and-text">
+                            <img src="assets/img/logo-join-small.svg" alt="join symbol">
+                            <p>Add contact</p>
+                            <span>Tasks are better with a team!</span>
+                        </div>
+                        <div class="embleme-and-input">
+                            <p class="embleme-add "><img src="assets/img/dummy.svg" alt=""></p>
+                            <form>
+                                <input placeholder="Name" type="text">
+                                <input placeholder="Email" type="email">
+                                <input placeholder="Phone" type="number">
+                            </form>
+                            <div class="btn-designe-add-contact">
+                                <p class="save-edit-btn" id="save-add-btn">Cancel X</p>
+                                <p class="save-edit-btn" id="save-add-btn">Create contact</p>
+                            </div>
+                        </div>
+                    </div>
+
 
 
 
