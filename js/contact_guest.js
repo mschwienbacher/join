@@ -36,7 +36,8 @@ function renderTheQuestContacts() {
     document.getElementById('show-contacts-quest').innerHTML = ``
     for (i = 0; i < sortedContacts.length; i++) {
         document.getElementById('show-contacts-quest').innerHTML += `
-    <div onclick="showDetail(${i})" class="contact-card-quest">
+        ${letterSortSet(i)}
+    <div id="contact${i}" onclick="showDetail(${i})" class="contact-card-quest">
         <div class="embleme-designe">
             <span>${getTheFirstLetterOfName(i)}</span>
         </div>
@@ -75,7 +76,7 @@ function sortContactsAndSave(contacts) {
 
 
 function showDetail(j) {
-    document.getElementById('detail-information-screen').style.padding = '58px 65px'
+    showChosenContact(j);
     document.getElementById('detail-information-screen').innerHTML = `
     <div class="name-and-embleme-container">
         <div class="detail-embleme">
@@ -93,6 +94,51 @@ function showDetail(j) {
         <p class="detail-email-designe"><span class="email-mobile-designe">Mobil</span><span>${sortedContacts[j]['tel']}</span></p>
     </div>`
 }
+
+
+let chosenContactCounter;
+function showChosenContact(c) {
+    chosenContactCounter = c;
+    document.getElementById('detail-information-screen').style.padding = '58px 65px';
+    removeBackgroundFromUnchosed(c);
+}
+
+
+function removeBackgroundFromUnchosed(k) {
+    for (let index = 0; index < sortedContacts.length; index++) {
+        if (index == chosenContactCounter) {
+            document.getElementById(`contact${k}`).classList.add('chosed-contact')
+        }
+        else {
+            document.getElementById(`contact${index}`).classList.remove('chosed-contact')
+        }
+    }
+}
+
+
+let letterCounter = [];
+function letterSortSet(l) {
+    let firstname = sortedContacts[i]['name'].charAt(0).toUpperCase()
+    letterCounter.push(firstname)
+    if (countLetter(letterCounter, firstname) < 2) {
+        return `<div class="firstLetterSort">${firstname}<hr></div>`
+    }
+    else{
+        return ``
+    }
+}
+
+
+function countLetter(arr, letter) {
+    let count = 0;
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] === letter) {
+            count++;
+        }
+    }
+    return count;
+}
+
 
 let sortedContacts = sortContactsAndSave(contacts);
 renderTheQuestContacts();

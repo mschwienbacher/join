@@ -124,3 +124,21 @@
     font-size: 16px;
     font-weight: 700;
 }
+
+.chosed-contact{
+    background-color: #005DFF;
+    color: white;
+}
+
+.chosed-contact .detail-name{
+    color: white;
+}
+
+.chosed-contact .email-card-quest-designe{
+    color: white;
+}
+
+.firstLetterSort{
+    margin-bottom: 25px;
+    width: 100%;
+}
