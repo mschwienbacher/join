@@ -176,6 +176,8 @@ function updateContact(id){
         "phone": thePhone.value
 
     }
+
+    toggleSideBarContainer('p-container', 'hide');
     getSavedContactsFromBackend();
     saveContactsToBackend();
     loadContactList();
@@ -200,12 +202,4 @@ function clearInputs() {
     theSurname.value = "";
     theEmail.value = "";
     thePhone.value = "";
-}
-
-function showCreateContact() {
-    let page = document.getElementById("the-page");
-    //let attribute = page.getAttribute("w3-include-html");
-    page.setAttribute("w3-include-html", "assets/templates/add_new_contact_michael.html");
-    toggleSideBarContainer('p-container', 'show');
-
 }
