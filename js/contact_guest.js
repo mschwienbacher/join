@@ -28,6 +28,18 @@ let contacts = [
         "second-name": "Anic",
         "email": "ti.tanic@freenet.de",
         "tel": "04910031912"
+    },
+    {
+        "name": "Andi",
+        "second-name": "Myer",
+        "email": "andi.myer@freenet.de",
+        "tel": "049100345345"
+    },
+    {
+        "name": "Rudolf",
+        "second-name": "Rentier",
+        "email": "rudolf.coKG@freenet.de",
+        "tel": "049100334532"
     }
 ]
 
@@ -80,8 +92,7 @@ function showDetail(j) {
     document.getElementById('detail-information-screen').innerHTML = `
     <div class="name-and-embleme-container">
         <div class="detail-embleme">
-            <span>A</span>
-            <span>A</span>
+            <span>${getTheFirstLetterOfName(j)}</span>
         </div>
         <div>
             <p class="detail-name"><span>${sortedContacts[j]['name']}</span><span> ${sortedContacts[j]['second-name']}</span></p>
@@ -89,10 +100,39 @@ function showDetail(j) {
         </div>
     </div>
     <div>
-        <p><span class="contact-information-designe">Contact Information</span><span>Edit Contact</span></p>
+        <p><span class="contact-information-designe">Contact Information</span><span class="clickable" onclick="openEdit(${j})">Edit Contact</span></p>
         <p class="detail-email-designe"><span class="email-mobile-designe">Email</span><span class="add-task-desgine">${sortedContacts[j]['email']}</span></p>
         <p class="detail-email-designe"><span class="email-mobile-designe">Mobil</span><span>${sortedContacts[j]['tel']}</span></p>
     </div>`
+}
+
+function openEdit(o) {
+    document.getElementById('edit-window').innerHTML = `
+    <div id="close-container">
+        <p onclick="closeEdit()" id="close-edit-btn">
+            <img src="assets/img/close-btn-edit.svg" alt="close-btn">
+        </p>
+    </div>
+    <div class="edit-join-symbol-and-text">
+        <img src="assets/img/logo-join-small.svg" alt="join symbol">
+        <p>Edit contact</p>
+    </div>
+    <div class="embleme-and-input">
+        <p class="embleme-edit ">${getTheFirstLetterOfName(o)}</p>
+            <form>
+                <input placeholder="Name" type="text">
+                <input placeholder="Email" type="email">
+                <input placeholder="Phone" type="number">
+            </form>
+        <p class="save-edit-btn" id="save-edit-btn">save</p>
+    </div>
+    `
+    document.getElementById('edit-window').style.left = '0';
+}
+
+
+function closeEdit() {
+    document.getElementById('edit-window').style.left = '-800px'
 }
 
 
@@ -123,7 +163,7 @@ function letterSortSet(l) {
     if (countLetter(letterCounter, firstname) < 2) {
         return `<div class="firstLetterSort">${firstname}<hr></div>`
     }
-    else{
+    else {
         return ``
     }
 }

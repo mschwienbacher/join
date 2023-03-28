@@ -1,11 +1,12 @@
 #contact-content {
     display: flex;
+    height: 89vh;
+    overflow-y: scroll;
 }
 
 .email-card-guest {
     width: 453px;
-    background-color: antiquewhite;
-    padding: 0px 48px;
+    padding: 25px 48px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -43,7 +44,7 @@
     padding: 15px 25px 15px 25px;
     align-items: center;
     width: 357px;
-
+    border-radius: 10px;
 }
 
 .contact-card-quest:hover {
@@ -76,8 +77,11 @@
     transition: 125ms;
 }
 
-.overflow-container{
+.overflow-container {
     position: relative;
+}
+.clickable{
+    cursor: pointer;
 }
 
 .detail-embleme {
@@ -125,20 +129,123 @@
     font-weight: 700;
 }
 
-.chosed-contact{
+.chosed-contact {
     background-color: #005DFF;
     color: white;
 }
 
-.chosed-contact .detail-name{
+.chosed-contact .detail-name {
     color: white;
 }
 
-.chosed-contact .email-card-quest-designe{
+.chosed-contact .email-card-quest-designe {
     color: white;
 }
 
-.firstLetterSort{
+.firstLetterSort {
     margin-bottom: 25px;
+    margin-top: 25px;
     width: 100%;
+}
+
+/*Window for edding the contact*/
+
+#edit-window {
+    position: absolute;
+    left: -800px;
+    top: 0;
+    bottom: 0;
+    width: 50vw;
+    background-color: #005DFF;
+    z-index: 2;
+    border-radius: 0 35px 35px 0;
+    overflow: hidden;
+    transition: 525ms;
+}
+
+#close-container {
+    position: relative;
+}
+
+#close-edit-btn {
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    color: white;
+    cursor: pointer;
+}
+
+.edit-join-symbol-and-text {
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.edit-join-symbol-and-text p {
+    font-size: 48px;
+    color: white;
+}
+
+.embleme-and-input {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border: solid rgba(0, 0, 0, 0.103) 2px;
+    height: 69.6%;
+    padding: 0 79px;
+}
+
+.embleme-and-input form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.embleme-and-input form input {
+    border: none;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.096);
+    padding: 13px 21px 13px 21px;
+    height: 50px;
+}
+
+#save-edit-btn{
+    padding: 18px 10px 18px 10px;
+    background-color: #4589FF;
+    width: 146px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    color: white;
+    margin-top: 55px;
+}
+
+.save-edit-btn{
+    padding: 18px 10px 18px 10px;
+    background-color: #4589FF;
+    width: 146px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    color: white;
+    margin-top: 55px;
+    cursor: pointer;
+}
+
+.embleme-edit {
+    display: flex;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid white;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    background-color: orange;
+    font-size: 47px;
 }
