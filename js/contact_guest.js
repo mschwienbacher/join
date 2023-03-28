@@ -136,6 +136,14 @@ function closeEdit() {
 }
 
 
+function openAdd(){
+    document.getElementById('add-window').style.left = '0';
+}
+
+function closeAdd(){
+    document.getElementById('add-window').style.left = '-800px';
+}
+
 let chosenContactCounter;
 function showChosenContact(c) {
     chosenContactCounter = c;
