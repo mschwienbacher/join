@@ -89,6 +89,19 @@ body{
     line-height: 120%;
 }
 
+::-webkit-calendar-picker-indicator {
+    opacity: 0;
+    z-index: 1;
+}
+
+.date-picker{
+    display: flex;
+}
+
+.date-picker img{
+    margin-left: -20px;
+}
+
 .category{
     margin-top: 25px;
     font-weight: 700;

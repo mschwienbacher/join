@@ -51,7 +51,7 @@
                 <div class="inner reverse">
                     <div class="content bg1">
                         <div class="wrapper bg1">
-                            <!-- <form onsubmit="addTask(); return false;"> -->
+                            <form onsubmit="addTask(); return false;">
                                 <div class="title">
                                     <input type="text" placeholder="Enter a title" id="task-title" required>
                                 </div>
@@ -60,19 +60,17 @@
                                     <img src="assets/img/dropdown.svg" onclick="openContactsToAssign()">
                                 </div>
                                 <div id="list-assigned-to" class="dropdown-check-list d-none" tabindex="100">
-                                    <ul class="items">
-                                      <li><input type="checkbox" /> contact</li>
-                                      <li><input type="checkbox" /> contact</li>
-                                      <li><input type="checkbox" /> contact</li>
-                                      <li><input type="checkbox" /> contact</li>
-                                      <li><input type="checkbox" /> contact</li>
-                                      <li><input type="checkbox" /> contact</li>
-                                      <li><input type="checkbox" /> contact</li>
+                                    <ul class="items" id="checkbox-list-assigned-to">
+                                        <!-- htmlTemplateListAssignedTo -->
                                     </ul>
                                   </div>
                                 <div class="due-date">
                                     <span>Due date</span>
-                                    <input type="date" id="due-date" name="trip-start" value="dd/mm/yyyy" required>
+                                    <div class="date-picker">
+                                        <input type="date" id="due-date" name="trip-start" value="dd/mm/yyyy" required>
+                                        <img src="/assets/img/calendar.svg">
+                                    </div>
+                                    
                                 </div>
                                 <div class="category">
                                     <span>Category</span>
@@ -82,18 +80,14 @@
                                     </div>
                                     <div id="list-task-category" class="dropdown-check-list d-none" tabindex="100">
                                         <ul class="items">
-                                          <li><input type="checkbox" /> Backoffice</li>
-                                          <li><input type="checkbox" /> Design</li>
-                                          <li><input type="checkbox" /> Marketing</li>
-                                          <li><input type="checkbox" /> Media</li>
-                                          <li><input type="checkbox" /> Sales</li>
+                                            <!-- htmlTemplateCategory() -->
                                         </ul>
                                       </div>
                                 </div>
                                 <div class="priority" id="task-priority">
-                                    <button>Urgent <img src="assets/img/urgent.svg" alt="urgent"></button>
-                                    <button>Medium <img src="assets/img/medium.svg" alt="medium"></button>
-                                    <button>Low <img src="assets/img/low.svg" alt="low"></button>
+                                    <button type="button">Urgent <img src="assets/img/urgent.svg" alt="urgent"></button>
+                                    <button type="button">Medium <img src="assets/img/medium.svg" alt="medium"></button>
+                                    <button type="button">Low <img src="assets/img/low.svg" alt="low"></button>
                                 </div>
                                 <div class="description">
                                     <span>Description</span>
@@ -108,14 +102,13 @@
                                     </div>
                                 </div>
                                 <div class="checkbox-subtasks" id="ckeckbox-subtasks">
-                                    <!-- <input type="checkbox"> &nbsp;
-                                    <span>Subtask 1</span> -->
+                                    <!-- htmlTemplateSubtasks -->
                                 </div>
                                 <div class="execute-buttons">
-                                    <button style="color: #647188">Clear X</button>
+                                    <button type="button" style="color: #647188" onclick="clearAddTaskForm()">Clear X</button>
                                     <button style="background-color: #4589FF; color: white;">Create <img src="assets/img/check.svg" alt="check"></button>
                                 </div>
-                            <!-- </form> -->
+                            </form>
                         </div>
                     </div>
                     <div class="sidebar">
@@ -147,7 +140,8 @@
     </main>
     <script src="js/mini_backend.js"></script>
     <script src="assets/templates/htmlTemplateAdd_Task.js"></script>
-    <script src="js/add-task.js"></script>
+    <script src="js/contact_guest.js"></script>
+    <script onload="renderAddTask()" src="js/add-task.js"></script>
     <!-- Insert dedicated JS script -->
     <script src="js/main.js"></script>
     
