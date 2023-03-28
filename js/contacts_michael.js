@@ -1,12 +1,11 @@
-// TODO 1) Sortieren - Problem onclick
-// TODO 2) Breadcrumb zusammenfassen wenn mehrere Namen mit dem selben Anfangsbuchstaben sind
+// TODO 1) User bearbeiten, NEUEN hinzufügen w3 element überschreiben
+// TODO 2) Breadcrumb zusammenfassen wenn mehrere Namen mit dem selben Anfangsbuchstaben sind (includes) - Alle Initialien in ein neues Array speichern, duplikat entfernen und anzeigen
 // TODO 3) Alle Kontakte löschen und testen
 // TODO 4) Funktionen cleanen + beschreiben
 
 async function initContactBackend() {
     await downloadFromServer();
     allContacts = JSON.parse(backend.getItem('contacts')) || [];
-    //allContacts = allContacts.sort((a, b) => {if (a.name < b.name) {return -1;}}); // Sort the contacts by name
     loadContactList();
     includeHTML();
 }
@@ -53,22 +52,28 @@ function toggleSideBarContainer(elementToModify, action) {
 
 function loadContactList() {
     let container = document.getElementById("contact-list");
-    container.innerHTML = "";
-    for(let i = 0; i < allContacts.length ;i++) {
-        let singleContact = allContacts[i];
-        let nameInitials = getInitials(singleContact.name);
-        let surnameInitials = getInitials(singleContact.surname);
-        container.innerHTML += `
-            <div class="letter-breadcrumb">${nameInitials}</div>
-            <div class="single-contact"> 
-                <a href="javascript:void(0);" onclick="showFullContact(${i});" class="contact-mail" id="showed-${i}" title="${singleContact.name} ${singleContact.surname}">
-                    <span class="contact-initial ${nameInitials.toLowerCase()}${surnameInitials.toLowerCase()}">${nameInitials}${surnameInitials}</span>
-                    <span class="contact-names">
-                        ${singleContact.name} ${singleContact.surname} <br><strong>${singleContact.email}</strong>
-                    </span>
-                </a>
-            </div>
-        `;
+    if(allContacts.length > 0) {
+        sortArray();
+        container.innerHTML = "";
+        for(let i = 0; i < allContacts.length ;i++) {
+            let singleContact = allContacts[i];
+            let nameInitials = getInitials(singleContact.name);
+            let surnameInitials = getInitials(singleContact.surname);
+            //TODO erster Breadcrumb filtern und dann kreiren
+            container.innerHTML += `
+                <div class="letter-breadcrumb">${nameInitials}</div>
+                <div class="single-contact"> 
+                    <a href="javascript:void(0);" onclick="showFullContact(${i});" class="contact-mail" id="showed-${i}" title="${singleContact.name} ${singleContact.surname}">
+                        <span class="contact-initial ${nameInitials.toLowerCase()}${surnameInitials.toLowerCase()}">${nameInitials}${surnameInitials}</span>
+                        <span class="contact-names">
+                            ${singleContact.name} ${singleContact.surname} <br><strong>${singleContact.email}</strong>
+                        </span>
+                    </a>
+                </div>
+            `;
+        }
+    } else {
+        container.innerHTML = "No contacts available, add a new one!";
     }
 }
 
@@ -81,6 +86,7 @@ function showFullContact(id) {
     let container = document.getElementById("the-contact");
     container.innerHTML = "";
     getSavedContactsFromBackend();
+    sortArray();
     let theContact = allContacts[id];
     let nameInitials = getInitials(theContact.name);
     let surnameInitials = getInitials(theContact.surname);
@@ -120,6 +126,7 @@ function showFullContact(id) {
 function editContact(id) {
     let mainContainer = document.getElementById("contact-popup");
     toggleSideBarContainer('p-container', 'show');
+    sortArray();
     let theContact = allContacts[id];
 
     mainContainer.innerHTML = "";
@@ -152,6 +159,10 @@ function editContact(id) {
     `;
 }
 
+function sortArray() {
+    allContacts = allContacts.sort((a, b) => {if (a.name < b.name) {return -1;}});
+}
+
 function updateContact(id){
     let theName = document.getElementById("change-name");
     let theSurname = document.getElementById("change-surname");
@@ -178,4 +189,23 @@ function toggleClass(id, theClass) {
         items[i].classList.remove('active');
     }
     items[id].classList.add('active');
+}
+
+function clearInputs() {
+    let theName = document.getElementById("create-name");
+    let theSurname = document.getElementById("create-surname");
+    let theEmail = document.getElementById("create-mail");
+    let thePhone = document.getElementById("create-phone");
+    theName.value = "";
+    theSurname.value = "";
+    theEmail.value = "";
+    thePhone.value = "";
+}
+
+function showCreateContact() {
+    let page = document.getElementById("the-page");
+    //let attribute = page.getAttribute("w3-include-html");
+    page.setAttribute("w3-include-html", "assets/templates/add_new_contact_michael.html");
+    toggleSideBarContainer('p-container', 'show');
+
 }

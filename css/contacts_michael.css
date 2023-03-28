@@ -10,7 +10,7 @@
 .contact-list {
     background: #ffffff;
     box-shadow: 0px 2px 5px #ececec;
-    width: 30%;
+    width: 37%;
     height: calc(100vh - 102.5px);
 }
 
@@ -100,7 +100,7 @@
     padding: 0 65px;
     margin: 73px 0;
     position: relative;
-    width:70%;
+    width:63%;
 }
 
 .the-user-head, .the-user-info {
@@ -125,7 +125,7 @@
 }
 
 .the-user-name {
-    font-size: 48px;
+    font-size: 45px;
     margin-bottom:10px;
 }
 
