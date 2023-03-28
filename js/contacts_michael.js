@@ -1,6 +1,12 @@
+// TODO 1) Sortieren - Problem onclick
+// TODO 2) Breadcrumb zusammenfassen wenn mehrere Namen mit dem selben Anfangsbuchstaben sind
+// TODO 3) Alle Kontakte löschen und testen
+// TODO 4) Funktionen cleanen + beschreiben
+
 async function initContactBackend() {
     await downloadFromServer();
     allContacts = JSON.parse(backend.getItem('contacts')) || [];
+    //allContacts = allContacts.sort((a, b) => {if (a.name < b.name) {return -1;}}); // Sort the contacts by name
     loadContactList();
     includeHTML();
 }
@@ -33,7 +39,7 @@ async function createContact() {
     });
     await saveContactsToBackend();
     toggleSideBarContainer('p-container', 'hide');
-    //setTimeout(function() {window.location.href = "contacts_michael.html";}, 500)
+    setTimeout(function() {window.location.href = "contacts_michael.html";}, 500);
 }
 
 function toggleSideBarContainer(elementToModify, action) {
@@ -71,10 +77,10 @@ function getInitials(element) {
 }
 
 function showFullContact(id) {
-    toggleClass(".contact-mail");
+    toggleClass(id, ".contact-mail");
     let container = document.getElementById("the-contact");
     container.innerHTML = "";
-
+    getSavedContactsFromBackend();
     let theContact = allContacts[id];
     let nameInitials = getInitials(theContact.name);
     let surnameInitials = getInitials(theContact.surname);
@@ -146,22 +152,30 @@ function editContact(id) {
     `;
 }
 
-//TODO updateContact() = NEXT STEP
+function updateContact(id){
+    let theName = document.getElementById("change-name");
+    let theSurname = document.getElementById("change-surname");
+    let theEmail = document.getElementById("change-mail");
+    let thePhone = document.getElementById("change-phone");
+    toggleSideBarContainer('p-container', 'hide');
+    allContacts[id] = {
+        "name": theName.value,
+        "surname": theSurname.value,
+        "email": theEmail.value,
+        "phone": thePhone.value
+
+    }
+    getSavedContactsFromBackend();
+    saveContactsToBackend();
+    loadContactList();
+    showFullContact(id);
+}
 
 
-function toggleClass(theClass) {
-    const allLinks = document.querySelectorAll(theClass);
-    allLinks.forEach((link, index) => {
-        link.addEventListener('click', (event) => {
-            event.preventDefault();
-            let currentActiveLink = document.querySelector('.active');
-            if (currentActiveLink) {
-                currentActiveLink.classList.remove('active');
-            }
-            link.classList.add('active');
-        });
-        if (index === 0 && !document.querySelector('.active')) {
-            link.classList.add('active');
-        }
-    });
+function toggleClass(id, theClass) {
+    let items = document.querySelectorAll(theClass);
+    for(let i = 0; i < items.length ; i++) {
+        items[i].classList.remove('active');
+    }
+    items[id].classList.add('active');
 }
