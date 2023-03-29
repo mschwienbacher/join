@@ -1,3 +1,5 @@
+let categories = ['Backoffice', 'Design', 'Marketing', 'Media', 'Sales'];
+
 let tasksToDo = [
     {
         category: "Design",

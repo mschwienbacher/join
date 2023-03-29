@@ -1,12 +1,26 @@
-
+let priority = '';
+let selectedCategory = '';
 
 function addTask(){
-    let title = document.getElementById('task-title').value;    
-    let dueDate = document.getElementById('due-date').value;    
-    let taskDescription =document.getElementById('task-description').value;
-    
-    document.getElementById('task-title').value = 'Sag mir warum';
+    getCategory();
+    /* let category = categories[selectedCategory]; */
+    let title = document.getElementById('task-title').value; 
+    let text = document.getElementById('task-description').value;
+    /* let inCharge =; */   
+    let dueDate = document.getElementById('due-date').value; 
+    console.log(title, text, dueDate, priority, selectedCategory)   ;
+}
 
+function getCategory(){
+    let checkedValue = null; 
+    let inputElements = document.getElementsByClassName('messageCheckbox');
+    for(let i=0; inputElements[i]; ++i){
+      if(inputElements[i].checked){
+           checkedValue = inputElements[i].value;
+           selectedCategory = i;
+           break;
+      }      
+}
 }
 
 function openContactsToAssign(){
@@ -54,9 +68,14 @@ function renderSubtasks(){
 function clearAddTaskForm(){
     document.getElementById('task-title').value = '';
     renderListAssignedTo();
-    document.getElementById('due-date').value = "dd/mm/yyyy";
+    document.getElementById('due-date').value = "";
     renderListTaskCategory();
-    /* setPriority(); */
+    setPriority('');
     document.getElementById('task-description').value = '';
     document.getElementById('ckeckbox-subtasks').innerHTML = '';
+}
+
+function setPriority(string){
+    priority = string;
+    console.log(priority);
 }

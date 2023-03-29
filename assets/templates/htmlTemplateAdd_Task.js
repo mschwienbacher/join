@@ -14,12 +14,12 @@ function htmlTemplateListAssignedTo(i){
 
 function htmlTemplateCategory(){
     return `
-    <ul class="items">
-        <li><input type="checkbox" /> Backoffice</li>
-        <li><input type="checkbox" /> Design</li>
-        <li><input type="checkbox" /> Marketing</li>
-        <li><input type="checkbox" /> Media</li>
-        <li><input type="checkbox" /> Sales</li>
+    <ul class="items" >
+        <li><input class="messageCheckbox" type="checkbox" value="Backoffive"/> Backoffice</li>
+        <li><input class="messageCheckbox" type="checkbox" value="Design"/> Design</li>
+        <li><input class="messageCheckbox" type="checkbox" value="Marketing"/> Marketing</li>
+        <li><input class="messageCheckbox" type="checkbox" value="Media" /> Media</li>
+        <li><input class="messageCheckbox" type="checkbox" value="Sales"/> Sales</li>
     </ul>
     `;
 }
