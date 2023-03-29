@@ -21,7 +21,7 @@
   <script src="js/main.js"></script>
 </head>
 
-<body class="task-page">
+<body class="task-page" onload="initTasks()">
 <header class="header">
   <div class="container">
     <div class="center">
@@ -52,51 +52,7 @@
       <div class="inner reverse">
         <div class="content">
           <div class="wrapper">
-            <form action="return false;" id="form-id-add-task">
-              <div class="input-field bigger">
-                <input type="text" name="task-title" placeholder="Enter a title" id="task-title">
-              </div>
-              <div class="form-opener-container" id="contact-checkboxes">
-                <div class="form-opener flex" id="form-opener-contacts">
-                  Select contacts to assign <img src="assets/img/arrow-down.svg" alt="Arrow"></div>
-                <div class="opener" id="opener-contacts">
-                  <span class="flex">Contact 01 <input type="checkbox" name="contact-01" id="contact-01"></span>
-                  <span class="flex">Contact 01 <input type="checkbox" name="contact-02" id="contact-02"></span>
-                </div>
-              </div>
-              <div class="input-field">
-                <span class="input-title">Due date</span>
-                <div class="flex">
-                  <input type="date" name="task-date" placeholder="dd/mm/yyyy" id="task-date">
-                  <img src="assets/img/calendar.svg" alt="Calendar">
-                </div>
-              </div>
-              <div class="form-opener-container" id="category-checkboxes">
-                <span class="input-title">Category</span>
-                <div class="form-opener flex" id="form-opener-category">
-                  Select task category <img src="assets/img/arrow-down.svg" alt="Arrow">
-                </div>
-                <div class="opener" id="opener-category">
-                  <span class="flex">Cat 01 <input type="checkbox" name="category-01" id="category-01"></span>
-                  <span class="flex">Cat 02 <input type="checkbox" name="category-02" id="category-02"></span>
-                </div>
-              </div>
-              <div class="input-field flex">
-                <button type="button">Urgent <span><img src="assets/img/urgent.svg" alt="Urgent"></span></button>
-                <button type="button">Medium <span><img src="assets/img/medium.svg" alt="Medium"></span></button>
-                <button type="button">Low <span><img src="assets/img/low.svg" alt="Low"></span></button>
-              </div>
-              <div class="input-field">
-                <span class="input-title">Description</span>
-                <textarea name="task-decription" id="task-decription"></textarea>
-              </div>
-              <div class="input-field">
-                <span class="input-title">Subtasks</span>
-                <div class="flex">
-                <input type="text" name="add-subtask" placeholder="Add new subtask" id="add-subtask"><img src="assets/img/plus.svg" alt="Plus">
-                </div>
-              </div>
-            </form>
+            <div w3-include-html="assets/templates/add_tasks_michael.html"></div>
           </div>
         </div>
         <div class="sidebar">

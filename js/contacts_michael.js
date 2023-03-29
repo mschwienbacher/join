@@ -193,27 +193,6 @@ function getInitials(element) {
     return element.charAt(0);
 }
 
-/**
- * The template of the small single contact
- * @param i
- * @param singleContact
- * @returns {string}
- */
-function smallSingleContactTemplate(i, singleContact) {
-    let nameInitials = getInitials(singleContact.name);
-    let surnameInitials = getInitials(singleContact.surname);
-    return `
-    ${breadCrumb(i)}
-    <div class="single-contact"> 
-        <a href="javascript:void(0);" onclick="showFullContact(${i});" class="contact-mail" id="showed-${i}" title="${singleContact.name} ${singleContact.surname}">
-            <span class="contact-initial ${nameInitials.toLowerCase()}${surnameInitials.toLowerCase()}">${nameInitials}${surnameInitials}</span>
-            <span class="contact-names">
-                ${singleContact.name} ${singleContact.surname} <br><strong>${singleContact.email}</strong>
-            </span>
-        </a>
-    </div>
-    `;
-}
 
 /**
  * This function is used to show the letter breadcrumb
@@ -245,6 +224,29 @@ function letterCounter(countedLetters, theInitials) {
         }
     }
     return count;
+}
+
+
+/**
+ * The template of the small single contact
+ * @param i
+ * @param singleContact
+ * @returns {string}
+ */
+function smallSingleContactTemplate(i, singleContact) {
+    let nameInitials = getInitials(singleContact.name);
+    let surnameInitials = getInitials(singleContact.surname);
+    return `
+    ${breadCrumb(i)}
+    <div class="single-contact"> 
+        <a href="javascript:void(0);" onclick="showFullContact(${i});" class="contact-mail" id="showed-${i}" title="${singleContact.name} ${singleContact.surname}">
+            <span class="contact-initial ${nameInitials.toLowerCase()}${surnameInitials.toLowerCase()}">${nameInitials}${surnameInitials}</span>
+            <span class="contact-names">
+                ${singleContact.name} ${singleContact.surname} <br><strong>${singleContact.email}</strong>
+            </span>
+        </a>
+    </div>
+    `;
 }
 
 /**

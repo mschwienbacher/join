@@ -1,10 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+<form action="return false;" id="form-id-add-task">
+  <div class="input-field bigger">
+    <input type="text" name="task-title" placeholder="Enter a title" id="task-title" required>
+  </div>
+  <div class="form-opener-container" id="contact-checkboxes">
+    <div class="form-opener flex" id="form-opener-contacts" onclick="showSelectDetails('opener-contacts');">
+      Select contacts to assign <img src="assets/img/arrow-down.svg" alt="Arrow"></div>
+    <div class="opener" id="opener-contacts"></div>
+  </div>
+  <div class="input-field">
+    <span class="input-title">Due date</span>
+    <div class="flex posi">
+      <input type="date" name="task-date" placeholder="dd/mm/yyyy" id="task-date" onfocus="this.showPicker()">
+      <img src="assets/img/calendar.svg" alt="Calendar">
+    </div>
+  </div>
+  <div class="form-opener-container" id="category-checkboxes">
+    <span class="input-title">Category</span>
+    <div class="form-opener flex" id="form-opener-category" onclick="showSelectDetails('opener-category');">
+      <span id="selectedText">Select task category<span class="circle"></span></span> <img src="assets/img/arrow-down.svg" alt="Arrow">
+    </div>
+    <div class="opener" id="opener-category"></div>
+  </div>
+  <div class="input-field flex">
+    <button type="button" class="urgent">Urgent <span><img src="assets/img/urgent.svg" alt="Urgent"></span></button>
+    <button type="button" class="medium">Medium <span><img src="assets/img/medium.svg" alt="Medium"></span></button>
+    <button type="button" class="low">Low <span><img src="assets/img/low.svg" alt="Low"></span></button>
+  </div>
+  <div class="input-field">
+    <span class="input-title">Description</span>
+    <textarea name="task-decription" id="task-decription"></textarea>
+  </div>
+  <div class="input-field">
+    <span class="input-title">Subtasks</span>
+    <div class="flex">
+      <input type="text" name="add-subtask" placeholder="Add new subtask" id="add-subtask"><img src="assets/img/plus.svg" alt="Plus">
+    </div>
+  </div>
+</form>
