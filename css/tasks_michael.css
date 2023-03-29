@@ -2,8 +2,18 @@
     background: #fff;
 }
 
-#form-id-add-task {
+.new-task-container {
     width: 422px;
+}
+
+#form-id-add-task {
+    position: relative;
+}
+
+.action-buttons {
+    position: absolute;
+    bottom: 0;
+    right: 50px;
 }
 
 .input-field, .form-opener-container {

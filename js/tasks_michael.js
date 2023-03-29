@@ -1,4 +1,7 @@
 let counter = 0;
+let tasks = [{}];
+let taskUsers = [];
+
 let category = [
     {
         name: "Backoffice",
@@ -31,7 +34,7 @@ async function loadExistingContacts() {
         for(let i = 0; i < allContacts.length; i++) {
             let theContact = allContacts[i];
             container.innerHTML += `
-                <label class="flex" for="contact-${i}"> ${theContact.name} ${theContact.surname} <input type="checkbox" name="${theContact.name} ${theContact.surname}" id="contact-${i}"></label>
+                <label class="flex" for="contact-${i}"> ${theContact.name} ${theContact.surname} <input type="checkbox" name="${theContact.name} ${theContact.surname}" id="contact-${i}" class="users"></label>
             `;
         }
     } else {
@@ -138,7 +141,7 @@ function addSubTaskToList() {
     subTaskContainer.classList.add("show-me");
     if(theSubTask.value != "") {
         subTaskContainer.innerHTML += `
-            <label class="flex subt" for="subtask-${counter}"><input type="checkbox" name="${theSubTask.value}" id="subtask-${counter}"> ${theSubTask.value}</label>
+            <label class="flex subt" for="subtask-${counter}"><input checked type="checkbox" name="${theSubTask.value}" id="subtask-${counter}"> ${theSubTask.value}</label>
         `;
         theSubTask.value = "";
         counter++;
@@ -151,4 +154,26 @@ function addSubTaskToList() {
 function clearSubTask() {
     let theSubTask = document.getElementById("add-subtask");
     theSubTask.value = "";
+}
+
+function saveTheTask() {
+    let taskTitle = document.getElementById("task-title");
+    getUsersForTasks();
+
+    // TODO: Daten sammeln, weiter mit DATE
+    let taskDate = document.getElementById("task-date");
+    let formattedTaskDate = taskDate.getDate() + '-' + (taskDate.getMonth() + 1) + '-' + taskDate.getFullYear();
+    console.log(formattedTaskDate);
+}
+
+function getUsersForTasks() {
+    let theUsers = document.querySelectorAll("input.users");
+    for(let i = 0; i < theUsers.length; i++) {
+        let singleUser = theUsers[i];
+        if(singleUser.checked == true) {
+            console.log(singleUser.name);
+            taskUsers.push(singleUser.name);
+        }
+    }
+
 }
