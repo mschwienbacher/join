@@ -1,4 +1,4 @@
-// TODO 1) Filter contacts by initials, more contacts with the same initials - create Breadcrumb
+let countedLetters = [];
 
 /**
  * Onload function: This function is used to save all existing contacts in the database to the Array allContacts and to load the contactlist
@@ -76,6 +76,9 @@ function toggleSideBarContainer(elementToModify, action) {
  */
 function loadContactList() {
     let container = document.getElementById("contact-list");
+
+
+
     if(allContacts.length > 0) {
         sortArray();
         container.innerHTML = "";
@@ -87,6 +90,7 @@ function loadContactList() {
         container.innerHTML = "No contacts available, add a new one!";
     }
 }
+
 
 /**
  * This function is used to show the whole details of the contact
@@ -199,7 +203,7 @@ function smallSingleContactTemplate(i, singleContact) {
     let nameInitials = getInitials(singleContact.name);
     let surnameInitials = getInitials(singleContact.surname);
     return `
-    <div class="letter-breadcrumb">${nameInitials}</div>
+    ${breadCrumb(i)}
     <div class="single-contact"> 
         <a href="javascript:void(0);" onclick="showFullContact(${i});" class="contact-mail" id="showed-${i}" title="${singleContact.name} ${singleContact.surname}">
             <span class="contact-initial ${nameInitials.toLowerCase()}${surnameInitials.toLowerCase()}">${nameInitials}${surnameInitials}</span>
@@ -209,6 +213,38 @@ function smallSingleContactTemplate(i, singleContact) {
         </a>
     </div>
     `;
+}
+
+/**
+ * This function is used to show the letter breadcrumb
+ * @param i
+ * @returns {string}
+ */
+function breadCrumb(i) {
+    let theInitials = getInitials(allContacts[i]['name']).toUpperCase()
+    countedLetters.push(theInitials);
+    if (letterCounter(countedLetters, theInitials) < 2) {
+        return `<div class="letter-breadcrumb">${theInitials}</div>`
+    }
+    else {
+        return ``
+    }
+}
+
+/**
+ *
+ * @param countedLetters
+ * @param theInitials
+ * @returns {number}
+ */
+function letterCounter(countedLetters, theInitials) {
+    let count = 0;
+    for (let i = 0; i < countedLetters.length; i++) {
+        if (countedLetters[i] === theInitials) {
+            count++;
+        }
+    }
+    return count;
 }
 
 /**
