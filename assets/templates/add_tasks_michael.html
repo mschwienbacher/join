@@ -10,7 +10,7 @@
   <div class="input-field">
     <span class="input-title">Due date</span>
     <div class="flex posi">
-      <input type="date" name="task-date" placeholder="dd/mm/yyyy" id="task-date" onfocus="this.showPicker()">
+      <input type="date" name="task-date" placeholder="dd/mm/yyyy" id="task-date" onfocus="this.showPicker()" required>
       <img src="assets/img/calendar.svg" alt="Calendar">
     </div>
   </div>
@@ -22,13 +22,13 @@
     <div class="opener" id="opener-category"></div>
   </div>
   <div class="input-field flex">
-    <button type="button" class="urgent">Urgent <span><img src="assets/img/urgent.svg" alt="Urgent"></span></button>
-    <button type="button" class="medium">Medium <span><img src="assets/img/medium.svg" alt="Medium"></span></button>
-    <button type="button" class="low">Low <span><img src="assets/img/low.svg" alt="Low"></span></button>
+    <button name="urgent" onclick="selectedElement(1);" id="status-1" type="button" class="urgent">Urgent <span><img src="assets/img/urgent.svg" alt="Urgent"></span></button>
+    <button name="medium" onclick="selectedElement(2);" id="status-2" type="button" class="medium">Medium <span><img src="assets/img/medium.svg" alt="Medium"></span></button>
+    <button name="low" onclick="selectedElement(3);" id="status-3" type="button" class="low">Low <span><img src="assets/img/low.svg" alt="Low"></span></button>
   </div>
   <div class="input-field">
     <span class="input-title">Description</span>
-    <textarea name="task-decription" id="task-decription"></textarea>
+    <textarea name="task-decription" id="task-decription" required></textarea>
   </div>
   <div class="input-field">
     <span class="input-title">Subtasks</span>

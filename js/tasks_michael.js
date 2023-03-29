@@ -43,6 +43,7 @@ async function loadExistingContacts() {
 
 function loadCategories() {
     let container = document.getElementById("opener-category");
+    container.innerHTML = "";
     if(category.length > 0) {
         for(let i = 0; i < category.length; i++) {
             let theCategory = category[i];
@@ -87,15 +88,41 @@ function generateColorPalette() {
 function addNewCategory(i) {
     let activeColor = document.getElementById("thecircle-" + i);
     let items = document.querySelectorAll("span.inline-block");
+    let mainContainer = document.getElementById("form-opener-category");
+
     for(let i = 0; i < items.length ; i++) {
         items[i].classList.remove('selected');
     }
     activeColor.classList.add("selected");
-    //TODO hier weiter
-    //let colorPalette = document.getElementById("new-category");
-    //let categoryContainer = document.getElementById("form-opener-category");
+    mainContainer.removeAttribute("onclick");
+    mainContainer.innerHTML = `
+        <input type="text" name="add-new-category" placeholder="New category name..." id="add-new-category">
+        <span class="circle newone" style="background:${colorPalette[i]}"></span><span class="divider"></span><img src="assets/img/close.svg" onclick="clearCategory();" width="25" height="25" class="blueone" alt=""><span class="divider"></span><img src="assets/img/ok.svg" onclick="addCategoryToList(${i});" width="25" height="25" class="blueone" alt="">
+    `;
+}
 
-    //colorPalette.style.display = "none";
-    //categoryContainer.innerHTML = "";
-    //categoryContainer.innerHTML = `<input type="text" name="add-new-category" placeholder="New category name..." id="add-new-category">`;
+function addCategoryToList(i) {
+    let newCategoryToAdd = document.getElementById("add-new-category");
+    category.push({
+        "name": newCategoryToAdd.value,
+        "color": colorPalette[i]
+    })
+    clearCategory();
+    // TODO - SAVE TO BACKEND!
+}
+
+function clearCategory() {
+    let mainContainer = document.getElementById("form-opener-category");
+    mainContainer.setAttribute("onclick", "showSelectDetails('opener-category')");
+    mainContainer.innerHTML = `<span id="selectedText">Select task category <span class="circle"></span></span> <img src="assets/img/arrow-down.svg" alt="Arrow">`;
+    loadCategories();
+}
+
+function selectedElement(id) {
+    let items = document.querySelectorAll("button");
+    for(let i = 0; i < items.length ; i++) {
+        items[i].classList.remove('selected');
+    }
+    let clickedElement = document.getElementById("status-" + id);
+    clickedElement.classList.add("selected");
 }
