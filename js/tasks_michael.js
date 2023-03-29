@@ -1,3 +1,4 @@
+let counter = 0;
 let category = [
     {
         name: "Backoffice",
@@ -103,11 +104,15 @@ function addNewCategory(i) {
 
 function addCategoryToList(i) {
     let newCategoryToAdd = document.getElementById("add-new-category");
-    category.push({
-        "name": newCategoryToAdd.value,
-        "color": colorPalette[i]
-    })
-    clearCategory();
+        if(!newCategoryToAdd.value == "") {
+        category.push({
+            "name": newCategoryToAdd.value,
+            "color": colorPalette[i]
+        })
+        clearCategory();
+    } else {
+            alert("Your category needs a name!");
+        }
     // TODO - SAVE TO BACKEND!
 }
 
@@ -125,4 +130,25 @@ function selectedElement(id) {
     }
     let clickedElement = document.getElementById("status-" + id);
     clickedElement.classList.add("selected");
+}
+
+function addSubTaskToList() {
+    let theSubTask = document.getElementById("add-subtask"); // to get the value
+    let subTaskContainer = document.getElementById("opener-subtasks");
+    subTaskContainer.classList.add("show-me");
+    if(theSubTask.value != "") {
+        subTaskContainer.innerHTML += `
+            <label class="flex subt" for="subtask-${counter}"><input type="checkbox" name="${theSubTask.value}" id="subtask-${counter}"> ${theSubTask.value}</label>
+        `;
+        theSubTask.value = "";
+        counter++;
+    } else {
+        alert("Your subtask need a name!");
+    }
+
+}
+
+function clearSubTask() {
+    let theSubTask = document.getElementById("add-subtask");
+    theSubTask.value = "";
 }

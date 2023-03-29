@@ -66,6 +66,10 @@
     position: relative;
 }
 
+.subt {
+    justify-content: flex-start;
+}
+
 .posi img {
     position: absolute;
     right: 15px;
@@ -115,7 +119,7 @@
     margin: 0 5px;
 }
 
-#form-id-add-task input#add-new-category {
+#form-id-add-task input#add-new-category, #form-id-add-task input#add-subtask {
     width: 75%;
     padding: 0;
     border: 0;
@@ -212,6 +216,10 @@ textarea {
 
 #form-id-add-task .opener input {
     width:auto;
+}
+
+#form-id-add-task .opener .subt input {
+    margin-right: 15px;
 }
 
 .red {

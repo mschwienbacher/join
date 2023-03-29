@@ -22,18 +22,20 @@
     <div class="opener" id="opener-category"></div>
   </div>
   <div class="input-field flex">
-    <button name="urgent" onclick="selectedElement(1);" id="status-1" type="button" class="urgent">Urgent <span><img src="assets/img/urgent.svg" alt="Urgent"></span></button>
-    <button name="medium" onclick="selectedElement(2);" id="status-2" type="button" class="medium">Medium <span><img src="assets/img/medium.svg" alt="Medium"></span></button>
-    <button name="low" onclick="selectedElement(3);" id="status-3" type="button" class="low">Low <span><img src="assets/img/low.svg" alt="Low"></span></button>
+    <button name="Urgent" onclick="selectedElement(1);" id="status-1" type="button" class="urgent">Urgent <span><img src="assets/img/urgent.svg" alt="Urgent"></span></button>
+    <button name="Medium" onclick="selectedElement(2);" id="status-2" type="button" class="medium">Medium <span><img src="assets/img/medium.svg" alt="Medium"></span></button>
+    <button name="Low" onclick="selectedElement(3);" id="status-3" type="button" class="low">Low <span><img src="assets/img/low.svg" alt="Low"></span></button>
   </div>
   <div class="input-field">
     <span class="input-title">Description</span>
     <textarea name="task-decription" id="task-decription" required></textarea>
   </div>
-  <div class="input-field">
+  <div class="form-opener-container" id="subtask-checkboxes">
     <span class="input-title">Subtasks</span>
-    <div class="flex">
-      <input type="text" name="add-subtask" placeholder="Add new subtask" id="add-subtask"><img src="assets/img/plus.svg" alt="Plus">
+    <div class="form-opener flex" id="form-opener-subtasks">
+      <input type="text" name="add-subtask" placeholder="Add new subtask" id="add-subtask" required>
+      <img src="assets/img/close.svg" onclick="clearSubTask();" width="25" height="25" class="blueone" alt=""><span class="divider"></span><img src="assets/img/ok.svg" onclick="addSubTaskToList();" width="25" height="25" class="blueone" alt="">
     </div>
+    <div class="opener" id="opener-subtasks"></div>
   </div>
 </form>
