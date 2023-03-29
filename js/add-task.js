@@ -1,53 +1,76 @@
 let priority = '';
-let selectedCategory = '';
+let category = '';
+let nbOfSubtasks = 0;
 
-function addTask(){
+function addTask() {
     getCategory();
-    /* let category = categories[selectedCategory]; */
-    let title = document.getElementById('task-title').value; 
+    let title = document.getElementById('task-title').value;
     let text = document.getElementById('task-description').value;
-    /* let inCharge =; */   
-    let dueDate = document.getElementById('due-date').value; 
-    console.log(title, text, dueDate, priority, selectedCategory)   ;
+    getAssignedTo()
+    let dueDate = document.getElementById('due-date').value;
+    getSubTasks();
+    nbOfSubtasks = 0;
 }
 
-function getCategory(){
-    let checkedValue = null; 
+function getCategory() {
+    let checkedValue = null;
     let inputElements = document.getElementsByClassName('messageCheckbox');
-    for(let i=0; inputElements[i]; ++i){
-      if(inputElements[i].checked){
-           checkedValue = inputElements[i].value;
-           selectedCategory = i;
-           break;
-      }      
-}
+    for (let i = 0; inputElements[i]; ++i) {
+        if (inputElements[i].checked) {
+            checkedValue = inputElements[i].value;
+            category = categories[i];
+            break;
+        }
+    }
 }
 
-function openContactsToAssign(){
+function getAssignedTo() {
+    let checkedValue = null;
+    let inputElements = document.getElementsByClassName('checkbox-contacts');
+    for (let i = 0; inputElements[i]; ++i) {
+        if (inputElements[i].checked) {
+            checkedValue = inputElements[i].value;
+            assignedTo.push(contacts[i]['name'] + contacts[i]['second-name']);
+            console.log(assignedTo);
+        }
+    }
+}
+
+function getSubTasks() {
+    let checkedValue = null;
+    let inputElements = document.getElementsByClassName('checkbox-subtask');
+    for (let i = 0; inputElements[i]; ++i) {
+        subtask = document.getElementById(`${i}`).innerHTML;
+        subtasks.push(subtask);
+        }
+    }
+
+
+function openContactsToAssign() {
     document.getElementById('list-assigned-to').classList.toggle('d-none');
 }
 
 
-function openTaskCategory(){
+function openTaskCategory() {
     document.getElementById('list-task-category').classList.toggle('d-none');
 }
 
 
-function renderAddTask(){
+function renderAddTask() {
     renderListAssignedTo();
     renderListTaskCategory();
 }
 
-function renderListAssignedTo(){
+function renderListAssignedTo() {
     let content = document.getElementById('checkbox-list-assigned-to');
     content.innerHTML = '';
     for (let i = 0; i < contacts.length; i++)
-    content.innerHTML += 
-        htmlTemplateListAssignedTo(i);
+        content.innerHTML +=
+            htmlTemplateListAssignedTo(i);
 }
 
 
-function renderListTaskCategory(){
+function renderListTaskCategory() {
     content = document.getElementById('list-task-category');
     content.innerHTML = '';
     content.innerHTML =
@@ -55,17 +78,18 @@ function renderListTaskCategory(){
 }
 
 
-function renderSubtasks(){
+function renderSubtasks() {
     let content = document.getElementById('task-subtask');
     newtaskSubtask = content.value;
-    if (newtaskSubtask.length > 0){
+    if (newtaskSubtask.length > 0) {
         document.getElementById('ckeckbox-subtasks').innerHTML +=
-            htmlTemplateSubtasks(newtaskSubtask)
+            htmlTemplateSubtasks(newtaskSubtask, nbOfSubtasks)
+            nbOfSubtasks++;
     }
     content.value = '';
-} 
+}
 
-function clearAddTaskForm(){
+function clearAddTaskForm() {
     document.getElementById('task-title').value = '';
     renderListAssignedTo();
     document.getElementById('due-date').value = "";
@@ -73,9 +97,9 @@ function clearAddTaskForm(){
     setPriority('');
     document.getElementById('task-description').value = '';
     document.getElementById('ckeckbox-subtasks').innerHTML = '';
+    nbOfSubtasks = 0;
 }
 
-function setPriority(string){
+function setPriority(string) {
     priority = string;
-    console.log(priority);
 }

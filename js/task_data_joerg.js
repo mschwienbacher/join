@@ -1,5 +1,9 @@
 let categories = ['Backoffice', 'Design', 'Marketing', 'Media', 'Sales'];
 
+let assignedTo = [];
+
+let subtasks =[];
+
 let tasksToDo = [
     {
         category: "Design",

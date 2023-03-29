@@ -1,14 +1,14 @@
-function htmlTemplateSubtasks(newtaskSubtask){
+function htmlTemplateSubtasks(newtaskSubtask, i){
     return `
     <div class="row">
-    <input type="checkbox"> &nbsp;
-    <span>${newtaskSubtask}</span>
+    <input class="checkbox-subtask" type="checkbox" checked> &nbsp;
+    <span id="${i}">${newtaskSubtask}</span>
     </div>`;    
 }
 
 function htmlTemplateListAssignedTo(i){
     return `
-    <li><input type="checkbox" /> ${contacts[i]['name']} ${contacts[i]['second-name']}</li>
+    <li><input class="checkbox-contacts" type="checkbox" /> ${contacts[i]['name']} ${contacts[i]['second-name']}</li>
     `;
 }
 
