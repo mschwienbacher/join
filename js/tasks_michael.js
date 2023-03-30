@@ -20,9 +20,15 @@ let category = [
 
 let colorPalette = ["#ffb5ba", "#fae5da", "#bbded7", "#8bc6d2"]
 
+async function saveContactsToBackend() {
+    let tasksToString = JSON.stringify(tasks);
+    await backend.setItem("tasks", tasksToString) || [];
+}
+
 async function initTasks() {
     await downloadFromServer();
     allContacts = JSON.parse(backend.getItem('contacts')) || [];
+    tasks = JSON.parse(backend.getItem('tasks')) || [];
     await includeHTML();
     loadExistingContacts();
     loadCategories();
@@ -182,8 +188,8 @@ function saveTheTask() {
         "description": taskDescription.value,
         "subtasks": taskSubTasks
     });
-
-
+    saveContactsToBackend();
+    setTimeout(function() {window.location.href = "add_task_michael.html";}, 500);
 }
 
 function getTaskCategory() {
