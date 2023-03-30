@@ -20,52 +20,72 @@ let category = [
 
 let colorPalette = ["#ffb5ba", "#fae5da", "#bbded7", "#8bc6d2"]
 
-async function saveContactsToBackend() {
+/**
+ * This function is used to save the Tasks in the backend
+ * @returns {Promise<void>}
+ */
+async function saveTasksToBackend() {
     let tasksToString = JSON.stringify(tasks);
     await backend.setItem("tasks", tasksToString) || [];
 }
 
+async function saveCategoriesToBackend() {
+    let categoriesToString = JSON.stringify(category);
+    await backend.setItem("category", categoriesToString) || [];
+}
+
+/**
+ * This function is called on body load
+ * @returns {Promise<void>}
+ */
 async function initTasks() {
     await downloadFromServer();
     allContacts = JSON.parse(backend.getItem('contacts')) || [];
     tasks = JSON.parse(backend.getItem('tasks')) || [];
+    category = JSON.parse(backend.getItem('category')) || [];
+    saveCategoriesToBackend();
     await includeHTML();
     loadExistingContacts();
     loadCategories();
 }
 
+/**
+ * This function is used to show the existing contacts in the contact selection field
+ * @returns {Promise<void>}
+ */
 async function loadExistingContacts() {
     let container = document.getElementById("opener-contacts");
-    allContacts.sort((a, b) => {if (a.name < b.name) {return -1;}});
+    allContacts.sort((a, b) => {if (a.name < b.name) {return -1;}}); // Sort the contacts
     if(allContacts.length > 0) {
         for(let i = 0; i < allContacts.length; i++) {
             let theContact = allContacts[i];
-            container.innerHTML += `
-                <label class="flex" for="contact-${i}"> ${theContact.name} ${theContact.surname} <input type="checkbox" onclick="checkCheckbox('contact-', ${i});" name="${theContact.name} ${theContact.surname}" id="contact-${i}" class="users"></label>
-            `;
+            container.innerHTML += templateLoadContacts(i, theContact);
         }
     } else {
-        container.innerHTML += `
-                <label class="flex red">There are no contacts in the database!</label>
-        `;
+        container.innerHTML += `<label class="flex red">There are no contacts in the database!</label>`;
     }
     container.innerHTML += `<label class="flex"><a href="contacts_michael.html" title="Invite">Invite a new contact</a></label>`;
 }
 
+/**
+ * This function is used to load the already existing categories
+ */
 function loadCategories() {
     let container = document.getElementById("opener-category");
     container.innerHTML = "";
     if(category.length > 0) {
         for(let i = 0; i < category.length; i++) {
             let theCategory = category[i];
-            container.innerHTML += `
-                <span class="flex" id="category-${i}" onclick="selectedCategory(${i});">${theCategory.name} <span class="circle" style="background: ${theCategory.color} ;"></span>
-            `;
+            container.innerHTML += templateLoadCategories(i, theCategory);
         }
     }
     container.innerHTML += `<span class="flex" id="new-category"><a href="javascript:void(0);" title="Add a new category" onclick="generateColorPalette();">Add a new category</a></span>`;
 }
 
+/**
+ * This function is used to show the selected category in the textfield
+ * @param i
+ */
 function selectedCategory(i) {
     let items = document.querySelectorAll("span.flex");
     for(let i = 0; i < items.length ; i++) {
@@ -78,6 +98,10 @@ function selectedCategory(i) {
     textContainer.innerHTML = `${category[i].name} <span class="circle" style="background:${category[i].color}"></span>`;
 }
 
+/**
+ * Open/Close element
+ * @param element
+ */
 function showSelectDetails(element) {
     let theElement = document.getElementById(element);
     if(theElement.classList.contains('show-me')) {
@@ -87,6 +111,9 @@ function showSelectDetails(element) {
     }
 }
 
+/**
+ * This function is used to show the color palette
+ */
 function generateColorPalette() {
     let colorContainer = document.getElementById("opener-category");
     colorContainer.innerHTML = `Select the color of the new category`;
@@ -100,16 +127,13 @@ function addNewCategory(i) {
     let activeColor = document.getElementById("thecircle-" + i);
     let items = document.querySelectorAll("span.inline-block");
     let mainContainer = document.getElementById("form-opener-category");
-
     for(let i = 0; i < items.length ; i++) {
         items[i].classList.remove('selected');
     }
     activeColor.classList.add("selected");
     mainContainer.removeAttribute("onclick");
-    mainContainer.innerHTML = `
-        <input type="text" name="add-new-category" placeholder="New category name..." id="add-new-category">
-        <span class="circle newone" style="background:${colorPalette[i]}"></span><span class="divider"></span><img src="assets/img/close.svg" onclick="clearCategory();" width="25" height="25" class="blueone" alt=""><span class="divider"></span><img src="assets/img/ok.svg" onclick="addCategoryToList(${i});" width="25" height="25" class="blueone" alt="">
-    `;
+    mainContainer.innerHTML = templateAddNewCategory(i, colorPalette);
+
 }
 
 function addCategoryToList(i) {
@@ -118,12 +142,11 @@ function addCategoryToList(i) {
         category.push({
             "name": newCategoryToAdd.value,
             "color": colorPalette[i]
-        })
+        });
         clearCategory();
     } else {
             alert("Your category needs a name!");
-        }
-    // TODO - SAVE TO BACKEND!
+    }
 }
 
 function clearCategory() {
@@ -188,7 +211,8 @@ function saveTheTask() {
         "description": taskDescription.value,
         "subtasks": taskSubTasks
     });
-    saveContactsToBackend();
+    saveCategoriesToBackend();
+    saveTasksToBackend();
     setTimeout(function() {window.location.href = "add_task_michael.html";}, 500);
 }
 
@@ -261,4 +285,35 @@ function getTaskSubTasks() {
             }
         }
         taskSubTasks.push(subTaskList);
+}
+
+/**
+ * Template for loading the contacts
+ * @param i
+ * @param theContact
+ * @returns {string}
+ */
+function templateLoadContacts(i, theContact) {
+    return `<label class="flex" for="contact-${i}"> ${theContact.name} ${theContact.surname} <input type="checkbox" onclick="checkCheckbox('contact-', ${i});" name="${theContact.name} ${theContact.surname}" id="contact-${i}" class="users"></label>`;
+}
+
+/**
+ * Template for loading the categories
+ */
+function templateLoadCategories(i, theCategory) {
+    return `<span class="flex" id="category-${i}" onclick="selectedCategory(${i});">${theCategory.name} <span class="circle" style="background: ${theCategory.color} ;"></span>`;
+}
+
+
+/**
+ * Template for adding new category
+ * @param i
+ * @param colorPalette
+ * @returns {string}
+ */
+function templateAddNewCategory(i, colorPalette) {
+    return `
+        <input type="text" name="add-new-category" placeholder="New category name..." id="add-new-category">
+        <span class="circle newone" style="background:${colorPalette[i]}"></span><span class="divider"></span><img src="assets/img/close.svg" onclick="clearCategory();" width="25" height="25" class="blueone" alt=""><span class="divider"></span><img src="assets/img/ok.svg" onclick="addCategoryToList(${i});" width="25" height="25" class="blueone" alt="">
+    `;
 }
