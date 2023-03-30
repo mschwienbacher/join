@@ -14,6 +14,45 @@
     position: absolute;
     bottom: 0;
     right: 50px;
+    display: flex;
+    gap: 10px;
+}
+
+.action-buttons a {
+    width:136px;
+    height: 61px;
+    line-height: 61px;
+    color: #647188;
+    font-size: 23px;
+    border: 1px solid #647188;
+    border-radius: 8px;
+    text-align:center;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+.action-buttons button {
+    background:#4589FF;
+    border:0;
+    color: #fff;
+    font-family: 'PT Sans', sans-serif;
+    font-weight: 400;
+    height: 61px;
+    line-height: 61px;
+    border-radius: 8px;
+    text-align:center;
+    font-size: 23px;
+    width:161px;
+    cursor: pointer;
+}
+
+.action-buttons img {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.gray {
+    filter: invert(46%) sepia(11%) saturate(818%) hue-rotate(180deg) brightness(92%) contrast(89%);
 }
 
 .input-field, .form-opener-container {
