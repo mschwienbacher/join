@@ -1,6 +1,8 @@
 let priority = '';
 let category = '';
 let nbOfSubtasks = 0;
+let tasksToDoAsJson = JSON.stringify(tasksToDo);
+let data ='';
 
 function addTask() {
     getCategory();
@@ -11,10 +13,25 @@ function addTask() {
     getSubTasks();
     nbOfSubtasks = 0;
     console.log(category, title, text, assignedTo, dueDate, subtasks);
+    pushTask(title, text, dueDate, nbOfSubtasks);
+}
+
+function pushTask(title, text, dueDate, nbOfSubtasks) {
+    data =
+    {
+        category: `${category}`,
+        titel: `${title}`,
+        text: `${text}`,
+        inCharge: ["assets/img/dummy.png", "assets/img/dummy.png", "assets/img/dummy.png"],
+        priority: `assets/img/${priority}.svg`,
+        subtasks: ["subtask1", "subtask2"],
+        alreadyDone: 0
+    };
+    console.log(data);
+    tasksToDo.push(data);
 }
 
 function getCategory() {
-    let checkedValue = null;
     let inputElements = document.getElementsByClassName('messageCheckbox');
     for (let i = 0; inputElements[i]; ++i) {
         if (inputElements[i].checked) {
@@ -25,7 +42,6 @@ function getCategory() {
 }
 
 function getAssignedTo() {
-    let checkedValue = null;
     let inputElements = document.getElementsByClassName('checkbox-contacts');
     for (let i = 0; inputElements[i]; ++i) {
         if (inputElements[i].checked) {
@@ -40,8 +56,8 @@ function getSubTasks() {
     for (let i = 0; inputElements[i]; ++i) {
         subtask = document.getElementById(`${i}`).innerHTML;
         subtasks.push(subtask);
-        }
     }
+}
 
 
 function openContactsToAssign() {
@@ -82,7 +98,7 @@ function renderSubtasks() {
     if (newtaskSubtask.length > 0) {
         document.getElementById('ckeckbox-subtasks').innerHTML +=
             htmlTemplateSubtasks(newtaskSubtask, nbOfSubtasks)
-            nbOfSubtasks++;
+        nbOfSubtasks++;
     }
     content.value = '';
 }
@@ -100,10 +116,10 @@ function clearAddTaskForm() {
 
 function setPriority(string) {
     priority = string;
-    document.getElementById('urgent-btn').style=("background-color:#f9f9f9");
-    document.getElementById('medium-btn').style=("background-color:#f9f9f9");
-    document.getElementById('low-btn').style=("background-color:#f9f9f9");
-    if (string != ''){
-        document.getElementById(`${string}-btn`).style=("background-color: darkgrey");
-    }    
+    document.getElementById('urgent-btn').style = ("background-color:#f9f9f9");
+    document.getElementById('medium-btn').style = ("background-color:#f9f9f9");
+    document.getElementById('low-btn').style = ("background-color:#f9f9f9");
+    if (string != '') {
+        document.getElementById(`${string}-btn`).style = ("background-color: darkgrey");
+    }
 }
