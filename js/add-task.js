@@ -10,6 +10,7 @@ function addTask() {
     let dueDate = document.getElementById('due-date').value;
     getSubTasks();
     nbOfSubtasks = 0;
+    console.log(category, title, text, assignedTo, dueDate, subtasks);
 }
 
 function getCategory() {
@@ -17,7 +18,6 @@ function getCategory() {
     let inputElements = document.getElementsByClassName('messageCheckbox');
     for (let i = 0; inputElements[i]; ++i) {
         if (inputElements[i].checked) {
-            checkedValue = inputElements[i].value;
             category = categories[i];
             break;
         }
@@ -29,9 +29,7 @@ function getAssignedTo() {
     let inputElements = document.getElementsByClassName('checkbox-contacts');
     for (let i = 0; inputElements[i]; ++i) {
         if (inputElements[i].checked) {
-            checkedValue = inputElements[i].value;
             assignedTo.push(contacts[i]['name'] + contacts[i]['second-name']);
-            console.log(assignedTo);
         }
     }
 }
@@ -102,4 +100,10 @@ function clearAddTaskForm() {
 
 function setPriority(string) {
     priority = string;
+    document.getElementById('urgent-btn').style=("background-color:#f9f9f9");
+    document.getElementById('medium-btn').style=("background-color:#f9f9f9");
+    document.getElementById('low-btn').style=("background-color:#f9f9f9");
+    if (string != ''){
+        document.getElementById(`${string}-btn`).style=("background-color: darkgrey");
+    }    
 }
