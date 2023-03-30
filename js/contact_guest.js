@@ -1,3 +1,5 @@
+// list of contacts
+
 let contacts = [
     {
         "name": "Tim",
@@ -43,6 +45,7 @@ let contacts = [
     }
 ]
 
+
 // render the contacts
 function renderTheQuestContacts() {
     document.getElementById('show-contacts-quest').innerHTML = ``
@@ -61,7 +64,7 @@ function renderTheQuestContacts() {
 }
 
 
-// function for render the first letter of the firstname and the surename
+// function for giving back the first letter of the firstname and the surename
 function getTheFirstLetterOfName(x) {
     let firstname = sortedContacts[x]['name'].charAt(0).toUpperCase()
     let surename = sortedContacts[x]['second-name'].charAt(0).toUpperCase()
@@ -70,6 +73,7 @@ function getTheFirstLetterOfName(x) {
 }
 
 
+// sorting the contacts
 function sortContactsAndSave(contacts) {
     let sortedContacts = contacts.slice();
     sortedContacts.sort(function (a, b) {
@@ -86,7 +90,7 @@ function sortContactsAndSave(contacts) {
     return sortedContacts;
 }
 
-
+// showing the details of a contact: full name, email, telephone number
 function showDetail(j) {
     showChosenContact(j);
     document.getElementById('detail-information-screen').innerHTML = `
@@ -105,6 +109,7 @@ function showDetail(j) {
         <p class="detail-email-designe"><span class="email-mobile-designe">Mobil</span><span>${sortedContacts[j]['tel']}</span></p>
     </div>`
 }
+
 
 function openEdit(o) {
     document.getElementById('edit-window').innerHTML = `
@@ -132,18 +137,11 @@ function openEdit(o) {
 
 
 function closeEdit() {
-    document.getElementById('edit-window').style.left = '-800px'
+    document.getElementById('edit-window').style.left = '-50vw'
 }
 
 
-function openAdd(){
-    document.getElementById('add-window').style.left = '0';
-}
-
-function closeAdd(){
-    document.getElementById('add-window').style.left = '-800px';
-}
-
+// change the background of the s
 let chosenContactCounter;
 function showChosenContact(c) {
     chosenContactCounter = c;
@@ -152,6 +150,7 @@ function showChosenContact(c) {
 }
 
 
+// the function remove and add the blue background in the contact list
 function removeBackgroundFromUnchosed(k) {
     for (let index = 0; index < sortedContacts.length; index++) {
         if (index == chosenContactCounter) {
@@ -164,6 +163,8 @@ function removeBackgroundFromUnchosed(k) {
 }
 
 
+// load the letters of the first name into an array and return the letter
+// if the letter counter bigger than 1 he return nothing
 let letterCounter = [];
 function letterSortSet(l) {
     let firstname = sortedContacts[i]['name'].charAt(0).toUpperCase()
@@ -176,7 +177,7 @@ function letterSortSet(l) {
     }
 }
 
-
+// this function giving back the amount of a letter
 function countLetter(arr, letter) {
     let count = 0;
     for (let i = 0; i < arr.length; i++) {
@@ -185,6 +186,17 @@ function countLetter(arr, letter) {
         }
     }
     return count;
+}
+
+
+// open the add contact window
+function openAdd(){
+    document.getElementById('add-window').style.left = '0';
+}
+
+// close the add contact window
+function closeAdd(){
+    document.getElementById('add-window').style.left = '-50vw';
 }
 
 

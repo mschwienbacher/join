@@ -69,7 +69,6 @@
     color: #4589FF;
 }
 
-
 /*Detail information designe*/
 #detail-information-screen {
     padding: 58px 865px;
@@ -151,10 +150,9 @@
 }
 
 /*Window for edding the contact*/
-
 #edit-window {
     position: absolute;
-    left: -800px;
+    left: -50vw;
     top: 0;
     bottom: 0;
     width: 50vw;
@@ -253,10 +251,9 @@
 }
 
 /*Add contact window*/
-
 #add-window {
     position: absolute;
-    left: -800px;
+    left: -50vw;
     top: 0;
     bottom: 0;
     width: 50vw;
@@ -280,7 +277,6 @@
     justify-content: space-around;
     width: 100%;
 }
-
 
 .embleme-add  {
     display: flex;
