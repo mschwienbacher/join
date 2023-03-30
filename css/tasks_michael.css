@@ -162,7 +162,7 @@
     box-shadow: 0px 2px 0px rgba(255,61,0, 1);
 }
 
-.urgent:focus {
+.urgent:focus, .urgent.selected {
     background: rgba(255,61,0);
     color: #FFFFFF;
     box-shadow: 0px 2px 0px rgba(255,61,0, 1);
@@ -173,7 +173,7 @@
     box-shadow: 0px 2px 0px rgba(255,168,0, 1);
 }
 
-.medium:focus {
+.medium:focus, .medium.selected {
     background: rgba(255,168,0);
     color: #FFFFFF;
     box-shadow: 0px 2px 0px rgba(255,168,0, 1);
@@ -183,21 +183,21 @@
     box-shadow: 0px 2px 0px rgba(122,226,41, 1);
 }
 
-.low:focus {
+.low:focus, .low.selected {
     background: rgba(122,226,41);
     color: #FFFFFF;
     box-shadow: 0px 2px 0px rgba(122,226,41, 1);
 }
 
-.urgent:focus img {
+.urgent:focus img, .urgent.selected img {
     filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(200%) contrast(100%);
 }
 
-.medium:focus img {
+.medium:focus img, .medium.selected img {
     filter: invert(0%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(200%) contrast(100%);
 }
 
-.low:focus img {
+.low:focus img, .low.selected img {
     filter: invert(0%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(200%) contrast(100%);
 }
 

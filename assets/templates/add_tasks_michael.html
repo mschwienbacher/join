@@ -1,4 +1,4 @@
-<form action="return false;" id="form-id-add-task">
+<form onsubmit="saveTheTask(); return false;" id="form-id-add-task">
     <div class="new-task-container">
       <div class="input-field bigger">
         <input type="text" name="task-title" placeholder="Enter a title" id="task-title" required>
@@ -23,9 +23,9 @@
         <div class="opener" id="opener-category"></div>
       </div>
       <div class="input-field flex">
-        <button name="Urgent" onclick="selectedElement(1);" id="status-1" type="button" class="urgent">Urgent <span><img src="assets/img/urgent.svg" alt="Urgent"></span></button>
-        <button name="Medium" onclick="selectedElement(2);" id="status-2" type="button" class="medium">Medium <span><img src="assets/img/medium.svg" alt="Medium"></span></button>
-        <button name="Low" onclick="selectedElement(3);" id="status-3" type="button" class="low">Low <span><img src="assets/img/low.svg" alt="Low"></span></button>
+        <button name="Urgent" onclick="selectedElement(1);" id="status-1" type="button" class="priority urgent">Urgent <span><img src="assets/img/urgent.svg" alt="Urgent"></span></button>
+        <button name="Medium" onclick="selectedElement(2);" id="status-2" type="button" class="priority medium">Medium <span><img src="assets/img/medium.svg" alt="Medium"></span></button>
+        <button name="Low" onclick="selectedElement(3);" id="status-3" type="button" class="priority low">Low <span><img src="assets/img/low.svg" alt="Low"></span></button>
       </div>
       <div class="input-field">
         <span class="input-title">Description</span>
@@ -34,7 +34,7 @@
       <div class="form-opener-container" id="subtask-checkboxes">
         <span class="input-title">Subtasks</span>
         <div class="form-opener flex" id="form-opener-subtasks">
-          <input type="text" name="add-subtask" placeholder="Add new subtask" id="add-subtask" required>
+          <input type="text" name="add-subtask" placeholder="Add new subtask" id="add-subtask">
           <img src="assets/img/close.svg" onclick="clearSubTask();" width="25" height="25" class="blueone" alt=""><span class="divider"></span><img src="assets/img/ok.svg" onclick="addSubTaskToList();" width="25" height="25" class="blueone" alt="">
         </div>
         <div class="opener" id="opener-subtasks"></div>
@@ -42,6 +42,6 @@
     </div>
     <div class="action-buttons">
       <a href="javascript:void(0);" class="cta-button" onclick="location.reload();" title="Clear">Clear</a>
-      <button onclick="saveTheTask();">Save</button>
+      <button>Save</button>
     </div>
   </form>

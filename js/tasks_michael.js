@@ -1,6 +1,7 @@
 let counter = 0;
-let tasks = [{}];
+let tasks = [];
 let taskUsers = [];
+let taskSubTasks = [];
 
 let category = [
     {
@@ -34,7 +35,7 @@ async function loadExistingContacts() {
         for(let i = 0; i < allContacts.length; i++) {
             let theContact = allContacts[i];
             container.innerHTML += `
-                <label class="flex" for="contact-${i}"> ${theContact.name} ${theContact.surname} <input type="checkbox" name="${theContact.name} ${theContact.surname}" id="contact-${i}" class="users"></label>
+                <label class="flex" for="contact-${i}"> ${theContact.name} ${theContact.surname} <input type="checkbox" onclick="checkCheckbox('contact-', ${i});" name="${theContact.name} ${theContact.surname}" id="contact-${i}" class="users"></label>
             `;
         }
     } else {
@@ -141,14 +142,22 @@ function addSubTaskToList() {
     subTaskContainer.classList.add("show-me");
     if(theSubTask.value != "") {
         subTaskContainer.innerHTML += `
-            <label class="flex subt" for="subtask-${counter}"><input checked type="checkbox" name="${theSubTask.value}" id="subtask-${counter}"> ${theSubTask.value}</label>
+            <label class="flex subt" for="subtask-${counter}"><input checked="true" onclick="checkCheckbox('subtask-', ${counter});" type="checkbox" name="${theSubTask.value}" id="subtask-${counter}"> ${theSubTask.value}</label>
         `;
         theSubTask.value = "";
         counter++;
     } else {
         alert("Your subtask need a name!");
     }
+}
 
+function checkCheckbox(element, id) {
+    var checkBox = document.getElementById(element + id);
+    if (checkBox.getAttribute("checked") == null || checkBox.getAttribute("checked") == "false"){
+        checkBox.setAttribute("checked", true);
+    } else {
+        checkBox.removeAttribute("checked");
+    }
 }
 
 function clearSubTask() {
@@ -159,21 +168,93 @@ function clearSubTask() {
 function saveTheTask() {
     let taskTitle = document.getElementById("task-title");
     getUsersForTasks();
+    let taskDate = getTaskDate();
+    let theTaskCategory = getTaskCategory();
+    let taskPriority = getPriorityValue();
+    let taskDescription = document.getElementById("task-decription");
+    getTaskSubTasks();
+    tasks.push({
+        "title": taskTitle.value,
+        "users": taskUsers,
+        "date": taskDate,
+        "category": theTaskCategory,
+        "priority": taskPriority,
+        "description": taskDescription.value,
+        "subtasks": taskSubTasks
+    });
+    console.log(tasks);
 
-    // TODO: Daten sammeln, weiter mit DATE
-    let taskDate = document.getElementById("task-date");
-    let formattedTaskDate = taskDate.getDate() + '-' + (taskDate.getMonth() + 1) + '-' + taskDate.getFullYear();
-    console.log(formattedTaskDate);
+}
+
+function getTaskCategory() {
+    let categoryDiv = document.getElementById("selectedText");
+    if(categoryDiv.textContent != "Select task category") {
+        return categoryDiv.textContent;
+    } else {
+        return "";
+        alert("Selecting the category is required!");
+    }
+}
+
+function getPriorityValue() {
+    let buttons = document.querySelectorAll("button.priority");
+    let isSelected = false;
+    for(let i = 0; i < buttons.length ; i++) {
+        if (buttons[i].classList.contains("selected")) {
+            isSelected = true;
+            return buttons[i].name;
+            break;
+        }
+    }
+    if (!isSelected) {
+        alert("Please select the priority of the task");
+        return "";
+    }
+}
+
+function getTaskDate() {
+    let taskDate = document.getElementById("task-date").value;
+    const dateObj = new Date(Date.parse(taskDate));
+    const day = dateObj.getDate().toString().padStart(2, '0');
+    const month = (dateObj.getMonth() + 1).toString().padStart(2, '0');
+    const year = dateObj.getFullYear().toString();
+    const formattedDate = `${day}/${month}/${year}`;
+    return formattedDate;
 }
 
 function getUsersForTasks() {
     let theUsers = document.querySelectorAll("input.users");
-    for(let i = 0; i < theUsers.length; i++) {
-        let singleUser = theUsers[i];
-        if(singleUser.checked == true) {
-            console.log(singleUser.name);
-            taskUsers.push(singleUser.name);
+    let isSelected = false;
+    let fullUsers = [];
+        for(let i = 0; i < theUsers.length; i++) {
+            let singleUser = theUsers[i];
+                if(singleUser.checked == true) {
+                    isSelected = true;
+                    fullUsers.push(singleUser.name);
+                } else {
+                    taskUsers = [];
+                }
         }
+        taskUsers.push(fullUsers);
+    if (!isSelected) {
+        alert("Please select a contact to assign the task");
     }
+}
 
+
+function getTaskSubTasks() {
+    // TODO Problem
+    let subtasks = document.querySelectorAll("label.subt input");
+    let subTaskList = [];
+    if(subtasks.length > 0) {
+        for(let i = 0; i < subtasks.length; i++) {
+            let subtask = subtasks[i];
+            if(subtask.checked == true) {
+                subTaskList.push(subtask.name);
+            } else {
+                taskSubTasks = [];
+            }
+        }
+        taskSubTasks.push(subTaskList);
+    }
 }
