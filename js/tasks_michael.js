@@ -182,7 +182,7 @@ function saveTheTask() {
         "description": taskDescription.value,
         "subtasks": taskSubTasks
     });
-    console.log(tasks);
+
 
 }
 
@@ -236,17 +236,16 @@ function getUsersForTasks() {
                 }
         }
         taskUsers.push(fullUsers);
-    if (!isSelected) {
-        alert("Please select a contact to assign the task");
-    }
+        if (!isSelected) {
+            alert("Please select a contact to assign the task");
+        }
 }
 
 
 function getTaskSubTasks() {
-    // TODO Problem
+    // TODO: Wenn ich mehrere Aktionen durchführen macht es Probleme
     let subtasks = document.querySelectorAll("label.subt input");
     let subTaskList = [];
-    if(subtasks.length > 0) {
         for(let i = 0; i < subtasks.length; i++) {
             let subtask = subtasks[i];
             if(subtask.checked == true) {
@@ -256,5 +255,4 @@ function getTaskSubTasks() {
             }
         }
         taskSubTasks.push(subTaskList);
-    }
 }
