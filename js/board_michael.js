@@ -15,18 +15,12 @@ async function renderTasks() {
 
     let todoDiv = document.getElementById("todo-tasks");
     let feedbackDiv = document.getElementById("feedback-tasks");
-
+    let muh = [];
     for(let i = 0; i < filterTasksByTodo.length; i++) {
         let singleUser = filterTasksByTodo[i];
-
         let associatedUsers = singleUser.users;
-        //TODO SPLIT THE USERS
-        let singleAssociatedUser = "";
-        for (let j = 0; j < associatedUsers.length; j++) {
-            singleAssociatedUser += `<span class="circle">${associatedUsers[j]}</div>`;
-        }
-        console.log(singleAssociatedUser);
-        todoDiv.innerHTML += singleTaskTemplate(singleUser, i, singleAssociatedUser);
+
+        todoDiv.innerHTML += singleTaskTemplate(singleUser, i, associatedUsers);
     }
 
     /*for(let i = 0; i < filterTasksByInFeedback.length; i++) {
@@ -46,8 +40,8 @@ function singleTaskTemplate(singleUser, i, singleAssociatedUser) {
                 <div class="slider-indication">1/${singleUser.subtasks.length}</div>
             </div>
             <div class="more-dets">
-                <div class="users">
-                  ${singleAssociatedUser}
+                <span class="users">
+                  <span class="circle">${singleAssociatedUser}</span>
                 </div>
                 <div class="prio">${singleUser.priority}</div>
             </div>
