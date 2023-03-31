@@ -1,7 +1,30 @@
+.summary-page .content .wrapper {
+    margin-top:35px;
+}
+
+.summary-page h1 {
+    color: #2A3647;
+    font-size: 50px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 45px;
+    padding:0;
+}
+
+.summary-page h1 span {
+    font-size: 64px;
+    color:#4589FF;
+}
+
+.two-column {
+    margin-bottom: 35px;
+}
+
 .summary-column {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 35px;
 }
 
 .content .summary-column p {
@@ -16,16 +39,20 @@
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.16);
 }
 
+.detail-container a {
+    display: flex;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+}
+
 .two-column .detail-container {
-    width: 48%;
+    width: 30%;
 }
 
 .four-column .detail-container {
     width: 23%;
     background: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .four-column .detail-wrapper {
@@ -33,12 +60,64 @@
     padding: 35px;
 }
 
+.two-column .detail-wrapper {
+    padding: 35px 0;
+}
+
 #detail-box-1 {
     background:#4589FF;
     color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+    width: 80%;
+}
+
+#detail-box-1:hover, .two-column .detail-container:hover {
+    background: white;
+}
+
+#detail-box-1:hover .counter, #detail-box-1:hover p {
+    color: #4589FF;
+}
+
+.two-column .detail-container:hover #tasks-todo, .two-column .detail-container:hover #last-box p {
+    color: #005DFF;
+}
+
+#detail-box-1:hover .divider {
+    background:#005DFF;
+}
+
+#detail-box-1:hover img {
+    border-color: transparent;
+}
+
+
+#detail-box-1 img {
+    border-color: white;
+    border-radius: 50%;
+}
+
+#detail-box-1 .counter {
+    color: white;
+}
+
+.two-column .counter {
+    color: black;
+}
+
+.divider {
+    width:3px;
+    height: 145px;
+    background: white;
+    margin: 0 65px;
+}
+
+.theDate {
+    font-size: 33px;
+    font-weight: 700;
+}
+
+.upDeadline {
+    font-size: 23px;
 }
 
 #detail-box-1 p {
@@ -56,10 +135,38 @@
 .counter {
     font-size: 48px;
     font-weight: 700;
+    color: #000000;
 }
 
 .detail-content {
     text-align: center;
     font-size: 23px;
     color: #4589FF;
+}
+
+.four-column .detail-container:hover {
+    background: #005DFF;
+    border-radius: 0 30px 30px 30px;
+}
+
+.detail-container a {
+    transition: all .2s ease-in-out;
+}
+
+.detail-container:hover a {
+    transform: scale(1.1);
+}
+
+.detail-container:hover img {
+    border: 2px solid white;
+    border-radius: 50%;
+}
+
+.four-column .detail-container:hover .counter, .four-column .detail-container:hover .detail-content {
+    color: white;
+}
+
+.detail-container img {
+    border: 2px solid transparent;
+    box-sizing: border-box;
 }

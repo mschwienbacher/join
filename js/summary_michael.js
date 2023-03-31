@@ -36,6 +36,7 @@ function printSummary() {
     let inProgress = document.getElementById("tasks-progress");
     let inFeedback = document.getElementById("tasks-feedback");
     let inDone = document.getElementById("tasks-done");
+    let dueDate = document.getElementById("due-date");
 
     urgentTasks.innerHTML = tasksUrgent.length;
     toDoTasks.innerHTML = tasksToDo.length;
@@ -43,6 +44,7 @@ function printSummary() {
     inProgress.innerHTML = tasksInProgress.length;
     inFeedback.innerHTML = tasksInFeedback.length;
     inDone.innerHTML = tasksDone.length;
+    dueDate.innerHTML = showNextDeadline();
 }
 
 function getTaskPriority(singleTask, arrayToFill, status, fetcher) {
@@ -58,18 +60,35 @@ function getTaskPriority(singleTask, arrayToFill, status, fetcher) {
     }
 }
 
-/* SHOW DATES
-const today = new Date(); // aktuelles Datum
-const dateObjects = lastDueDate.map(date => new Date(date.split('/').reverse().join('/'))); // Array mit Date-Objekten
-const sortedDates = dateObjects.sort((a, b) => a - b); // sortiertes Array
-console.log(sortedDates);
-let nextDate;
-for (let i = 0; i < sortedDates.length; i++) {
-    if (sortedDates[i] >= today) {
-        nextDate = sortedDates[i];
-        break;
-    }
-}
+function showNextDeadline() {
+    let today = new Date();
+    let day = today.getDate();
+    let month = today.getMonth() + 1;
+    let year = today.getFullYear();
 
-console.log(nextDate.toLocaleDateString());
- */
+    if (day < 10) {
+        day = '0' + day;
+    }
+
+    if (month < 10) {
+        month = '0' + month;
+    }
+
+    let formattedDate = `${day}/${month}/${year}`;
+    let sortedDates = lastDueDate.sort();
+    let nextDueDate;
+    for (let i = 0; i < sortedDates.length; i++) {
+        if (sortedDates[i] >= formattedDate) {
+            nextDueDate = sortedDates[i];
+            break;
+        }
+    }
+
+    let [tDay, tMonth, tYear] = nextDueDate.split("/");
+    let dateObject = new Date(tYear, tMonth - 1, tDay);
+    let options = { month: 'long', day: 'numeric', year: 'numeric' };
+    let formattedCorrectDate = dateObject.toLocaleString('en-US', options);
+    return formattedCorrectDate;
+
+
+}
