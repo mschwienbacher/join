@@ -210,7 +210,7 @@ function saveTheTask() {
         "priority": taskPriority,
         "description": taskDescription.value,
         "subtasks": taskSubTasks,
-        "status": "ToDo"
+        "status": "Done"
     });
     saveCategoriesToBackend();
     saveTasksToBackend();

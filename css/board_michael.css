@@ -1,0 +1,28 @@
+.board-header, .board, .status-header, .status-bar, .more-dets {
+    display: flex;
+}
+
+.board {
+    justify-content: space-between;
+    align-items: start;
+
+}
+
+.status {
+    width:23%;
+}
+
+.status-header {
+    justify-content: space-between;
+}
+
+.single-task {
+    background: white;
+    border-radius: 30px;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.16);
+    padding: 20px;
+}
+
+.category {
+
+}
