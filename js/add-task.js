@@ -132,10 +132,9 @@ async function saveTasksToBackend() {
     await backend.setItem('tasksDone', JSON.stringify(tasksDone));
 }
 
-function loadTasksFromBackend() {
-    tasksToDo = JSON.parse(backend.getItem('tasksToDo')) || [];
-    tasksInProgress = JSON.parse(backend.getItem('tasksInProgress')) || [];
-    tasksAwaitFeedback = JSON.parse(backend.getItem('tasksAwaitFeedback')) || [];
-    tasksDone = JSON.parse(backend.getItem('tasksDone')) || [];
-    
+async function loadTasksFromBackend() {
+    tasksToDo = await JSON.parse(backend.getItem('tasksToDo')) || [];
+    tasksInProgress = await JSON.parse(backend.getItem('tasksInProgress')) || [];
+    tasksAwaitFeedback = await JSON.parse(backend.getItem('tasksAwaitFeedback')) || [];
+    tasksDone = await JSON.parse(backend.getItem('tasksDone')) || [];    
 }
