@@ -1,7 +1,6 @@
 let priority = '';
 let category = '';
 let nbOfSubtasks = 0;
-let tasksToDoAsJson = JSON.stringify(tasksToDo);
 let data ='';
 
 function addTask() {
@@ -10,25 +9,26 @@ function addTask() {
     let text = document.getElementById('task-description').value;
     getAssignedTo()
     let dueDate = document.getElementById('due-date').value;
-    getSubTasks();
-    nbOfSubtasks = 0;
-    console.log(category, title, text, assignedTo, dueDate, subtasks);
-    pushTask(title, text, dueDate, nbOfSubtasks);
+    getSubTasks();  
+    pushTask(title, text, dueDate);
 }
 
-function pushTask(title, text, dueDate, nbOfSubtasks) {
+function pushTask(title, text, dueDate) {
     data =
     {
         category: `${category}`,
         titel: `${title}`,
         text: `${text}`,
-        inCharge: ["assets/img/dummy.png", "assets/img/dummy.png", "assets/img/dummy.png"],
+        inCharge: [],
+        dueDate: `${dueDate}`,
         priority: `assets/img/${priority}.svg`,
-        subtasks: ["subtask1", "subtask2"],
+        subtasks: [],
         alreadyDone: 0
     };
-    console.log(data);
+    data['inCharge'].push(assignedTo);
+    data['subtasks'].push(subtasks);
     tasksToDo.push(data);
+    /* saveTasksToBackend(); */
 }
 
 function getCategory() {
@@ -42,6 +42,7 @@ function getCategory() {
 }
 
 function getAssignedTo() {
+    assignedTo = [];
     let inputElements = document.getElementsByClassName('checkbox-contacts');
     for (let i = 0; inputElements[i]; ++i) {
         if (inputElements[i].checked) {
@@ -51,7 +52,7 @@ function getAssignedTo() {
 }
 
 function getSubTasks() {
-    let checkedValue = null;
+    subtasks = [];
     let inputElements = document.getElementsByClassName('checkbox-subtask');
     for (let i = 0; inputElements[i]; ++i) {
         subtask = document.getElementById(`${i}`).innerHTML;
@@ -122,4 +123,19 @@ function setPriority(string) {
     if (string != '') {
         document.getElementById(`${string}-btn`).style = ("background-color: darkgrey");
     }
+}
+
+async function saveTasksToBackend() {
+    await backend.setItem('tasksToDo', JSON.stringify(tasksToDo));
+    await backend.setItem('tasksInProgress', JSON.stringify(tasksInProgress));
+    await backend.setItem('tasksAwaitFeedback', JSON.stringify(tasksAwaitFeedback));
+    await backend.setItem('tasksDone', JSON.stringify(tasksDone));
+}
+
+function loadTasksFromBackend() {
+    tasksToDo = JSON.parse(backend.getItem('tasksToDo')) || [];
+    tasksInProgress = JSON.parse(backend.getItem('tasksInProgress')) || [];
+    tasksAwaitFeedback = JSON.parse(backend.getItem('tasksAwaitFeedback')) || [];
+    tasksDone = JSON.parse(backend.getItem('tasksDone')) || [];
+    
 }

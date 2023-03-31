@@ -1,4 +1,5 @@
 function renderBoard(){
+    loadTasksFromBackend();
     renderTasksToDo();
     renderTasksInProgress();
     renderTasksAwaitFeedback();
