@@ -57,9 +57,7 @@ function singleTaskTemplate(singleTask, i, finalUser) {
                 <div class="slider-indication">1/${singleTask.subtasks.length}</div>
             </div>
             <div class="more-dets">
-                <span class="users">
-                  ${finalUser}
-                </div>
+              ${finalUser}
                 <div class="prio">${singleTask.priority}</div>
             </div>
         </div>
