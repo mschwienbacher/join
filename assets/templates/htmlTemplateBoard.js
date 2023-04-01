@@ -1,6 +1,6 @@
 function htmlTemplateTasksToDo(i){
     return `
-    <div class="task-container-detail">
+    <div class="task-container-detail" onclick="openDetailCardToDo(${i})">
         <div class="category category-${tasksToDo[i]['category']}">${tasksToDo[i]['category']}</div>
      <div class="headline-task-detail">${tasksToDo[i]['titel']}</div>
         <div class="text-task-detail">${tasksToDo[i]['text']}</div>
@@ -28,7 +28,7 @@ function htmlTemplateSelectedPersonToDo(i,j){
 
 function htmlTemplateTasksInProgress(i){
     return `
-    <div class="task-container-detail">
+    <div class="task-container-detail" onclick="openDetailCardInProgress(${i})">
         <div class="category category-${tasksInProgress[i]['category']}">${tasksInProgress[i]['category']}</div>
      <div class="headline-task-detail">${tasksInProgress[i]['titel']}</div>
         <div class="text-task-detail">${tasksInProgress[i]['text']}</div>
@@ -55,7 +55,7 @@ function htmlTemplateSelectedPersonInProgress(i,j){
 
 function htmlTemplateTasksAwaitFeedback(i){
     return `
-    <div class="task-container-detail">
+    <div class="task-container-detail" onclick="openDetailCardAwaitFeedback(${i})">
         <div class="category category-${tasksAwaitFeedback[i]['category']}">${tasksAwaitFeedback[i]['category']}</div>
      <div class="headline-task-detail">${tasksAwaitFeedback[i]['titel']}</div>
         <div class="text-task-detail">${tasksAwaitFeedback[i]['text']}</div>
@@ -82,7 +82,7 @@ function htmlTemplateSelectedPersonAwaitFeedback(i,j){
 
 function htmlTemplateTasksDone(i){
     return `
-    <div class="task-container-detail">
+    <div class="task-container-detail" onclick="openDetailCardDone(${i})">
         <div class="category category-${tasksDone[i]['category']}">${tasksDone[i]['category']}</div>
      <div class="headline-task-detail">${tasksDone[i]['titel']}</div>
         <div class="text-task-detail">${tasksDone[i]['text']}</div>

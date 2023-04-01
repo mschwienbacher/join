@@ -84,3 +84,27 @@ function renderSelectedPersonDone(i){
         htmlTemplateSelectedPersonDone(i,j)
     }
 }
+
+function openDetailCardToDo(x){
+    document.getElementById('detail-popup').classList.remove('d-none');
+    console.log(x);
+}
+
+function openDetailCardInProgress(x){
+    document.getElementById('detail-popup').classList.remove('d-none');
+    console.log(x);
+}
+
+function openDetailCardAwaitFeedback(x){
+    document.getElementById('detail-popup').classList.remove('d-none');
+    console.log(x);
+}
+
+function openDetailCardDone(x){
+    document.getElementById('detail-popup').classList.remove('d-none');
+    console.log(x);
+}
+
+function closeDetailCard(){
+    document.getElementById('detail-popup').classList.add('d-none');
+}

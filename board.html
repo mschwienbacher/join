@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="css/inner-page.css">
     <link rel="stylesheet" href="css/inner-page-responsive.css">
     <link rel="stylesheet" href="css/animations.css">
-    <link rel="stylesheet" href="css/board.css">   
+    <link rel="stylesheet" href="css/board.css">
 </head>
 
 <body class="board-page" onload="initBackend()">
@@ -51,6 +51,35 @@
                 <div class="inner reverse">
                     <div class="content">
                         <div class="wrapper">
+                            <div id="detail-popup" class="detail-popup d-none">
+                                <div class="close-x"><button onclick="closeDetailCard()">X</button></div>
+                                <span class="category category-Design">Category</span>
+                                <h1>Titel</h1>
+                                <span class="task-text">text</span>
+                                <span class="text-fix">Due date:</span>
+                                <span class="text-fix">Priority:</span>
+                                <span class="text-fix">Assigned To:</span>
+                                <div class="names-container">
+                                    <div class="names">
+                                        <div class="initials-icon">MM</div>
+                                        <div class="name">Name1</div>
+                                    </div>
+                                    <div class="names">
+                                        <div class="initials-icon">MM</div>
+                                        <div class="name">Name1</div>
+                                    </div>
+                                    <div class="names">
+                                        <div class="initials-icon">MM</div>
+                                        <div class="name">Name1</div>
+                                    </div>
+                                    <div class="names">
+                                        <div class="initials-icon">MM</div>
+                                        <div class="name">Name1</div>
+                                    </div>
+                                </div>
+
+                                <div class="edit-btn"><img src="assets/img/edit-button.svg"></div>
+                            </div>
                             <div class="menu-bar">
                                 <div class="search-bar">
                                     <input type="text" placeholder="Find task">
@@ -67,7 +96,7 @@
                                         <img src="assets/img/plus.svg" alt="add">
                                     </div>
                                     <div class="task-container" id="to-do-container">
-                                       <!-- htmlTemplateTasksToDo -->
+                                        <!-- htmlTemplateTasksToDo -->
                                     </div>
                                 </div>
                                 <div class="status">
@@ -76,7 +105,7 @@
                                         <img src="assets/img/plus.svg" alt="add">
                                     </div>
                                     <div class="task-container" id="in-progress-container">
-                                       <!-- htmlTemplateTasksInProgress-->
+                                        <!-- htmlTemplateTasksInProgress-->
                                     </div>
                                 </div>
                                 <div class="status">
@@ -131,9 +160,9 @@
     <script src="js/main.js"></script>
     <script src="js/task_data_joerg.js"></script>
     <script src="assets/templates/htmlTemplateBoard.js"></script>
-    <script src="js/add-task.js"></script> 
+    <script src="js/add-task.js"></script>
     <script onload="renderBoard()" src="js/board.js"></script>
-    <!-- Insert dedicated JS script -->    
+    <!-- Insert dedicated JS script -->
 </body>
 
 </html>

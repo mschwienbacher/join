@@ -182,3 +182,86 @@ height: 15px;
     border: none;
     margin-top: 10px;
 }
+
+.detail-popup{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-left: 24px;
+    padding-bottom: 24px;
+    background-color: #f9f9f9;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 400px;
+    border-radius: 30px;
+}
+
+.names-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.names{
+    display: flex;
+    flex-direction: row;
+    align-items: center;  
+    margin-top: 12px;
+    border: none;
+}
+
+.name{
+    margin-left: 20px;
+    margin-top: 12px;
+}
+
+.edit-btn{
+    display: flex;
+    justify-content: end;
+    margin-right: 24px;
+}
+
+.text-fix{
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    color: black;
+    margin-top: 28px;
+}
+
+.task-text{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+}
+
+.close-x{
+    display: flex;
+    justify-content: end;
+    margin-right: 24px;
+    margin-top: 24px;
+}
+
+.close-x button{
+    border: none;
+    background-color: #f9f9f9;
+    height: 22px;
+}
+
+.close-x button:hover{
+    cursor: pointer;
+}
+
+.detail-popup h1{
+    font-style: normal;
+    font-weight: 700;
+    font-size: 61px;
+    color: black;
+    margin-top: 12px;
+}
+
+.d-none{
+    display: none;
+}
