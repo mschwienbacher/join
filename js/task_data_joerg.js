@@ -2,6 +2,8 @@ let categories = ['Backoffice', 'Design', 'Marketing', 'Media', 'Sales'];
 
 let assignedTo = [];
 
+let initials = [];
+
 let subtasks =[];
 
 let tasksToDo = [
@@ -10,6 +12,7 @@ let tasksToDo = [
         titel: "website redesign",
         text: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
         inCharge: ["Jörg Betz", "Michael Schwienbacher", "Tim Mellentin"],
+        initials: ["JB", "MS", "TM"],
         dueDate: ["2023-04-30"],
         priority: "assets/img/low.svg",
         subtasks: ["subtask1", "subtask2"],
@@ -20,6 +23,7 @@ let tasksToDo = [
         titel: "analyse sales",
         text: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
         inCharge: ["Jörg Betz", "Michael Schwienbacher", "Tim Mellentin"],
+        initials: ["JB", "MS", "TM"],
         dueDate: ["2023-04-30"],
         priority: "assets/img/urgent.svg",
         subtasks: ["subtask1", "subtask2"],
@@ -33,6 +37,7 @@ let tasksInProgress = [
         titel: "check ads",
         text: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
         inCharge: ["Jörg Betz", "Michael Schwienbacher", "Tim Mellentin"],
+        initials: ["JB", "MS", "TM"],
         dueDate: ["2023-04-30"],
         priority: "assets/img/low.svg",
         subtasks: ["subtask1", "subtask2"],
@@ -43,6 +48,7 @@ let tasksInProgress = [
         titel: "Video cut",
         text: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
         inCharge: ["Jörg Betz", "Michael Schwienbacher", "Tim Mellentin"],
+        initials: ["JB", "MS", "TM"],
         dueDate: ["2023-04-30"],
         priority: "assets/img/low.svg",
         subtasks: ["subtask1", "subtask2"],
@@ -56,6 +62,7 @@ let tasksAwaitFeedback = [
         titel: "order ads",
         text: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
         inCharge: ["Jörg Betz", "Michael Schwienbacher", "Tim Mellentin"],
+        initials: ["JB", "MS", "TM"],
         dueDate: ["2023-04-30"],
         priority: "assets/img/low.svg",
         subtasks: ["subtask1", "subtask2"],
@@ -66,6 +73,7 @@ let tasksAwaitFeedback = [
         titel: "Design logo",
         text: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
         inCharge: ["Jörg Betz", "Michael Schwienbacher", "Tim Mellentin"],
+        initials: ["JB", "MS", "TM"],
         dueDate: ["2023-04-30"],
         priority: "assets/img/low.svg",
         subtasks: ["subtask1", "subtask2"],
@@ -79,6 +87,7 @@ let tasksDone = [
         titel: "book ads",
         text: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
         inCharge: ["Jörg Betz", "Michael Schwienbacher", "Tim Mellentin"],
+        initials: ["JB", "MS", "TM"],
         dueDate: ["2023-04-30"],
         priority: "assets/img/low.svg",
         subtasks: ["subtask1", "subtask2"],
@@ -89,6 +98,7 @@ let tasksDone = [
         titel: "analyse applications",
         text: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
         inCharge: ["Jörg Betz", "Michael Schwienbacher", "Tim Mellentin"],
+        initials: ["JB", "MS", "TM"],
         dueDate: ["2023-04-30"],
         priority: "assets/img/medium.svg",
         subtasks: ["subtask1", "subtask2"],

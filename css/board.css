@@ -147,14 +147,35 @@ height: 15px;
     align-items: center;  
 }
 
-.selected-person img{
+.selected-person {
+    display: flex;    
+}
+
+.initials-icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0038FF; 
+    color: #f9f9f9;   
     border-radius: 100%;
-    margin-left: -16px;
+    /* margin-left: -16px; */
     margin-right: -6px;
     margin-top: 10px;
     border: none;
     width: 35px;
     height: 35px;
+}
+
+.bg1{
+    background-color: lightskyblue;
+}
+
+.bg2{
+    background-color: #FC71FF;
+}
+
+.bg3{
+    background-color: green;
 }
 
 .priority-task-detail img{

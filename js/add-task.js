@@ -13,22 +13,24 @@ function addTask() {
     pushTask(title, text, dueDate);
 }
 
-function pushTask(title, text, dueDate) {
+async function pushTask(title, text, dueDate) {
     data =
     {
         category: `${category}`,
         titel: `${title}`,
         text: `${text}`,
         inCharge: [],
+        initials: [],
         dueDate: `${dueDate}`,
         priority: `assets/img/${priority}.svg`,
         subtasks: [],
         alreadyDone: 0
     };
     data['inCharge'].push(assignedTo);
+    data['initials'].push(initials);
     data['subtasks'].push(subtasks);
     tasksToDo.push(data);
-    /* saveTasksToBackend(); */
+    await saveTasksToBackend();
 }
 
 function getCategory() {
@@ -43,10 +45,14 @@ function getCategory() {
 
 function getAssignedTo() {
     assignedTo = [];
+    initials =[];
     let inputElements = document.getElementsByClassName('checkbox-contacts');
     for (let i = 0; inputElements[i]; ++i) {
         if (inputElements[i].checked) {
-            assignedTo.push(contacts[i]['name'] + contacts[i]['second-name']);
+            assignedTo.push(contacts[i]['name'] + ' ' + contacts[i]['second-name']);
+            firstInitial = contacts[i]['name'].charAt(0);
+            secondInitial = contacts[i]['second-name'].charAt(0);
+            initials.push(firstInitial+secondInitial);
         }
     }
 }

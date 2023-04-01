@@ -21,7 +21,7 @@ function htmlTemplateTasksToDo(i){
 
 function htmlTemplateSelectedPersonToDo(i,j){
     return`
-        <img src="${tasksToDo[i]['inCharge'][j]}">
+        <div class="initials-icon bg${j}">${tasksToDo[i]['initials'][j]}</div>
     `;
 }
 
@@ -48,7 +48,7 @@ function htmlTemplateTasksInProgress(i){
 
 function htmlTemplateSelectedPersonInProgress(i,j){
     return`
-        <img src="${tasksInProgress[i]['inCharge'][j]}">
+    <div class="initials-icon bg${j}">${tasksInProgress[i]['initials'][j]}</div>
     `;
 }
 
@@ -75,7 +75,7 @@ function htmlTemplateTasksAwaitFeedback(i){
 
 function htmlTemplateSelectedPersonAwaitFeedback(i,j){
     return`
-        <img src="${tasksAwaitFeedback[i]['inCharge'][j]}">
+    <div class="initials-icon bg${j}">${tasksAwaitFeedback[i]['initials'][j]}</div>
     `;
 }
 
@@ -102,6 +102,6 @@ function htmlTemplateTasksDone(i){
 
 function htmlTemplateSelectedPersonDone(i,j){
     return`
-        <img src="${tasksDone[i]['inCharge'][j]}">
+    <div class="initials-icon bg${j}">${tasksDone[i]['initials'][j]}</div>
     `;
 }
