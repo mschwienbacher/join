@@ -23,6 +23,7 @@ async function pushTask(title, text, dueDate) {
         initials: [],
         dueDate: `${dueDate}`,
         priority: `assets/img/${priority}.svg`,
+        priorityByName: `${priority}`,
         subtasks: [],
         alreadyDone: 0
     };

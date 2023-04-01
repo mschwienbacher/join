@@ -231,6 +231,13 @@ height: 15px;
     margin-top: 28px;
 }
 
+.text-fix-priority{
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    color: black;
+}
+
 .task-text{
     font-style: normal;
     font-weight: 400;
@@ -260,6 +267,49 @@ height: 15px;
     font-size: 61px;
     color: black;
     margin-top: 12px;
+}
+
+.priority-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 28px;
+}
+
+.priotity-container img{
+    width: 35px;
+    height: 35px;
+    margin-left: 8px;
+}
+
+.priority-text{
+    font-size: 19px;
+    font-style: normal;
+}
+
+.priority-level{
+    display: flex;
+    justify-content: center;    
+    width: 85px;
+    border: none;
+    border-radius: 24px;
+    margin-left: 12px;
+}
+
+.priority-level img{
+    margin-left: 8px;
+}
+
+.Urgent{
+    background: #FFD2D2;
+}
+
+.Medium{
+    background: #FFEBB9;
+}
+
+.Low{
+    background: green;
 }
 
 .d-none{

@@ -15,6 +15,7 @@ let tasksToDo = [
         initials: ["JB", "MS", "TM"],
         dueDate: ["2023-04-30"],
         priority: "assets/img/low.svg",
+        priorityByName: "Low",
         subtasks: ["subtask1", "subtask2"],
         alreadyDone: 1,
     },
@@ -26,6 +27,7 @@ let tasksToDo = [
         initials: ["JB", "MS", "TM"],
         dueDate: ["2023-04-30"],
         priority: "assets/img/urgent.svg",
+        priorityByName: "Urgent",
         subtasks: ["subtask1", "subtask2"],
         alreadyDone: 1,
     }
@@ -40,6 +42,7 @@ let tasksInProgress = [
         initials: ["JB", "MS", "TM"],
         dueDate: ["2023-04-30"],
         priority: "assets/img/low.svg",
+        priorityByName: "Low",
         subtasks: ["subtask1", "subtask2"],
         alreadyDone: 1,
     },
@@ -51,6 +54,7 @@ let tasksInProgress = [
         initials: ["JB", "MS", "TM"],
         dueDate: ["2023-04-30"],
         priority: "assets/img/low.svg",
+        priorityByName: "Low",
         subtasks: ["subtask1", "subtask2"],
         alreadyDone: 0,
     }
@@ -65,6 +69,7 @@ let tasksAwaitFeedback = [
         initials: ["JB", "MS", "TM"],
         dueDate: ["2023-04-30"],
         priority: "assets/img/low.svg",
+        priorityByName: "Low",
         subtasks: ["subtask1", "subtask2"],
         alreadyDone: 1,
     },
@@ -76,6 +81,7 @@ let tasksAwaitFeedback = [
         initials: ["JB", "MS", "TM"],
         dueDate: ["2023-04-30"],
         priority: "assets/img/low.svg",
+        priorityByName: "Low",
         subtasks: ["subtask1", "subtask2"],
         alreadyDone: 1,
     }
@@ -90,6 +96,7 @@ let tasksDone = [
         initials: ["JB", "MS", "TM"],
         dueDate: ["2023-04-30"],
         priority: "assets/img/low.svg",
+        priorityByName: "Low",
         subtasks: ["subtask1", "subtask2"],
         alreadyDone: 2,
     },
@@ -101,6 +108,7 @@ let tasksDone = [
         initials: ["JB", "MS", "TM"],
         dueDate: ["2023-04-30"],
         priority: "assets/img/medium.svg",
+        priorityByName: "Medium",
         subtasks: ["subtask1", "subtask2"],
         alreadyDone: 1,
     }

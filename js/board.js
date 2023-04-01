@@ -1,5 +1,5 @@
 async function renderBoard(){
-    await loadTasksFromBackend();
+    /* await loadTasksFromBackend(); */
     renderTasksToDo();
     renderTasksInProgress();
     renderTasksAwaitFeedback();
@@ -87,22 +87,31 @@ function renderSelectedPersonDone(i){
 
 function openDetailCardToDo(x){
     document.getElementById('detail-popup').classList.remove('d-none');
-    console.log(x);
+    document.getElementById('detail-popup').innerHTML =
+        htmlTemplateDetailCardToDo(x);    
+    document.getElementById('names-container').innerHTML = '';
+    for (let j = 0; j < tasksToDo[x]['inCharge'].length; j++){
+        document.getElementById('names-container').innerHTML +=
+        htmlTemplatePersonsDetailCardToDo(x, j);
+    };    
 }
 
 function openDetailCardInProgress(x){
     document.getElementById('detail-popup').classList.remove('d-none');
-    console.log(x);
+    document.getElementById('detail-popup').innerHTML =
+        htmlTemplateDetailCardInProgress(x);
 }
 
 function openDetailCardAwaitFeedback(x){
     document.getElementById('detail-popup').classList.remove('d-none');
-    console.log(x);
+    document.getElementById('detail-popup').innerHTML =
+        htmlTemplateDetailCardAwaitFeedback(x);
 }
 
 function openDetailCardDone(x){
     document.getElementById('detail-popup').classList.remove('d-none');
-    console.log(x);
+    document.getElementById('detail-popup').innerHTML =
+        htmlTemplateDetailCardDone(x);
 }
 
 function closeDetailCard(){

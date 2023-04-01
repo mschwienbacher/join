@@ -105,3 +105,34 @@ function htmlTemplateSelectedPersonDone(i,j){
     <div class="initials-icon bg${j}">${tasksDone[i]['initials'][j]}</div>
     `;
 }
+
+function htmlTemplateDetailCardToDo(x){
+    return`
+    <div class="close-x"><button onclick="closeDetailCard()">X</button></div>
+    <span class="category category-${tasksToDo[x]['category']}">${tasksToDo[x]['category']}</span>
+    <h1>${tasksToDo[x]['titel']}</h1>
+    <span class="task-text">${tasksToDo[x]['text']}</span>    
+    <span class="text-fix">Due date: ${tasksToDo[x]['dueDate']}</span>
+    <div class="priority-container">
+        <span class="text-fix-priority">Priority:</span> 
+        <div class="${tasksToDo[x]['priorityByName']} priority-level">
+            <span class="priority-text">Low</span>    
+            <img src="${tasksToDo[x]['priority']}">
+        </div>
+    </div>
+    <span class="text-fix">Assigned To:</span>
+    <div class="names-container" id="names-container">
+        
+    </div>
+    <div class="edit-btn"><img src="assets/img/edit-button.svg"></div>
+    `;
+}
+
+function htmlTemplatePersonsDetailCardToDo(x, j){
+    return`
+    <div class="names">
+        <div class="initials-icon bg${j}">${tasksToDo[x]['initials'][j]}</div>
+        <div class="name">${tasksToDo[x]['inCharge'][j]}</div>
+    </div>
+    `;
+}
