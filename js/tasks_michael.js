@@ -95,7 +95,7 @@ function selectedCategory(i) {
     clickedElement.classList.add("selected");
     showSelectDetails('opener-category');
     let textContainer = document.getElementById("selectedText");
-    textContainer.innerHTML = `${category[i].name} <span class="circle" style="background:${category[i].color}"></span>`;
+    textContainer.innerHTML = `${category[i].name}<span class="circle" style="background:${category[i].color}"></span>`;
 }
 
 /**
@@ -210,7 +210,7 @@ function saveTheTask() {
         "priority": taskPriority,
         "description": taskDescription.value,
         "subtasks": taskSubTasks,
-        "status": "Done"
+        "status": "ToDo"
     });
     saveCategoriesToBackend();
     saveTasksToBackend();
