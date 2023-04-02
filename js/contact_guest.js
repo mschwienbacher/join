@@ -137,7 +137,7 @@ function openEdit(o) {
 }
 
 function fillEditInput(x) {
-    document.getElementById(`nameInputEdit${x}`).value = `${sortedContacts[x]['name']}`
+    document.getElementById(`nameInputEdit${x}`).value = `${sortedContacts[x]['name'].concat(" ") + sortedContacts[x]['second-name']}`
     document.getElementById(`emailInputEdit${x}`).value = `${sortedContacts[x]['email']}`
     document.getElementById(`phoneInputEdit${x}`).value = `${sortedContacts[x]['tel']}`
 }
@@ -147,9 +147,10 @@ function saveTheEdit(x) {
     sortedContacts[x]['name'] = document.getElementById(`nameInputEdit${x}`).value
     sortedContacts[x]['email'] = document.getElementById(`emailInputEdit${x}`).value
     sortedContacts[x]['tel'] = document.getElementById(`phoneInputEdit${x}`).value
+    firstAndSecondNameUpdate(document.getElementById(`nameInputEdit${x}`).value , x)
     closeEdit();
+    renderTheQuestContacts(); 
     showDetail(x);
-    renderTheQuestContacts();
 }
 
 
@@ -219,3 +220,19 @@ function closeAdd() {
 
 let sortedContacts = sortContactsAndSave(contacts);
 renderTheQuestContacts();
+
+
+function splitWords(inputValue) {
+    const wordsArray = inputValue.split(" ");
+    const firstWord = wordsArray[0];
+    const secondWord = wordsArray[1];
+    const resultArray = [firstWord, secondWord];
+    return resultArray;
+}
+
+function firstAndSecondNameUpdate(inputVal , number) {
+    const input = inputVal;
+    const result = splitWords(input);
+    sortedContacts[number]['name'] = result[0]
+    sortedContacts[number]['second-name'] = result[1]
+}
