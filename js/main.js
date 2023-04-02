@@ -1,6 +1,10 @@
 setURL('https://gruppenarbeit-503-join.developerakademie.net/backend');
 let users = [];
 let allContacts = [];
+let tasksToDo = [];
+let tasksInProgress = [];
+let tasksAwaitFeedback = [];
+let tasksDone = [];
 
 /**
  * This function is used to INIT the backend.

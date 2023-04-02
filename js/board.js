@@ -1,5 +1,7 @@
+let currentDraggedElement;
+
 async function renderBoard(){
-    /* await loadTasksFromBackend(); */
+    await loadTasksFromBackend();
     renderTasksToDo();
     renderTasksInProgress();
     renderTasksAwaitFeedback();
@@ -100,20 +102,44 @@ function openDetailCardInProgress(x){
     document.getElementById('detail-popup').classList.remove('d-none');
     document.getElementById('detail-popup').innerHTML =
         htmlTemplateDetailCardInProgress(x);
+        document.getElementById('names-container').innerHTML = '';
+    for (let j = 0; j < tasksInProgress[x]['inCharge'].length; j++){
+        document.getElementById('names-container').innerHTML +=
+        htmlTemplatePersonsDetailCardToDo(x, j);
+    };   
 }
 
 function openDetailCardAwaitFeedback(x){
     document.getElementById('detail-popup').classList.remove('d-none');
     document.getElementById('detail-popup').innerHTML =
         htmlTemplateDetailCardAwaitFeedback(x);
+    for (let j = 0; j < tasksAwaitFeedback[x]['inCharge'].length; j++){
+        document.getElementById('names-container').innerHTML +=
+        htmlTemplatePersonsDetailCardAwaitFeedback(x, j);
+    };    
 }
 
 function openDetailCardDone(x){
     document.getElementById('detail-popup').classList.remove('d-none');
     document.getElementById('detail-popup').innerHTML =
         htmlTemplateDetailCardDone(x);
+    for (let j = 0; j < tasksDone[x]['inCharge'].length; j++){
+        document.getElementById('names-container').innerHTML +=
+        htmlTemplatePersonsDetailCardDone(x, j);
+    }; 
 }
 
 function closeDetailCard(){
     document.getElementById('detail-popup').classList.add('d-none');
+}
+
+async function loadTasksFromBackend() {
+    let taskstringToDo = backend.getItem('tasksToDo');
+    let taskstringInProgress = backend.getItem('tasksInProgress');
+    let taskstringAwaitFeedback = backend.getItem('tasksAwaitFeedback');
+    let taskstringDone = backend.getItem('tasksDone');
+    tasksToDo = JSON.parse(await taskstringToDo) || [];
+    tasksInProgress = JSON.parse(await taskstringInProgress) || [];
+    tasksAwaitFeedback = JSON.parse(await taskstringAwaitFeedback) || [];
+    tasksDone = JSON.parse(await taskstringDone) || [];    
 }

@@ -95,7 +95,7 @@
                                         <span>To do</span>
                                         <img src="assets/img/plus.svg" alt="add">
                                     </div>
-                                    <div class="task-container" id="to-do-container">
+                                    <div class="task-container" id="to-do-container" ondrop="moveTo(event)" ondragover="allowDrop(event)">
                                         <!-- htmlTemplateTasksToDo -->
                                     </div>
                                 </div>
@@ -104,7 +104,7 @@
                                         <span>In progress</span>
                                         <img src="assets/img/plus.svg" alt="add">
                                     </div>
-                                    <div class="task-container" id="in-progress-container">
+                                    <div class="task-container" id="in-progress-container" ondrop="moveTo(event)" ondragover="allowDrop(event)">
                                         <!-- htmlTemplateTasksInProgress-->
                                     </div>
                                 </div>
@@ -113,7 +113,7 @@
                                         <span>Await feedback</span>
                                         <img src="assets/img/plus.svg" alt="add">
                                     </div>
-                                    <div class="task-container" id="await-feedback-container">
+                                    <div class="task-container" id="await-feedback-container" ondrop="moveTo(event)" ondragover="allowDrop(event)">
                                         <!-- htmlTemplateTasksAwaitFeedback -->
                                     </div>
                                 </div>
@@ -122,7 +122,7 @@
                                         <span>Done</span>
                                         <img src="assets/img/plus.svg" alt="add">
                                     </div>
-                                    <div class="task-container" id="done-container">
+                                    <div class="task-container" id="done-container" ondrop="moveTo(event)" ondragover="allowDrop(event)">
                                         <!-- htmlTemplateTasksDone -->
                                     </div>
                                 </div>
@@ -162,6 +162,7 @@
     <script src="assets/templates/htmlTemplateBoard.js"></script>
     <script src="js/add-task.js"></script>
     <script onload="renderBoard()" src="js/board.js"></script>
+    <script src="js/board_dragndrop.js"></script>
     <!-- Insert dedicated JS script -->
 </body>
 

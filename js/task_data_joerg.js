@@ -6,7 +6,7 @@ let initials = [];
 
 let subtasks =[];
 
-let tasksToDo = [
+/* let tasksToDo = [
     {
         category: "Design",
         titel: "website redesign",
@@ -112,4 +112,4 @@ let tasksDone = [
         subtasks: ["subtask1", "subtask2"],
         alreadyDone: 1,
     }
-];
+]; */
