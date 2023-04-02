@@ -207,14 +207,37 @@
 
 .embleme-and-input form input {
     border: none;
-    border-bottom: 2px solid rgba(0, 0, 0, 0.096);
     padding: 13px 21px 13px 21px;
     height: 50px;
 }
 
+.input-container{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: solid 1px gray;
+}
+
+
+#cancel-btn{
+    padding: 18px 10px 18px 10px;
+    background-color: white;
+    width: 146px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    color: #647188;
+    border: solid #647188 1px;
+    margin-top: 55px;
+    display: flex;
+    justify-content: space-evenly;
+    cursor: pointer;
+}
+
 #save-edit-btn {
     padding: 18px 10px 18px 10px;
-    background-color: #4589FF;
+    background-color: white;
     width: 146px;
     display: flex;
     justify-content: center;
@@ -235,6 +258,17 @@
     color: white;
     margin-top: 55px;
     cursor: pointer;
+}
+
+#save-add-btn{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.task-text{
+    font-weight: 400;
+    color: white;
+    font-size: 27px;
 }
 
 .embleme-edit {

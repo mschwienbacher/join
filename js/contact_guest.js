@@ -104,7 +104,7 @@ function showDetail(j) {
         </div>
     </div>
     <div>
-        <p><span class="contact-information-designe">Contact Information</span><span class="clickable" onclick="openEdit(${j})">Edit Contact</span></p>
+        <p><span class="contact-information-designe">Contact Information</span><span class="clickable" onclick="openEdit(${j})"><img src="assets/img/edit-contact.svg" alt=""></span></p>
         <p class="detail-email-designe"><span class="email-mobile-designe">Email</span><span class="add-task-desgine">${sortedContacts[j]['email']}</span></p>
         <p class="detail-email-designe"><span class="email-mobile-designe">Mobil</span><span>${sortedContacts[j]['tel']}</span></p>
     </div>`
@@ -124,11 +124,11 @@ function openEdit(o) {
     </div>
     <div class="embleme-and-input">
         <p class="embleme-edit ">${getTheFirstLetterOfName(o)}</p>
-            <form>
-                <input placeholder="Name" type="text">
-                <input placeholder="Email" type="email">
-                <input placeholder="Phone" type="number">
-            </form>
+        <form>
+        <div class="input-container"><input placeholder="Name" type="text"><img src="assets/img/contact-dummy-name.svg" alt=""></div>
+        <div class="input-container"><input placeholder="Email" type="email"><img src="assets/img/email-contacts.svg" alt=""></div>
+        <div class="input-container"><input placeholder="Phone" type="number"><img src="assets/img/telephone-contacts.svg" alt=""></div>
+    </form>
         <p class="save-edit-btn" id="save-edit-btn">save</p>
     </div>
     `
