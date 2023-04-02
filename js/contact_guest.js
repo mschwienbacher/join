@@ -48,6 +48,7 @@ let contacts = [
 
 // render the contacts
 function renderTheQuestContacts() {
+    sortedContacts = sortContactsAndSave(sortedContacts)
     document.getElementById('show-contacts-quest').innerHTML = ``
     for (i = 0; i < sortedContacts.length; i++) {
         document.getElementById('show-contacts-quest').innerHTML += `
@@ -125,14 +126,30 @@ function openEdit(o) {
     <div class="embleme-and-input">
         <p class="embleme-edit ">${getTheFirstLetterOfName(o)}</p>
         <form>
-        <div class="input-container"><input placeholder="Name" type="text"><img src="assets/img/contact-dummy-name.svg" alt=""></div>
-        <div class="input-container"><input placeholder="Email" type="email"><img src="assets/img/email-contacts.svg" alt=""></div>
-        <div class="input-container"><input placeholder="Phone" type="number"><img src="assets/img/telephone-contacts.svg" alt=""></div>
+        <div class="input-container"><input id="nameInputEdit${o}" placeholder="Name" type="text"><img src="assets/img/contact-dummy-name.svg" alt=""></div>
+        <div class="input-container"><input id="emailInputEdit${o}" placeholder="Email" type="email"><img src="assets/img/email-contacts.svg" alt=""></div>
+        <div class="input-container"><input id="phoneInputEdit${o}" placeholder="Phone" type="number"><img src="assets/img/telephone-contacts.svg" alt=""></div>
     </form>
-        <p class="save-edit-btn" id="save-edit-btn">save</p>
-    </div>
-    `
+        <p onclick="saveTheEdit(${o})" class="save-edit-btn" id="save-edit-btn">Save</p>
+    </div>`
     document.getElementById('edit-window').style.left = '0';
+    fillEditInput(o);
+}
+
+function fillEditInput(x) {
+    document.getElementById(`nameInputEdit${x}`).value = `${sortedContacts[x]['name']}`
+    document.getElementById(`emailInputEdit${x}`).value = `${sortedContacts[x]['email']}`
+    document.getElementById(`phoneInputEdit${x}`).value = `${sortedContacts[x]['tel']}`
+}
+
+function saveTheEdit(x) {
+    letterCounter = [];
+    sortedContacts[x]['name'] = document.getElementById(`nameInputEdit${x}`).value
+    sortedContacts[x]['email'] = document.getElementById(`emailInputEdit${x}`).value
+    sortedContacts[x]['tel'] = document.getElementById(`phoneInputEdit${x}`).value
+    closeEdit();
+    showDetail(x);
+    renderTheQuestContacts();
 }
 
 
@@ -190,12 +207,12 @@ function countLetter(arr, letter) {
 
 
 // open the add contact window
-function openAdd(){
+function openAdd() {
     document.getElementById('add-window').style.left = '0';
 }
 
 // close the add contact window
-function closeAdd(){
+function closeAdd() {
     document.getElementById('add-window').style.left = '-50vw';
 }
 
