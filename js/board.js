@@ -1,5 +1,3 @@
-let currentDraggedElement;
-
 async function renderBoard(){
     await loadTasksFromBackend();
     renderTasksToDo();
