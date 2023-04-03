@@ -9,8 +9,9 @@ function renderTasksToDo(){
     let toDo = document.getElementById('to-do-container');
     toDo.innerHTML = '';
     for (let i = 0; i < tasksToDo.length; i++){
+        const widthProgressBar = tasksToDo[i]['alreadyDone']/tasksToDo[i]['subtasks'].length *100;
         toDo.innerHTML += 
-            htmlTemplateTasksToDo(i);  
+            htmlTemplateTasksToDo(i, widthProgressBar);  
             renderSelectedPersonToDo(i);
     }          
 }
@@ -29,8 +30,9 @@ function renderTasksInProgress(){
     let inProgress = document.getElementById('in-progress-container');
     inProgress.innerHTML = '';
     for (let i = 0; i < tasksInProgress.length; i++){
+        const widthProgressBar = tasksInProgress[i]['alreadyDone']/tasksInProgress[i]['subtasks'].length *100;
         inProgress.innerHTML += 
-            htmlTemplateTasksInProgress(i);  
+            htmlTemplateTasksInProgress(i, widthProgressBar);  
             renderSelectedPersonInProgress(i);
     }          
 }
@@ -49,8 +51,9 @@ function renderTasksAwaitFeedback(){
     let awaitFeedback = document.getElementById('await-feedback-container');
     awaitFeedback.innerHTML = '';
     for (let i = 0; i < tasksAwaitFeedback.length; i++){
+        const widthProgressBar = tasksAwaitFeedback[i]['alreadyDone']/tasksAwaitFeedback[i]['subtasks'].length *100;
         awaitFeedback.innerHTML += 
-            htmlTemplateTasksAwaitFeedback(i);  
+            htmlTemplateTasksAwaitFeedback(i, widthProgressBar);  
             renderSelectedPersonAwaitFeedback(i);
     }          
 }
@@ -69,8 +72,9 @@ function renderTasksDone(){
     let done = document.getElementById('done-container');
     done.innerHTML = '';
     for (let i = 0; i < tasksDone.length; i++){
+        const widthProgressBar = tasksDone[i]['alreadyDone']/tasksDone[i]['subtasks'].length *100;
         done.innerHTML += 
-            htmlTemplateTasksDone(i);  
+            htmlTemplateTasksDone(i, widthProgressBar);  
             renderSelectedPersonDone(i);
     }          
 }
@@ -142,10 +146,9 @@ function filter() {
 function filterToDo(search){
     document.getElementById('to-do-container').innerHTML = '';
     for (let i = 0; i < tasksToDo.length; i++){
-        const taskToDo = tasksToDo[i];
         if (tasksToDo[i]['titel'].toLowerCase().includes(search)) {
             document.getElementById('to-do-container').innerHTML += 
-            htmlTemplateTasksToDo(i, taskToDo);  
+            htmlTemplateTasksToDo(i);  
             renderSelectedPersonToDo(i);
         }
     } 
@@ -154,10 +157,9 @@ function filterToDo(search){
 function filterInProgress(search){
     document.getElementById('in-progress-container').innerHTML = '';
     for (let i = 0; i < tasksInProgress.length; i++){
-        const taskInProgress = tasksInProgress[i];
         if (tasksInProgress[i]['titel'].toLowerCase().includes(search)) {
             document.getElementById('in-progress-container').innerHTML += 
-            htmlTemplateTasksInProgress(i, taskInProgress);  
+            htmlTemplateTasksInProgress(i);  
             renderSelectedPersonInProgress(i);
         }
     }
@@ -166,10 +168,9 @@ function filterInProgress(search){
 function filterAwaitFeedback(search){
     document.getElementById('await-feedback-container').innerHTML = '';
 for (let i = 0; i < tasksAwaitFeedback.length; i++){
-        const taskAwaitFeedback = tasksAwaitFeedback[i];
         if (tasksAwaitFeedback[i]['titel'].toLowerCase().includes(search)) {
             document.getElementById('await-feedback-container').innerHTML += 
-            htmlTemplateTasksAwaitFeedback(i, taskAwaitFeedback);  
+            htmlTemplateTasksAwaitFeedback(i);  
             renderSelectedPersonAwaitFeedback(i);
         }
     }
@@ -178,10 +179,9 @@ for (let i = 0; i < tasksAwaitFeedback.length; i++){
 function filterDone(search){
     document.getElementById('done-container').innerHTML = '';
 for (let i = 0; i < tasksDone.length; i++){
-        const taskDone = tasksAwaitFeedback[i];
         if (tasksDone[i]['titel'].toLowerCase().includes(search)) {
             document.getElementById('done-container').innerHTML += 
-            htmlTemplateTasksDone(i, taskDone);  
+            htmlTemplateTasksDone(i);  
             renderSelectedPersonDone(i);
         }
     }
