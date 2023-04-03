@@ -229,7 +229,7 @@ function htmlTemplateDetailCardDone(x){
     `;
 }
 
-function htmlTemplatePersonsDetailCardAwaitFeedback(x, j){
+function htmlTemplatePersonsDetailCardDone(x, j){
     return`
     <div class="names">
         <div class="initials-icon bg${j}">${tasksDone[x]['initials'][j]}</div>

@@ -27,10 +27,16 @@ async function initBackend() {
     await downloadFromServer();    
 }
 
-function initBoard() {
-    downloadFromServer();
+async function initBoard() {
+    await downloadFromServer();
     loadTasksFromBackend();
     renderBoard();
+}
+
+async function initAddTask() {
+    await downloadFromServer();
+    loadTasksFromBackend();
+    renderAddTask();
 }
 
 /**

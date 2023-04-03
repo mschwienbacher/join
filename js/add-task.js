@@ -27,10 +27,13 @@ async function pushTask(title, text, dueDate) {
         subtasks: [],
         alreadyDone: 0
     };
-    data['inCharge'].push(assignedTo);
-    data['initials'].push(initials);
-    data['subtasks'].push(subtasks);
-    console.log(tasksToDo);
+    for (let i = 0; i < assignedTo.length; i++){
+        data['inCharge'].push(assignedTo[i]);
+        data['initials'].push(initials[i]);
+    }    
+    for ( let i = 0; i < subtasks.length; i++){
+        data['subtasks'].push(subtasks[i]);
+    }    
     tasksToDo.push(data);
     saveTasksToBackend();
 }
@@ -52,9 +55,7 @@ function getAssignedTo() {
     for (let i = 0; inputElements[i]; ++i) {
         if (inputElements[i].checked) {
             assignedTo.push(contacts[i]['name'] + ' ' + contacts[i]['second-name']);
-            firstInitial = contacts[i]['name'].charAt(0);
-            secondInitial = contacts[i]['second-name'].charAt(0);
-            initials.push(firstInitial+secondInitial);
+            initials.push(contacts[i]['name'].charAt(0)+contacts[i]['second-name'].charAt(0));
         }
     }
 }
@@ -80,6 +81,7 @@ function openTaskCategory() {
 
 
 function renderAddTask() {
+    loadTasksFromBackend();
     renderListAssignedTo();
     renderListTaskCategory();
 }

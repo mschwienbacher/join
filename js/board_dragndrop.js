@@ -49,6 +49,8 @@ function moveTo(container){
         tasksDone.push(currentTask);
         renderBoard();
     }
+
+    saveTasksToBackend();
 }
 
 function startDragging(i, taskStatus){
