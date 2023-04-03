@@ -130,3 +130,59 @@ function closeDetailCard(){
     document.getElementById('detail-popup').classList.add('d-none');
 }
 
+function filter() {
+    let search = document.getElementById('search').value; /*nimmtText aus Input Feld*/
+    search = search.toLowerCase();
+    filterToDo(search);
+    filterInProgress(search);
+    filterAwaitFeedback(search);
+    filterDone(search);   
+}
+
+function filterToDo(search){
+    document.getElementById('to-do-container').innerHTML = '';
+    for (let i = 0; i < tasksToDo.length; i++){
+        const taskToDo = tasksToDo[i];
+        if (tasksToDo[i]['titel'].toLowerCase().includes(search)) {
+            document.getElementById('to-do-container').innerHTML += 
+            htmlTemplateTasksToDo(i, taskToDo);  
+            renderSelectedPersonToDo(i);
+        }
+    } 
+}
+
+function filterInProgress(search){
+    document.getElementById('in-progress-container').innerHTML = '';
+    for (let i = 0; i < tasksInProgress.length; i++){
+        const taskInProgress = tasksInProgress[i];
+        if (tasksInProgress[i]['titel'].toLowerCase().includes(search)) {
+            document.getElementById('in-progress-container').innerHTML += 
+            htmlTemplateTasksInProgress(i, taskInProgress);  
+            renderSelectedPersonInProgress(i);
+        }
+    }
+}
+
+function filterAwaitFeedback(search){
+    document.getElementById('await-feedback-container').innerHTML = '';
+for (let i = 0; i < tasksAwaitFeedback.length; i++){
+        const taskAwaitFeedback = tasksAwaitFeedback[i];
+        if (tasksAwaitFeedback[i]['titel'].toLowerCase().includes(search)) {
+            document.getElementById('await-feedback-container').innerHTML += 
+            htmlTemplateTasksAwaitFeedback(i, taskAwaitFeedback);  
+            renderSelectedPersonAwaitFeedback(i);
+        }
+    }
+}
+
+function filterDone(search){
+    document.getElementById('done-container').innerHTML = '';
+for (let i = 0; i < tasksDone.length; i++){
+        const taskDone = tasksAwaitFeedback[i];
+        if (tasksDone[i]['titel'].toLowerCase().includes(search)) {
+            document.getElementById('done-container').innerHTML += 
+            htmlTemplateTasksDone(i, taskDone);  
+            renderSelectedPersonDone(i);
+        }
+    }
+}
