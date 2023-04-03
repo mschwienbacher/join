@@ -1,5 +1,4 @@
-async function renderBoard(){
-    await loadTasksFromBackend();
+function renderBoard(){
     renderTasksToDo();
     renderTasksInProgress();
     renderTasksAwaitFeedback();
@@ -131,13 +130,3 @@ function closeDetailCard(){
     document.getElementById('detail-popup').classList.add('d-none');
 }
 
-async function loadTasksFromBackend() {
-    let taskstringToDo = backend.getItem('tasksToDo');
-    let taskstringInProgress = backend.getItem('tasksInProgress');
-    let taskstringAwaitFeedback = backend.getItem('tasksAwaitFeedback');
-    let taskstringDone = backend.getItem('tasksDone');
-    tasksToDo = JSON.parse(await taskstringToDo) || [];
-    tasksInProgress = JSON.parse(await taskstringInProgress) || [];
-    tasksAwaitFeedback = JSON.parse(await taskstringAwaitFeedback) || [];
-    tasksDone = JSON.parse(await taskstringDone) || [];    
-}

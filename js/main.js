@@ -6,6 +6,17 @@ let tasksInProgress = [];
 let tasksAwaitFeedback = [];
 let tasksDone = [];
 
+function loadTasksFromBackend() {
+    let taskstringToDo = backend.getItem('tasksToDo');
+    let taskstringInProgress = backend.getItem('tasksInProgress');
+    let taskstringAwaitFeedback = backend.getItem('tasksAwaitFeedback');
+    let taskstringDone = backend.getItem('tasksDone');
+    tasksToDo = JSON.parse(taskstringToDo) || [];
+    tasksInProgress = JSON.parse(taskstringInProgress) || [];
+    tasksAwaitFeedback = JSON.parse(taskstringAwaitFeedback) || [];
+    tasksDone = JSON.parse(taskstringDone) || [];    
+}
+
 /**
  * This function is used to INIT the backend.
  *
@@ -14,6 +25,8 @@ let tasksDone = [];
 
 async function initBackend() {
     await downloadFromServer();
+    loadTasksFromBackend();
+    renderBoard();
 }
 
 /**
