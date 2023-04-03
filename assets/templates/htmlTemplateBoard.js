@@ -1,11 +1,13 @@
-function htmlTemplateTasksToDo(i){
+function htmlTemplateTasksToDo(i, widthProgressBar){
     return `
     <div draggable="true" ondragstart=" startDragging(${i}, 'tasksToDo')" class="task-container-detail" onclick="openDetailCardToDo(${i})">
         <div class="category category-${tasksToDo[i]['category']}">${tasksToDo[i]['category']}</div>
      <div class="headline-task-detail">${tasksToDo[i]['titel']}</div>
         <div class="text-task-detail">${tasksToDo[i]['text']}</div>
         <div class="progress-bar-task-detail">
-            <div class="progress-bar"></div>
+            <div class="progress-bar" id="progress-bar">
+                <div id="myBar" style="width:${widthProgressBar}%"></div>
+            </div>
             <div class="already-done">${tasksToDo[i]['alreadyDone']}/${tasksToDo[i]['subtasks'].length} Done</div>
         </div>
         <div class="footer-task-detail">
@@ -26,14 +28,16 @@ function htmlTemplateSelectedPersonToDo(i,j){
 }
 
 
-function htmlTemplateTasksInProgress(i){
+function htmlTemplateTasksInProgress(i, widthProgressBar){
     return `
     <div draggable="true" ondragstart=" startDragging(${i}, 'tasksInProgress')" class="task-container-detail" onclick="openDetailCardInProgress(${i})">
         <div class="category category-${tasksInProgress[i]['category']}">${tasksInProgress[i]['category']}</div>
      <div class="headline-task-detail">${tasksInProgress[i]['titel']}</div>
         <div class="text-task-detail">${tasksInProgress[i]['text']}</div>
-        <div class="progress-bar-task-detail">
-            <div class="progress-bar"></div>
+            <div class="progress-bar-task-detail">
+                <div class="progress-bar" id="progress-bar">
+                    <div id="myBar" style="width:${widthProgressBar}%"></div>
+                </div>
             <div class="already-done">${tasksInProgress[i]['alreadyDone']}/${tasksInProgress[i]['subtasks'].length} Done</div>
         </div>
         <div class="footer-task-detail">
@@ -53,14 +57,16 @@ function htmlTemplateSelectedPersonInProgress(i,j){
 }
 
 
-function htmlTemplateTasksAwaitFeedback(i){
+function htmlTemplateTasksAwaitFeedback(i, widthProgressBar){
     return `
     <div draggable="true" ondragstart=" startDragging(${i}, 'tasksAwaitFeedback')" class="task-container-detail" onclick="openDetailCardAwaitFeedback(${i})">
         <div class="category category-${tasksAwaitFeedback[i]['category']}">${tasksAwaitFeedback[i]['category']}</div>
      <div class="headline-task-detail">${tasksAwaitFeedback[i]['titel']}</div>
         <div class="text-task-detail">${tasksAwaitFeedback[i]['text']}</div>
         <div class="progress-bar-task-detail">
-            <div class="progress-bar"></div>
+            <div class="progress-bar" id="progress-bar">
+                 <div id="myBar" style="width:${widthProgressBar}%"></div>
+            </div>
             <div class="already-done">${tasksAwaitFeedback[i]['alreadyDone']}/${tasksAwaitFeedback[i]['subtasks'].length} Done</div>
         </div>
         <div class="footer-task-detail">
@@ -80,14 +86,16 @@ function htmlTemplateSelectedPersonAwaitFeedback(i,j){
 }
 
 
-function htmlTemplateTasksDone(i){
+function htmlTemplateTasksDone(i, widthProgressBar){
     return `
     <div draggable="true" ondragstart=" startDragging(${i}, 'tasksDone')" class="task-container-detail" onclick="openDetailCardDone(${i})">
         <div class="category category-${tasksDone[i]['category']}">${tasksDone[i]['category']}</div>
      <div class="headline-task-detail">${tasksDone[i]['titel']}</div>
         <div class="text-task-detail">${tasksDone[i]['text']}</div>
         <div class="progress-bar-task-detail">
-            <div class="progress-bar"></div>
+            <div class="progress-bar" id="progress-bar">
+                <div id="myBar" style="width:${widthProgressBar}%"></div>
+            </div>
             <div class="already-done">${tasksDone[i]['alreadyDone']}/${tasksDone[i]['subtasks'].length} Done</div>
         </div>
         <div class="footer-task-detail">
