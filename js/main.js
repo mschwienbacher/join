@@ -24,7 +24,11 @@ function loadTasksFromBackend() {
  */
 
 async function initBackend() {
-    await downloadFromServer();
+    await downloadFromServer();    
+}
+
+function initBoard() {
+    downloadFromServer();
     loadTasksFromBackend();
     renderBoard();
 }

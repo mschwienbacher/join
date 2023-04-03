@@ -35,31 +35,19 @@ function moveTo(container){
     
     if (target == 'to-do-container'){
         tasksToDo.push(currentTask);
-        renderTasksDone();
-        renderTasksToDo();
-        renderTasksAwaitFeedback();
-        renderTasksInProgress();
+        renderBoard();
     }
     if (target == 'in-progress-container'){
         tasksInProgress.push(currentTask);
-        renderTasksDone();
-        renderTasksToDo();
-        renderTasksAwaitFeedback();
-        renderTasksInProgress();
+        renderBoard();
     }
     if (target == 'await-feedback-container'){
         tasksAwaitFeedback.push(currentTask);
-        renderTasksDone();
-        renderTasksToDo();
-        renderTasksAwaitFeedback();
-        renderTasksInProgress();
+        renderBoard();
     }
     if (target == 'done-container'){
         tasksDone.push(currentTask);
-        renderTasksDone();
-        renderTasksToDo();
-        renderTasksAwaitFeedback();
-        renderTasksInProgress();
+        renderBoard();
     }
 }
 

@@ -30,8 +30,9 @@ async function pushTask(title, text, dueDate) {
     data['inCharge'].push(assignedTo);
     data['initials'].push(initials);
     data['subtasks'].push(subtasks);
+    console.log(tasksToDo);
     tasksToDo.push(data);
-    await saveTasksToBackend();
+    saveTasksToBackend();
 }
 
 function getCategory() {
