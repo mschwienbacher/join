@@ -134,7 +134,9 @@ function openEdit(o) {
     </div>`
     document.getElementById('edit-window').style.left = '0';
     fillEditInput(o);
+    closeAdd()
 }
+
 
 function fillEditInput(x) {
     document.getElementById(`nameInputEdit${x}`).value = `${sortedContacts[x]['name'].concat(" ") + sortedContacts[x]['second-name']}`
@@ -142,14 +144,15 @@ function fillEditInput(x) {
     document.getElementById(`phoneInputEdit${x}`).value = `${sortedContacts[x]['tel']}`
 }
 
+
 function saveTheEdit(x) {
     letterCounter = [];
     sortedContacts[x]['name'] = document.getElementById(`nameInputEdit${x}`).value
     sortedContacts[x]['email'] = document.getElementById(`emailInputEdit${x}`).value
     sortedContacts[x]['tel'] = document.getElementById(`phoneInputEdit${x}`).value
-    firstAndSecondNameUpdate(document.getElementById(`nameInputEdit${x}`).value , x)
+    firstAndSecondNameUpdate(document.getElementById(`nameInputEdit${x}`).value, x)
     closeEdit();
-    renderTheQuestContacts(); 
+    renderTheQuestContacts();
     showDetail(x);
 }
 
@@ -210,6 +213,7 @@ function countLetter(arr, letter) {
 // open the add contact window
 function openAdd() {
     document.getElementById('add-window').style.left = '0';
+    closeEdit()
 }
 
 // close the add contact window
@@ -230,9 +234,29 @@ function splitWords(inputValue) {
     return resultArray;
 }
 
-function firstAndSecondNameUpdate(inputVal , number) {
+function firstAndSecondNameUpdate(inputVal, number) {
     const input = inputVal;
     const result = splitWords(input);
     sortedContacts[number]['name'] = result[0]
     sortedContacts[number]['second-name'] = result[1]
+}
+
+
+document.getElementById('save-add-btn').addEventListener('click', () => {
+    let nameAdd = splitWords(document.getElementById('addNameInput').value)
+    let emailAdd = document.getElementById('addEmailInput').value
+    let telephoneAdd = document.getElementById('addTelephoneInput').value
+    let newContact = { "name": `${nameAdd[0]}`, "second-name": `${nameAdd[1]}`, "email": `${emailAdd}`, "tel": `${telephoneAdd}` }
+    console.log(nameAdd)
+    sortedContacts.push(newContact)
+    letterCounter = [];
+    renderTheQuestContacts()
+    clearTheAddInput();
+    closeAdd();
+})
+
+function clearTheAddInput() {
+    nameAdd = document.getElementById('addNameInput').value = ``
+    emailAdd = document.getElementById('addEmailInput').value = ``
+    telephoneAdd = document.getElementById('addTelephoneInput').value = ``
 }
