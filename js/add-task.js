@@ -3,17 +3,14 @@ let category = '';
 let nbOfSubtasks = 0;
 let data ='';
 
-function addTask() {
+async function addTask() {
     getCategory();
     let title = document.getElementById('task-title').value;
     let text = document.getElementById('task-description').value;
     getAssignedTo()
     let dueDate = document.getElementById('due-date').value;
     getSubTasks();  
-    pushTask(title, text, dueDate);
-    /* x = tasksToDo.length-1;
-    window.open('board.html');    
-    openDetailCardToDo(x); */
+    await pushTask(title, text, dueDate);
 }
 
 async function pushTask(title, text, dueDate) {

@@ -128,6 +128,8 @@ function htmlTemplateDetailCardToDo(x){
             <img src="${tasksToDo[x]['priority']}">
         </div>
     </div>
+    <span class="text-fix">Subtasks: </span>
+    <div id="subtasks"></div>
     <span class="text-fix">Assigned To:</span>
     <div class="names-container" id="names-container">
         
@@ -145,6 +147,12 @@ function htmlTemplatePersonsDetailCardToDo(x, j){
     `;
 }
 
+function htmlTemplateSubtasksDetailCardToDo(x, j){
+    return `
+    <span style="padding-top: 6px"> <input class="sutaskCheckbox" type="checkbox" /> ${tasksToDo[x]['subtasks'][j]}</span>
+    `;
+}
+
 function htmlTemplateDetailCardInProgress(x){
     return`
     <div class="close-x"><img src="assets/img/trash.svg" onclick="deleteTask('tasksInProgress', ${x})"><button onclick="closeDetailCard()">X</button></div>
@@ -159,6 +167,8 @@ function htmlTemplateDetailCardInProgress(x){
             <img src="${tasksInProgress[x]['priority']}">
         </div>
     </div>
+    <span class="text-fix">Subtasks: </span>
+    <div id="subtasks"></div>
     <span class="text-fix">Assigned To:</span>
     <div class="names-container" id="names-container">
         
@@ -176,6 +186,12 @@ function htmlTemplatePersonsDetailCardInProgress(x, j){
     `;
 }
 
+function htmlTemplateSubtasksDetailCardInProgress(x, j){
+    return `
+    <span style="padding-top: 6px"> <input class="sutaskCheckbox" type="checkbox" /> ${tasksInProgress[x]['subtasks'][j]}</span>
+    `;
+}
+
 function htmlTemplateDetailCardAwaitFeedback(x){
     return`
     <div class="close-x"><img src="assets/img/trash.svg" onclick="deleteTask('tasksAwaitFeedback', ${x})"><button onclick="closeDetailCard()">X</button></div>
@@ -190,6 +206,8 @@ function htmlTemplateDetailCardAwaitFeedback(x){
             <img src="${tasksAwaitFeedback[x]['priority']}">
         </div>
     </div>
+    <span class="text-fix">Subtasks: </span>
+    <div id="subtasks"></div>
     <span class="text-fix">Assigned To:</span>
     <div class="names-container" id="names-container">
         
@@ -207,6 +225,12 @@ function htmlTemplatePersonsDetailCardAwaitFeedback(x, j){
     `;
 }
 
+function htmlTemplateSubtasksDetailCardAwaitFeedback(x, j){
+    return `
+    <span style="padding-top: 6px"> <input class="sutaskCheckbox" type="checkbox" /> ${tasksAwaitFeedback[x]['subtasks'][j]}</span>
+    `;
+}
+
 function htmlTemplateDetailCardDone(x){
     return`
     <div class="close-x"><img src="assets/img/trash.svg" onclick="deleteTask('tasksDone', ${x})"><button onclick="closeDetailCard()">X</button></div>
@@ -221,6 +245,8 @@ function htmlTemplateDetailCardDone(x){
             <img src="${tasksDone[x]['priority']}">
         </div>
     </div>
+    <span class="text-fix">Subtasks: </span>
+    <div id="subtasks"></div>
     <span class="text-fix">Assigned To:</span>
     <div class="names-container" id="names-container">
         
@@ -235,5 +261,11 @@ function htmlTemplatePersonsDetailCardDone(x, j){
         <div class="initials-icon bg${j}">${tasksDone[x]['initials'][j]}</div>
         <div class="name">${tasksDone[x]['inCharge'][j]}</div>
     </div>
+    `;
+}
+
+function htmlTemplateSubtasksDetailCardDone(x, j){
+    return `
+    <span style="padding-top: 6px"> <input class="sutaskCheckbox" type="checkbox" /> ${tasksDone[x]['subtasks'][j]}</span>
     `;
 }

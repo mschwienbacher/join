@@ -89,18 +89,27 @@ function renderSelectedPersonDone(i){
 }
 
 function openDetailCardToDo(x){
-    document.getElementById('detail-popup').classList.remove('d-none');
+    document.getElementById('details').classList.remove('d-none');
     document.getElementById('detail-popup').innerHTML =
         htmlTemplateDetailCardToDo(x);    
     document.getElementById('names-container').innerHTML = '';
     for (let j = 0; j < tasksToDo[x]['inCharge'].length; j++){
         document.getElementById('names-container').innerHTML +=
         htmlTemplatePersonsDetailCardToDo(x, j);
-    };    
+    }; 
+    renderSubtaksInDetailCardToDo(x)  ;
+}
+
+function renderSubtaksInDetailCardToDo(x){
+    document.getElementById('subtasks').innerHTML = '';
+    for (let j = 0; j < tasksToDo[x]['subtasks'].length; j++){
+        document.getElementById('subtasks').innerHTML +=
+        htmlTemplateSubtasksDetailCardToDo(x, j);
+    }
 }
 
 function openDetailCardInProgress(x){
-    document.getElementById('detail-popup').classList.remove('d-none');
+    document.getElementById('details').classList.remove('d-none');
     document.getElementById('detail-popup').innerHTML =
         htmlTemplateDetailCardInProgress(x);
         document.getElementById('names-container').innerHTML = '';
@@ -108,30 +117,58 @@ function openDetailCardInProgress(x){
         document.getElementById('names-container').innerHTML +=
         htmlTemplatePersonsDetailCardToDo(x, j);
     };   
+    renderSubtaksInDetailCardInProgress(x);
 }
 
+function renderSubtaksInDetailCardInProgress(x){
+    document.getElementById('subtasks').innerHTML = '';
+    for (let j = 0; j < tasksInProgress[x]['subtasks'].length; j++){
+        document.getElementById('subtasks').innerHTML +=
+        htmlTemplateSubtasksDetailCardInProgress(x, j);
+    }
+}
+
+
 function openDetailCardAwaitFeedback(x){
-    document.getElementById('detail-popup').classList.remove('d-none');
+    document.getElementById('details').classList.remove('d-none');
     document.getElementById('detail-popup').innerHTML =
         htmlTemplateDetailCardAwaitFeedback(x);
     for (let j = 0; j < tasksAwaitFeedback[x]['inCharge'].length; j++){
         document.getElementById('names-container').innerHTML +=
         htmlTemplatePersonsDetailCardAwaitFeedback(x, j);
-    };    
+    };  
+    renderSubtaksInDetailCardAwaitFeedback(x);
+}
+
+function renderSubtaksInDetailCardAwaitFeedback(x){
+    document.getElementById('subtasks').innerHTML = '';
+    for (let j = 0; j < tasksAwaitFeedback[x]['subtasks'].length; j++){
+        document.getElementById('subtasks').innerHTML +=
+        htmlTemplateSubtasksDetailCardAwaitFeedback(x, j);
+    }
 }
 
 function openDetailCardDone(x){
-    document.getElementById('detail-popup').classList.remove('d-none');
+    document.getElementById('details').classList.remove('d-none');
     document.getElementById('detail-popup').innerHTML =
         htmlTemplateDetailCardDone(x);
     for (let j = 0; j < tasksDone[x]['inCharge'].length; j++){
         document.getElementById('names-container').innerHTML +=
         htmlTemplatePersonsDetailCardDone(x, j);
     }; 
+    renderSubtaksInDetailCardDone(x);
+}
+
+function renderSubtaksInDetailCardDone(x){
+    document.getElementById('subtasks').innerHTML = '';
+    for (let j = 0; j < tasksDone[x]['subtasks'].length; j++){
+        document.getElementById('subtasks').innerHTML +=
+        htmlTemplateSubtasksDetailCardDone(x, j);
+    }
 }
 
 function closeDetailCard(){
-    document.getElementById('detail-popup').classList.add('d-none');
+    document.getElementById('details').classList.add('d-none');
 }
 
 function filter() {

@@ -27,7 +27,8 @@
 </head>
 
 <body class="board-page" onload="initBoard()">
-    <header class="header">
+    
+    <header class="header">        
         <div class="container">
             <div class="center">
                 <div class="inner">
@@ -51,42 +52,17 @@
                 </div>
             </div>
         </div>
-    </header>
+    </header>    
     <main id="main" class="main">
         <div class="container">
             <div class="center">
                 <div class="inner reverse">
                     <div class="content">
+                        <div class="details d-none" id="details">
+                            <div id="detail-popup" class="detail-popup"></div>
+                        </div>
                         <div class="wrapper">
-                            <div id="detail-popup" class="detail-popup d-none">
-                                <!-- <div class="close-x"><button onclick="closeDetailCard()">X</button></div>
-                                <span class="category category-Design">Category</span>
-                                <h1>Titel</h1>
-                                <span class="task-text">text</span>
-                                <span class="text-fix">Due date:</span>
-                                <span class="text-fix">Priority:</span>
-                                <span class="text-fix">Assigned To:</span>
-                                <div class="names-container">
-                                    <div class="names">
-                                        <div class="initials-icon">MM</div>
-                                        <div class="name">Name1</div>
-                                    </div>
-                                    <div class="names">
-                                        <div class="initials-icon">MM</div>
-                                        <div class="name">Name1</div>
-                                    </div>
-                                    <div class="names">
-                                        <div class="initials-icon">MM</div>
-                                        <div class="name">Name1</div>
-                                    </div>
-                                    <div class="names">
-                                        <div class="initials-icon">MM</div>
-                                        <div class="name">Name1</div>
-                                    </div>
-                                </div>
-
-                                <div class="edit-btn"><img src="assets/img/edit-button.svg"></div> -->
-                            </div>
+                            
                             <div class="menu-bar">
                                 <div class="search-bar">
                                     <input type="text" placeholder="Find task" id="search" onkeydown="filter()">
