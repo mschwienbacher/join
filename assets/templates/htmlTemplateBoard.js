@@ -116,7 +116,7 @@ function htmlTemplateSelectedPersonDone(i,j){
 
 function htmlTemplateDetailCardToDo(x){
     return`
-    <div class="close-x"><button onclick="closeDetailCard()">X</button></div>
+    <div class="close-x"><img src="assets/img/trash.svg" onclick="deleteTask('tasksToDo', ${x})"> <button onclick="closeDetailCard()">X</button></div>
     <span class="category category-${tasksToDo[x]['category']}">${tasksToDo[x]['category']}</span>
     <h1>${tasksToDo[x]['titel']}</h1>
     <span class="task-text">${tasksToDo[x]['text']}</span>    
@@ -147,7 +147,7 @@ function htmlTemplatePersonsDetailCardToDo(x, j){
 
 function htmlTemplateDetailCardInProgress(x){
     return`
-    <div class="close-x"><button onclick="closeDetailCard()">X</button></div>
+    <div class="close-x"><img src="assets/img/trash.svg" onclick="deleteTask('tasksInProgress', ${x})"><button onclick="closeDetailCard()">X</button></div>
     <span class="category category-${tasksInProgress[x]['category']}">${tasksInProgress[x]['category']}</span>
     <h1>${tasksInProgress[x]['titel']}</h1>
     <span class="task-text">${tasksInProgress[x]['text']}</span>    
@@ -178,7 +178,7 @@ function htmlTemplatePersonsDetailCardInProgress(x, j){
 
 function htmlTemplateDetailCardAwaitFeedback(x){
     return`
-    <div class="close-x"><button onclick="closeDetailCard()">X</button></div>
+    <div class="close-x"><img src="assets/img/trash.svg" onclick="deleteTask('tasksAwaitFeedback', ${x})"><button onclick="closeDetailCard()">X</button></div>
     <span class="category category-${tasksAwaitFeedback[x]['category']}">${tasksAwaitFeedback[x]['category']}</span>
     <h1>${tasksAwaitFeedback[x]['titel']}</h1>
 <span class="task-text">${tasksAwaitFeedback[x]['text']}</span>    
@@ -209,7 +209,7 @@ function htmlTemplatePersonsDetailCardAwaitFeedback(x, j){
 
 function htmlTemplateDetailCardDone(x){
     return`
-    <div class="close-x"><button onclick="closeDetailCard()">X</button></div>
+    <div class="close-x"><img src="assets/img/trash.svg" onclick="deleteTask('tasksDone', ${x})"><button onclick="closeDetailCard()">X</button></div>
     <span class="category category-${tasksDone[x]['category']}">${tasksDone[x]['category']}</span>
     <h1>${tasksDone[x]['titel']}</h1>
 <span class="task-text">${tasksDone[x]['text']}</span>    

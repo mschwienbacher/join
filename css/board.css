@@ -270,6 +270,14 @@ height: 15px;
     cursor: pointer;
 }
 
+.close-x img{
+    margin-right: 8px;
+}
+
+.close-x img:hover{
+    cursor: pointer;
+}
+
 .detail-popup h1{
     font-style: normal;
     font-weight: 700;

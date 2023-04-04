@@ -11,6 +11,9 @@ function addTask() {
     let dueDate = document.getElementById('due-date').value;
     getSubTasks();  
     pushTask(title, text, dueDate);
+    /* x = tasksToDo.length-1;
+    window.open('board.html');    
+    openDetailCardToDo(x); */
 }
 
 async function pushTask(title, text, dueDate) {

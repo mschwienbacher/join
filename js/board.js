@@ -186,3 +186,31 @@ for (let i = 0; i < tasksDone.length; i++){
         }
     }
 }
+
+function deleteTask(taskToDelete, x){
+    const isGoodValue = val => val && val !== '-' && val !== 'N/A'; /* check for empty arrays*/
+    switch (taskToDelete){
+        case 'tasksToDo':
+        delete tasksToDo[x];
+        tasksToDo = tasksToDo.filter(isGoodValue);
+        break;
+
+        case 'tasksInProgress':
+        delete tasksInProgress[x];
+        tasksInProgress = tasksInProgress.filter(isGoodValue);
+        break;
+
+        case 'tasksAwaitFeedback':
+        delete tasksAwaitFeedback[x];
+        tasksAwaitFeedback = tasksAwaitFeedback.filter(isGoodValue);
+        break;
+
+        case 'tasksDone':
+        delete tasksDone[x];
+        tasksDone = tasksDone.filter(isGoodValue);
+        break;        
+    } 
+    closeDetailCard();
+    saveTasksToBackend();
+    renderBoard();
+}
