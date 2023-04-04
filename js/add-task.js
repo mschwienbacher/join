@@ -11,6 +11,7 @@ async function addTask() {
     let dueDate = document.getElementById('due-date').value;
     getSubTasks();  
     await pushTask(title, text, dueDate);
+    window.location.href = "board.html";
 }
 
 async function pushTask(title, text, dueDate) {
@@ -35,7 +36,7 @@ async function pushTask(title, text, dueDate) {
         data['subtasks'].push(subtasks[i]);
     }    
     tasksToDo.push(data);
-    saveTasksToBackend();
+    await saveTasksToBackend();
 }
 
 function getCategory() {
