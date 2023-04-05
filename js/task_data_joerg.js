@@ -17,7 +17,7 @@ let subtasks =[];
         priority: "assets/img/low.svg",
         priorityByName: "Low",
         subtasks: ["subtask1", "subtask2"],
-        alreadyDone: 1,
+        alreadyDone: [1, 0]
     },
     {
         category: "Sales",
@@ -29,7 +29,7 @@ let subtasks =[];
         priority: "assets/img/urgent.svg",
         priorityByName: "Urgent",
         subtasks: ["subtask1", "subtask2"],
-        alreadyDone: 1,
+        alreadyDone: [1, 0]
     }
 ]
 
@@ -44,7 +44,7 @@ let tasksInProgress = [
         priority: "assets/img/low.svg",
         priorityByName: "Low",
         subtasks: ["subtask1", "subtask2"],
-        alreadyDone: 1,
+        alreadyDone: [1, 0]
     },
     {
         category: "Media",
@@ -56,7 +56,7 @@ let tasksInProgress = [
         priority: "assets/img/low.svg",
         priorityByName: "Low",
         subtasks: ["subtask1", "subtask2"],
-        alreadyDone: 0,
+        alreadyDone: [0, 1]
     }
 ]
 
@@ -71,7 +71,7 @@ let tasksAwaitFeedback = [
         priority: "assets/img/low.svg",
         priorityByName: "Low",
         subtasks: ["subtask1", "subtask2"],
-        alreadyDone: 1,
+        alreadyDone: [1, 0]
     },
     {
         category: "Design",
@@ -83,7 +83,7 @@ let tasksAwaitFeedback = [
         priority: "assets/img/low.svg",
         priorityByName: "Low",
         subtasks: ["subtask1", "subtask2"],
-        alreadyDone: 1,
+        alreadyDone: [1, 0]
     }
 ]
 
@@ -98,7 +98,7 @@ let tasksDone = [
         priority: "assets/img/low.svg",
         priorityByName: "Low",
         subtasks: ["subtask1", "subtask2"],
-        alreadyDone: 2,
+        alreadyDone: [1, 1]
     },
     {
         category: "Backoffice",
@@ -110,6 +110,6 @@ let tasksDone = [
         priority: "assets/img/medium.svg",
         priorityByName: "Medium",
         subtasks: ["subtask1", "subtask2"],
-        alreadyDone: 1,
+        alreadyDone: [1,0]
     }
-];  */
+]; */ 

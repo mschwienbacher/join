@@ -26,17 +26,41 @@ async function pushTask(title, text, dueDate) {
         priority: `assets/img/${priority}.svg`,
         priorityByName: `${priority}`,
         subtasks: [],
-        alreadyDone: 0
+        alreadyDone: []
     };
+    getInCharge();    
+    getSubtasksForm();   
+    getSubtasksChecked()
+    tasksToDo.push(data);
+    await saveTasksToBackend();
+}
+
+function getInCharge(){
     for (let i = 0; i < assignedTo.length; i++){
         data['inCharge'].push(assignedTo[i]);
         data['initials'].push(initials[i]);
-    }    
+    }
+}
+
+function getSubtasksForm(){
     for ( let i = 0; i < subtasks.length; i++){
         data['subtasks'].push(subtasks[i]);
+    } 
+}
+
+function getSubtasksChecked(){
+    let checkboxChecked = [];
+    let inputElements = document.getElementsByClassName('checkbox-subtask');
+    for (let i = 0; inputElements[i]; ++i) {
+        if (inputElements[i].checked) {
+            checkboxChecked.push(1);
+        }else{
+            checkboxChecked.push(0);
+        }
+    }
+    for (let i = 0; i < checkboxChecked.length; i++){
+        data['alreadyDone'].push(checkboxChecked[i]);
     }    
-    tasksToDo.push(data);
-    await saveTasksToBackend();
 }
 
 function getCategory() {

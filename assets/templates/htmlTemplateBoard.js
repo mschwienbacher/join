@@ -1,4 +1,4 @@
-function htmlTemplateTasksToDo(i, widthProgressBar){
+function htmlTemplateTasksToDo(i, widthProgressBar, nbDone){
     return `
     <div draggable="true" ondragstart=" startDragging(${i}, 'tasksToDo')" class="task-container-detail" onclick="openDetailCardToDo(${i})">
         <div class="category category-${tasksToDo[i]['category']}">${tasksToDo[i]['category']}</div>
@@ -8,7 +8,7 @@ function htmlTemplateTasksToDo(i, widthProgressBar){
             <div class="progress-bar" id="progress-bar">
                 <div id="myBar" style="width:${widthProgressBar}%"></div>
             </div>
-            <div class="already-done">${tasksToDo[i]['alreadyDone']}/${tasksToDo[i]['subtasks'].length} Done</div>
+            <div class="already-done">${nbDone}/${tasksToDo[i]['subtasks'].length} Done</div>
         </div>
         <div class="footer-task-detail">
         <div class="selected-person" id="selected-person-to-do${i}"></div>
@@ -28,7 +28,7 @@ function htmlTemplateSelectedPersonToDo(i,j){
 }
 
 
-function htmlTemplateTasksInProgress(i, widthProgressBar){
+function htmlTemplateTasksInProgress(i, widthProgressBar, nbDone){
     return `
     <div draggable="true" ondragstart=" startDragging(${i}, 'tasksInProgress')" class="task-container-detail" onclick="openDetailCardInProgress(${i})">
         <div class="category category-${tasksInProgress[i]['category']}">${tasksInProgress[i]['category']}</div>
@@ -38,7 +38,7 @@ function htmlTemplateTasksInProgress(i, widthProgressBar){
                 <div class="progress-bar" id="progress-bar">
                     <div id="myBar" style="width:${widthProgressBar}%"></div>
                 </div>
-            <div class="already-done">${tasksInProgress[i]['alreadyDone']}/${tasksInProgress[i]['subtasks'].length} Done</div>
+            <div class="already-done">${nbDone}/${tasksInProgress[i]['subtasks'].length} Done</div>
         </div>
         <div class="footer-task-detail">
         <div class="selected-person" id="selected-person-in-progress${i}"></div>
@@ -57,7 +57,7 @@ function htmlTemplateSelectedPersonInProgress(i,j){
 }
 
 
-function htmlTemplateTasksAwaitFeedback(i, widthProgressBar){
+function htmlTemplateTasksAwaitFeedback(i, widthProgressBar, nbDone){
     return `
     <div draggable="true" ondragstart=" startDragging(${i}, 'tasksAwaitFeedback')" class="task-container-detail" onclick="openDetailCardAwaitFeedback(${i})">
         <div class="category category-${tasksAwaitFeedback[i]['category']}">${tasksAwaitFeedback[i]['category']}</div>
@@ -67,7 +67,7 @@ function htmlTemplateTasksAwaitFeedback(i, widthProgressBar){
             <div class="progress-bar" id="progress-bar">
                  <div id="myBar" style="width:${widthProgressBar}%"></div>
             </div>
-            <div class="already-done">${tasksAwaitFeedback[i]['alreadyDone']}/${tasksAwaitFeedback[i]['subtasks'].length} Done</div>
+            <div class="already-done">${nbDone}/${tasksAwaitFeedback[i]['subtasks'].length} Done</div>
         </div>
         <div class="footer-task-detail">
         <div class="selected-person" id="selected-person-await-feedback${i}"></div>
@@ -86,7 +86,7 @@ function htmlTemplateSelectedPersonAwaitFeedback(i,j){
 }
 
 
-function htmlTemplateTasksDone(i, widthProgressBar){
+function htmlTemplateTasksDone(i, widthProgressBar, nbDone){
     return `
     <div draggable="true" ondragstart=" startDragging(${i}, 'tasksDone')" class="task-container-detail" onclick="openDetailCardDone(${i})">
         <div class="category category-${tasksDone[i]['category']}">${tasksDone[i]['category']}</div>
@@ -96,7 +96,7 @@ function htmlTemplateTasksDone(i, widthProgressBar){
             <div class="progress-bar" id="progress-bar">
                 <div id="myBar" style="width:${widthProgressBar}%"></div>
             </div>
-            <div class="already-done">${tasksDone[i]['alreadyDone']}/${tasksDone[i]['subtasks'].length} Done</div>
+            <div class="already-done">${nbDone}/${tasksDone[i]['subtasks'].length} Done</div>
         </div>
         <div class="footer-task-detail">
         <div class="selected-person" id="selected-person-done${i}"></div>
@@ -116,7 +116,7 @@ function htmlTemplateSelectedPersonDone(i,j){
 
 function htmlTemplateDetailCardToDo(x){
     return`
-    <div class="close-x"><img src="assets/img/trash.svg" onclick="deleteTask('tasksToDo', ${x})"> <button onclick="closeDetailCard()">X</button></div>
+    <div class="close-x"><img src="assets/img/trash.svg" onclick="deleteTask('tasksToDo', ${x})"> <button onclick="closeDetailCard('tasksToDo', ${x})">X</button></div>
     <span class="category category-${tasksToDo[x]['category']}">${tasksToDo[x]['category']}</span>
     <h1>${tasksToDo[x]['titel']}</h1>
     <span class="task-text">${tasksToDo[x]['text']}</span>    
@@ -147,15 +147,15 @@ function htmlTemplatePersonsDetailCardToDo(x, j){
     `;
 }
 
-function htmlTemplateSubtasksDetailCardToDo(x, j){
+function htmlTemplateSubtasksDetailCardToDo(x, j, checkedStatus){
     return `
-    <span style="padding-top: 6px"> <input class="sutaskCheckbox" type="checkbox" /> ${tasksToDo[x]['subtasks'][j]}</span>
+    <span style="padding-top: 6px"> <input class="sutaskCheckbox" type="checkbox" ${checkedStatus}/> ${tasksToDo[x]['subtasks'][j]}</span>
     `;
 }
 
 function htmlTemplateDetailCardInProgress(x){
     return`
-    <div class="close-x"><img src="assets/img/trash.svg" onclick="deleteTask('tasksInProgress', ${x})"><button onclick="closeDetailCard()">X</button></div>
+    <div class="close-x"><img src="assets/img/trash.svg" onclick="deleteTask('tasksInProgress', ${x})"><button onclick="closeDetailCard('tasksInProgress', ${x})">X</button></div>
     <span class="category category-${tasksInProgress[x]['category']}">${tasksInProgress[x]['category']}</span>
     <h1>${tasksInProgress[x]['titel']}</h1>
     <span class="task-text">${tasksInProgress[x]['text']}</span>    
@@ -186,15 +186,15 @@ function htmlTemplatePersonsDetailCardInProgress(x, j){
     `;
 }
 
-function htmlTemplateSubtasksDetailCardInProgress(x, j){
+function htmlTemplateSubtasksDetailCardInProgress(x, j, checkedStatus){
     return `
-    <span style="padding-top: 6px"> <input class="sutaskCheckbox" type="checkbox" /> ${tasksInProgress[x]['subtasks'][j]}</span>
+    <span style="padding-top: 6px"> <input class="sutaskCheckbox" type="checkbox" ${checkedStatus}/> ${tasksInProgress[x]['subtasks'][j]}</span>
     `;
 }
 
 function htmlTemplateDetailCardAwaitFeedback(x){
     return`
-    <div class="close-x"><img src="assets/img/trash.svg" onclick="deleteTask('tasksAwaitFeedback', ${x})"><button onclick="closeDetailCard()">X</button></div>
+    <div class="close-x"><img src="assets/img/trash.svg" onclick="deleteTask('tasksAwaitFeedback', ${x})"><button onclick="closeDetailCard('tasksAwaitFeedback', ${x})">X</button></div>
     <span class="category category-${tasksAwaitFeedback[x]['category']}">${tasksAwaitFeedback[x]['category']}</span>
     <h1>${tasksAwaitFeedback[x]['titel']}</h1>
 <span class="task-text">${tasksAwaitFeedback[x]['text']}</span>    
@@ -225,15 +225,15 @@ function htmlTemplatePersonsDetailCardAwaitFeedback(x, j){
     `;
 }
 
-function htmlTemplateSubtasksDetailCardAwaitFeedback(x, j){
+function htmlTemplateSubtasksDetailCardAwaitFeedback(x, j, checkedStatus){
     return `
-    <span style="padding-top: 6px"> <input class="sutaskCheckbox" type="checkbox" /> ${tasksAwaitFeedback[x]['subtasks'][j]}</span>
+    <span style="padding-top: 6px"> <input class="sutaskCheckbox" type="checkbox" ${checkedStatus}/> ${tasksAwaitFeedback[x]['subtasks'][j]}</span>
     `;
 }
 
 function htmlTemplateDetailCardDone(x){
     return`
-    <div class="close-x"><img src="assets/img/trash.svg" onclick="deleteTask('tasksDone', ${x})"><button onclick="closeDetailCard()">X</button></div>
+    <div class="close-x"><img src="assets/img/trash.svg" onclick="deleteTask('tasksDone', ${x})"><button onclick="closeDetailCard('tasksDone', ${x})">X</button></div>
     <span class="category category-${tasksDone[x]['category']}">${tasksDone[x]['category']}</span>
     <h1>${tasksDone[x]['titel']}</h1>
 <span class="task-text">${tasksDone[x]['text']}</span>    
@@ -264,8 +264,8 @@ function htmlTemplatePersonsDetailCardDone(x, j){
     `;
 }
 
-function htmlTemplateSubtasksDetailCardDone(x, j){
+function htmlTemplateSubtasksDetailCardDone(x, j, checkedStatus){
     return `
-    <span style="padding-top: 6px"> <input class="sutaskCheckbox" type="checkbox" /> ${tasksDone[x]['subtasks'][j]}</span>
+    <span style="padding-top: 6px"> <input class="sutaskCheckbox" type="checkbox" ${checkedStatus}/> ${tasksDone[x]['subtasks'][j]}</span>
     `;
 }
