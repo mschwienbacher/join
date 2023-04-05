@@ -152,12 +152,33 @@ function clearAddTaskForm() {
 
 function setPriority(string) {
     priority = string;
+    resetPriorityBtn();
+    switch (string){
+        
+        case 'low':
+            document.getElementById('low-btn').style = ("background-color:#7AE229");
+            document.getElementById('low-btn-img').src = "assets/img/low-white.svg";
+            break;
+
+        case 'medium':
+            document.getElementById('medium-btn').style = ("background-color:#FFA800");  
+            document.getElementById('medium-btn-img').src = "assets/img/medium-white.svg";
+            break;
+
+        case 'urgent':
+            document.getElementById('urgent-btn').style = ("background-color:#FF3D00");
+            document.getElementById('urgent-btn-img').src ="assets/img/urgent-white.svg";
+            break;
+    }
+}
+
+function resetPriorityBtn(){
     document.getElementById('urgent-btn').style = ("background-color:#f9f9f9");
     document.getElementById('medium-btn').style = ("background-color:#f9f9f9");
     document.getElementById('low-btn').style = ("background-color:#f9f9f9");
-    if (string != '') {
-        document.getElementById(`${string}-btn`).style = ("background-color: darkgrey");
-    }
+    document.getElementById('low-btn-img').src = "assets/img/low.svg";
+    document.getElementById('medium-btn-img').src = "assets/img/medium.svg";
+    document.getElementById('urgent-btn-img').src ="assets/img/urgent.svg";
 }
 
 async function saveTasksToBackend() {
