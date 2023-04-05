@@ -12,14 +12,13 @@ function htmlTemplateListAssignedTo(i){
     `;
 }
 
-function htmlTemplateCategory(){
+function htmlTemplateCategory(categoryToRender, ellipseToRender){
     return `
-    <ul class="items" >
-        <li><input class="messageCheckbox" type="checkbox" value="Backoffive"/> Backoffice</li>
-        <li><input class="messageCheckbox" type="checkbox" value="Design"/> Design</li>
-        <li><input class="messageCheckbox" type="checkbox" value="Marketing"/> Marketing</li>
-        <li><input class="messageCheckbox" type="checkbox" value="Media" /> Media</li>
-        <li><input class="messageCheckbox" type="checkbox" value="Sales"/> Sales</li>
-    </ul>
+        <div class="category-row">
+            <div>
+                <div><input class="messageCheckbox" type="checkbox" /> ${categoryToRender} </div>
+            </div>
+            <img src="${ellipseToRender}">
+        </div>
     `;
 }

@@ -1,5 +1,3 @@
-let categories = ['Backoffice', 'Design', 'Marketing', 'Media', 'Sales'];
-
 let assignedTo = [];
 
 let initials = [];

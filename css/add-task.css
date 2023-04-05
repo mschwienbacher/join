@@ -55,6 +55,7 @@ body{
     font-style: normal;
     font-weight: 400;
     font-size: 19px;
+    width: 90%;
 }
 
 .due-date{
@@ -249,6 +250,12 @@ body{
     display: flex;
     flex-direction: row;
     margin-bottom: 6px;
+}
+
+.category-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .d-none{

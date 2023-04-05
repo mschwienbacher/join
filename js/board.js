@@ -224,6 +224,7 @@ function closeDetailCard(taskStatus, x) {
             for (let i = 0; i < checkboxChecked.length; i++){
                 tasksToDo[x]['alreadyDone'].push(checkboxChecked[i]);
             }
+            break;
 
         case 'tasksInProgress':            
             for (let i = 0; inputElements[i]; ++i) {
@@ -237,7 +238,8 @@ function closeDetailCard(taskStatus, x) {
             for (let i = 0; i < checkboxChecked.length; i++){
                 tasksInProgress[x]['alreadyDone'].push(checkboxChecked[i]);
             }
-            
+            break;
+
         case 'tasksAwaitFeedback':
             for (let i = 0; inputElements[i]; ++i) {
                 if (inputElements[i].checked) {
@@ -250,6 +252,7 @@ function closeDetailCard(taskStatus, x) {
             for (let i = 0; i < checkboxChecked.length; i++){
                 tasksAwaitFeedback[x]['alreadyDone'].push(checkboxChecked[i]);
             }
+            break;
 
         case 'tasksDone':
             for (let i = 0; inputElements[i]; ++i) {
