@@ -5,14 +5,11 @@ let contacts = []
 async function loadContactFromBackEnd() {
     setTimeout(() => {
         let contactsTransform = backend.getItem('contacts') || []
-        sortedContacts = JSON.parse(contactsTransform) 
+        sortedContacts = JSON.parse(contactsTransform) || []
         renderTheQuestContacts();
     }, 300)
 }
 
-/*async function addContactToBackend(){
-    await backend.setItem('contacts', JSON.stringify(contacts))
-}*/
 
 loadContactFromBackEnd()
 
@@ -123,6 +120,7 @@ function saveTheEdit(x) {
     sortedContacts[x]['tel'] = document.getElementById(`phoneInputEdit${x}`).value
     firstAndSecondNameUpdate(document.getElementById(`nameInputEdit${x}`).value, x)
     closeEdit();
+    addContactToBackend()
     renderTheQuestContacts();
     showDetail(x);
 }
@@ -221,11 +219,15 @@ document.getElementById('save-add-btn').addEventListener('click', () => {
     console.log(nameAdd)
     sortedContacts.push(newContact)
     letterCounter = [];
+    addContactToBackend()
     renderTheQuestContacts()
     clearTheAddInput();
     closeAdd();
 })
 
+async function addContactToBackend(){
+    await backend.setItem('contacts', JSON.stringify(sortedContacts))
+}
 
 function clearTheAddInput() {
     nameAdd = document.getElementById('addNameInput').value = ``
