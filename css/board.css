@@ -236,6 +236,10 @@ height: 15px;
     margin-right: 24px;
 }
 
+.edit-btn:hover{
+    cursor: pointer;
+}
+
 .text-fix{
     font-style: normal;
     font-weight: 700;

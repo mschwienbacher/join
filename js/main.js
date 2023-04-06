@@ -17,6 +17,10 @@ function loadTasksFromBackend() {
     tasksDone = JSON.parse(taskstringDone) || [];    
 }
 
+function loadContactsFromBackend(){
+    contacts = JSON.parse(backend.getItem('contacts'));
+}
+
 /**
  * This function is used to INIT the backend.
  *
@@ -30,12 +34,14 @@ async function initBackend() {
 async function initBoard() {
     await downloadFromServer();
     loadTasksFromBackend();
+    loadContactsFromBackend();
     renderBoard();
 }
 
 async function initAddTask() {
     await downloadFromServer();
     loadTasksFromBackend();
+    loadContactsFromBackend();
     renderAddTask();
 }
 
