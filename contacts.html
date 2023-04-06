@@ -115,9 +115,12 @@
                         <div class="embleme-and-input">
                             <p class="embleme-edit">TF</p>
                             <form>
-                                <div class="input-container"><input placeholder="Name" type="text"><img src="" alt=""></div>
-                                <div class="input-container"><input placeholder="Email" type="email"><img src="" alt=""></div>
-                                <div class="input-container"><input placeholder="Phone" type="number"><img src="" alt=""></div>
+                                <div class="input-container"><input placeholder="Name" type="text"><img src="" alt="">
+                                </div>
+                                <div class="input-container"><input placeholder="Email" type="email"><img src="" alt="">
+                                </div>
+                                <div class="input-container"><input placeholder="Phone" type="number"><img src=""
+                                        alt=""></div>
                             </form>
                             <p class="save-edit-btn" id="save-edit-btn">save</p>
                         </div>
@@ -140,19 +143,68 @@
                         <div class="embleme-and-input">
                             <p class="embleme-add "><img src="assets/img/dummy.svg" alt=""></p>
                             <form>
-                                <div  class="input-container"><input id="addNameInput" placeholder="Name" type="text"><img src="assets/img/contact-dummy-name.svg" alt=""></div>
-                                <div  class="input-container"><input id="addEmailInput" placeholder="Email" type="email"><img src="assets/img/email-contacts.svg" alt=""></div>
-                                <div  class="input-container"><input id="addTelephoneInput" placeholder="Phone" type="number"><img src="assets/img/telephone-contacts.svg" alt=""></div>
+                                <div class="input-container"><input id="addNameInput" placeholder="Name"
+                                        type="text"><img src="assets/img/contact-dummy-name.svg" alt=""></div>
+                                <div class="input-container"><input id="addEmailInput" placeholder="Email"
+                                        type="email"><img src="assets/img/email-contacts.svg" alt=""></div>
+                                <div class="input-container"><input id="addTelephoneInput" placeholder="Phone"
+                                        type="number"><img src="assets/img/telephone-contacts.svg" alt=""></div>
                             </form>
                             <div class="btn-designe-add-contact">
-                                <p onclick="closeAdd()" id="cancel-btn">Cancel<img src="assets/img/Vector.svg" alt="close button"></p>
-                                <p class="save-edit-btn" id="save-add-btn">Create contact <img src="assets/img/hook.svg" alt=""></p>
+                                <p onclick="closeAdd()" id="cancel-btn">Cancel<img src="assets/img/Vector.svg"
+                                        alt="close button"></p>
+                                <p class="save-edit-btn" id="save-add-btn">Create contact <img src="assets/img/hook.svg"
+                                        alt=""></p>
                             </div>
                         </div>
                     </div>
                     <!--window for adding a new contact-->
 
-
+                    <!--window for adding a task to a contact-->
+                    <div id="add-task-to-contact-container">
+                        <div id="add-taks-content-guest">
+                            <span onclick="closeAddTask()" id="close-btn-add-task">X</span>
+                            <div class="headline-add-task-container">
+                                <p class="add-task-headline">Add task</p>
+                                <p class="create-task-btn-contacts">Create Task</p>
+                            </div>
+                            <input type="text" name="" id="enter-title-task-contact" placeholder="Enter a title">
+                            <div class="task-container-center">
+                                <p class="underline-task width-90">Select contacts to assign</p>
+                                <hr class="underline-hr">
+                            </div>
+                            <p class="task-text-designe">Due date</p>
+                            <div class="task-container-center">
+                                <span class="width-90 date-text">dd/mm/yyyy</span>
+                                <hr class="underline-hr">
+                            </div>
+                            <div class="task-container-center">
+                                <p class="task-text-designe">Category</p>
+                                <span class="width-90">Select task category</span>
+                                <hr class="underline-hr">
+                            </div>
+                            <div class="task-container-priority">
+                                <span class="priority-btn">Urgent <img src="assets/img/urgent.svg" alt=""></span>
+                                <span class="priority-btn">Medium <img src="assets/img/medium.svg" alt=""></span>
+                                <span class="priority-btn">Low <img src="assets/img/low.svg" alt=""></span>
+                            </div>
+                            <div class="task-container-center">
+                                <p class="task-text-designe">Description</p>
+                                <input type="text" name="" id="description-task-guest"
+                                    placeholder="Enter a Description">
+                            </div>
+                            <div class="task-container-center">
+                                <p class="task-text-designe">Subtasks</p>
+                                <span class="width-90">Add new subtask</span>
+                                <hr class="underline-hr">
+                            </div>
+                            <div class="task-container-center">
+                                <p class="width-90"><input type="checkbox" name="example_checkbox"
+                                        id="example_checkbox">Subtask 1</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!--window for adding a task to a contact-->
 
 
                     <div class="sidebar">

@@ -1,49 +1,20 @@
 // list of contacts
+let contacts = []
 
-let contacts = [
-    {
-        "name": "Tim",
-        "second-name": "Mellentin",
-        "email": "tim.spiele1@freenet.de",
-        "tel": "0491094309434"
-    },
-    {
-        "name": "Max",
-        "second-name": "Mustermann",
-        "email": "max.mannmuster@freenet.de",
-        "tel": "049109454345"
-    },
-    {
-        "name": "Freddy",
-        "second-name": "Mercury",
-        "email": "antotherone@bite-the-dust.de",
-        "tel": "04919461991"
-    },
-    {
-        "name": "Marianen",
-        "second-name": "Graben",
-        "email": "Marianen@freenet.de",
-        "tel": "04924002500"
-    },
-    {
-        "name": "Ti",
-        "second-name": "Anic",
-        "email": "ti.tanic@freenet.de",
-        "tel": "04910031912"
-    },
-    {
-        "name": "Andi",
-        "second-name": "Myer",
-        "email": "andi.myer@freenet.de",
-        "tel": "049100345345"
-    },
-    {
-        "name": "Rudolf",
-        "second-name": "Rentier",
-        "email": "rudolf.coKG@freenet.de",
-        "tel": "049100334532"
-    }
-]
+
+async function loadContactFromBackEnd() {
+    setTimeout(() => {
+        let contactsTransform = backend.getItem('contacts') || []
+        sortedContacts = JSON.parse(contactsTransform) 
+        renderTheQuestContacts();
+    }, 300)
+}
+
+/*async function addContactToBackend(){
+    await backend.setItem('contacts', JSON.stringify(contacts))
+}*/
+
+loadContactFromBackEnd()
 
 
 // render the contacts
@@ -101,7 +72,7 @@ function showDetail(j) {
         </div>
         <div>
             <p class="detail-name"><span>${sortedContacts[j]['name']}</span><span> ${sortedContacts[j]['second-name']}</span></p>
-            <p class="add-task-desgine">Add Task</p>
+            <p onclick="openAddTask(${j})" class="add-task-desgine clickable">Add Task</p>
         </div>
     </div>
     <div>
@@ -223,7 +194,6 @@ function closeAdd() {
 
 
 let sortedContacts = sortContactsAndSave(contacts);
-renderTheQuestContacts();
 
 
 function splitWords(inputValue) {
@@ -234,6 +204,7 @@ function splitWords(inputValue) {
     return resultArray;
 }
 
+
 function firstAndSecondNameUpdate(inputVal, number) {
     const input = inputVal;
     const result = splitWords(input);
@@ -241,7 +212,7 @@ function firstAndSecondNameUpdate(inputVal, number) {
     sortedContacts[number]['second-name'] = result[1]
 }
 
-
+// save button for adding a new contact
 document.getElementById('save-add-btn').addEventListener('click', () => {
     let nameAdd = splitWords(document.getElementById('addNameInput').value)
     let emailAdd = document.getElementById('addEmailInput').value
@@ -255,8 +226,66 @@ document.getElementById('save-add-btn').addEventListener('click', () => {
     closeAdd();
 })
 
+
 function clearTheAddInput() {
     nameAdd = document.getElementById('addNameInput').value = ``
     emailAdd = document.getElementById('addEmailInput').value = ``
     telephoneAdd = document.getElementById('addTelephoneInput').value = ``
 }
+
+
+function closeAddTask() {
+    document.getElementById('add-task-to-contact-container').style.width = '0px'
+}
+
+
+function openAddTask() {
+    document.getElementById('add-task-to-contact-container').style.width = '600px'
+}
+
+
+
+/*Delete in the future*/
+
+/*{
+    "name": "Tim",
+    "second-name": "Mellentin",
+    "email": "tim.spiele1@freenet.de",
+    "tel": "0491094309434"
+},
+{
+    "name": "Max",
+    "second-name": "Mustermann",
+    "email": "max.mannmuster@freenet.de",
+    "tel": "049109454345"
+},
+{
+    "name": "Freddy",
+    "second-name": "Mercury",
+    "email": "antotherone@bite-the-dust.de",
+    "tel": "04919461991"
+},
+{
+    "name": "Marianen",
+    "second-name": "Graben",
+    "email": "Marianen@freenet.de",
+    "tel": "04924002500"
+},
+{
+    "name": "Ti",
+    "second-name": "Anic",
+    "email": "ti.tanic@freenet.de",
+    "tel": "04910031912"
+},
+{
+    "name": "Andi",
+    "second-name": "Myer",
+    "email": "andi.myer@freenet.de",
+    "tel": "049100345345"
+},
+{
+    "name": "Rudolf",
+    "second-name": "Rentier",
+    "email": "rudolf.coKG@freenet.de",
+    "tel": "049100334532"
+}*/
