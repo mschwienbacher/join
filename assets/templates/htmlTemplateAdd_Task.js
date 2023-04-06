@@ -1,7 +1,7 @@
 function htmlTemplateSubtasks(newtaskSubtask, i){
     return `
     <div class="row">
-    <input class="checkbox-subtask" type="checkbox" checked> &nbsp;
+    <input class="checkbox-subtask" type="checkbox"> &nbsp;
     <span id="${i}">${newtaskSubtask}</span>
     </div>`;    
 }

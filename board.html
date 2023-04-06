@@ -24,6 +24,8 @@
     <script src="js/add-task.js"></script>
     <script src="js/board.js"></script>
     <script src="js/board_dragndrop.js"></script>
+    <script src="js/board_detail_card.js"></script>
+    <script src="js/board_edit.js"></script>
 </head>
 
 <body class="board-page" onload="initBoard()">
@@ -61,8 +63,10 @@
                         <div class="details d-none" id="details">
                             <div id="detail-popup" class="detail-popup"></div>
                         </div>
-                        <div class="wrapper">
-                            
+                        <div class="details d-none" id="edit-task">
+                            <div id="edit-task-popup" class="detail-popup"></div>
+                        </div>
+                        <div class="wrapper">                            
                             <div class="menu-bar">
                                 <div class="search-bar">
                                     <input type="text" placeholder="Find task" id="search" onkeydown="filter()">

@@ -134,7 +134,7 @@ function htmlTemplateDetailCardToDo(x){
     <div class="names-container" id="names-container">
         
     </div>
-    <div class="edit-btn"><img src="assets/img/edit-button.svg"></div>
+    <div class="edit-btn"><img src="assets/img/edit-button.svg" onclick="editTask('tasksToDo', ${x})"></div>
     `;
 }
 
@@ -173,7 +173,7 @@ function htmlTemplateDetailCardInProgress(x){
     <div class="names-container" id="names-container">
         
     </div>
-    <div class="edit-btn"><img src="assets/img/edit-button.svg"></div>
+    <div class="edit-btn"><img src="assets/img/edit-button.svg" onclick="editTask('tasksInProgress', ${x})"></div>
     `;
 }
 
@@ -212,7 +212,7 @@ function htmlTemplateDetailCardAwaitFeedback(x){
     <div class="names-container" id="names-container">
         
     </div>
-    <div class="edit-btn"><img src="assets/img/edit-button.svg"></div>
+    <div class="edit-btn"><img src="assets/img/edit-button.svg" onclick="editTask('tasksAwaitFeedback', ${x})"></div>
     `;
 }
 
@@ -251,7 +251,7 @@ function htmlTemplateDetailCardDone(x){
     <div class="names-container" id="names-container">
         
     </div>
-    <div class="edit-btn"><img src="assets/img/edit-button.svg"></div>
+    <div class="edit-btn"><img src="assets/img/edit-button.svg" onclick="editTask('tasksDone', ${x})"></div>
     `;
 }
 
@@ -268,4 +268,25 @@ function htmlTemplateSubtasksDetailCardDone(x, j, checkedStatus){
     return `
     <span style="padding-top: 6px"> <input class="sutaskCheckbox" type="checkbox" ${checkedStatus}/> ${tasksDone[x]['subtasks'][j]}</span>
     `;
+}
+
+function htmlTemplateTaskToEdit(titleEdit, textEdit, year, month, day, priorityEdit){
+    return`
+    <div class="edit-task"</div>
+    <h2>Edit Task</h2>
+    <div>Title</div>
+    <input type="text" value="${titleEdit}">
+    <div>Description</div>
+    <textarea  id="textarea-edit" cols="34" rows="10"></textarea>
+    <div>Due date</div>
+    <input type="date" id="due-date-edit" name="trip-start" value="${year}-${month}-${day}">
+    <div class="priority-edit" id="task-priority-edit">
+        <button id="urgent-btn" type="button" onclick="setPriority('urgent')">Urgent <img id="urgent-btn-img" src="assets/img/urgent.svg" alt="urgent"></button>
+        <button id="medium-btn" type="button" onclick="setPriority('medium')">Medium <img id="medium-btn-img" src="assets/img/medium.svg" alt="medium"></button>
+        <button id="low-btn" type="button" onclick="setPriority('low')">Low <img id="low-btn-img" src="assets/img/low.svg" alt="low"></button>
+    </div>
+    <div onclick="closeEdit()" class="ok-btn"><button onclick="closeEdit()">OK</button>
+    <img src="assets/img/check.svg">
+    </div>
+`;
 }
