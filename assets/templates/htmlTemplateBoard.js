@@ -270,23 +270,44 @@ function htmlTemplateSubtasksDetailCardDone(x, j, checkedStatus){
     `;
 }
 
-function htmlTemplateTaskToEdit(titleEdit, textEdit, year, month, day, priorityEdit){
+function htmlTemplateTaskToEdit(titleEdit, textEdit, year, month, day, priorityEdit, taskStatus,x){
     return`
     <div class="edit-task"</div>
     <h2>Edit Task</h2>
     <div>Title</div>
-    <input type="text" value="${titleEdit}">
+    <input id="edited-title" type="text" value="${titleEdit}">
     <div>Description</div>
-    <textarea  id="textarea-edit" cols="34" rows="10"></textarea>
+    <textarea  id="textarea-edit" cols="34" rows="5"></textarea>
     <div>Due date</div>
     <input type="date" id="due-date-edit" name="trip-start" value="${year}-${month}-${day}">
+    <span>Subtasks</span>
+    <span id="subtask-to-edit"></span>
     <div class="priority-edit" id="task-priority-edit">
-        <button id="urgent-btn" type="button" onclick="setPriority('urgent')">Urgent <img id="urgent-btn-img" src="assets/img/urgent.svg" alt="urgent"></button>
-        <button id="medium-btn" type="button" onclick="setPriority('medium')">Medium <img id="medium-btn-img" src="assets/img/medium.svg" alt="medium"></button>
-        <button id="low-btn" type="button" onclick="setPriority('low')">Low <img id="low-btn-img" src="assets/img/low.svg" alt="low"></button>
+        <button id="urgent-btn" type="button" onclick="setPriority('urgent'); editPriority('urgent', '${taskStatus}', ${x})">Urgent <img id="urgent-btn-img" src="assets/img/urgent.svg" alt="urgent"></button>
+        <button id="medium-btn" type="button" onclick="setPriority('medium'); editPriority('medium', '${taskStatus}', ${x})">Medium <img id="medium-btn-img" src="assets/img/medium.svg" alt="medium"></button>
+        <button id="low-btn" type="button" onclick="setPriority('low'); editPriority('low', '${taskStatus}', ${x})">Low <img id="low-btn-img" src="assets/img/low.svg" alt="low"></button>
     </div>
-    <div onclick="closeEdit()" class="ok-btn"><button onclick="closeEdit()">OK</button>
+    <span>Assigned to</span>
+    <span id="persons-to-edit" class="names"></span>
+    <div onclick="closeEdit('${taskStatus}', ${x})" class="ok-btn"><button onclick="closeEdit('${taskStatus}', ${x})">OK</button>
     <img src="assets/img/check.svg">
     </div>
 `;
+}
+
+function htmlTemplateSubtasksToEdit(subtasksToEdit, i, checkedStatus){
+    return `
+    <div class="ckeckbox-in-edit"> 
+    <input style="width:5%" type="checkbox" class="edited-subtasks" ${checkedStatus}/> 
+    <span>${subtasksToEdit[i]}</span>
+    </div>
+    `;
+}
+
+function htmlTemplateAssignedToEdit(assignedToEdit, j){
+    return`
+    <div >
+        <div class="initials-icon bg${j}">${assignedToEdit[j]}</div>        
+    </div>
+    `;
 }

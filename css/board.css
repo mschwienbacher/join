@@ -154,7 +154,7 @@ height: 15px;
 }
 
 .already-done{
-    width: 100px;
+    width: 110px;
 }
 
 .footer-task-detail{
@@ -426,4 +426,11 @@ height: 15px;
     background: #4589FF;
     border: none;
     color: white;
+}
+
+.ckeckbox-in-edit{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
 }

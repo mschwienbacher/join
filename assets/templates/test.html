@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="priority-edit" id="task-priority-edit">
+        <button id="urgent-btn" type="button" onclick="setPriority('urgent')">Urgent <img id="urgent-btn-img" src="assets/img/urgent.svg" alt="urgent"></button>
+        <button id="medium-btn" type="button" onclick="setPriority('medium')">Medium <img id="medium-btn-img" src="assets/img/medium.svg" alt="medium"></button>
+        <button id="low-btn" type="button" onclick="setPriority('low')">Low <img id="low-btn-img" src="assets/img/low.svg" alt="low"></button>
+    </div>
+    <span id="persons-to-edit" class="names">Assigned to</span>
+    <div onclick="closeEdit()" class="ok-btn"><button onclick="closeEdit()">OK</button>
+    <img src="assets/img/check.svg">
+    </div>
+</body>
+</html>

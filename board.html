@@ -60,11 +60,11 @@
             <div class="center">
                 <div class="inner reverse">
                     <div class="content">
-                        <div class="details d-none" id="details">
-                            <div id="detail-popup" class="detail-popup"></div>
+                        <div onclick="closeDetailCard()" class="details d-none" id="details">
+                            <div onclick="stopPropagation(event)" id="detail-popup" class="detail-popup" ></div>
                         </div>
-                        <div class="details d-none" id="edit-task">
-                            <div id="edit-task-popup" class="detail-popup"></div>
+                        <div onclick="closeEdit()" class="details d-none" id="edit-task">
+                            <div onclick="stopPropagation(event)" id="edit-task-popup" class="detail-popup"></div>
                         </div>
                         <div class="wrapper">                            
                             <div class="menu-bar">
