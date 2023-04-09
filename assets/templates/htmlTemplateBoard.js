@@ -124,7 +124,7 @@ function htmlTemplateDetailCardToDo(x){
     <div class="priority-container">
         <span class="text-fix-priority">Priority:</span> 
         <div class="${tasksToDo[x]['priorityByName']} priority-level">
-            <span class="priority-text">Low</span>    
+            <span class="priority-text">${tasksToDo[x]['priorityByName']}</span>    
             <img src="${tasksToDo[x]['priority']}">
         </div>
     </div>
@@ -163,7 +163,7 @@ function htmlTemplateDetailCardInProgress(x){
     <div class="priority-container">
         <span class="text-fix-priority">Priority:</span> 
         <div class="${tasksInProgress[x]['priorityByName']} priority-level">
-            <span class="priority-text">Low</span>    
+            <span class="priority-text">${tasksInProgress[x]['priorityByName']}</span>    
             <img src="${tasksInProgress[x]['priority']}">
         </div>
     </div>
@@ -202,7 +202,7 @@ function htmlTemplateDetailCardAwaitFeedback(x){
     <div class="priority-container">
         <span class="text-fix-priority">Priority:</span> 
         <div class="${tasksAwaitFeedback[x]['priorityByName']} priority-level">
-            <span class="priority-text">Low</span>    
+            <span class="priority-text">${tasksAwaitFeedback[x]['priorityByName']}</span>    
             <img src="${tasksAwaitFeedback[x]['priority']}">
         </div>
     </div>
@@ -241,7 +241,7 @@ function htmlTemplateDetailCardDone(x){
     <div class="priority-container">
         <span class="text-fix-priority">Priority:</span> 
         <div class="${tasksDone[x]['priorityByName']} priority-level">
-            <span class="priority-text">Low</span>    
+            <span class="priority-text">${tasksDone[x]['priorityByName']}</span>    
             <img src="${tasksDone[x]['priority']}">
         </div>
     </div>
@@ -281,6 +281,10 @@ function htmlTemplateTaskToEdit(titleEdit, textEdit, year, month, day, priorityE
     <div>Due date</div>
     <input type="date" id="due-date-edit" name="trip-start" value="${year}-${month}-${day}">
     <span>Subtasks</span>
+    <div class="input-subtasks">
+        <input style="width:85%; margin-right:10px" type="text" placeholder="add new subtask" id="task-subtask-edit">
+        <img src="assets/img/plus.svg" alt="add" onclick="renderAddedSubtask('${taskStatus}', ${x})">
+    </div>
     <span id="subtask-to-edit"></span>
     <div class="priority-edit" id="task-priority-edit">
         <button id="urgent-btn" type="button" onclick="setPriority('urgent'); editPriority('urgent', '${taskStatus}', ${x})">Urgent <img id="urgent-btn-img" src="assets/img/urgent.svg" alt="urgent"></button>

@@ -23,6 +23,7 @@ function editTask(taskStatus, x) {
             priorityEdit = tasksInProgress[x]['priority'];
             assignedToEdit = tasksInProgress[x]['initials'];
             subtasksToEdit = tasksInProgress[x]['subtasks'];
+            subtasksToEditAlreadyDone = tasksInProgress[x]['alreadyDone'];
             break;
 
         case 'tasksAwaitFeedback':
@@ -32,6 +33,7 @@ function editTask(taskStatus, x) {
             priorityEdit = tasksAwaitFeedback[x]['priority'];
             assignedToEdit = tasksAwaitFeedback[x]['initials'];
             subtasksToEdit = tasksAwaitFeedback[x]['subtasks'];
+            subtasksToEditAlreadyDone = tasksAwaitFeedback[x]['alreadyDone'];
             break;
 
         case 'tasksDone':
@@ -41,6 +43,7 @@ function editTask(taskStatus, x) {
             priorityEdit = tasksDone[x]['priority'];
             assignedToEdit = tasksDone[x]['initials'];
             subtasksToEdit = tasksDone[x]['subtasks'];
+            subtasksToEditAlreadyDone = tasksDone[x]['alreadyDone'];
             break;
     }
     
@@ -69,6 +72,32 @@ function editTask(taskStatus, x) {
         document.getElementById('persons-to-edit').innerHTML +=
             htmlTemplateAssignedToEdit(assignedToEdit, j);
     }    
+}
+
+function renderAddedSubtask(taskStatus, x){
+    let i = 0;
+    let subtasksToPush = document.getElementById('task-subtask-edit').value;
+    switch (taskStatus){
+        case 'tasksToDo':
+            tasksToDo[x]['subtasks'].push(subtasksToPush);
+            i = tasksToDo[x]['subtasks'].length -1;
+            break;
+        case 'tasksInProgress':
+            tasksInProgress[x]['subtasks'].push(subtasksToPush);
+            i = tasksInProgress[x]['subtasks'].length -1;
+            break;
+        case 'tasksAwaitFeddback':
+            tasksAwaitFeedback[x]['subtasks'].push(subtasksToPush);
+            i = tasksAwaitFeedback[x]['subtasks'].length -1;
+            break;
+        case 'tasksDone':
+            tasksDone[x]['subtasks'].push(subtasksToPush);
+            i = tasksDone[x]['subtasks'].length -1;
+            break;
+    }    
+    checkedStatus = '';
+    document.getElementById('subtask-to-edit').innerHTML +=
+        htmlTemplateSubtasksToEdit(subtasksToEdit, i, checkedStatus);  
 }
 
 function closeEdit(taskStatus, x){
@@ -104,6 +133,9 @@ function closeEdit(taskStatus, x){
             for (let i = 0; i < checkboxChecked.length; i++){
                 tasksInProgress[x]['alreadyDone'].push(checkboxChecked[i]);
             }
+            tasksInProgress[x]['titel'] = document.getElementById('edited-title').value;
+            tasksInProgress[x]['text'] = document.getElementById('textarea-edit').value;
+            tasksInProgress[x]['dueDate'] = document.getElementById('due-date-edit').value;
             break;
 
         case 'tasksAwaitFeedback':
@@ -118,6 +150,9 @@ function closeEdit(taskStatus, x){
             for (let i = 0; i < checkboxChecked.length; i++){
                 tasksAwaitFeedback[x]['alreadyDone'].push(checkboxChecked[i]);
             }
+            tasksAwaitFeedback[x]['titel'] = document.getElementById('edited-title').value;
+            tasksAwaitFeedback[x]['text'] = document.getElementById('textarea-edit').value;
+            tasksAwaitFeedback[x]['dueDate'] = document.getElementById('due-date-edit').value;
             break;
 
         case 'tasksDone':
@@ -132,6 +167,10 @@ function closeEdit(taskStatus, x){
             for (let i = 0; i < checkboxChecked.length; i++){
                 tasksDone[x]['alreadyDone'].push(checkboxChecked[i]);
             }
+            tasksDone[x]['titel'] = document.getElementById('edited-title').value;
+            tasksDone[x]['text'] = document.getElementById('textarea-edit').value;
+            tasksDone[x]['dueDate'] = document.getElementById('due-date-edit').value;
+            break;
     }
     document.getElementById('edit-task').classList.add('d-none');
     saveTasksToBackend();
