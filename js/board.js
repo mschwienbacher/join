@@ -160,3 +160,8 @@ function filterDone(search) {
         }
     }
 }
+
+function openAddTaskPopup(){
+    document.getElementById('add-task-popup-container').classList.remove('d-none');
+    /* document.getElementById('add-task-popup').classList.remove('d-none'); */
+}

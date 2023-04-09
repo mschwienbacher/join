@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="css/inner-page-responsive.css">
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/board.css">
+    <link rel="stylesheet" href="css/board-add-task.css">
     <script src="js/mini_backend.js"></script>
     <script src="js/main.js"></script>
     <script src="js/task_data_joerg.js"></script>
@@ -28,7 +29,7 @@
     <script src="js/board_edit.js"></script>
 </head>
 
-<body class="board-page" onload="initBoard()">
+<body class="board-page" onload="initBoard(); includeHTML()">
     
     <header class="header">        
         <div class="container">
@@ -66,14 +67,19 @@
                         <div onclick="closeEdit()" class="details d-none" id="edit-task">
                             <div onclick="stopPropagation(event)" id="edit-task-popup" class="detail-popup"></div>
                         </div>
-                        <div class="wrapper">                            
+                        <div class="details d-none" id="add-task-popup-container">
+                            <div id="add-task-popup" class="add-task-popup ">
+                                <div w3-include-html="assets/templates/add_task_template.html"></div>
+                            </div>
+                        </div> 
+                        <div class="wrapper">                                                                                  
                             <div class="menu-bar">
                                 <div class="search-bar">
                                     <input type="text" placeholder="Find task" id="search" onkeydown="filter()">
                                     <img src="assets/img/loupe.svg" alt="loupe">
                                 </div>
                                 <div class="add-task-btn">
-                                    <button>Add task +</button>
+                                    <button onclick="openAddTaskPopup()">Add task +</button>
                                 </div>
                             </div>
                             <div class="status-bar">

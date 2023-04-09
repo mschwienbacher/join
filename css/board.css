@@ -434,3 +434,11 @@ height: 15px;
     align-items: center;
     justify-content: left;
 }
+
+.add-task-popup{
+    background: #f9f9f9;
+    display: flex;
+    width: 750px;
+    height: 500px;
+
+}
