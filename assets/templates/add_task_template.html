@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form onsubmit="addTask(); return false;">
+        <div class="title">
+            <input type="text" placeholder="Enter a title" id="task-title" required>
+        </div>
+        <div class="select-contacts-to-assign" id="select-contacts-to-assign">
+            <span>Select contacts to assign</span>
+            <img src="assets/img/dropdown.svg" onclick="openContactsToAssign()">
+        </div>
+        <div id="list-assigned-to" class="dropdown-check-list d-none" tabindex="100">
+            <ul class="items" id="checkbox-list-assigned-to">
+                <!-- htmlTemplateListAssignedTo -->
+            </ul>
+        </div>
+        <div class="due-date">
+            <span>Due date</span>
+            <div class="date-picker">
+                <input type="date" id="due-date" name="trip-start" value="" required>
+                <img src="/assets/img/calendar.svg">
+            </div>
+
+        </div>
+        <div class="category">
+            <span>Category</span>
+            <div class="select-contacts-to-assign" id="select-contacts-to-assign">
+                <span>Select task category</span>
+                <img src="assets/img/dropdown.svg" onclick="openTaskCategory()">
+            </div>
+            <div id="list-task-category" class="dropdown-check-list d-none" tabindex="100">
+                <ul class="items" id="category-row">
+                    <!-- htmlTemplateCategory() -->
+                </ul>
+            </div>
+        </div>
+        <div class="priority" id="task-priority">
+            <button id="urgent-btn" type="button" onclick="setPriority('urgent')">Urgent <img id="urgent-btn-img"
+                    src="assets/img/urgent.svg" alt="urgent"></button>
+            <button id="medium-btn" type="button" onclick="setPriority('medium')">Medium <img id="medium-btn-img"
+                    src="assets/img/medium.svg" alt="medium"></button>
+            <button id="low-btn" type="button" onclick="setPriority('low')">Low <img id="low-btn-img"
+                    src="assets/img/low.svg" alt="low"></button>
+        </div>
+        <div class="description">
+            <span>Description</span>
+            <textarea name="description" placeholder="Enter a description" id="task-description" cols="55" rows="100"
+                required></textarea>
+        </div>
+        <div class="subtasks">
+            <span>Subtasks</span>
+            <div class="input-subtasks">
+                <input type="text" placeholder="add new subtask" id="task-subtask">
+                <img src="assets/img/plus.svg" alt="add" onclick="renderSubtasks()">
+            </div>
+        </div>
+        <div class="checkbox-subtasks" id="ckeckbox-subtasks">
+            <!-- htmlTemplateSubtasks -->
+        </div>
+        <div class="execute-buttons">
+            <button type="button" style="color: #647188" onclick="clearAddTaskForm()">Clear X</button>
+            <button style="background-color: #4589FF; color: white;">Create <img src="assets/img/check.svg"
+                    alt="check"></button>
+        </div>
+    </form>
+
+</body>
+
+</html>
