@@ -358,6 +358,7 @@ height: 15px;
     right: 0;
     align-items: center;
     justify-content: center;
+    overflow-y: scroll;
 }
 
 .edit-task{
@@ -435,10 +436,3 @@ height: 15px;
     justify-content: left;
 }
 
-.add-task-popup{
-    background: #f9f9f9;
-    display: flex;
-    width: 750px;
-    height: 500px;
-
-}

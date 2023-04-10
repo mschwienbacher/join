@@ -103,26 +103,30 @@ body{
     margin-left: -24px;
 }
 
-.category{
+.category-add-task{
     margin-top: 25px;
     font-weight: 700;
     font-size: 19px;
     display: flex;
     flex-direction: column;
+    justify-content:space-between ;
     align-items:  flex-start;
     padding-top: 12px;
     width: 422px;
     background-color: #f9f9f9;
+    box-sizing: border-box;
 }
 
 .select-category{
+    display: flex;
+    justify-content: space-between;
     background-color: #f9f9f9;
     border-bottom: 1px solid;
     font-style: normal;
     font-weight: 400;
     font-size: 19px;
     line-height: 120%;
-    width: 422px;
+    width: 95%;
     padding-left: 21px;
     padding-top: 13px;
     padding-bottom: 13px;

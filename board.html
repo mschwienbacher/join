@@ -17,11 +17,12 @@
     <link rel="stylesheet" href="css/inner-page-responsive.css">
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/board.css">
-    <link rel="stylesheet" href="css/board-add-task.css">
+    <link rel="stylesheet" href="css/board-add-task-template.css">
     <script src="js/mini_backend.js"></script>
     <script src="js/main.js"></script>
     <script src="js/task_data_joerg.js"></script>
     <script src="assets/templates/htmlTemplateBoard.js"></script>
+    <script src="assets/templates/htmlTemplateAdd_Task.js"></script>
     <script src="js/add-task.js"></script>
     <script src="js/board.js"></script>
     <script src="js/board_dragndrop.js"></script>
@@ -30,8 +31,8 @@
 </head>
 
 <body class="board-page" onload="initBoard(); includeHTML()">
-    
-    <header class="header">        
+
+    <header class="header">
         <div class="container">
             <div class="center">
                 <div class="inner">
@@ -55,24 +56,27 @@
                 </div>
             </div>
         </div>
-    </header>    
+    </header>
     <main id="main" class="main">
         <div class="container">
             <div class="center">
                 <div class="inner reverse">
                     <div class="content">
                         <div onclick="closeDetailCard()" class="details d-none" id="details">
-                            <div onclick="stopPropagation(event)" id="detail-popup" class="detail-popup" ></div>
+                            <div onclick="stopPropagation(event)" id="detail-popup" class="detail-popup"></div>
                         </div>
                         <div onclick="closeEdit()" class="details d-none" id="edit-task">
                             <div onclick="stopPropagation(event)" id="edit-task-popup" class="detail-popup"></div>
                         </div>
                         <div class="details d-none" id="add-task-popup-container">
                             <div id="add-task-popup" class="add-task-popup ">
-                                <div w3-include-html="assets/templates/add_task_template.html"></div>
+                                <div class="header-add-task-popup">
+                                    <h2>Add Task</h2>
+                                    <div w3-include-html="assets/templates/add_task_template.html"></div>
+                                </div>
                             </div>
-                        </div> 
-                        <div class="wrapper">                                                                                  
+                        </div>
+                        <div class="wrapper">
                             <div class="menu-bar">
                                 <div class="search-bar">
                                     <input type="text" placeholder="Find task" id="search" onkeydown="filter()">
@@ -88,7 +92,8 @@
                                         <span>To do</span>
                                         <img src="assets/img/plus.svg" alt="add">
                                     </div>
-                                    <div class="task-container" id="to-do-container" ondrop="moveTo(event)" ondragover="allowDrop(event)">
+                                    <div class="task-container" id="to-do-container" ondrop="moveTo(event)"
+                                        ondragover="allowDrop(event)">
                                         <!-- htmlTemplateTasksToDo -->
                                     </div>
                                 </div>
@@ -97,7 +102,8 @@
                                         <span>In progress</span>
                                         <img src="assets/img/plus.svg" alt="add">
                                     </div>
-                                    <div class="task-container" id="in-progress-container" ondrop="moveTo(event)" ondragover="allowDrop(event)">
+                                    <div class="task-container" id="in-progress-container" ondrop="moveTo(event)"
+                                        ondragover="allowDrop(event)">
                                         <!-- htmlTemplateTasksInProgress-->
                                     </div>
                                 </div>
@@ -106,7 +112,8 @@
                                         <span>Await feedback</span>
                                         <img src="assets/img/plus.svg" alt="add">
                                     </div>
-                                    <div class="task-container" id="await-feedback-container" ondrop="moveTo(event)" ondragover="allowDrop(event)">
+                                    <div class="task-container" id="await-feedback-container" ondrop="moveTo(event)"
+                                        ondragover="allowDrop(event)">
                                         <!-- htmlTemplateTasksAwaitFeedback -->
                                     </div>
                                 </div>
@@ -115,7 +122,8 @@
                                         <span>Done</span>
                                         <img src="assets/img/plus.svg" alt="add">
                                     </div>
-                                    <div class="task-container" id="done-container" ondrop="moveTo(event)" ondragover="allowDrop(event)">
+                                    <div class="task-container" id="done-container" ondrop="moveTo(event)"
+                                        ondragover="allowDrop(event)">
                                         <!-- htmlTemplateTasksDone -->
                                     </div>
                                 </div>
@@ -149,7 +157,7 @@
             </div>
         </div>
     </main>
-    
+
     <!-- Insert dedicated JS script -->
 </body>
 

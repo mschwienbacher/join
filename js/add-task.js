@@ -109,8 +109,8 @@ function openTaskCategory() {
 
 function renderAddTask() {
     loadTasksFromBackend();
-    renderListAssignedTo();
-    renderListTaskCategory();
+    /* renderListAssignedTo();
+    renderListTaskCategory(); */
 }
 
 function renderListAssignedTo() {
