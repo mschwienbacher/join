@@ -1,5 +1,48 @@
+
 // list of contacts
-let contacts = []
+let contacts = [/*{
+    "name": "Tim",
+    "second-name": "Mellentin",
+    "email": "tim.spiele1@freenet.de",
+    "tel": "0491094309434"
+},
+{
+    "name": "Max",
+    "second-name": "Mustermann",
+    "email": "max.mannmuster@freenet.de",
+    "tel": "049109454345"
+},
+{
+    "name": "Freddy",
+    "second-name": "Mercury",
+    "email": "antotherone@bite-the-dust.de",
+    "tel": "04919461991"
+},
+{
+    "name": "Marianen",
+    "second-name": "Graben",
+    "email": "Marianen@freenet.de",
+    "tel": "04924002500"
+},
+{
+    "name": "Ti",
+    "second-name": "Anic",
+    "email": "ti.tanic@freenet.de",
+    "tel": "04910031912"
+},
+{
+    "name": "Andi",
+    "second-name": "Myer",
+    "email": "andi.myer@freenet.de",
+    "tel": "049100345345"
+},
+{
+    "name": "Rudolf",
+    "second-name": "Rentier",
+    "email": "rudolf.coKG@freenet.de",
+    "tel": "049100334532"
+}*/]
+
 
 
 async function loadContactFromBackEnd() {
@@ -10,8 +53,8 @@ async function loadContactFromBackEnd() {
     }, 300)
 }
 
-
 loadContactFromBackEnd()
+
 
 
 // render the contacts
@@ -188,6 +231,9 @@ function openAdd() {
 // close the add contact window
 function closeAdd() {
     document.getElementById('add-window').style.left = '-50vw';
+    document.getElementById('addNameInput').value = ``;
+    document.getElementById('addEmailInput').value = ``;
+    document.getElementById('addTelephoneInput').value = ``;
 }
 
 
@@ -211,7 +257,7 @@ function firstAndSecondNameUpdate(inputVal, number) {
 }
 
 // save button for adding a new contact
-document.getElementById('save-add-btn').addEventListener('click', () => {
+function addNewContact() {
     let nameAdd = splitWords(document.getElementById('addNameInput').value)
     let emailAdd = document.getElementById('addEmailInput').value
     let telephoneAdd = document.getElementById('addTelephoneInput').value
@@ -223,9 +269,9 @@ document.getElementById('save-add-btn').addEventListener('click', () => {
     renderTheQuestContacts()
     clearTheAddInput();
     closeAdd();
-})
+}
 
-async function addContactToBackend(){
+async function addContactToBackend() {
     await backend.setItem('contacts', JSON.stringify(sortedContacts))
 }
 
@@ -247,7 +293,21 @@ function openAddTask() {
 
 
 
+/*function setContact() {
+    backend.setItem('contacts', JSON.stringify(contacts))
+}
+
+function deleteContacts() {
+    backend.deleteItem('contacts');
+}*/
+
+
+
+// deleteContacts()
+// setContact()
+
 /*Delete in the future*/
+
 
 /*{
     "name": "Tim",
