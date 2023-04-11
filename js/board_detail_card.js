@@ -17,7 +17,7 @@ function renderSubtaksInDetailCardToDo(x) {
             checkedStatus = 'checked';
         } else {
             checkedStatus = '';
-        }
+        };
         document.getElementById('subtasks').innerHTML +=
             htmlTemplateSubtasksDetailCardToDo(x, j, checkedStatus);
     }
@@ -30,7 +30,7 @@ function openDetailCardInProgress(x) {
     document.getElementById('names-container').innerHTML = '';
     for (let j = 0; j < tasksInProgress[x]['inCharge'].length; j++) {
         document.getElementById('names-container').innerHTML +=
-            htmlTemplatePersonsDetailCardToDo(x, j);
+            htmlTemplatePersonsDetailCardInProgress(x, j);
     };
     renderSubtaksInDetailCardInProgress(x);
 }
@@ -42,7 +42,7 @@ function renderSubtaksInDetailCardInProgress(x) {
             checkedStatus = 'checked';
         } else {
             checkedStatus = '';
-        }
+        };
         document.getElementById('subtasks').innerHTML +=
             htmlTemplateSubtasksDetailCardInProgress(x, j, checkedStatus);
     }
@@ -67,7 +67,7 @@ function renderSubtaksInDetailCardAwaitFeedback(x) {
             checkedStatus = 'checked';
         } else {
             checkedStatus = '';
-        }
+        };
         document.getElementById('subtasks').innerHTML +=
             htmlTemplateSubtasksDetailCardAwaitFeedback(x, j, checkedStatus);
     }
@@ -91,7 +91,7 @@ function renderSubtaksInDetailCardDone(x) {
             checkedStatus = 'checked';
         } else {
             checkedStatus = '';
-        }
+        };
         document.getElementById('subtasks').innerHTML +=
             htmlTemplateSubtasksDetailCardDone(x, j, checkedStatus);
     }
@@ -109,11 +109,11 @@ function closeDetailCard(taskStatus, x) {
                 } else {
                     checkboxChecked.push(0);
                 }
-            }
+            };
             tasksToDo[x]['alreadyDone'] = [];
             for (let i = 0; i < checkboxChecked.length; i++){
                 tasksToDo[x]['alreadyDone'].push(checkboxChecked[i]);
-            }
+            };
             break;
 
         case 'tasksInProgress':            
@@ -122,8 +122,8 @@ function closeDetailCard(taskStatus, x) {
                     checkboxChecked.push(1);
                 } else {
                     checkboxChecked.push(0);
-                }
-            }
+                };
+            };
             tasksInProgress[x]['alreadyDone'] = [];
             for (let i = 0; i < checkboxChecked.length; i++){
                 tasksInProgress[x]['alreadyDone'].push(checkboxChecked[i]);
@@ -136,12 +136,12 @@ function closeDetailCard(taskStatus, x) {
                     checkboxChecked.push(1);
                 } else {
                     checkboxChecked.push(0);
-                }
-            }
+                };
+            };
             tasksAwaitFeedback[x]['alreadyDone'] = [];
             for (let i = 0; i < checkboxChecked.length; i++){
                 tasksAwaitFeedback[x]['alreadyDone'].push(checkboxChecked[i]);
-            }
+            };
             break;
 
         case 'tasksDone':
@@ -150,12 +150,12 @@ function closeDetailCard(taskStatus, x) {
                     checkboxChecked.push(1);
                 } else {
                     checkboxChecked.push(0);
-                }
+                };
             }
             tasksDone[x]['alreadyDone'] = [];
             for (let i = 0; i < checkboxChecked.length; i++){
                 tasksDone[x]['alreadyDone'].push(checkboxChecked[i]);
-            }
+            };
     }
     document.getElementById('details').classList.add('d-none');
     saveTasksToBackend();

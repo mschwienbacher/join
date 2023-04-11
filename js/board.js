@@ -21,11 +21,18 @@ function renderTasksToDo() {
 
 function renderSelectedPersonToDo(i) {
     let selectedPerson = document.getElementById(`selected-person-to-do${i}`);
+    let nbOfInCharge = tasksToDo[i]['inCharge'].length;
+    if (nbOfInCharge > 2){
+        countTo = 3;
+    }else{
+        countTo = nbOfInCharge
+    }
     selectedPerson.innerHTML = '';
-    for (let j = 0; j < tasksToDo[i]['inCharge'].length; j++) {
+    for (let j = 0; j < countTo; j++) {
         selectedPerson.innerHTML +=
             htmlTemplateSelectedPersonToDo(i, j)
     }
+    fxNbOfInCharge(nbOfInCharge, selectedPerson);
 }
 
 
@@ -43,10 +50,25 @@ function renderTasksInProgress() {
 
 function renderSelectedPersonInProgress(i) {
     let selectedPerson = document.getElementById(`selected-person-in-progress${i}`);
+    let nbOfInCharge = tasksInProgress[i]['inCharge'].length;
+    if (nbOfInCharge > 2){
+        countTo = 3;
+    }else{
+        countTo = nbOfInCharge
+    }
     selectedPerson.innerHTML = '';
-    for (let j = 0; j < tasksInProgress[i]['inCharge'].length; j++) {
+    for (let j = 0; j < countTo; j++) {
         selectedPerson.innerHTML +=
             htmlTemplateSelectedPersonInProgress(i, j)
+    }
+    fxNbOfInCharge(nbOfInCharge, selectedPerson);
+}
+
+function fxNbOfInCharge(nbOfInCharge, selectedPerson){
+    if (nbOfInCharge > 2){
+        nbMore = nbOfInCharge-3;
+        selectedPerson.innerHTML +=`
+        <div class="initials-icon bg3">+${nbMore}</div>`;
     }
 }
 
@@ -65,11 +87,18 @@ function renderTasksAwaitFeedback() {
 
 function renderSelectedPersonAwaitFeedback(i) {
     let selectedPerson = document.getElementById(`selected-person-await-feedback${i}`);
+    let nbOfInCharge = tasksAwaitFeedback[i]['inCharge'].length;
+    if (nbOfInCharge > 2){
+        countTo = 3;
+    }else{
+        countTo = nbOfInCharge
+    }
     selectedPerson.innerHTML = '';
-    for (let j = 0; j < tasksAwaitFeedback[i]['inCharge'].length; j++) {
+    for (let j = 0; j < countTo; j++) {
         selectedPerson.innerHTML +=
             htmlTemplateSelectedPersonAwaitFeedback(i, j)
     }
+    fxNbOfInCharge(nbOfInCharge, selectedPerson);
 }
 
 
@@ -117,11 +146,18 @@ function checkDoneTasks(i, taskStatus) {
 
 function renderSelectedPersonDone(i) {
     let selectedPerson = document.getElementById(`selected-person-done${i}`);
+    let nbOfInCharge = tasksDone[i]['inCharge'].length;
+    if (nbOfInCharge > 2){
+        countTo = 3;
+    }else{
+        countTo = nbOfInCharge
+    }
     selectedPerson.innerHTML = '';
-    for (let j = 0; j < tasksDone[i]['inCharge'].length; j++) {
+    for (let j = 0; j < countTo; j++) {
         selectedPerson.innerHTML +=
             htmlTemplateSelectedPersonDone(i, j)
     }
+    fxNbOfInCharge(nbOfInCharge, selectedPerson);
 }
 
 function filter() {
