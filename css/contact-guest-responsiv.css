@@ -1,0 +1,173 @@
+@media screen and (max-width:1340px) {
+    #detail-information-screen {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+        height: 100%;
+        position: fixed;
+        right: -100vw;
+        z-index: 1;
+        width: 100%;
+        transition: 125ms;
+        background-color: rgb(255, 255, 255);
+    }
+}
+
+
+@media screen and (min-width:801px) and (max-width:1100px) {
+    #add-window {
+        position: absolute;
+        width: 70vw;
+        left: -70vw;
+        top: 0;
+        bottom: 0;
+        background-color: #4589FF;
+        z-index: 2;
+        border-radius: 0;
+        overflow: hidden;
+        transition: 525ms;
+    }
+
+    #edit-window {
+        position: absolute;
+        left: -70vw;
+        top: 0;
+        bottom: 0;
+        width: 70vw;
+        background-color: #005DFF;
+        z-index: 2;
+        border-radius: 0;
+        overflow: hidden;
+        transition: 525ms;
+    }
+}
+
+
+@media screen and (min-width:521px) and (max-width:800px) {
+    #add-window {
+        position: absolute;
+        left: -100vw;
+        top: 0;
+        bottom: 0;
+        width: 100vw;
+        background-color: #4589FF;
+        z-index: 2;
+        border-radius: 0;
+        overflow: hidden;
+        transition: 525ms;
+    }
+
+    #edit-window {
+        position: absolute;
+        left: -100vw;
+        top: 0;
+        bottom: 0;
+        width: 100vw;
+        background-color: #005DFF;
+        z-index: 2;
+        border-radius: 0;
+        overflow: hidden;
+        transition: 525ms;
+    }
+
+    .sidebar {
+        display: none;
+    }
+
+    .reverse {
+        justify-content: center;
+    }
+
+    #contact-content {
+        display: flex;
+        height: 80vh;
+        overflow-y: scroll;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .add-contact-button {
+        position: absolute;
+        right: 48px;
+        top: 10px;
+        bottom: unset;
+        padding: 18px 10px 18px 10px;
+        width: 197px;
+        border-radius: 10px;
+        border: none;
+        background-color: #4589FF;
+        color: white;
+        font-size: 23px;
+        cursor: pointer;
+    }
+}
+
+@media screen and (max-width:520px) {
+    #add-window {
+        position: absolute;
+        left: -100vw;
+        top: 0;
+        bottom: 0;
+        width: 100vw;
+        background-color: #4589FF;
+        z-index: 2;
+        border-radius: 0;
+        overflow: hidden;
+        transition: 525ms;
+    }
+
+    #edit-window {
+        position: absolute;
+        left: -100vw;
+        top: 0;
+        bottom: 0;
+        width: 100vw;
+        background-color: #005DFF;
+        z-index: 2;
+        overflow: hidden;
+        transition: 525ms;
+    }
+
+    .embleme-and-input {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+        border: solid rgba(0, 0, 0, 0.103) 2px;
+        height: 69.6%;
+
+    }
+
+    #cancel-btn {
+        display: none;
+    }
+
+    .sidebar {
+        display: none;
+    }
+
+    #contact-content {
+        display: flex;
+        height: 80vh;
+        overflow-y: scroll;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .add-contact-button {
+        position: absolute;
+        right: 48px;
+        top: 10px;
+        bottom: unset;
+        padding: 18px 10px 18px 10px;
+        width: 197px;
+        border-radius: 10px;
+        border: none;
+        background-color: #4589FF;
+        color: white;
+        font-size: 23px;
+        cursor: pointer;
+    }
+}

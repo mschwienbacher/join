@@ -106,6 +106,7 @@ function sortContactsAndSave(contacts) {
 function showDetail(j) {
     showChosenContact(j);
     document.getElementById('detail-information-screen').innerHTML = `
+    <img onclick="closeDetail()" id="close-detail-arrow" src="assets/img/arrow-back.svg" alt="">
     <div class="name-and-embleme-container">
         <div class="detail-embleme">
             <span>${getTheFirstLetterOfName(j)}</span>
@@ -148,6 +149,16 @@ function openEdit(o) {
     closeAdd()
 }
 
+function closeDetail() {
+    if (window.innerWidth > 1340 && activShowingContact == true) {
+        activShowingContact = false;
+        document.getElementById('detail-information-screen').style.padding = '58px 865px';
+    }
+    else if (window.innerWidth < 1340 && activShowingContact == true) {
+        activShowingContact = false;
+        document.getElementById('detail-information-screen').style.right = '-100vw';
+    }
+}
 
 function fillEditInput(x) {
     document.getElementById(`nameInputEdit${x}`).value = `${sortedContacts[x]['name'].concat(" ") + sortedContacts[x]['second-name']}`
@@ -170,17 +181,50 @@ function saveTheEdit(x) {
 
 
 function closeEdit() {
-    document.getElementById('edit-window').style.left = '-50vw'
+    if (window.innerWidth > 1100) {
+        document.getElementById('edit-window').style.left = '-50vw'
+    }
+    else if (window.innerWidth < 1100) {
+        document.getElementById('edit-window').style.left = '-100vw'
+    }
+
 }
 
 
 // change the background of the s
-let chosenContactCounter;
+let chosenContactCounter = 0;
+let activShowingContact = null;
 function showChosenContact(c) {
+    activShowingContact = true;
     chosenContactCounter = c;
     document.getElementById('detail-information-screen').style.padding = '58px 65px';
     removeBackgroundFromUnchosed(c);
+    if (window.innerWidth < 1340) {
+        document.getElementById('detail-information-screen').style.padding = '0';
+        document.getElementById('detail-information-screen').style.right = '0';
+    }
 }
+
+
+window.addEventListener('resize', () => {
+    if (window.innerWidth > 1340 && activShowingContact == true) {
+        document.getElementById('detail-information-screen').style.padding = 'unset';
+        document.getElementById('detail-information-screen').style.right = 'unset';
+        document.getElementById('detail-information-screen').style.padding = '58px 65px';
+    }
+    else if (window.innerWidth < 1340 && activShowingContact == true) {
+        document.getElementById('detail-information-screen').style.padding = '0';
+        document.getElementById('detail-information-screen').style.right = '0';
+    }
+    else if (window.innerWidth < 1340 && activShowingContact == false) {
+        document.getElementById('detail-information-screen').style.padding = '0';
+        document.getElementById('detail-information-screen').style.right = '100vw';
+    }
+    else if (window.innerWidth > 1340 && activShowingContact == false) {
+        document.getElementById('detail-information-screen').style.padding = '58px 865px';
+        document.getElementById('detail-information-screen').style.right = 'unset';
+    }
+})
 
 
 // the function remove and add the blue background in the contact list
@@ -230,7 +274,12 @@ function openAdd() {
 
 // close the add contact window
 function closeAdd() {
-    document.getElementById('add-window').style.left = '-50vw';
+    if (window.innerWidth > 1100) {
+        document.getElementById('add-window').style.left = '-50vw';
+    }
+    else if (window.innerWidth < 1099) {
+        document.getElementById('add-window').style.left = '-100vw';
+    }
     document.getElementById('addNameInput').value = ``;
     document.getElementById('addEmailInput').value = ``;
     document.getElementById('addTelephoneInput').value = ``;
@@ -258,17 +307,22 @@ function firstAndSecondNameUpdate(inputVal, number) {
 
 // save button for adding a new contact
 function addNewContact() {
-    let nameAdd = splitWords(document.getElementById('addNameInput').value)
-    let emailAdd = document.getElementById('addEmailInput').value
-    let telephoneAdd = document.getElementById('addTelephoneInput').value
-    let newContact = { "name": `${nameAdd[0]}`, "second-name": `${nameAdd[1]}`, "email": `${emailAdd}`, "tel": `${telephoneAdd}` }
-    console.log(nameAdd)
-    sortedContacts.push(newContact)
-    letterCounter = [];
-    addContactToBackend()
-    renderTheQuestContacts()
-    clearTheAddInput();
-    closeAdd();
+    if (containsTwoWords(document.getElementById('addNameInput').value) === true) {
+        let nameAdd = splitWords(document.getElementById('addNameInput').value)
+        let emailAdd = document.getElementById('addEmailInput').value
+        let telephoneAdd = document.getElementById('addTelephoneInput').value
+        let newContact = { "name": `${nameAdd[0]}`, "second-name": `${nameAdd[1]}`, "email": `${emailAdd}`, "tel": `${telephoneAdd}` }
+        console.log(nameAdd)
+        sortedContacts.push(newContact)
+        letterCounter = [];
+        addContactToBackend()
+        renderTheQuestContacts()
+        clearTheAddInput();
+        closeAdd();
+    }
+    else {
+        console.log('Keine zwei Wörter')
+    }
 }
 
 async function addContactToBackend() {
@@ -291,8 +345,12 @@ function openAddTask() {
     document.getElementById('add-task-to-contact-container').style.width = '600px'
 }
 
-
-
+// check for two words in the string
+function containsTwoWords(inputString) {
+    const words = inputString.trim().split(' ');
+    return words.length === 2 && !words.includes('');
+}
+/*Delete in the future*/
 /*function setContact() {
     backend.setItem('contacts', JSON.stringify(contacts))
 }
@@ -305,49 +363,3 @@ function deleteContacts() {
 
 // deleteContacts()
 // setContact()
-
-/*Delete in the future*/
-
-
-/*{
-    "name": "Tim",
-    "second-name": "Mellentin",
-    "email": "tim.spiele1@freenet.de",
-    "tel": "0491094309434"
-},
-{
-    "name": "Max",
-    "second-name": "Mustermann",
-    "email": "max.mannmuster@freenet.de",
-    "tel": "049109454345"
-},
-{
-    "name": "Freddy",
-    "second-name": "Mercury",
-    "email": "antotherone@bite-the-dust.de",
-    "tel": "04919461991"
-},
-{
-    "name": "Marianen",
-    "second-name": "Graben",
-    "email": "Marianen@freenet.de",
-    "tel": "04924002500"
-},
-{
-    "name": "Ti",
-    "second-name": "Anic",
-    "email": "ti.tanic@freenet.de",
-    "tel": "04910031912"
-},
-{
-    "name": "Andi",
-    "second-name": "Myer",
-    "email": "andi.myer@freenet.de",
-    "tel": "049100345345"
-},
-{
-    "name": "Rudolf",
-    "second-name": "Rentier",
-    "email": "rudolf.coKG@freenet.de",
-    "tel": "049100334532"
-}*/

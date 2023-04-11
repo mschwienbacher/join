@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="css/inner-page-responsive.css">
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/contact-guest.css">
+    <link rel="stylesheet" href="css\contact-guest-responsiv.css">
+    <link rel="stylesheet" href="css\handy-sidebar.css">
 </head>
 
 <body class="contacts-page" onload="initBackend()">
@@ -113,7 +115,7 @@
                             <p>Edit contact</p>
                         </div>
                         <div class="embleme-and-input">
-                            <p class="embleme-edit">TF</p>
+                            <p class="embleme-edit"></p>
                             <form>
                                 <div class="input-container"><input placeholder="Name" type="text" required><img src=""
                                         alt="">
@@ -156,8 +158,8 @@
                             <div class="btn-designe-add-contact">
                                 <p onclick="closeAdd()" id="cancel-btn">Cancel<img src="assets/img/Vector.svg"
                                         alt="close button"></p>
-                                <p onclick="addNewContact()" class="save-edit-btn" id="save-add-btn">Create contact <img src="assets/img/hook.svg"
-                                        alt=""></p>
+                                <p onclick="addNewContact()" class="save-edit-btn" id="save-add-btn">Create contact <img
+                                        src="assets/img/hook.svg" alt=""></p>
                             </div>
                         </div>
                     </div>
@@ -233,6 +235,22 @@
                             </ul>
                         </div>
                     </div>
+
+                    <!--Here goes the handysidebar-->
+                    <!--dont forget to link handy-sidebar.css-->
+                    <div class="handy-side-bar">
+                        <a class="symbol-container" href="summary.html"><img src="assets/img/menu-summary.svg"
+                                alt=""><span>Summary</span></a>
+                        <a class="symbol-container" href="board.html"><img src="assets/img/menu-board.svg"
+                                alt=""><span>Board</span></a>
+                        <a class="symbol-container" href="add_task.html"><img src="assets/img/menu-task.svg"
+                                alt=""><span>Add
+                                Task</span></a>
+                        <a class="symbol-container" href="contacts.html"><img src="assets/img/menu-contact.svg"
+                                alt=""><span>Contacts</span></a>
+                    </div>
+                    <!--dont forget to link handy-sidebar.css-->
+                    <!--Here goes the handysidebar-->
                 </div>
             </div>
         </div>

@@ -453,3 +453,13 @@
 .clickable{
     cursor: pointer;
 }
+
+.sidebar{
+    width: auto;
+}
+
+#close-detail-arrow{
+    position: fixed;
+    right: 60px;
+    cursor: pointer;
+}
