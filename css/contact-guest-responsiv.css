@@ -12,6 +12,18 @@
         transition: 125ms;
         background-color: rgb(255, 255, 255);
     }
+    .name-and-embleme-container {
+        display: flex;
+        align-items: center;
+        margin-top: 25px;
+        margin-bottom: 0;
+    }
+    #close-detail-arrow{
+        position: fixed;
+        right: 60px;
+        top: 125px;
+        cursor: pointer;
+    }
 }
 
 

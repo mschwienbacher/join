@@ -153,10 +153,12 @@ function closeDetail() {
     if (window.innerWidth > 1340 && activShowingContact == true) {
         activShowingContact = false;
         document.getElementById('detail-information-screen').style.padding = '58px 865px';
+        document.getElementById('close-detail-arrow').style.position = 'initial';
     }
     else if (window.innerWidth < 1340 && activShowingContact == true) {
         activShowingContact = false;
         document.getElementById('detail-information-screen').style.right = '-100vw';
+        document.getElementById('close-detail-arrow').style.position = 'initial';
     }
 }
 
@@ -187,8 +189,18 @@ function closeEdit() {
     else if (window.innerWidth < 1100) {
         document.getElementById('edit-window').style.left = '-100vw'
     }
-
 }
+
+window.addEventListener('resize', ()=>{
+    if(window.innerWidth > 1100){
+        document.getElementById('edit-window').style.left = '-50vw'
+        document.getElementById('add-window').style.left = '-50vw'
+    }
+    else if(window.innerWidth < 1100){
+        document.getElementById('edit-window').style.left = '-100vw'
+        document.getElementById('add-window').style.left = '-100vw'
+    }
+})
 
 
 // change the background of the s
@@ -218,7 +230,7 @@ window.addEventListener('resize', () => {
     }
     else if (window.innerWidth < 1340 && activShowingContact == false) {
         document.getElementById('detail-information-screen').style.padding = '0';
-        document.getElementById('detail-information-screen').style.right = '100vw';
+        document.getElementById('detail-information-screen').style.right = '-100vw';
     }
     else if (window.innerWidth > 1340 && activShowingContact == false) {
         document.getElementById('detail-information-screen').style.padding = '58px 865px';
