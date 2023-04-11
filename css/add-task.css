@@ -7,7 +7,7 @@ body{
     background-color: #f9f9f9;
 }
 .title{
-    width: 215px;
+    /* width: 80%; */
     height: 48px;
     font-style: normal;
     font-weight: 400;
@@ -16,7 +16,7 @@ body{
 
 .title input{
     background-color: #f9f9f9;
-    width: 215px;
+    width: 40%;
     height: 48px;
     font-style: normal;
     font-weight: 400;
@@ -38,7 +38,7 @@ body{
     font-weight: 400;
     font-size: 19px;
     line-height: 120%;
-    width: 422px;
+    width: 42%;
     padding-left: 21px;
     padding-top: 13px;
     padding-bottom: 13px;
@@ -66,7 +66,7 @@ body{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    width: 422px;
+    width: 42%;
 }
 
 .due-date input{
@@ -82,7 +82,7 @@ body{
     flex-direction: row;
     align-items: center;
     gap: 10px;
-    width: 400px;
+    width: 100%;
     height: 13px;
     font-style: normal;
     font-weight: 400;
@@ -92,11 +92,13 @@ body{
 
 ::-webkit-calendar-picker-indicator {
     opacity: 0;
+    cursor: pointer;
     z-index: 999;
 }
 
 .date-picker{
     display: flex;
+    width: 100%;
 }
 
 .date-picker img{
@@ -112,7 +114,7 @@ body{
     justify-content:space-between ;
     align-items:  flex-start;
     padding-top: 12px;
-    width: 422px;
+    width: 42%;
     background-color: #f9f9f9;
     box-sizing: border-box;
 }
@@ -136,16 +138,15 @@ body{
 
 .priority{
     background-color: #f9f9f9;
-    width: 422px;
+    width: 42%;
     display: flex;
-    /* margin-top: 25px; */
     justify-content: space-between;
     align-items: center;
 }
 
 .priority button{
     margin-top: 50px;
-    width: 133px;
+    width: 30%;
     height: 46px;
     font-style: normal;
     font-weight: 400;
@@ -164,14 +165,14 @@ body{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    width: 422px;
+    width: 40%;
     background-color: #f9f9f9;
 }
 
 .description textarea{
     background-color: #f9f9f9;
     margin-top: 8px;
-    width: 422px;
+    width: 100%;
     height: 103px;
     padding-left: 21px;
     padding-top: 13px;
@@ -184,7 +185,7 @@ body{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    width: 422px;
+    width: 42%;
     background-color: #f9f9f9;
 }
 
@@ -193,7 +194,7 @@ body{
     border: none;
     font-weight: 400;
     font-size: 16px;
-    width: 406px;
+    width: 100%;
     padding-left: 21px;
     padding-top: 13px;
     padding-bottom: 13px;
@@ -205,6 +206,7 @@ body{
     flex-direction: row;
     border: none;
     border-bottom: 1px solid;
+    width: 100%;
 }
 
 .checkbox-subtasks{
