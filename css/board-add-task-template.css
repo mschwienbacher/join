@@ -9,6 +9,7 @@
     background: #f9f9f9;
     display: flex;
     width: 20%;
+    border-radius: 30px;
 }
 
 .title{
@@ -163,13 +164,13 @@
 
 .priority button{
     margin-top: 50px;
-    margin-left: 24px;
-    width: 23%;
+    margin-left: 12px;
+    width: 28%;
     height: 36px;
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
-    padding: 0px;
+    padding: 0;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.16);
     border-radius: 10px;
     border-color: white;
@@ -225,6 +226,7 @@
     flex-direction: row;
     border: none;
     border-bottom: 1px solid;
+    width: 95%;
 }
 
 .execute-buttons{

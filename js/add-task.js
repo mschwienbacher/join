@@ -3,7 +3,7 @@ let categories = ['Backoffice', 'Design', 'Marketing', 'Media', 'Sales'];
 let priority = 'low';
 let category = '';
 let nbOfSubtasks = 0;
-let data ='';
+let data = '';
 
 async function addTask() {
     getCategory();
@@ -11,7 +11,7 @@ async function addTask() {
     let text = document.getElementById('task-description').value;
     getAssignedTo()
     let dueDate = document.getElementById('due-date').value;
-    getSubTasks();  
+    getSubTasks();
     await pushTask(title, text, dueDate);
     window.location.href = "board.html";
 }
@@ -30,39 +30,39 @@ async function pushTask(title, text, dueDate) {
         subtasks: [],
         alreadyDone: []
     };
-    getInCharge();    
-    getSubtasksForm();   
+    getInCharge();
+    getSubtasksForm();
     getSubtasksChecked()
     tasksToDo.push(data);
     await saveTasksToBackend();
 }
 
-function getInCharge(){
-    for (let i = 0; i < assignedTo.length; i++){
+function getInCharge() {
+    for (let i = 0; i < assignedTo.length; i++) {
         data['inCharge'].push(assignedTo[i]);
         data['initials'].push(initials[i]);
     }
 }
 
-function getSubtasksForm(){
-    for ( let i = 0; i < subtasks.length; i++){
+function getSubtasksForm() {
+    for (let i = 0; i < subtasks.length; i++) {
         data['subtasks'].push(subtasks[i]);
-    } 
+    }
 }
 
-function getSubtasksChecked(){
+function getSubtasksChecked() {
     let checkboxChecked = [];
     let inputElements = document.getElementsByClassName('checkbox-subtask');
     for (let i = 0; inputElements[i]; ++i) {
         if (inputElements[i].checked) {
             checkboxChecked.push(1);
-        }else{
+        } else {
             checkboxChecked.push(0);
         }
     }
-    for (let i = 0; i < checkboxChecked.length; i++){
+    for (let i = 0; i < checkboxChecked.length; i++) {
         data['alreadyDone'].push(checkboxChecked[i]);
-    }    
+    }
 }
 
 function getCategory() {
@@ -77,12 +77,12 @@ function getCategory() {
 
 function getAssignedTo() {
     assignedTo = [];
-    initials =[];
+    initials = [];
     let inputElements = document.getElementsByClassName('checkbox-contacts');
     for (let i = 0; inputElements[i]; ++i) {
         if (inputElements[i].checked) {
             assignedTo.push(contacts[i]['name'] + ' ' + contacts[i]['second-name']);
-            initials.push(contacts[i]['name'].charAt(0)+contacts[i]['second-name'].charAt(0));
+            initials.push(contacts[i]['name'].charAt(0) + contacts[i]['second-name'].charAt(0));
         }
     }
 }
@@ -124,11 +124,11 @@ function renderListAssignedTo() {
 
 function renderListTaskCategory() {
     content = document.getElementById('category-row').innerHTML = '';
-    for (let i = 0; i < categories.length; i++){
+    for (let i = 0; i < categories.length; i++) {
         categoryToRender = categories[i];
         ellipseToRender = ellpises[i];
         document.getElementById('category-row').innerHTML +=
-            htmlTemplateCategory(categoryToRender, ellipseToRender)  
+            htmlTemplateCategory(categoryToRender, ellipseToRender)
     }
 }
 
@@ -158,32 +158,32 @@ function clearAddTaskForm() {
 function setPriority(string) {
     priority = string;
     resetPriorityBtn();
-    switch (string){
-        
+    switch (string) {
+
         case 'low':
             document.getElementById('low-btn').style = ("background-color:#7AE229");
             document.getElementById('low-btn-img').src = "assets/img/low-white.svg";
             break;
 
         case 'medium':
-            document.getElementById('medium-btn').style = ("background-color:#FFA800");  
+            document.getElementById('medium-btn').style = ("background-color:#FFA800");
             document.getElementById('medium-btn-img').src = "assets/img/medium-white.svg";
             break;
 
         case 'urgent':
             document.getElementById('urgent-btn').style = ("background-color:#FF3D00");
-            document.getElementById('urgent-btn-img').src ="assets/img/urgent-white.svg";
+            document.getElementById('urgent-btn-img').src = "assets/img/urgent-white.svg";
             break;
     }
 }
 
-function resetPriorityBtn(){
+function resetPriorityBtn() {
     document.getElementById('urgent-btn').style = ("background-color:#f9f9f9");
     document.getElementById('medium-btn').style = ("background-color:#f9f9f9");
     document.getElementById('low-btn').style = ("background-color:#f9f9f9");
     document.getElementById('low-btn-img').src = "assets/img/low.svg";
     document.getElementById('medium-btn-img').src = "assets/img/medium.svg";
-    document.getElementById('urgent-btn-img').src ="assets/img/urgent.svg";
+    document.getElementById('urgent-btn-img').src = "assets/img/urgent.svg";
 }
 
 async function saveTasksToBackend() {

@@ -1,3 +1,5 @@
+let nbDone;
+
 function renderBoard() {
     renderTasksToDo();
     renderTasksInProgress();
@@ -9,11 +11,7 @@ function renderTasksToDo() {
     let toDo = document.getElementById('to-do-container');
     toDo.innerHTML = '';
     for (let i = 0; i < tasksToDo.length; i++) {
-        let nbDone = 0;
-        for (let j = 0; j < tasksToDo[i]['alreadyDone'].length; j++) {
-            done = tasksToDo[i]['alreadyDone'][j];
-            nbDone = nbDone + done;
-        };
+        checkDoneTasks(i, 'tasksToDo');
         const widthProgressBar = nbDone / tasksToDo[i]['subtasks'].length * 100;
         toDo.innerHTML +=
             htmlTemplateTasksToDo(i, widthProgressBar, nbDone);
@@ -35,11 +33,7 @@ function renderTasksInProgress() {
     let inProgress = document.getElementById('in-progress-container');
     inProgress.innerHTML = '';
     for (let i = 0; i < tasksInProgress.length; i++) {
-        let nbDone = 0;
-        for (let j = 0; j < tasksInProgress[i]['alreadyDone'].length; j++) {
-            done = tasksInProgress[i]['alreadyDone'][j];
-            nbDone = nbDone + done;
-        };
+        checkDoneTasks(i, 'tasksInProgress');
         const widthProgressBar = nbDone / tasksInProgress[i]['subtasks'].length * 100;
         inProgress.innerHTML +=
             htmlTemplateTasksInProgress(i, widthProgressBar, nbDone);
@@ -61,11 +55,7 @@ function renderTasksAwaitFeedback() {
     let awaitFeedback = document.getElementById('await-feedback-container');
     awaitFeedback.innerHTML = '';
     for (let i = 0; i < tasksAwaitFeedback.length; i++) {
-        let nbDone = 0;
-        for (let j = 0; j < tasksAwaitFeedback[i]['alreadyDone'].length; j++) {
-            done = tasksAwaitFeedback[i]['alreadyDone'][j];
-            nbDone = nbDone + done;
-        };
+        checkDoneTasks(i, 'tasksAwaitFeedback');
         const widthProgressBar = nbDone / tasksAwaitFeedback[i]['subtasks'].length * 100;
         awaitFeedback.innerHTML +=
             htmlTemplateTasksAwaitFeedback(i, widthProgressBar, nbDone);
@@ -87,16 +77,42 @@ function renderTasksDone() {
     let doneContainer = document.getElementById('done-container');
     doneContainer.innerHTML = '';
     for (let i = 0; i < tasksDone.length; i++) {
-        let nbDone = 0;
-        for (let j = 0; j < tasksDone[i]['alreadyDone'].length; j++) {
-            done = tasksDone[i]['alreadyDone'][j];
-            nbDone = nbDone + done;
-        };
+        checkDoneTasks(i, 'tasksDone');
         const widthProgressBar = nbDone / tasksDone[i]['subtasks'].length * 100;
         doneContainer.innerHTML +=
             htmlTemplateTasksDone(i, widthProgressBar, nbDone);
         renderSelectedPersonDone(i);
     }
+}
+
+function checkDoneTasks(i, taskStatus) {
+    nbDone = 0;
+    switch (taskStatus) {
+        case 'tasksToDo':
+            for (let j = 0; j < tasksToDo[i]['alreadyDone'].length; j++) {
+                done = tasksToDo[i]['alreadyDone'][j];
+                nbDone = nbDone + done;
+            };
+            break;
+        case 'tasksInProgress':
+            for (let j = 0; j < tasksInProgress[i]['alreadyDone'].length; j++) {
+                done = tasksInProgress[i]['alreadyDone'][j];
+                nbDone = nbDone + done;
+            };
+            break;
+        case 'tasksAwaitFeedback':
+            for (let j = 0; j < tasksAwaitFeedback[i]['alreadyDone'].length; j++) {
+                done = tasksAwaitFeedback[i]['alreadyDone'][j];
+                nbDone = nbDone + done;
+            };
+            break;
+        case 'tasksDone':
+            for (let j = 0; j < tasksDone[i]['alreadyDone'].length; j++) {
+                done = tasksDone[i]['alreadyDone'][j];
+                nbDone = nbDone + done;
+            };
+            break;
+    }   
 }
 
 function renderSelectedPersonDone(i) {
@@ -121,8 +137,10 @@ function filterToDo(search) {
     document.getElementById('to-do-container').innerHTML = '';
     for (let i = 0; i < tasksToDo.length; i++) {
         if (tasksToDo[i]['titel'].toLowerCase().includes(search)) {
+            checkDoneTasks(i, 'tasksToDo');
+            const widthProgressBar = nbDone / tasksToDo[i]['subtasks'].length * 100;
             document.getElementById('to-do-container').innerHTML +=
-                htmlTemplateTasksToDo(i);
+                htmlTemplateTasksToDo(i, widthProgressBar, nbDone);
             renderSelectedPersonToDo(i);
         }
     }
@@ -132,8 +150,10 @@ function filterInProgress(search) {
     document.getElementById('in-progress-container').innerHTML = '';
     for (let i = 0; i < tasksInProgress.length; i++) {
         if (tasksInProgress[i]['titel'].toLowerCase().includes(search)) {
+            checkDoneTasks(i, 'tasksInProgress');
+            const widthProgressBar = nbDone / tasksInProgress[i]['subtasks'].length * 100;
             document.getElementById('in-progress-container').innerHTML +=
-                htmlTemplateTasksInProgress(i);
+                htmlTemplateTasksInProgress(i, widthProgressBar, nbDone);
             renderSelectedPersonInProgress(i);
         }
     }
@@ -143,8 +163,10 @@ function filterAwaitFeedback(search) {
     document.getElementById('await-feedback-container').innerHTML = '';
     for (let i = 0; i < tasksAwaitFeedback.length; i++) {
         if (tasksAwaitFeedback[i]['titel'].toLowerCase().includes(search)) {
+            checkDoneTasks(i, 'tasksAwaitFeedback');
+            const widthProgressBar = nbDone / tasksAwaitFeedback[i]['subtasks'].length * 100;
             document.getElementById('await-feedback-container').innerHTML +=
-                htmlTemplateTasksAwaitFeedback(i);
+                htmlTemplateTasksAwaitFeedback(i, widthProgressBar, nbDone);
             renderSelectedPersonAwaitFeedback(i);
         }
     }
@@ -154,14 +176,21 @@ function filterDone(search) {
     document.getElementById('done-container').innerHTML = '';
     for (let i = 0; i < tasksDone.length; i++) {
         if (tasksDone[i]['titel'].toLowerCase().includes(search)) {
+            checkDoneTasks(i, 'tasksDone');
+            const widthProgressBar = nbDone / tasksDone[i]['subtasks'].length * 100;
             document.getElementById('done-container').innerHTML +=
-                htmlTemplateTasksDone(i);
+                htmlTemplateTasksDone(i, widthProgressBar, nbDone);
             renderSelectedPersonDone(i);
         }
     }
 }
 
-function openAddTaskPopup(){
+function openAddTaskPopup() {
     document.getElementById('add-task-popup-container').classList.remove('d-none');
-    /* document.getElementById('add-task-popup').classList.remove('d-none'); */
+}
+
+function closeAddTask() {
+    document.getElementById('add-task-popup-container').classList.add('d-none');
+    document.getElementById('list-task-category').classList.add('d-none');
+    document.getElementById('list-assigned-to').classList.add('d-none');
 }

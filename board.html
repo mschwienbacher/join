@@ -68,8 +68,8 @@
                         <div onclick="closeEdit()" class="details d-none" id="edit-task">
                             <div onclick="stopPropagation(event)" id="edit-task-popup" class="detail-popup"></div>
                         </div>
-                        <div class="details d-none" id="add-task-popup-container">
-                            <div id="add-task-popup" class="add-task-popup ">
+                        <div class="details d-none" id="add-task-popup-container" onclick="closeAddTask()">
+                            <div id="add-task-popup" class="add-task-popup" onclick="stopPropagation(event)">
                                 <div class="header-add-task-popup">
                                     <h2>Add Task</h2>
                                     <div w3-include-html="assets/templates/add_task_template.html"></div>
@@ -90,7 +90,7 @@
                                 <div class="status">
                                     <div class="status-headline">
                                         <span>To do</span>
-                                        <img src="assets/img/plus.svg" alt="add">
+                                        <img src="assets/img/plus.svg" alt="add" onclick="openAddTaskPopup()">
                                     </div>
                                     <div class="task-container" id="to-do-container" ondrop="moveTo(event)"
                                         ondragover="allowDrop(event)">
@@ -100,7 +100,7 @@
                                 <div class="status">
                                     <div class="status-headline">
                                         <span>In progress</span>
-                                        <img src="assets/img/plus.svg" alt="add">
+                                        <img src="assets/img/plus.svg" alt="add" onclick="openAddTaskPopup()">
                                     </div>
                                     <div class="task-container" id="in-progress-container" ondrop="moveTo(event)"
                                         ondragover="allowDrop(event)">
@@ -110,7 +110,7 @@
                                 <div class="status">
                                     <div class="status-headline">
                                         <span>Await feedback</span>
-                                        <img src="assets/img/plus.svg" alt="add">
+                                        <img src="assets/img/plus.svg" alt="add" onclick="openAddTaskPopup()">
                                     </div>
                                     <div class="task-container" id="await-feedback-container" ondrop="moveTo(event)"
                                         ondragover="allowDrop(event)">
@@ -120,7 +120,7 @@
                                 <div class="status">
                                     <div class="status-headline">
                                         <span>Done</span>
-                                        <img src="assets/img/plus.svg" alt="add">
+                                        <img src="assets/img/plus.svg" alt="add" onclick="openAddTaskPopup()">
                                     </div>
                                     <div class="task-container" id="done-container" ondrop="moveTo(event)"
                                         ondragover="allowDrop(event)">
