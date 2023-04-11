@@ -1,5 +1,6 @@
 let ellpises = ['assets/img/ellipse-lightblue.svg', 'assets/img/ellipse-green.svg', 'assets/img/ellipse-red.svg', 'assets/img/ellipse-blue.svg', 'assets/img/ellipse-orange.svg'];
 let categories = ['Backoffice', 'Design', 'Marketing', 'Media', 'Sales'];
+let categoryColors = ['assets/img/ellipse-lightblue.svg', 'assets/img/ellipse-green.svg', 'assets/img/ellipse-red.svg', 'assets/img/ellipse-blue.svg', 'assets/img/ellipse-orange.svg'];
 let priority = 'low';
 let category = '';
 let nbOfSubtasks = 0;
@@ -119,9 +120,9 @@ function renderListTaskCategory() {
     content = document.getElementById('category-row').innerHTML = '';
     for (let i = 0; i < categories.length; i++) {
         categoryToRender = categories[i];
-        ellipseToRender = ellpises[i];
+        categoryColorToRender = categoryColors[i];
         document.getElementById('category-row').innerHTML +=
-            htmlTemplateCategory(categoryToRender, ellipseToRender)
+            htmlTemplateCategory(categoryToRender, categoryColorToRender)
     }
 }
 
