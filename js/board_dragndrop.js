@@ -55,8 +55,5 @@ function moveTo(container){
 
 function startDragging(i, taskStatus){
     movedTask = i;
-    console.log('moved task:'+i);
-    console.log(taskStatus);
     currentDraggedElement = taskStatus;
-    console.log(currentDraggedElement);
 }

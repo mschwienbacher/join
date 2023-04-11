@@ -99,7 +99,15 @@ function renderSubtaksInDetailCardDone(x) {
 
 function closeDetailCard(taskStatus, x) {
     let inputElements = document.getElementsByClassName('sutaskCheckbox');
-    let checkboxChecked = [];
+    getCheckedCheckBoxes(inputElements);
+    updateCheckboxChecked(taskStatus, x, checkboxChecked);
+    document.getElementById('details').classList.add('d-none');
+    saveTasksToBackend();
+    renderBoard();
+}
+
+function getCheckedCheckBoxes(inputElements){
+    checkboxChecked = [];
     for (let i = 0; inputElements[i]; ++i) {
         if (inputElements[i].checked) {
             checkboxChecked.push(1);
@@ -107,10 +115,6 @@ function closeDetailCard(taskStatus, x) {
             checkboxChecked.push(0);
         }
     };
-    updateCheckboxChecked(taskStatus, x, checkboxChecked);
-    document.getElementById('details').classList.add('d-none');
-    saveTasksToBackend();
-    renderBoard();
 }
 
 function updateCheckboxChecked(taskStatus, x, checkboxChecked){

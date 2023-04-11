@@ -1,4 +1,5 @@
 let nbDone;
+let checkboxChecked;
 
 function renderBoard() {
     renderTasksToDo();

@@ -270,7 +270,7 @@ function htmlTemplateSubtasksDetailCardDone(x, j, checkedStatus){
     `;
 }
 
-function htmlTemplateTaskToEdit(titleEdit, textEdit, year, month, day, priorityEdit, taskStatus,x){
+function htmlTemplateTaskToEdit(titleEdit, year, month, day, taskStatus,x){
     return`
     <div class="edit-task"</div>
     <h2>Edit Task</h2>
