@@ -41,13 +41,11 @@ margin-right: 35px;
 .status-bar{
     display: flex;
     justify-content: space-between;
-    /* align-items: center; */
 }
 
 .status{
     display: flex;
     flex-direction: column;  
-    /* width: 250px;  */ 
 }
 
 .status-headline{
@@ -138,7 +136,6 @@ height: 15px;
 }
 
 .progress-bar{
-    /* width: 158px; */
     height: 10px;
     background-color: lightgray;
     margin-right: 4px;
@@ -148,9 +145,6 @@ height: 15px;
 #myBar {
     height: 10px;
     background-color: #4589FF;
-    /* text-align: center; */
-    /* line-height: 10px; */
-    /* color: white;  */
 }
 
 .already-done{
@@ -175,7 +169,6 @@ height: 15px;
     background-color: #0038FF; 
     color: #f9f9f9;   
     border-radius: 100%;
-    /* margin-left: -16px; */
     margin-right: -6px;
     margin-top: 10px;
     border: none;
@@ -422,7 +415,6 @@ height: 15px;
 
 .ok-btn button{
     margin-right: 8px;
-    /* padding: 12px; */
     font-size: 19px;
     background: #4589FF;
     border: none;
@@ -435,4 +427,3 @@ height: 15px;
     align-items: center;
     justify-content: left;
 }
-

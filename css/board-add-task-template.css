@@ -45,10 +45,8 @@
     font-style: normal;
     font-weight: 400;
     font-size: 19px;
-    /* line-height: 120%; */
     width: 90%;
     padding-left: 21px;
-    /* padding-top: 13px; */
     padding-bottom: 13px;
     margin-top: 35px;
     margin-left: 12px;
@@ -119,7 +117,6 @@
 }
 
 .category-add-task{
-    /* margin-top: 25px; */
     margin-left: 12px;
     font-weight: 700;
     font-size: 19px;
@@ -129,7 +126,6 @@
     padding-top: 12px;
     width: 95%;
     box-sizing: border-box;
-    /* background-color: #f9f9f9; */
 }
 
 .category-row{
@@ -157,7 +153,6 @@
 
 .priority{
     display: flex;
-    /* margin-top: 25px; */
     justify-content: left;
     align-items: center;
 }
@@ -184,8 +179,6 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    /* width: 422px; */
-    /* background-color: #f9f9f9; */
 }
 
 .description textarea{
