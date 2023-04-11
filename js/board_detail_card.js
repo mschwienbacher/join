@@ -100,16 +100,23 @@ function renderSubtaksInDetailCardDone(x) {
 function closeDetailCard(taskStatus, x) {
     let inputElements = document.getElementsByClassName('sutaskCheckbox');
     let checkboxChecked = [];
+    for (let i = 0; inputElements[i]; ++i) {
+        if (inputElements[i].checked) {
+            checkboxChecked.push(1);
+        } else {
+            checkboxChecked.push(0);
+        }
+    };
+    updateCheckboxChecked(taskStatus, x, checkboxChecked);
+    document.getElementById('details').classList.add('d-none');
+    saveTasksToBackend();
+    renderBoard();
+}
+
+function updateCheckboxChecked(taskStatus, x, checkboxChecked){
     switch (taskStatus) {
 
         case 'tasksToDo':
-            for (let i = 0; inputElements[i]; ++i) {
-                if (inputElements[i].checked) {
-                    checkboxChecked.push(1);
-                } else {
-                    checkboxChecked.push(0);
-                }
-            };
             tasksToDo[x]['alreadyDone'] = [];
             for (let i = 0; i < checkboxChecked.length; i++){
                 tasksToDo[x]['alreadyDone'].push(checkboxChecked[i]);
@@ -117,13 +124,6 @@ function closeDetailCard(taskStatus, x) {
             break;
 
         case 'tasksInProgress':            
-            for (let i = 0; inputElements[i]; ++i) {
-                if (inputElements[i].checked) {
-                    checkboxChecked.push(1);
-                } else {
-                    checkboxChecked.push(0);
-                };
-            };
             tasksInProgress[x]['alreadyDone'] = [];
             for (let i = 0; i < checkboxChecked.length; i++){
                 tasksInProgress[x]['alreadyDone'].push(checkboxChecked[i]);
@@ -131,13 +131,6 @@ function closeDetailCard(taskStatus, x) {
             break;
 
         case 'tasksAwaitFeedback':
-            for (let i = 0; inputElements[i]; ++i) {
-                if (inputElements[i].checked) {
-                    checkboxChecked.push(1);
-                } else {
-                    checkboxChecked.push(0);
-                };
-            };
             tasksAwaitFeedback[x]['alreadyDone'] = [];
             for (let i = 0; i < checkboxChecked.length; i++){
                 tasksAwaitFeedback[x]['alreadyDone'].push(checkboxChecked[i]);
@@ -145,23 +138,12 @@ function closeDetailCard(taskStatus, x) {
             break;
 
         case 'tasksDone':
-            for (let i = 0; inputElements[i]; ++i) {
-                if (inputElements[i].checked) {
-                    checkboxChecked.push(1);
-                } else {
-                    checkboxChecked.push(0);
-                };
-            }
             tasksDone[x]['alreadyDone'] = [];
             for (let i = 0; i < checkboxChecked.length; i++){
                 tasksDone[x]['alreadyDone'].push(checkboxChecked[i]);
             };
     }
-    document.getElementById('details').classList.add('d-none');
-    saveTasksToBackend();
-    renderBoard();
 }
-
 function deleteTask(taskToDelete, x) {
     const isGoodValue = val => val && val !== '-' && val !== 'N/A'; /* check for empty arrays*/
     switch (taskToDelete) {

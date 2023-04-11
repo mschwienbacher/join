@@ -106,13 +106,6 @@ function openTaskCategory() {
     document.getElementById('list-task-category').classList.toggle('d-none');
 }
 
-
-function renderAddTask() {
-    loadTasksFromBackend();
-    /* renderListAssignedTo();
-    renderListTaskCategory(); */
-}
-
 function renderListAssignedTo() {
     let content = document.getElementById('checkbox-list-assigned-to');
     content.innerHTML = '';

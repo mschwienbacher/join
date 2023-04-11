@@ -45,7 +45,6 @@ async function initAddTask() {
     await downloadFromServer();
     loadTasksFromBackend();
     loadContactsFromBackend();
-    renderAddTask();
 }
 
 /**

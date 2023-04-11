@@ -64,15 +64,6 @@ function renderSelectedPersonInProgress(i) {
     fxNbOfInCharge(nbOfInCharge, selectedPerson);
 }
 
-function fxNbOfInCharge(nbOfInCharge, selectedPerson){
-    if (nbOfInCharge > 2){
-        nbMore = nbOfInCharge-3;
-        selectedPerson.innerHTML +=`
-        <div class="initials-icon bg3">+${nbMore}</div>`;
-    }
-}
-
-
 function renderTasksAwaitFeedback() {
     let awaitFeedback = document.getElementById('await-feedback-container');
     awaitFeedback.innerHTML = '';
@@ -158,6 +149,14 @@ function renderSelectedPersonDone(i) {
             htmlTemplateSelectedPersonDone(i, j)
     }
     fxNbOfInCharge(nbOfInCharge, selectedPerson);
+}
+
+function fxNbOfInCharge(nbOfInCharge, selectedPerson){
+    if (nbOfInCharge > 2){
+        nbMore = nbOfInCharge-3;
+        selectedPerson.innerHTML +=`
+        <div class="initials-icon bg3">+${nbMore}</div>`;
+    }
 }
 
 function filter() {
