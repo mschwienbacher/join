@@ -191,12 +191,12 @@ function closeEdit() {
     }
 }
 
-window.addEventListener('resize', ()=>{
-    if(window.innerWidth > 1100){
+window.addEventListener('resize', () => {
+    if (window.innerWidth > 1100) {
         document.getElementById('edit-window').style.left = '-50vw'
         document.getElementById('add-window').style.left = '-50vw'
     }
-    else if(window.innerWidth < 1100){
+    else if (window.innerWidth < 1100) {
         document.getElementById('edit-window').style.left = '-100vw'
         document.getElementById('add-window').style.left = '-100vw'
     }
