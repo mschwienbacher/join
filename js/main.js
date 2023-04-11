@@ -5,6 +5,9 @@ let tasksToDo = [];
 let tasksInProgress = [];
 let tasksAwaitFeedback = [];
 let tasksDone = [];
+let assignedTo =[];
+let initials = [];
+let subtasks =[];
 
 function loadTasksFromBackend() {
     let taskstringToDo = backend.getItem('tasksToDo');
