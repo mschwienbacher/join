@@ -19,9 +19,19 @@
     <link rel="stylesheet" href="css/contact-guest.css">
     <link rel="stylesheet" href="css\contact-guest-responsiv.css">
     <link rel="stylesheet" href="css\handy-sidebar.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/add-task.css">
+    <script src="js/mini_backend.js"></script>
+    <!-- Insert dedicated JS script -->
+    <script src="js/main.js"></script>
+    <!--Javascript by Jörg Betz-->
+    <script src="js/add-task.js"></script>
+    <script src="js/board.js"></script>
+    <script src="assets/templates/htmlTemplateAdd_Task.js"></script>
+    <!--Javascript by Jörg Betz-->
 </head>
 
-<body class="contacts-page" onload="initBackend()">
+<body class="contacts-page" onload="initBackend(); initAddTask()">
     <header class="header">
         <div class="container">
             <div class="center">
@@ -165,58 +175,82 @@
                     </div>
                     <!--window for adding a new contact-->
 
-                    <!--window for adding a task to a contact-->
+                    <!--window for adding a task-->
+                    <!--Add task form written by Jörg Betz-->
+                    <!--Add task form written by Jörg Betz-->
                     <div id="add-task-to-contact-container">
                         <div id="add-taks-content-guest">
-                            <span onclick="closeAddTask()" id="close-btn-add-task">X</span>
-                            <div class="headline-add-task-container">
-                                <p class="add-task-headline">Add task</p>
-                                <p class="create-task-btn-contacts">Create Task</p>
-                            </div>
-                            <input type="text" name="" id="enter-title-task-contact" placeholder="Enter a title">
-                            <div class="task-container-center">
-                                <p class="underline-task width-90">Select contacts to assign</p>
-                                <hr class="underline-hr">
-                            </div>
-                            <p class="task-text-designe">Due date</p>
-                            <div class="task-container-center">
-                                <span class="width-90 date-text"><input type="date" name="" id=""></span>
-                                <hr class="underline-hr">
-                            </div>
-                            <div class="task-container-center">
-                                <p class="task-text-designe">Category</p>
-                                <span class="width-90">Select task category</span>
-                                <div class="category">
-                                    <p>Backoffice</p>
-                                    <p>Design</p>
-                                    <p>Marketing</p>
-                                    <p>Media</p>
-                                    <p>Sales</p>
+                            <span onclick="closeAddTaskContact()" id="close-btn-add-task">X</span>
+                            <form onsubmit="addTask(); return false;">
+                                <div class="title">
+                                    <input type="text" placeholder="Enter a title" id="task-title" required>
                                 </div>
-                                <hr class="underline-hr">
-                            </div>
-                            <div class="task-container-priority">
-                                <span class="priority-btn">Urgent <img src="assets/img/urgent.svg" alt=""></span>
-                                <span class="priority-btn">Medium <img src="assets/img/medium.svg" alt=""></span>
-                                <span class="priority-btn">Low <img src="assets/img/low.svg" alt=""></span>
-                            </div>
-                            <div class="task-container-center">
-                                <p class="task-text-designe">Description</p>
-                                <input type="text" name="" id="description-task-guest"
-                                    placeholder="Enter a Description">
-                            </div>
-                            <div class="task-container-center">
-                                <p class="task-text-designe">Subtasks</p>
-                                <span class="width-90">Add new subtask</span>
-                                <hr class="underline-hr">
-                            </div>
-                            <div class="task-container-center">
-                                <p class="width-90"><input type="checkbox" name="example_checkbox"
-                                        id="example_checkbox">Subtask 1</p>
-                            </div>
+                                <div class="select-contacts-to-assign" id="select-contacts-to-assign">
+                                    <span>Select contacts to assign</span>
+                                    <img src="assets/img/dropdown.svg"
+                                        onclick="openContactsToAssign(); renderListAssignedTo()">
+                                </div>
+                                <div id="list-assigned-to" class="dropdown-check-list d-none" tabindex="100">
+                                    <ul class="items" id="checkbox-list-assigned-to">
+                                        <!-- htmlTemplateListAssignedTo -->
+                                    </ul>
+                                </div>
+                                <div class="due-date">
+                                    <span>Due date</span>
+                                    <div class="date-picker">
+                                        <input type="date" id="due-date" name="trip-start" value=""
+                                            onfocus="this.showPicker()" required>
+                                        <img src="/assets/img/calendar.svg">
+                                    </div>
+                                </div>
+                                <div class="category-add-task">
+                                    <span>Category</span>
+                                    <div class="select-category" id="select-contacts-to-assign">
+                                        <span>Select task category</span>
+                                        <img src="assets/img/dropdown.svg"
+                                            onclick="openTaskCategory(); renderListTaskCategory()">
+                                    </div>
+                                    <div id="list-task-category" class="dropdown-check-list d-none" tabindex="100">
+                                        <ul class="items" id="category-row">
+                                            <!-- htmlTemplateCategory() -->
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="priority" id="task-priority">
+                                    <button id="urgent-btn" type="button" onclick="setPriority('urgent')">Urgent <img
+                                            id="urgent-btn-img" src="assets/img/urgent.svg" alt="urgent"></button>
+                                    <button id="medium-btn" type="button" onclick="setPriority('medium')">Medium <img
+                                            id="medium-btn-img" src="assets/img/medium.svg" alt="medium"></button>
+                                    <button id="low-btn" type="button" onclick="setPriority('low')">Low <img
+                                            id="low-btn-img" src="assets/img/low.svg" alt="low"></button>
+                                </div>
+                                <div class="description">
+                                    <span>Description</span>
+                                    <textarea name="description" placeholder="Enter a description" id="task-description"
+                                        cols="55" rows="5" required></textarea>
+                                </div>
+                                <div class="subtasks">
+                                    <span>Subtasks</span>
+                                    <div class="input-subtasks">
+                                        <input type="text" placeholder="add new subtask" id="task-subtask">
+                                        <img src="assets/img/plus.svg" alt="add" onclick="renderSubtasks()">
+                                    </div>
+                                </div>
+                                <div class="checkbox-subtasks" id="ckeckbox-subtasks">
+                                    <!-- htmlTemplateSubtasks -->
+                                </div>
+                                <div class="execute-buttons">
+                                    <button type="button" style="color: #647188" onclick="clearAddTaskForm()">Clear
+                                        X</button>
+                                    <button style="background-color: #4589FF; color: white;">Create <img
+                                            src="assets/img/check.svg" alt="check"></button>
+                                </div>
+                            </form>
                         </div>
                     </div>
-                    <!--window for adding a task to a contact-->
+                    <!--Add task form written by Jörg Betz-->
+                    <!--Add task form written by Jörg Betz-->
+                    <!--window for adding a task-->
 
 
                     <div class="sidebar">
@@ -262,10 +296,9 @@
             </div>
         </div>
     </main>
-    <script src="js/mini_backend.js"></script>
-    <!-- Insert dedicated JS script -->
-    <script src="js/main.js"></script>
+
     <script src="js/contact_guest.js"></script>
+
 </body>
 
 </html>

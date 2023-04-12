@@ -348,7 +348,7 @@ function clearTheAddInput() {
 }
 
 
-function closeAddTask() {
+function closeAddTaskContact() {
     document.getElementById('add-task-to-contact-container').style.width = '0px'
 }
 
