@@ -282,7 +282,7 @@ function htmlTemplateTaskToEdit(titleEdit, year, month, day, taskStatus,x){
     <input type="date" id="due-date-edit" name="trip-start" value="${year}-${month}-${day}">
     <span>Subtasks</span>
     <div class="input-subtasks">
-        <input style="width:85%; margin-right:10px" type="text" placeholder="add new subtask" id="task-subtask-edit">
+        <input style="width:90%; margin-right:10px" type="text" placeholder="add new subtask" id="task-subtask-edit">
         <img src="assets/img/plus.svg" alt="add" onclick="renderAddedSubtask('${taskStatus}', ${x})">
     </div>
     <span id="subtask-to-edit"></span>

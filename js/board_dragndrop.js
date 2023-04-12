@@ -2,10 +2,20 @@ let currentDraggedElement;
 let taskStatus;
 let movedTask;
 
+/**
+ * this function allows to drop an element
+ * 
+ * @param {Event} ev 
+ */
 function allowDrop(ev){
     ev.preventDefault();
 }
 
+/**
+ * this function changes the task's status 
+ * 
+ * @param {string} container 
+ */
 function moveTo(container){
     const isGoodValue = val => val && val !== '-' && val !== 'N/A'; /* check for empty arrays*/
     target = container['currentTarget']['id'];
@@ -53,6 +63,12 @@ function moveTo(container){
     saveTasksToBackend();
 }
 
+/**
+ * this function rembers the task to move
+ * 
+ * @param {number} i 
+ * @param {string} taskStatus 
+ */
 function startDragging(i, taskStatus){
     movedTask = i;
     currentDraggedElement = taskStatus;

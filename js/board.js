@@ -8,6 +8,10 @@ function renderBoard() {
     renderTasksDone();
 }
 
+/**
+ * this function renders the tasks to do container
+ * 
+ */
 function renderTasksToDo() {
     let toDo = document.getElementById('to-do-container');
     toDo.innerHTML = '';
@@ -20,6 +24,11 @@ function renderTasksToDo() {
     }
 }
 
+/**
+ * this function renders the selected persons for the task to do
+ * 
+ * @param {number} i 
+ */
 function renderSelectedPersonToDo(i) {
     let selectedPerson = document.getElementById(`selected-person-to-do${i}`);
     let nbOfInCharge = tasksToDo[i]['inCharge'].length;
@@ -36,7 +45,10 @@ function renderSelectedPersonToDo(i) {
     fxNbOfInCharge(nbOfInCharge, selectedPerson);
 }
 
-
+/**
+ * this function renders the tasks in progress container
+ * 
+ */
 function renderTasksInProgress() {
     let inProgress = document.getElementById('in-progress-container');
     inProgress.innerHTML = '';
@@ -49,6 +61,11 @@ function renderTasksInProgress() {
     }
 }
 
+/**
+ * this function renders the selected persons for the task in progress
+ * 
+ * @param {number} i 
+ */
 function renderSelectedPersonInProgress(i) {
     let selectedPerson = document.getElementById(`selected-person-in-progress${i}`);
     let nbOfInCharge = tasksInProgress[i]['inCharge'].length;
@@ -65,6 +82,10 @@ function renderSelectedPersonInProgress(i) {
     fxNbOfInCharge(nbOfInCharge, selectedPerson);
 }
 
+/**
+ * this function renders the tasks await feedback container
+ * 
+ */
 function renderTasksAwaitFeedback() {
     let awaitFeedback = document.getElementById('await-feedback-container');
     awaitFeedback.innerHTML = '';
@@ -77,6 +98,11 @@ function renderTasksAwaitFeedback() {
     }
 }
 
+/**
+ * this function renders the selected persons for the task await feedback
+ * 
+ * @param {number} i 
+ */
 function renderSelectedPersonAwaitFeedback(i) {
     let selectedPerson = document.getElementById(`selected-person-await-feedback${i}`);
     let nbOfInCharge = tasksAwaitFeedback[i]['inCharge'].length;
@@ -93,7 +119,10 @@ function renderSelectedPersonAwaitFeedback(i) {
     fxNbOfInCharge(nbOfInCharge, selectedPerson);
 }
 
-
+/**
+ * this function renders the tasks done container
+ * 
+ */
 function renderTasksDone() {
     let doneContainer = document.getElementById('done-container');
     doneContainer.innerHTML = '';
@@ -106,6 +135,33 @@ function renderTasksDone() {
     }
 }
 
+/**
+ * this function renders the selected persons for the task done
+ * 
+ * @param {number} i 
+ */
+function renderSelectedPersonDone(i) {
+    let selectedPerson = document.getElementById(`selected-person-done${i}`);
+    let nbOfInCharge = tasksDone[i]['inCharge'].length;
+    if (nbOfInCharge > 2){
+        countTo = 3;
+    }else{
+        countTo = nbOfInCharge
+    }
+    selectedPerson.innerHTML = '';
+    for (let j = 0; j < countTo; j++) {
+        selectedPerson.innerHTML +=
+            htmlTemplateSelectedPersonDone(i, j)
+    }
+    fxNbOfInCharge(nbOfInCharge, selectedPerson);
+}
+
+/**
+ * this function checks which subtaskss are already done
+ * 
+ * @param {number} i 
+ * @param {string} taskStatus 
+ */
 function checkDoneTasks(i, taskStatus) {
     nbDone = 0;
     switch (taskStatus) {
@@ -136,22 +192,12 @@ function checkDoneTasks(i, taskStatus) {
     }   
 }
 
-function renderSelectedPersonDone(i) {
-    let selectedPerson = document.getElementById(`selected-person-done${i}`);
-    let nbOfInCharge = tasksDone[i]['inCharge'].length;
-    if (nbOfInCharge > 2){
-        countTo = 3;
-    }else{
-        countTo = nbOfInCharge
-    }
-    selectedPerson.innerHTML = '';
-    for (let j = 0; j < countTo; j++) {
-        selectedPerson.innerHTML +=
-            htmlTemplateSelectedPersonDone(i, j)
-    }
-    fxNbOfInCharge(nbOfInCharge, selectedPerson);
-}
-
+/**
+ * this function checks if there are more than 3 persons assigned to the task and renders a circle with that number inside
+ * 
+ * @param {number} nbOfInCharge 
+ * @param {string} selectedPerson 
+ */
 function fxNbOfInCharge(nbOfInCharge, selectedPerson){
     if (nbOfInCharge > 2){
         nbMore = nbOfInCharge-3;
@@ -160,6 +206,10 @@ function fxNbOfInCharge(nbOfInCharge, selectedPerson){
     }
 }
 
+/**
+ * this function calls the filter function with the value of the search field
+ * 
+ */
 function filter() {
     let search = document.getElementById('search').value; /*nimmtText aus Input Feld*/
     search = search.toLowerCase();
@@ -169,6 +219,11 @@ function filter() {
     filterDone(search);
 }
 
+/**
+ * this function filters the tasks to do by search
+ * 
+ * @param {string} search 
+ */
 function filterToDo(search) {
     document.getElementById('to-do-container').innerHTML = '';
     for (let i = 0; i < tasksToDo.length; i++) {
@@ -182,6 +237,11 @@ function filterToDo(search) {
     }
 }
 
+/**
+ * this function filters the tasks in progress by search
+ * 
+ * @param {string} search 
+ */
 function filterInProgress(search) {
     document.getElementById('in-progress-container').innerHTML = '';
     for (let i = 0; i < tasksInProgress.length; i++) {
@@ -195,6 +255,11 @@ function filterInProgress(search) {
     }
 }
 
+/**
+ * this function filters the tasks await feedback by search
+ * 
+ * @param {string} search 
+ */
 function filterAwaitFeedback(search) {
     document.getElementById('await-feedback-container').innerHTML = '';
     for (let i = 0; i < tasksAwaitFeedback.length; i++) {
@@ -208,6 +273,11 @@ function filterAwaitFeedback(search) {
     }
 }
 
+/**
+ * this function filters the tasks done by search
+ * 
+ * @param {string} search 
+ */
 function filterDone(search) {
     document.getElementById('done-container').innerHTML = '';
     for (let i = 0; i < tasksDone.length; i++) {
@@ -221,10 +291,18 @@ function filterDone(search) {
     }
 }
 
+/**
+ * this function opens the add task popup
+ * 
+ */
 function openAddTaskPopup() {
     document.getElementById('add-task-popup-container').classList.remove('d-none');
 }
 
+/**
+ * this function closes the add task popup
+ * 
+ */
 function closeAddTask() {
     document.getElementById('add-task-popup-container').classList.add('d-none');
     document.getElementById('list-task-category').classList.add('d-none');

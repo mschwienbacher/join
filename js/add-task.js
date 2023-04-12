@@ -6,6 +6,10 @@ let category = '';
 let nbOfSubtasks = 0;
 let data = '';
 
+/**
+ * This function adds a task to the board's To Do list
+ * 
+ */
 async function addTask() {
     getCategory();
     let title = document.getElementById('task-title').value;
@@ -17,6 +21,13 @@ async function addTask() {
     window.location.href = "board.html";
 }
 
+/**
+ * This function pushes all data of a new task in the array taskToDo and sves them in the backend
+ * 
+ * @param {string} title 
+ * @param {string} text 
+ * @param {date} dueDate 
+ */
 async function pushTask(title, text, dueDate) {
     data =
     {
@@ -38,6 +49,10 @@ async function pushTask(title, text, dueDate) {
     await saveTasksToBackend();
 }
 
+/**
+ * this function pushes the array of people assigned to the task in the data array
+ * 
+ */
 function getInCharge() {
     for (let i = 0; i < assignedTo.length; i++) {
         data['inCharge'].push(assignedTo[i]);
@@ -45,12 +60,20 @@ function getInCharge() {
     }
 }
 
+/**
+ * this function registers the new added subtasks in the data array
+ * 
+ */
 function getSubtasksForm() {
     for (let i = 0; i < subtasks.length; i++) {
         data['subtasks'].push(subtasks[i]);
     }
 }
 
+/**
+ * this function checks if there are crossed subtasks
+ * 
+ */
 function getSubtasksChecked() {
     let checkboxChecked = [];
     let inputElements = document.getElementsByClassName('checkbox-subtask');
@@ -66,6 +89,10 @@ function getSubtasksChecked() {
     }
 }
 
+/**
+ * this function registers the new task's category
+ * 
+ */
 function getCategory() {
     let inputElements = document.getElementsByClassName('messageCheckbox');
     for (let i = 0; inputElements[i]; ++i) {
@@ -76,6 +103,10 @@ function getCategory() {
     }
 }
 
+/**
+ * this function registers the people who are assigned to the new task
+ * 
+ */
 function getAssignedTo() {
     assignedTo = [];
     initials = [];
@@ -88,6 +119,10 @@ function getAssignedTo() {
     }
 }
 
+/**
+ * this function pushes all new subtasks in the subtasks array
+ * 
+ */
 function getSubTasks() {
     subtasks = [];
     let inputElements = document.getElementsByClassName('checkbox-subtask');
@@ -97,16 +132,26 @@ function getSubTasks() {
     }
 }
 
-
+/**
+ * this function opens the name list container 
+ * 
+ */
 function openContactsToAssign() {
     document.getElementById('list-assigned-to').classList.toggle('d-none');
 }
 
-
+/**
+ * this function opens the category list
+ * 
+ */
 function openTaskCategory() {
     document.getElementById('list-task-category').classList.toggle('d-none');
 }
 
+/**
+ * this function renders the assigned to list
+ * 
+ */
 function renderListAssignedTo() {
     let content = document.getElementById('checkbox-list-assigned-to');
     content.innerHTML = '';
@@ -115,7 +160,10 @@ function renderListAssignedTo() {
             htmlTemplateListAssignedTo(i);
 }
 
-
+/**
+ * this function renders the category list
+ * 
+ */
 function renderListTaskCategory() {
     content = document.getElementById('category-row').innerHTML = '';
     for (let i = 0; i < categories.length; i++) {
@@ -126,7 +174,10 @@ function renderListTaskCategory() {
     }
 }
 
-
+/**
+ * this function renders the subtasks list
+ * 
+ */
 function renderSubtasks() {
     let content = document.getElementById('task-subtask');
     newtaskSubtask = content.value;
@@ -138,6 +189,10 @@ function renderSubtasks() {
     content.value = '';
 }
 
+/**
+ * this function empties the add task form
+ * 
+ */
 function clearAddTaskForm() {
     document.getElementById('task-title').value = '';
     renderListAssignedTo();
@@ -149,6 +204,11 @@ function clearAddTaskForm() {
     nbOfSubtasks = 0;
 }
 
+/**
+ * this function sets the new task's priority and changes the color of the buttons
+ * 
+ * @param {string} string 
+ */
 function setPriority(string) {
     priority = string;
     resetPriorityBtn();
@@ -171,6 +231,10 @@ function setPriority(string) {
     }
 }
 
+/**
+ * this function resets the priority buttons' color
+ * 
+ */
 function resetPriorityBtn() {
     document.getElementById('urgent-btn').style = ("background-color:#f9f9f9");
     document.getElementById('medium-btn').style = ("background-color:#f9f9f9");
@@ -180,6 +244,10 @@ function resetPriorityBtn() {
     document.getElementById('urgent-btn-img').src = "assets/img/urgent.svg";
 }
 
+/**
+ * this function saves all JSON arrays to the backend
+ * 
+ */
 async function saveTasksToBackend() {
     await backend.setItem('tasksToDo', JSON.stringify(tasksToDo));
     await backend.setItem('tasksInProgress', JSON.stringify(tasksInProgress));

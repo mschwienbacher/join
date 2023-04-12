@@ -4,6 +4,12 @@ let dueDateEdit;
 let priorityEdit;
 let assignedToEdit;
 
+/**
+ * this function gets the values who can be changed
+ * 
+ * @param {string} taskStatus 
+ * @param {number} x 
+ */
 function editTask(taskStatus, x) {
     switch (taskStatus) {
         case 'tasksToDo':
@@ -49,6 +55,17 @@ function editTask(taskStatus, x) {
     renderEditTaskCard(taskStatus, titleEdit, textEdit, dueDateEdit, subtasksToEdit, subtasksToEditAlreadyDone, x);
 }
 
+/**
+ * this function opens and renders the task to edit while it closes the detail card
+ * 
+ * @param {string} taskStatus 
+ * @param {string} titleEdit 
+ * @param {string} textEdit 
+ * @param {date} dueDateEdit 
+ * @param {Array} subtasksToEdit 
+ * @param {Array} subtasksToEditAlreadyDone 
+ * @param {number} x 
+ */
 function renderEditTaskCard(taskStatus, titleEdit, textEdit, dueDateEdit, subtasksToEdit, subtasksToEditAlreadyDone, x){
     let year = dueDateEdit.substring(0, 4);
     let month = dueDateEdit.substring(5, 7);
@@ -63,6 +80,12 @@ function renderEditTaskCard(taskStatus, titleEdit, textEdit, dueDateEdit, subtas
     renderSubtasksEditTaskCard(subtasksToEdit, subtasksToEditAlreadyDone);
 }
 
+/**
+ * this function renders the subtasks on the edit card
+ * 
+ * @param {Array} subtasksToEdit 
+ * @param {Array} subtasksToEditAlreadyDone 
+ */
 function renderSubtasksEditTaskCard(subtasksToEdit, subtasksToEditAlreadyDone){
     for (let i = 0; i < subtasksToEdit.length; i++) {
         if (subtasksToEditAlreadyDone[i] == 1) {
@@ -76,6 +99,11 @@ function renderSubtasksEditTaskCard(subtasksToEdit, subtasksToEditAlreadyDone){
     renderAssignedToEditTaskCard(assignedToEdit);
 }
 
+/**
+ * this function renders the people the task is assigned to
+ * 
+ * @param {Array} assignedToEdit 
+ */
 function renderAssignedToEditTaskCard(assignedToEdit){
     document.getElementById('persons-to-edit').innerHTML = '';
     for (let j = 0; j < assignedToEdit.length; j++) {
@@ -84,6 +112,12 @@ function renderAssignedToEditTaskCard(assignedToEdit){
     }
 }
 
+/**
+ * this function registers the added subtask on the edit card
+ * 
+ * @param {string} taskStatus 
+ * @param {number} x 
+ */
 function renderAddedSubtask(taskStatus, x) {
     let i = 0;
     let subtasksToPush = document.getElementById('task-subtask-edit').value;
@@ -113,12 +147,24 @@ function renderAddedSubtask(taskStatus, x) {
     executeRenderingAddedSubtask(subtasksToEdit, i);
 }
 
+/**
+ * this function renders the added subtask on the edit card
+ * 
+ * @param {Array} subtasksToEdit 
+ * @param {number} i 
+ */
 function executeRenderingAddedSubtask(subtasksToEdit, i){
     checkedStatus = '';
     document.getElementById('subtask-to-edit').innerHTML +=
         htmlTemplateSubtasksToEdit(subtasksToEdit, i, checkedStatus);
 }
 
+/**
+ * this function updates the edited task
+ * 
+ * @param {string} taskStatus 
+ * @param {number} x 
+ */
 function closeEdit(taskStatus, x) {
     let inputElements = document.getElementsByClassName('edited-subtasks');
     getCheckedCheckBoxes(inputElements);
@@ -154,12 +200,23 @@ function closeEdit(taskStatus, x) {
     closeEditedCard();
 }
 
+/**
+ * this function closes the edit card 
+ * 
+ */
 function closeEditedCard(){
     document.getElementById('edit-task').classList.add('d-none');
     saveTasksToBackend();
     renderBoard();
 }
 
+/**
+ * this function chooses the priority symbol 
+ * 
+ * @param {string} level 
+ * @param {string} taskStatus 
+ * @param {number} x 
+ */
 function editPriority(level, taskStatus, x) {
     switch (level) {
         case 'urgent':
@@ -175,6 +232,14 @@ function editPriority(level, taskStatus, x) {
     changePriority(taskStatus, x, symbol, level);
 }
 
+/**
+ * this function pushes the priority level and symbol into the specific array
+ * 
+ * @param {string} taskStatus 
+ * @param {number} x 
+ * @param {string} symbol 
+ * @param {string} level 
+ */
 function changePriority(taskStatus, x, symbol, level) {
     switch (taskStatus) {
         case 'tasksToDo':
@@ -197,6 +262,11 @@ function changePriority(taskStatus, x, symbol, level) {
     saveTasksToBackend();
 }
 
+/**
+ * this function prevents that the popups are closed by clicking on them
+ * 
+ * @param {event} event 
+ */
 function stopPropagation(event) {
     event.stopPropagation();
 }

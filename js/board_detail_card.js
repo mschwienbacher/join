@@ -1,3 +1,8 @@
+/**
+ * this function opens the detail card for tasks to do
+ * 
+ * @param {number} x 
+ */
 function openDetailCardToDo(x) {
     document.getElementById('details').classList.remove('d-none');
     document.getElementById('detail-popup').innerHTML =
@@ -10,6 +15,11 @@ function openDetailCardToDo(x) {
     renderSubtaksInDetailCardToDo(x);
 }
 
+/**
+ * this function renders the subtasks on the detail card for tasks to do
+ * 
+ * @param {number} x 
+ */
 function renderSubtaksInDetailCardToDo(x) {
     document.getElementById('subtasks').innerHTML = '';
     for (let j = 0; j < tasksToDo[x]['subtasks'].length; j++) {
@@ -23,6 +33,11 @@ function renderSubtaksInDetailCardToDo(x) {
     }
 }
 
+/**
+ * this function opens the detail card for tasks in progress
+ * 
+ * @param {number} x 
+ */
 function openDetailCardInProgress(x) {
     document.getElementById('details').classList.remove('d-none');
     document.getElementById('detail-popup').innerHTML =
@@ -35,6 +50,11 @@ function openDetailCardInProgress(x) {
     renderSubtaksInDetailCardInProgress(x);
 }
 
+/**
+ * this function renders the subtasks on the detail card for tasks in progress
+ * 
+ * @param {number} x 
+ */
 function renderSubtaksInDetailCardInProgress(x) {
     document.getElementById('subtasks').innerHTML = '';
     for (let j = 0; j < tasksInProgress[x]['subtasks'].length; j++) {
@@ -48,7 +68,11 @@ function renderSubtaksInDetailCardInProgress(x) {
     }
 }
 
-
+/**
+ * this function opens the detail card for tasks await feedback
+ * 
+ * @param {number} x 
+ */
 function openDetailCardAwaitFeedback(x) {
     document.getElementById('details').classList.remove('d-none');
     document.getElementById('detail-popup').innerHTML =
@@ -60,6 +84,11 @@ function openDetailCardAwaitFeedback(x) {
     renderSubtaksInDetailCardAwaitFeedback(x);
 }
 
+/**
+ * this function renders the subtasks on the detail card for tasks await feedback
+ * 
+ * @param {number} x 
+ */
 function renderSubtaksInDetailCardAwaitFeedback(x) {
     document.getElementById('subtasks').innerHTML = '';
     for (let j = 0; j < tasksAwaitFeedback[x]['subtasks'].length; j++) {
@@ -73,6 +102,11 @@ function renderSubtaksInDetailCardAwaitFeedback(x) {
     }
 }
 
+/**
+ * this function opens the detail card for tasks done
+ * 
+ * @param {number} x 
+ */
 function openDetailCardDone(x) {
     document.getElementById('details').classList.remove('d-none');
     document.getElementById('detail-popup').innerHTML =
@@ -84,6 +118,11 @@ function openDetailCardDone(x) {
     renderSubtaksInDetailCardDone(x);
 }
 
+/**
+ * this function renders the subtasks on the detail card for tasks done
+ * 
+ * @param {number} x 
+ */
 function renderSubtaksInDetailCardDone(x) {
     document.getElementById('subtasks').innerHTML = '';
     for (let j = 0; j < tasksDone[x]['subtasks'].length; j++) {
@@ -97,6 +136,12 @@ function renderSubtaksInDetailCardDone(x) {
     }
 }
 
+/**
+ * this function closes the detail card
+ * 
+ * @param {string} taskStatus 
+ * @param {number} x 
+ */
 function closeDetailCard(taskStatus, x) {
     let inputElements = document.getElementsByClassName('sutaskCheckbox');
     getCheckedCheckBoxes(inputElements);
@@ -106,6 +151,11 @@ function closeDetailCard(taskStatus, x) {
     renderBoard();
 }
 
+/**
+ * this function checks which checkboxes are checked
+ * 
+ * @param {string} inputElements 
+ */
 function getCheckedCheckBoxes(inputElements){
     checkboxChecked = [];
     for (let i = 0; inputElements[i]; ++i) {
@@ -117,6 +167,13 @@ function getCheckedCheckBoxes(inputElements){
     };
 }
 
+/**
+ * this function registers which checkboxes are checked
+ * 
+ * @param {string} taskStatus 
+ * @param {number} x 
+ * @param {Array} checkboxChecked 
+ */
 function updateCheckboxChecked(taskStatus, x, checkboxChecked){
     switch (taskStatus) {
 
@@ -148,6 +205,13 @@ function updateCheckboxChecked(taskStatus, x, checkboxChecked){
             };
     }
 }
+
+/**
+ * this function deletes the selected task
+ * 
+ * @param {string} taskToDelete 
+ * @param {number} x 
+ */
 function deleteTask(taskToDelete, x) {
     const isGoodValue = val => val && val !== '-' && val !== 'N/A'; /* check for empty arrays*/
     switch (taskToDelete) {
