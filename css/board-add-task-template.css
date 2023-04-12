@@ -10,8 +10,8 @@
     display: flex;
     width: 25%;
     border-radius: 30px;
-    height: 100%;
-    overflow-y: scroll;
+    max-height: 100%;
+    overflow-y: auto;
 }
 
 .title{

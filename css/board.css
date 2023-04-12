@@ -198,13 +198,13 @@ height: 15px;
     flex-direction: column;
     justify-content: flex-start;
     padding-left: 24px;
-    padding-right: 5px;
+    padding-right: 17px;
     padding-bottom: 24px;
     background-color: #f9f9f9;
     width: 400px;
     border-radius: 30px;
-    height: 99%;
-    overflow-y: scroll;
+    overflow-y: auto;
+    max-height: 100%;
 }
 
 .names-container{
