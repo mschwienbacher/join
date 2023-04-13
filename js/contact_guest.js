@@ -50,7 +50,7 @@ async function loadContactFromBackEnd() {
         let contactsTransform = backend.getItem('contacts') || []
         sortedContacts = JSON.parse(contactsTransform) || []
         renderTheQuestContacts();
-    }, 300)
+    }, 500)
 }
 
 loadContactFromBackEnd()
@@ -65,7 +65,7 @@ function renderTheQuestContacts() {
         document.getElementById('show-contacts-quest').innerHTML += `
         ${letterSortSet(i)}
     <div id="contact${i}" onclick="showDetail(${i})" class="contact-card-quest">
-        <div class="embleme-designe">
+        <div id="userBackgroundId${i}" style="background-color: ${getRandomColor()};" class="embleme-designe">
             <span>${getTheFirstLetterOfName(i)}</span>
         </div>
         <div class="contact-container-name-email-designe">
@@ -108,7 +108,7 @@ function showDetail(j) {
     document.getElementById('detail-information-screen').innerHTML = `
     <img onclick="closeDetail()" id="close-detail-arrow" src="assets/img/arrow-back.svg" alt="">
     <div class="name-and-embleme-container">
-        <div class="detail-embleme">
+        <div style="background-color:${getBackgroundColor(document.getElementById(`userBackgroundId${j}`))};" class="detail-embleme">
             <span>${getTheFirstLetterOfName(j)}</span>
         </div>
         <div>
@@ -136,7 +136,7 @@ function openEdit(o) {
         <p>Edit contact</p>
     </div>
     <div class="embleme-and-input">
-        <p class="embleme-edit ">${getTheFirstLetterOfName(o)}</p>
+        <p style="background-color:${getBackgroundColor(document.getElementById(`userBackgroundId${o}`))};" class="embleme-edit ">${getTheFirstLetterOfName(o)}</p>
         <form>
         <div class="input-container"><input id="nameInputEdit${o}" placeholder="Name" type="text"><img src="assets/img/contact-dummy-name.svg" alt=""></div>
         <div class="input-container"><input id="emailInputEdit${o}" placeholder="Email" type="email"><img src="assets/img/email-contacts.svg" alt=""></div>
@@ -152,7 +152,7 @@ function openEdit(o) {
 function closeDetail() {
     if (window.innerWidth > 1340 && activShowingContact == true) {
         activShowingContact = false;
-        document.getElementById('detail-information-screen').style.padding = '58px 865px';
+        document.getElementById('detail-information-screen').style.padding = '58px 1865px';
         document.getElementById('close-detail-arrow').style.position = 'initial';
     }
     else if (window.innerWidth < 1340 && activShowingContact == true) {
@@ -233,7 +233,7 @@ window.addEventListener('resize', () => {
         document.getElementById('detail-information-screen').style.right = '-100vw';
     }
     else if (window.innerWidth > 1340 && activShowingContact == false) {
-        document.getElementById('detail-information-screen').style.padding = '58px 865px';
+        document.getElementById('detail-information-screen').style.padding = '58px 1865px';
         document.getElementById('detail-information-screen').style.right = 'unset';
     }
 })
@@ -362,6 +362,43 @@ function containsTwoWords(inputString) {
     const words = inputString.trim().split(' ');
     return words.length === 2 && !words.includes('');
 }
+
+
+function getRandomColor() {
+    const colors = ["#FF4136", "#FF851B", "#FFDC00", "#2ECC40", "#0074D9", "#B10DC9", "#01FF70", "#F012BE", "#85144b", "#7FDBFF", "#001f3f", "#39CCCC", "#3D9970", "#2ECC40", "#01FF70", "#FFDC00", "#FF4136", "#85144b", "#F012BE", "#111111"];
+    const randomIndex = Math.floor(Math.random() * colors.length);
+    return colors[randomIndex];
+}
+
+
+
+
+function getBackgroundColor(element) {
+    const style = window.getComputedStyle(element);
+    const backgroundColor = style.getPropertyValue("background-color");
+  
+    if (backgroundColor.indexOf("rgb") !== -1) {
+      return backgroundColor;
+    } else {
+      const hexColor = rgbToHex(backgroundColor);
+      return hexColor;
+    }
+  }
+  
+  function rgbToHex(rgbColor) {
+    const rgbArray = rgbColor.substring(4, rgbColor.length - 1).split(",");
+    const hexArray = [];
+  
+    for (let i = 0; i < rgbArray.length; i++) {
+      const hexValue = parseInt(rgbArray[i]).toString(16);
+      hexArray.push(hexValue.length === 1 ? "0" + hexValue : hexValue);
+    }
+  
+    return "#" + hexArray.join("");
+  }
+
+
+
 /*Delete in the future*/
 /*function setContact() {
     backend.setItem('contacts', JSON.stringify(contacts))
@@ -370,6 +407,7 @@ function containsTwoWords(inputString) {
 function deleteContacts() {
     backend.deleteItem('contacts');
 }*/
+
 
 
 
