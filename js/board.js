@@ -1,5 +1,6 @@
 let nbDone;
 let checkboxChecked;
+let containerToAdd;
 
 function renderBoard() {
     renderTasksToDo();
@@ -295,7 +296,8 @@ function filterDone(search) {
  * this function opens the add task popup
  * 
  */
-function openAddTaskPopup() {
+function openAddTaskPopup(containerString) {
+    containerToAdd = containerString;
     document.getElementById('add-task-popup-container').classList.remove('d-none');
     renderDueDate();
 }

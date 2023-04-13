@@ -62,6 +62,7 @@ async function initAddTask() {
     loadTasksFromBackend();
     loadContactsFromBackend();
     renderDueDate();
+    containerToAdd = 'toDo';
 }
 
 /**

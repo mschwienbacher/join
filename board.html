@@ -82,14 +82,14 @@
                                     <img src="assets/img/loupe.svg" alt="loupe">
                                 </div>
                                 <div class="add-task-btn">
-                                    <button onclick="openAddTaskPopup()">Add task +</button>
+                                    <button onclick="openAddTaskPopup('toDo')">Add task +</button>
                                 </div>
                             </div>
                             <div class="status-bar">
                                 <div class="status">
                                     <div class="status-headline">
                                         <span>To do</span>
-                                        <img src="assets/img/plus.svg" alt="add" onclick="openAddTaskPopup()">
+                                        <img src="assets/img/plus.svg" alt="add" onclick="openAddTaskPopup('toDo')">
                                     </div>
                                     <div class="task-container" id="to-do-container" ondrop="moveTo(event)"
                                         ondragover="allowDrop(event)">
@@ -99,7 +99,7 @@
                                 <div class="status">
                                     <div class="status-headline">
                                         <span>In progress</span>
-                                        <img src="assets/img/plus.svg" alt="add" onclick="openAddTaskPopup()">
+                                        <img src="assets/img/plus.svg" alt="add" onclick="openAddTaskPopup('inProgress')">
                                     </div>
                                     <div class="task-container" id="in-progress-container" ondrop="moveTo(event)"
                                         ondragover="allowDrop(event)">
@@ -109,7 +109,7 @@
                                 <div class="status">
                                     <div class="status-headline">
                                         <span>Await feedback</span>
-                                        <img src="assets/img/plus.svg" alt="add" onclick="openAddTaskPopup()">
+                                        <img src="assets/img/plus.svg" alt="add" onclick="openAddTaskPopup('awaitFeedback')">
                                     </div>
                                     <div class="task-container" id="await-feedback-container" ondrop="moveTo(event)"
                                         ondragover="allowDrop(event)">
@@ -119,7 +119,7 @@
                                 <div class="status">
                                     <div class="status-headline">
                                         <span>Done</span>
-                                        <img src="assets/img/plus.svg" alt="add" onclick="openAddTaskPopup()">
+                                        <img src="assets/img/plus.svg" alt="add" onclick="openAddTaskPopup('done')">
                                     </div>
                                     <div class="task-container" id="done-container" ondrop="moveTo(event)"
                                         ondragover="allowDrop(event)">
