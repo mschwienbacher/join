@@ -12,7 +12,10 @@ function login() {
         let userCanLogin = loginValidation(userToReset, email, password, 1);
         let incorrectUserDetail = loginValidation(userToReset, email, password, 2);
         if(userCanLogin) {
-            window.location.href = "summary.html";
+            console.log(userCanLogin.email);
+            let redir = `summary.html?name=${userCanLogin.name}`;
+            localStorage.setItem('username', userCanLogin.name);
+            window.location.href = redir;
         } else if(incorrectUserDetail) {
             printErrorMessage("Credentials incorrect!");
             emptyValues(email, password);
