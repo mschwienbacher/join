@@ -16,9 +16,16 @@ function htmlTemplateCategory(categoryToRender, ellipseToRender){
     return `
         <div class="category-row">
             <div>
-                <div><input class="messageCheckbox" type="checkbox" /> ${categoryToRender} </div>
+                <div><input class="messageCheckbox" type="checkbox"/> ${categoryToRender}</div>
             </div>
             <img src="${ellipseToRender}">
         </div>
     `;
+}
+
+function htmlTemplateDueDate(todayDate){
+    return `
+        <input type="date" id="due-date" name="trip-start" value="" min="${todayDate}" onfocus="this.showPicker()"required>
+        <img src="/assets/img/calendar.svg">
+        `;
 }

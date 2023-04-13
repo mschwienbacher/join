@@ -1,4 +1,8 @@
-<form onsubmit="addTask(); return false;">
+<form onsubmit="getAssignedTo(); return false;">
+    <div class="error-msg d-none" id="error-msg" onclick="closeErrorMsg()">
+        <div class="msg d-none" id="assignedTo-msg">Please select a least one contact.</div>
+        <div class="msg d-none" id="category-msg">Please select a category.</div>
+    </div>
     <div class="title">
         <input type="text" placeholder="Enter a title" id="task-title" required>
     </div>
@@ -13,11 +17,7 @@
     </div>
     <div class="due-date">
         <span>Due date</span>
-        <div class="date-picker">
-            <input type="date" id="due-date" name="trip-start" value="" onfocus="this.showPicker()"required>
-            <img src="/assets/img/calendar.svg">
-        </div>
-
+        <div class="date-picker" id="date-picker"></div>
     </div>
     <div class="category-add-task">
         <span>Category</span>

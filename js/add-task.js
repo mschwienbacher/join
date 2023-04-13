@@ -6,15 +6,14 @@ let category = '';
 let nbOfSubtasks = 0;
 let data = '';
 
+
 /**
  * This function adds a task to the board's To Do list
  * 
  */
 async function addTask() {
-    getCategory();
     let title = document.getElementById('task-title').value;
     let text = document.getElementById('task-description').value;
-    getAssignedTo()
     let dueDate = document.getElementById('due-date').value;
     getSubTasks();
     await pushTask(title, text, dueDate);
@@ -101,6 +100,21 @@ function getCategory() {
             break;
         }
     }
+    checkEmptyCategory(category);
+}
+
+/**
+ * this function checks if a category is selected
+ * 
+ * @param {string} category 
+ */
+function checkEmptyCategory(category){
+    if (category == ''){
+        document.getElementById('error-msg').classList.remove('d-none');
+        document.getElementById('category-msg').classList.remove('d-none');
+    }else{
+        addTask();
+    }
 }
 
 /**
@@ -117,6 +131,31 @@ function getAssignedTo() {
             initials.push(contacts[i]['name'].charAt(0) + contacts[i]['second-name'].charAt(0));
         }
     }
+    checkEmptyAssignedTo(assignedTo);
+}
+
+/**
+ * this function checks if a contact is assigned to the task
+ * 
+ * @param {string} assignedTo 
+ */
+function checkEmptyAssignedTo(assignedTo){
+    if (assignedTo ==''){
+        document.getElementById('error-msg').classList.remove('d-none');
+        document.getElementById('assignedTo-msg').classList.remove('d-none');
+    }else{
+        getCategory()
+    }
+}
+
+/**
+ * this function closes the error message if no contact or category is selected
+ * 
+ */
+function closeErrorMsg(){
+    document.getElementById('assignedTo-msg').classList.add('d-none');
+    document.getElementById('category-msg').classList.add('d-none');
+    document.getElementById('error-msg').classList.add('d-none');
 }
 
 /**
@@ -242,6 +281,16 @@ function resetPriorityBtn() {
     document.getElementById('low-btn-img').src = "assets/img/low.svg";
     document.getElementById('medium-btn-img').src = "assets/img/medium.svg";
     document.getElementById('urgent-btn-img').src = "assets/img/urgent.svg";
+}
+
+/**
+ * this function renders the date picker with today´s date
+ * 
+ */
+function renderDueDate(){
+    let todayDate = new Date().toISOString().split('T')[0];
+    document.getElementById('date-picker').innerHTML = 
+        htmlTemplateDueDate(todayDate);
 }
 
 /**

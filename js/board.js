@@ -297,6 +297,7 @@ function filterDone(search) {
  */
 function openAddTaskPopup() {
     document.getElementById('add-task-popup-container').classList.remove('d-none');
+    renderDueDate();
 }
 
 /**
