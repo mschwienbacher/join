@@ -41,10 +41,35 @@ async function pushTask(title, text, dueDate) {
         subtasks: [],
         alreadyDone: []
     };
+    getCheckboxes()
+    await saveNewTaskinFolder(data);
+}
+
+function getCheckboxes(){
     getInCharge();
     getSubtasksForm();
-    getSubtasksChecked()
-    tasksToDo.push(data);
+    getSubtasksChecked();
+}
+
+async function saveNewTaskinFolder(data){
+    switch(containerToAdd) {
+        case ('toDo'):
+            tasksToDo.push(data);
+            await saveTasksToBackend();
+            break;
+        case ('inProgress'):
+            tasksInProgress.push(data);
+            await saveTasksToBackend();
+            break;
+        case ('awaitFeedback'):
+            tasksAwaitFeedback.push(data);
+            await saveTasksToBackend();
+            break;
+        case ('done'):
+            tasksDone.push(data);
+            await saveTasksToBackend();
+            break;
+    }
     await saveTasksToBackend();
 }
 
