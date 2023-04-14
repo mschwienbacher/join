@@ -29,3 +29,27 @@ function htmlTemplateDueDate(todayDate){
         <img src="/assets/img/calendar.svg">
         `;
 }
+
+function htmlTemplateNewCategory(){
+    return`
+    <div class="new-category" id="new-category">
+    <span class="hover" onclick="openNewCategory()">New Category</span>
+    `;
+}
+
+function htmlTemplateNewCategoryEnter(){
+    return`
+    <div class="input-filed-new-category">
+    <input type="text" placeholder="Enter New Category" id="register-category"></input>
+    <button type="button" onclick="closeNewCategory()">Cancel</button>
+    <button>OK</button>
+    </div>
+    <div class="category-colors" id="category-colors"></div>
+    `;
+}
+
+function htmlTemplateNewCategoryColor(ellipse, i){
+    return`
+    <img src="${ellipse}" onclick="setCategoryColor(${i})">
+    `;
+}
