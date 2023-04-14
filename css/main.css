@@ -17,3 +17,8 @@ body {
     margin:0 auto;
     padding: 50px;
 }
+@media(max-width: 640px) {
+    .container > .center {
+    padding: 20px;
+    }
+}

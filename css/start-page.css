@@ -166,6 +166,10 @@ h1 a {
     border-radius: 3px;
 }
 
+#bottom-block {
+    display: none;
+}
+
 .pop-up-content ::-webkit-input-placeholder {
     font-size: 19px;
     color: #D1D1D1;
