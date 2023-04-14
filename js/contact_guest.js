@@ -44,17 +44,15 @@ let contacts = [/*{
 }*/]
 
 
-
 async function loadContactFromBackEnd() {
     setTimeout(() => {
         let contactsTransform = backend.getItem('contacts') || []
         sortedContacts = JSON.parse(contactsTransform) || []
         renderTheQuestContacts();
-    }, 500)
+    }, 300)
 }
 
 loadContactFromBackEnd()
-
 
 
 // render the contacts
@@ -138,7 +136,7 @@ function openEdit(o) {
     <div class="embleme-and-input">
         <p style="background-color:${getBackgroundColor(document.getElementById(`userBackgroundId${o}`))};" class="embleme-edit ">${getTheFirstLetterOfName(o)}</p>
         <form>
-        <div class="input-container"><input id="nameInputEdit${o}" placeholder="Name" type="text"><img src="assets/img/contact-dummy-name.svg" alt=""></div>
+        <div id="edit-input-field" class="input-container"><input id="nameInputEdit${o}" placeholder="Name" type="text"><img src="assets/img/contact-dummy-name.svg" alt=""></div>
         <div class="input-container"><input id="emailInputEdit${o}" placeholder="Email" type="email"><img src="assets/img/email-contacts.svg" alt=""></div>
         <div class="input-container"><input id="phoneInputEdit${o}" placeholder="Phone" type="number"><img src="assets/img/telephone-contacts.svg" alt=""></div>
     </form>
@@ -170,15 +168,21 @@ function fillEditInput(x) {
 
 
 function saveTheEdit(x) {
-    letterCounter = [];
-    sortedContacts[x]['name'] = document.getElementById(`nameInputEdit${x}`).value
-    sortedContacts[x]['email'] = document.getElementById(`emailInputEdit${x}`).value
-    sortedContacts[x]['tel'] = document.getElementById(`phoneInputEdit${x}`).value
-    firstAndSecondNameUpdate(document.getElementById(`nameInputEdit${x}`).value, x)
-    closeEdit();
-    addContactToBackend()
-    renderTheQuestContacts();
-    showDetail(x);
+    if (containsTwoWords(document.getElementById(`nameInputEdit${x}`).value) === true) {
+        letterCounter = [];
+        sortedContacts[x]['name'] = document.getElementById(`nameInputEdit${x}`).value
+        sortedContacts[x]['email'] = document.getElementById(`emailInputEdit${x}`).value
+        sortedContacts[x]['tel'] = document.getElementById(`phoneInputEdit${x}`).value
+        document.getElementById(`edit-input-field`).style.borderColor = 'black';
+        firstAndSecondNameUpdate(document.getElementById(`nameInputEdit${x}`).value, x)
+        closeEdit();
+        addContactToBackend()
+        renderTheQuestContacts();
+        showDetail(x);
+    }
+    else {
+        openWarning();
+    }
 }
 
 
@@ -190,6 +194,7 @@ function closeEdit() {
         document.getElementById('edit-window').style.left = '-100vw'
     }
 }
+
 
 window.addEventListener('resize', () => {
     if (window.innerWidth > 1100) {
@@ -333,7 +338,7 @@ function addNewContact() {
         closeAdd();
     }
     else {
-        console.log('Keine zwei Wörter')
+        openWarning()
     }
 }
 
@@ -376,28 +381,35 @@ function getRandomColor() {
 function getBackgroundColor(element) {
     const style = window.getComputedStyle(element);
     const backgroundColor = style.getPropertyValue("background-color");
-  
+
     if (backgroundColor.indexOf("rgb") !== -1) {
-      return backgroundColor;
+        return backgroundColor;
     } else {
-      const hexColor = rgbToHex(backgroundColor);
-      return hexColor;
+        const hexColor = rgbToHex(backgroundColor);
+        return hexColor;
     }
-  }
-  
-  function rgbToHex(rgbColor) {
+}
+
+
+function rgbToHex(rgbColor) {
     const rgbArray = rgbColor.substring(4, rgbColor.length - 1).split(",");
     const hexArray = [];
-  
+
     for (let i = 0; i < rgbArray.length; i++) {
-      const hexValue = parseInt(rgbArray[i]).toString(16);
-      hexArray.push(hexValue.length === 1 ? "0" + hexValue : hexValue);
+        const hexValue = parseInt(rgbArray[i]).toString(16);
+        hexArray.push(hexValue.length === 1 ? "0" + hexValue : hexValue);
     }
-  
+
     return "#" + hexArray.join("");
-  }
+}
 
+function openWarning(){
+    document.getElementById('warning-full-name').style.display = 'flex'; 
+}
 
+function closeWarningContact(){
+    document.getElementById('warning-full-name').style.display = 'none';
+}
 
 /*Delete in the future*/
 /*function setContact() {
@@ -407,8 +419,6 @@ function getBackgroundColor(element) {
 function deleteContacts() {
     backend.deleteItem('contacts');
 }*/
-
-
 
 
 // deleteContacts()
