@@ -1,4 +1,4 @@
-let ellpises = ['assets/img/ellipse-lightblue.svg', 'assets/img/ellipse-green.svg', 'assets/img/ellipse-red.svg', 'assets/img/ellipse-blue.svg', 'assets/img/ellipse-orange.svg'];
+let ellipses = ['assets/img/ellipse-lightblue.svg', 'assets/img/ellipse-green.svg', 'assets/img/ellipse-red.svg', 'assets/img/ellipse-blue.svg', 'assets/img/ellipse-orange.svg'];
 let categories = ['Backoffice', 'Design', 'Marketing', 'Media', 'Sales'];
 let categoryColors = ['assets/img/ellipse-lightblue.svg', 'assets/img/ellipse-green.svg', 'assets/img/ellipse-red.svg', 'assets/img/ellipse-blue.svg', 'assets/img/ellipse-orange.svg'];
 let priority = 'low';
@@ -45,29 +45,34 @@ async function pushTask(title, text, dueDate) {
     await saveNewTaskinFolder(data);
 }
 
+/**
+ * this function searchs for checked ckeckboxes
+ * 
+ */
 function getCheckboxes(){
     getInCharge();
     getSubtasksForm();
     getSubtasksChecked();
 }
 
+/**
+ * this function pushes the new task in the choosen tasklist
+ * 
+ * @param {Array} data 
+ */
 async function saveNewTaskinFolder(data){
     switch(containerToAdd) {
         case ('toDo'):
             tasksToDo.push(data);
-            await saveTasksToBackend();
             break;
         case ('inProgress'):
             tasksInProgress.push(data);
-            await saveTasksToBackend();
             break;
         case ('awaitFeedback'):
             tasksAwaitFeedback.push(data);
-            await saveTasksToBackend();
             break;
         case ('done'):
             tasksDone.push(data);
-            await saveTasksToBackend();
             break;
     }
     await saveTasksToBackend();
@@ -229,7 +234,8 @@ function renderListAssignedTo() {
  * 
  */
 function renderListTaskCategory() {
-    content = document.getElementById('category-row').innerHTML = '';
+    content = document.getElementById('category-row').innerHTML = 
+        htmlTemplateNewCategory();
     for (let i = 0; i < categories.length; i++) {
         categoryToRender = categories[i];
         categoryColorToRender = categoryColors[i];

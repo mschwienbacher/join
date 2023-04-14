@@ -6,9 +6,9 @@
     <div class="title">
         <input type="text" placeholder="Enter a title" id="task-title" required>
     </div>
-    <div class="select-contacts-to-assign" id="select-contacts-to-assign">
+    <div class="select-contacts-to-assign" id="select-contacts-to-assign" onclick="openContactsToAssign(); renderListAssignedTo()">
         <span>Select contacts to assign</span>
-        <img src="assets/img/dropdown.svg" onclick="openContactsToAssign(); renderListAssignedTo()">
+        <img src="assets/img/dropdown.svg">
     </div>
     <div id="list-assigned-to" class="dropdown-check-list d-none" tabindex="100">
         <ul class="items" id="checkbox-list-assigned-to">
