@@ -276,6 +276,31 @@ button:hover{
     font-size: 19px;
 }
 
+.new-category{
+    font-size: 19px;
+}
+
+.new-category input{
+    font-size: 19px;
+    border: none;
+}
+
+.new-category button{
+    border: none;
+    font-size: 19px;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.16);
+    border-radius: 10px;
+    border-color: white;
+    margin-left: 6px;
+}
+
+.hover:hover{
+    cursor: pointer;
+    background-color: lightgrey;
+    border-radius: 8px;
+    padding: 6px;
+}
+
 .d-none{
     display: none;
 }

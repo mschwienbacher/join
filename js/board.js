@@ -1,12 +1,30 @@
 let nbDone;
 let checkboxChecked;
 let containerToAdd;
+let bgColor;
 
+/**
+ * this function renders the board
+ * 
+ */
 function renderBoard() {
     renderTasksToDo();
     renderTasksInProgress();
     renderTasksAwaitFeedback();
     renderTasksDone();
+}
+
+/**
+ * this function sets the background color for the category
+ * 
+ * @param {string} category 
+ */
+function getCategoryColor(category){
+    for (let i = 0; i < categoriesBackground.length; i++){
+        if (category == categories[i]){
+            bgColor = categoriesBackground[i];
+        } 
+    }
 }
 
 /**
@@ -17,10 +35,12 @@ function renderTasksToDo() {
     let toDo = document.getElementById('to-do-container');
     toDo.innerHTML = '';
     for (let i = 0; i < tasksToDo.length; i++) {
+        let category = tasksToDo[i]['category'];
+        getCategoryColor(`${category}`);
         checkDoneTasks(i, 'tasksToDo');
         const widthProgressBar = nbDone / tasksToDo[i]['subtasks'].length * 100;
         toDo.innerHTML +=
-            htmlTemplateTasksToDo(i, widthProgressBar, nbDone);
+            htmlTemplateTasksToDo(i, widthProgressBar, nbDone, bgColor);
         renderSelectedPersonToDo(i);
     }
 }
@@ -54,6 +74,8 @@ function renderTasksInProgress() {
     let inProgress = document.getElementById('in-progress-container');
     inProgress.innerHTML = '';
     for (let i = 0; i < tasksInProgress.length; i++) {
+        let category = tasksInProgress[i]['category'];
+        getCategoryColor(`${category}`);
         checkDoneTasks(i, 'tasksInProgress');
         const widthProgressBar = nbDone / tasksInProgress[i]['subtasks'].length * 100;
         inProgress.innerHTML +=
@@ -91,6 +113,8 @@ function renderTasksAwaitFeedback() {
     let awaitFeedback = document.getElementById('await-feedback-container');
     awaitFeedback.innerHTML = '';
     for (let i = 0; i < tasksAwaitFeedback.length; i++) {
+        let category = tasksAwaitFeedback[i]['category'];
+        getCategoryColor(`${category}`);
         checkDoneTasks(i, 'tasksAwaitFeedback');
         const widthProgressBar = nbDone / tasksAwaitFeedback[i]['subtasks'].length * 100;
         awaitFeedback.innerHTML +=
@@ -128,6 +152,8 @@ function renderTasksDone() {
     let doneContainer = document.getElementById('done-container');
     doneContainer.innerHTML = '';
     for (let i = 0; i < tasksDone.length; i++) {
+        let category = tasksDone[i]['category'];
+        getCategoryColor(`${category}`);
         checkDoneTasks(i, 'tasksDone');
         const widthProgressBar = nbDone / tasksDone[i]['subtasks'].length * 100;
         doneContainer.innerHTML +=

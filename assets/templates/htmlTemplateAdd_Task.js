@@ -42,7 +42,7 @@ function htmlTemplateNewCategoryEnter(){
     <div class="input-filed-new-category">
     <input type="text" placeholder="Enter New Category" id="register-category"></input>
     <button type="button" onclick="closeNewCategory()">Cancel</button>
-    <button>OK</button>
+    <button type="button" onclick="getNewCategory()">OK</button>
     </div>
     <div class="category-colors" id="category-colors"></div>
     `;
@@ -50,6 +50,17 @@ function htmlTemplateNewCategoryEnter(){
 
 function htmlTemplateNewCategoryColor(ellipse, i){
     return`
-    <img src="${ellipse}" onclick="setCategoryColor(${i})">
+    <img src="${ellipse}" id="color${i}" onclick="setCategoryColor(${i})">
+    `;
+}
+
+function htmlTemplateCategoryChecked(categoryToRender, ellipseToRender){
+    return `
+        <div class="category-row">
+            <div>
+                <div><input class="messageCheckbox" type="checkbox" checked>${categoryToRender}</div>
+            </div>
+            <img src="${ellipseToRender}">
+        </div>
     `;
 }

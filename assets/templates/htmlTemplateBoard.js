@@ -1,7 +1,7 @@
-function htmlTemplateTasksToDo(i, widthProgressBar, nbDone){
+function htmlTemplateTasksToDo(i, widthProgressBar, nbDone, bgColor){
     return `
     <div draggable="true" ondragstart=" startDragging(${i}, 'tasksToDo')" class="task-container-detail" onclick="openDetailCardToDo(${i})">
-        <div class="category category-${tasksToDo[i]['category']}">${tasksToDo[i]['category']}</div>
+        <div class="category" style="background:${bgColor}">${tasksToDo[i]['category']}</div>
      <div class="headline-task-detail">${tasksToDo[i]['titel']}</div>
         <div class="text-task-detail">${tasksToDo[i]['text']}</div>
         <div class="progress-bar-task-detail">
@@ -31,7 +31,7 @@ function htmlTemplateSelectedPersonToDo(i,j){
 function htmlTemplateTasksInProgress(i, widthProgressBar, nbDone){
     return `
     <div draggable="true" ondragstart=" startDragging(${i}, 'tasksInProgress')" class="task-container-detail" onclick="openDetailCardInProgress(${i})">
-        <div class="category category-${tasksInProgress[i]['category']}">${tasksInProgress[i]['category']}</div>
+        <div class="category" style="background:${bgColor}">${tasksInProgress[i]['category']}</div>
      <div class="headline-task-detail">${tasksInProgress[i]['titel']}</div>
         <div class="text-task-detail">${tasksInProgress[i]['text']}</div>
             <div class="progress-bar-task-detail">
@@ -60,7 +60,7 @@ function htmlTemplateSelectedPersonInProgress(i,j){
 function htmlTemplateTasksAwaitFeedback(i, widthProgressBar, nbDone){
     return `
     <div draggable="true" ondragstart=" startDragging(${i}, 'tasksAwaitFeedback')" class="task-container-detail" onclick="openDetailCardAwaitFeedback(${i})">
-        <div class="category category-${tasksAwaitFeedback[i]['category']}">${tasksAwaitFeedback[i]['category']}</div>
+        <div class="category" style="background:${bgColor}">${tasksAwaitFeedback[i]['category']}</div>
      <div class="headline-task-detail">${tasksAwaitFeedback[i]['titel']}</div>
         <div class="text-task-detail">${tasksAwaitFeedback[i]['text']}</div>
         <div class="progress-bar-task-detail">
@@ -89,7 +89,7 @@ function htmlTemplateSelectedPersonAwaitFeedback(i,j){
 function htmlTemplateTasksDone(i, widthProgressBar, nbDone){
     return `
     <div draggable="true" ondragstart=" startDragging(${i}, 'tasksDone')" class="task-container-detail" onclick="openDetailCardDone(${i})">
-        <div class="category category-${tasksDone[i]['category']}">${tasksDone[i]['category']}</div>
+        <div class="category" style="background:${bgColor}">${tasksDone[i]['category']}</div>
      <div class="headline-task-detail">${tasksDone[i]['titel']}</div>
         <div class="text-task-detail">${tasksDone[i]['text']}</div>
         <div class="progress-bar-task-detail">
@@ -117,7 +117,7 @@ function htmlTemplateSelectedPersonDone(i,j){
 function htmlTemplateDetailCardToDo(x){
     return`
     <div class="close-x"><img src="assets/img/trash.svg" onclick="deleteTask('tasksToDo', ${x})"> <button onclick="closeDetailCard('tasksToDo', ${x})">X</button></div>
-    <span class="category category-${tasksToDo[x]['category']}">${tasksToDo[x]['category']}</span>
+    <span class="category" style="background:${bgColor}">${tasksToDo[x]['category']}</span>
     <h1>${tasksToDo[x]['titel']}</h1>
     <span class="task-text">${tasksToDo[x]['text']}</span>    
     <span class="text-fix">Due date: ${tasksToDo[x]['dueDate']}</span>
@@ -156,7 +156,7 @@ function htmlTemplateSubtasksDetailCardToDo(x, j, checkedStatus){
 function htmlTemplateDetailCardInProgress(x){
     return`
     <div class="close-x"><img src="assets/img/trash.svg" onclick="deleteTask('tasksInProgress', ${x})"><button onclick="closeDetailCard('tasksInProgress', ${x})">X</button></div>
-    <span class="category category-${tasksInProgress[x]['category']}">${tasksInProgress[x]['category']}</span>
+    <span class="category" style="background:${bgColor}">${tasksInProgress[x]['category']}</span>
     <h1>${tasksInProgress[x]['titel']}</h1>
     <span class="task-text">${tasksInProgress[x]['text']}</span>    
     <span class="text-fix">Due date: ${tasksInProgress[x]['dueDate']}</span>
@@ -195,7 +195,7 @@ function htmlTemplateSubtasksDetailCardInProgress(x, j, checkedStatus){
 function htmlTemplateDetailCardAwaitFeedback(x){
     return`
     <div class="close-x"><img src="assets/img/trash.svg" onclick="deleteTask('tasksAwaitFeedback', ${x})"><button onclick="closeDetailCard('tasksAwaitFeedback', ${x})">X</button></div>
-    <span class="category category-${tasksAwaitFeedback[x]['category']}">${tasksAwaitFeedback[x]['category']}</span>
+    <span class="category" style="background:${bgColor}">${tasksAwaitFeedback[x]['category']}</span>
     <h1>${tasksAwaitFeedback[x]['titel']}</h1>
 <span class="task-text">${tasksAwaitFeedback[x]['text']}</span>    
     <span class="text-fix">Due date: ${tasksAwaitFeedback[x]['dueDate']}</span>
@@ -234,7 +234,7 @@ function htmlTemplateSubtasksDetailCardAwaitFeedback(x, j, checkedStatus){
 function htmlTemplateDetailCardDone(x){
     return`
     <div class="close-x"><img src="assets/img/trash.svg" onclick="deleteTask('tasksDone', ${x})"><button onclick="closeDetailCard('tasksDone', ${x})">X</button></div>
-    <span class="category category-${tasksDone[x]['category']}">${tasksDone[x]['category']}</span>
+    <span class="category" style="background:${bgColor}">${tasksDone[x]['category']}</span>
     <h1>${tasksDone[x]['titel']}</h1>
 <span class="task-text">${tasksDone[x]['text']}</span>    
     <span class="text-fix">Due date: ${tasksDone[x]['dueDate']}</span>

@@ -1,6 +1,8 @@
-let ellipses = ['assets/img/ellipse-lightblue.svg', 'assets/img/ellipse-green.svg', 'assets/img/ellipse-red.svg', 'assets/img/ellipse-blue.svg', 'assets/img/ellipse-orange.svg'];
-let categories = ['Backoffice', 'Design', 'Marketing', 'Media', 'Sales'];
-let categoryColors = ['assets/img/ellipse-lightblue.svg', 'assets/img/ellipse-green.svg', 'assets/img/ellipse-red.svg', 'assets/img/ellipse-blue.svg', 'assets/img/ellipse-orange.svg'];
+let ellipses = ['assets/img/ellipse-lightblue.svg', 'assets/img/ellipse-green.svg', 'assets/img/ellipse-red.svg', 'assets/img/ellipse-blue.svg', 'assets/img/ellipse-orange.svg', 'assets/img/ellipse-violet.svg'];
+let ellipsesColors = ['lightblue', 'green', 'red', 'blue', 'orange', 'violet'];
+/* let categories = ['Backoffice', 'Design', 'Marketing', 'Media', 'Sales'];
+let categoriesBackground = ['lightblue', 'green', 'red', 'blue', 'orange'];
+let categoryColors = ['assets/img/ellipse-lightblue.svg', 'assets/img/ellipse-green.svg', 'assets/img/ellipse-red.svg', 'assets/img/ellipse-blue.svg', 'assets/img/ellipse-orange.svg']; */
 let priority = 'low';
 let category = '';
 let nbOfSubtasks = 0;
@@ -185,6 +187,8 @@ function checkEmptyAssignedTo(assignedTo){
 function closeErrorMsg(){
     document.getElementById('assignedTo-msg').classList.add('d-none');
     document.getElementById('category-msg').classList.add('d-none');
+    document.getElementById('new-category-msg').classList.add('d-none');
+    document.getElementById('color-msg').classList.add('d-none');
     document.getElementById('error-msg').classList.add('d-none');
 }
 

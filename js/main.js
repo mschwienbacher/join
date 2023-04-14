@@ -5,9 +5,12 @@ let tasksToDo = [];
 let tasksInProgress = [];
 let tasksAwaitFeedback = [];
 let tasksDone = [];
-let assignedTo =[];
+let assignedTo = [];
 let initials = [];
-let subtasks =[];
+let subtasks = [];
+let categoriesBackground = [];
+let categoryColors = [];
+let categories = [];
 
 /**
  * this function loads the tasks from backend
@@ -33,6 +36,16 @@ function loadContactsFromBackend(){
 }
 
 /**
+ * this function loads the categories from the backend
+ * 
+ */
+function loadCategoriesFromBackend(){
+    categoriesBackground = JSON.parse(backend.getItem('categoriesBackground')) || [];
+    categoryColors = JSON.parse(backend.getItem('categoryColors')) || [];
+    categories = JSON.parse(backend.getItem('categories')) || [];
+}
+
+/**
  * This function is used to INIT the backend.
  *
  * @returns {JSON} - Will return a JSON of all saved elements
@@ -50,6 +63,7 @@ async function initBoard() {
     await downloadFromServer();
     loadTasksFromBackend();
     loadContactsFromBackend();
+    loadCategoriesFromBackend();
     renderBoard();
 }
 
@@ -61,6 +75,7 @@ async function initAddTask() {
     await downloadFromServer();
     loadTasksFromBackend();
     loadContactsFromBackend();
+    loadCategoriesFromBackend();
     renderDueDate();
     containerToAdd = 'toDo';
 }

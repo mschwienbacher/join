@@ -5,6 +5,8 @@
  */
 function openDetailCardToDo(x) {
     document.getElementById('details').classList.remove('d-none');
+    let category = tasksToDo[x]['category'];
+    getCategoryColor(`${category}`);
     document.getElementById('detail-popup').innerHTML =
         htmlTemplateDetailCardToDo(x);
     document.getElementById('names-container').innerHTML = '';
@@ -40,6 +42,8 @@ function renderSubtaksInDetailCardToDo(x) {
  */
 function openDetailCardInProgress(x) {
     document.getElementById('details').classList.remove('d-none');
+    let category = tasksInProgress[x]['category'];
+    getCategoryColor(`${category}`);
     document.getElementById('detail-popup').innerHTML =
         htmlTemplateDetailCardInProgress(x);
     document.getElementById('names-container').innerHTML = '';
@@ -75,6 +79,8 @@ function renderSubtaksInDetailCardInProgress(x) {
  */
 function openDetailCardAwaitFeedback(x) {
     document.getElementById('details').classList.remove('d-none');
+    let category = tasksAwaitFeedback[x]['category'];
+    getCategoryColor(`${category}`);
     document.getElementById('detail-popup').innerHTML =
         htmlTemplateDetailCardAwaitFeedback(x);
     for (let j = 0; j < tasksAwaitFeedback[x]['inCharge'].length; j++) {
@@ -109,6 +115,8 @@ function renderSubtaksInDetailCardAwaitFeedback(x) {
  */
 function openDetailCardDone(x) {
     document.getElementById('details').classList.remove('d-none');
+    let category = tasksDone[x]['category'];
+    getCategoryColor(`${category}`);
     document.getElementById('detail-popup').innerHTML =
         htmlTemplateDetailCardDone(x);
     for (let j = 0; j < tasksDone[x]['inCharge'].length; j++) {
