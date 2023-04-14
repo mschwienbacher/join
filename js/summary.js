@@ -16,7 +16,7 @@ const username = getUsernameFromLocalStorage();
 
 function loadUserNameForGreeting() {
     if (checkUsernameInUrl(username)) {
-        document.getElementById('username-input').innerText = ` ${username}`;
+        document.getElementById('username-input').innerText = `, ${username}`;
     } else {
         console.log('Username')
     }
