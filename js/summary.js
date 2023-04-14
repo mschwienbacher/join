@@ -1,5 +1,27 @@
 let deadlinecounter = 0;
 
+function getUsernameFromLocalStorage() {
+    const username = localStorage.getItem('username');
+    return username;
+}
+
+
+function checkUsernameInUrl(name) {
+    const urlParams = new URLSearchParams(window.location.search);
+    const username = urlParams.get('name');
+    return username === name;
+}
+
+const username = getUsernameFromLocalStorage();
+
+function loadUserNameForGreeting() {
+    if (checkUsernameInUrl(username)) {
+        document.getElementById('username-input').innerText = ` ${username}`;
+    } else {
+        console.log('Username')
+    }
+}
+
 function getCurrentDate() {
     const today = new Date();
     const date = today.getDate();
@@ -15,7 +37,7 @@ function setCurrentDay() {
 }
 
 
-function today(){
+function today() {
     const today = new Date();
     const date = today.getDate();
     const month = today.getMonth() + 8;
@@ -24,10 +46,10 @@ function today(){
 }
 
 
-function checkForZero(){
+function checkForZero() {
     const today = new Date();
     const month = today.getMonth() + 1;
-    if((today.getMonth() + 1) < 10){
+    if ((today.getMonth() + 1) < 10) {
         return `0`
     }
 }
@@ -61,25 +83,25 @@ function setTheNumbersInHtml() {
 function checkForMatchingDates() {
     console.log(today())
     for (i = 0; i < tasksToDo.length; i++) {
-        if(tasksToDo[i]['dueDate'] === today()){
+        if (tasksToDo[i]['dueDate'] === today()) {
             deadlinecounter++
             document.getElementById('tasks-urgent-counter').innerText = deadlinecounter;
         }
     }
     for (i = 0; i < tasksInProgress.length; i++) {
-        if(tasksInProgress[i]['dueDate'] === today()){
+        if (tasksInProgress[i]['dueDate'] === today()) {
             deadlinecounter++
             document.getElementById('tasks-urgent-counter').innerText = deadlinecounter;
         }
     }
     for (i = 0; i < tasksAwaitFeedback.length; i++) {
-        if(tasksAwaitFeedback[i]['dueDate'] === today()){
+        if (tasksAwaitFeedback[i]['dueDate'] === today()) {
             deadlinecounter++
             document.getElementById('tasks-urgent-counter').innerText = deadlinecounter;
         }
     }
     for (i = 0; i < tasksDone.length; i++) {
-        if(tasksDone[i]['dueDate'] === today()){
+        if (tasksDone[i]['dueDate'] === today()) {
             deadlinecounter++
             document.getElementById('tasks-urgent-counter').innerText = deadlinecounter;
         }
@@ -129,3 +151,5 @@ function checkMonthName(M) {
 
 loadTasksFromForSummary()
 setCurrentDay()
+getUsernameFromLocalStorage()
+loadUserNameForGreeting()
