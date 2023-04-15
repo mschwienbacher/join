@@ -1,21 +1,39 @@
-body{
+body {
     font-family: 'PT Sans', 'sans-serif';
     background-color: #f9f9f9;
 }
 
-.bg1{
+.add-task-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25vw;
+    margin-left: 150px;
+}
+
+.add-task-form{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    margin: 0;
+}
+
+.bg1 {
     background-color: #f9f9f9;
 }
-.title{
+
+.title {
+    display: flex;
+    justify-content: flex-start;
     height: 48px;
     font-style: normal;
     font-weight: 400;
-    font-size: 40px;    
+    font-size: 40px;
 }
 
-.title input{
+.title input {
     background-color: #f9f9f9;
-    width: 40%;
+    /* width: 30%; */
     height: 48px;
     font-style: normal;
     font-weight: 400;
@@ -28,7 +46,7 @@ body{
     border-bottom: 1px solid;
 }
 
-.select-contacts-to-assign{
+.select-contacts-to-assign {
     display: flex;
     justify-content: space-between;
     background-color: #f9f9f9;
@@ -37,7 +55,7 @@ body{
     font-weight: 400;
     font-size: 19px;
     line-height: 120%;
-    width: 42%;
+    /* width: 32%; */
     padding-left: 21px;
     padding-top: 13px;
     padding-bottom: 13px;
@@ -47,17 +65,19 @@ body{
     box-sizing: border-box;
 }
 
-.dropdown-check-list{
+.dropdown-check-list {
     padding-left: 21px;
     padding-top: 13px;
     padding-bottom: 13px;
     font-style: normal;
     font-weight: 400;
     font-size: 19px;
-    width: 90%;
+    /* width: 90%; */
 }
 
-.due-date{
+.due-date {
+    display: flex;
+    justify-content: space-between;
     background-color: #f9f9f9;
     margin-top: 25px;
     font-weight: 700;
@@ -65,10 +85,10 @@ body{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    width: 42%;
+    /* width: 32%; */
 }
 
-.due-date input{
+.due-date input {
     background-color: #f9f9f9;
     padding-top: 18px;
     padding-bottom: 18px;
@@ -95,30 +115,30 @@ body{
     z-index: -10;
 }
 
-.date-picker{
+.date-picker {
     display: flex;
     width: 100%;
 }
 
-.date-picker img{
+.date-picker img {
     margin-left: -24px;
 }
 
-.category-add-task{
+.category-add-task {
     margin-top: 25px;
     font-weight: 700;
     font-size: 19px;
     display: flex;
     flex-direction: column;
-    justify-content:space-between ;
-    align-items:  flex-start;
+    justify-content: space-between;
+    align-items: flex-start;
     padding-top: 12px;
-    width: 42%;
+    /* width: 32%; */
     background-color: #f9f9f9;
     box-sizing: border-box;
 }
 
-.select-category{
+.select-category {
     display: flex;
     justify-content: space-between;
     background-color: #f9f9f9;
@@ -127,48 +147,49 @@ body{
     font-weight: 400;
     font-size: 19px;
     line-height: 120%;
-    width: 95%;
+    width: 100%;
     padding-left: 21px;
     padding-top: 13px;
     padding-bottom: 13px;
     border: none;
     border-bottom: 1px solid;
+    box-sizing: border-box;
 }
 
-.priority{
+.priority {
     background-color: #f9f9f9;
-    width: 42%;
+    /* width: 32%; */
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.priority button{
+.priority button {
     margin-top: 50px;
-    width: 30%;
+    /* width: 30%; */
     height: 46px;
     font-style: normal;
     font-weight: 400;
     font-size: 19px;
-    line-height: 120%;
+    /* line-height: 120%; */
     padding: 12px;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.16);
     border-radius: 10px;
     border-color: white;
 }
 
-.description{
+.description {
     margin-top: 25px;
     font-weight: 700;
     font-size: 19px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    width: 40%;
+    /* width: 30%; */
     background-color: #f9f9f9;
 }
 
-.description textarea{
+.description textarea {
     background-color: #f9f9f9;
     margin-top: 8px;
     width: 100%;
@@ -177,18 +198,18 @@ body{
     padding-top: 13px;
 }
 
-.subtasks{
+.subtasks {
     margin-top: 25px;
     font-weight: 700;
     font-size: 19px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    width: 42%;
+    /* width: 32%; */
     background-color: #f9f9f9;
 }
 
-.subtasks input{
+.subtasks input {
     background-color: #f9f9f9;
     border: none;
     font-weight: 400;
@@ -199,7 +220,7 @@ body{
     padding-bottom: 13px;
 }
 
-.input-subtasks{
+.input-subtasks {
     background-color: #f9f9f9;
     display: flex;
     flex-direction: row;
@@ -208,7 +229,7 @@ body{
     width: 100%;
 }
 
-.checkbox-subtasks{
+.checkbox-subtasks {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -218,52 +239,54 @@ body{
     font-size: 16px;
 }
 
-.checkbox-subtasks input{
+.checkbox-subtasks input {
     display: flex;
     justify-content: flex-start;
 }
 
-.execute-buttons{
+.execute-buttons {
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    margin-top: 24px;
+    margin-right: -65%;
 }
 
-.execute-buttons button{
+.execute-buttons button {
     display: flex;
     justify-content: center;
     align-items: center;
-    Width:136px;
-    Height:61px;
-    border-radius:10px;
-    Padding:18px, 10px, 18px, 10px;
-    Gap:10px;
+    Width: 136px;
+    Height: 61px;
+    border-radius: 10px;
+    Padding: 18px, 10px, 18px, 10px;
+    Gap: 10px;
     margin-right: 35px;
     font-weight: 400;
     font-size: 23px;
 }
 
-.wrapper img:hover{
-    cursor: pointer;    
+.wrapper img:hover {
+    cursor: pointer;
 }
 
-.wrapper button:hover{
-    cursor: pointer;    
+.wrapper button:hover {
+    cursor: pointer;
 }
 
-.row{
+.row {
     display: flex;
     flex-direction: row;
     margin-bottom: 6px;
 }
 
-.category-row{
+.category-row {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-.error-msg{
+.error-msg {
     background-color: rgba(0, 0, 0, 0.2);
     z-index: 100;
     display: flex;
@@ -276,7 +299,7 @@ body{
     justify-content: center;
 }
 
-.msg{
+.msg {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -289,16 +312,16 @@ body{
     font-size: 19px;
 }
 
-.new-category{
+.new-category {
     font-size: 19px;
 }
 
-.new-category input{
+.new-category input {
     font-size: 19px;
     border: none;
 }
 
-.new-category button{
+.new-category button {
     background-color: #4589FF;
     border: none;
     padding: 6px;
@@ -310,12 +333,92 @@ body{
     color: #f9f9f9;
 }
 
-.hover:hover{
+.hover:hover {
     cursor: pointer;
     background-color: lightgrey;
     border-radius: 8px;
     padding: 6px;
 }
-.d-none{
+
+
+.d-none {
     display: none;
 }
+
+@media(max-width: 1140px) {
+   .add-task-container{
+    justify-content:center ;
+    align-items: center;
+    margin-left: 0;
+    /* margin-left: -25px; */
+   }
+
+   .wrapper{
+        display: flex;
+        justify-content: center;
+    }
+
+    .execute-buttons{
+        justify-content: center;
+        margin-right: 0;
+    }
+}
+
+@media(max-width: 550px){
+    .select-category{
+        justify-content: space-around;
+    }
+
+    .due-date{
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .date-picker{
+        justify-content: center;
+        align-items: center; 
+       }
+    
+       .date-picker img{
+        margin-left: -32%;
+       }
+
+    .select-contacts-to-assign{
+        justify-content: space-around;
+    }
+
+    .category-add-task{
+        justify-content: center;
+        align-items: center;
+    }
+
+    .priority{
+        justify-content: space-around;
+    }
+
+    .priority button{
+        font-size: 12px;
+    }
+
+    .description{
+        justify-content: center;
+        align-items: center;
+    }
+    .description textarea{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 90%;
+    }
+
+    .subtasks{
+        justify-content: center;
+        align-items: center;
+    }
+
+    .dropdown-check-list{
+        display: flex;
+        justify-content: space-around;
+    }
+}
+

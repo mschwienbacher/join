@@ -236,7 +236,7 @@ function htmlTemplateDetailCardDone(x){
     <div class="close-x"><img src="assets/img/trash.svg" onclick="deleteTask('tasksDone', ${x})"><button onclick="closeDetailCard('tasksDone', ${x})">X</button></div>
     <span class="category" style="background:${bgColor}">${tasksDone[x]['category']}</span>
     <h1>${tasksDone[x]['titel']}</h1>
-<span class="task-text">${tasksDone[x]['text']}</span>    
+    <span class="task-text">${tasksDone[x]['text']}</span>    
     <span class="text-fix">Due date: ${tasksDone[x]['dueDate']}</span>
     <div class="priority-container">
         <span class="text-fix-priority">Priority:</span> 
@@ -279,7 +279,7 @@ function htmlTemplateTaskToEdit(titleEdit, year, month, day, taskStatus,x){
     <div>Description</div>
     <textarea  id="textarea-edit" cols="34" rows="5"></textarea>
     <div>Due date</div>
-    <input type="date" id="due-date-edit" name="trip-start" value="${year}-${month}-${day}">
+    <input type="date" id="due-date-edit" name="trip-start" value="${year}-${month}-${day}" onfocus="this.showPicker()">
     <span>Subtasks</span>
     <div class="input-subtasks">
         <input style="width:90%; margin-right:10px" type="text" placeholder="add new subtask" id="task-subtask-edit">
