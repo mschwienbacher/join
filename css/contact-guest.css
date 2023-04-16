@@ -339,6 +339,7 @@
     overflow-x: hidden;
     display: flex;
     transition: 225ms;
+    z-index: 2;
 }
 
 #add-taks-content-guest{

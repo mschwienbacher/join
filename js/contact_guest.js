@@ -114,7 +114,7 @@ function showDetail(j) {
             <p onclick="openAddTask(${j})" class="add-task-desgine clickable">Add Task</p>
         </div>
     </div>
-    <div>
+    <div id="contact-information-info-container">
         <p><span class="contact-information-designe">Contact Information</span><span class="clickable" onclick="openEdit(${j})"><img src="assets/img/edit-contact.svg" alt=""></span></p>
         <p class="detail-email-designe"><span class="email-mobile-designe">Email</span><span class="add-task-desgine">${sortedContacts[j]['email']}</span></p>
         <p class="detail-email-designe"><span class="email-mobile-designe">Mobil</span><span>${sortedContacts[j]['tel']}</span></p>
@@ -359,7 +359,12 @@ function closeAddTaskContact() {
 
 
 function openAddTask() {
-    document.getElementById('add-task-to-contact-container').style.width = '600px'
+    if (window.innerWidth > 600) {
+        document.getElementById('add-task-to-contact-container').style.width = '600px'
+    }
+    else{
+        document.getElementById('add-task-to-contact-container').style.width = '100%'
+    }
 }
 
 // check for two words in the string
@@ -403,11 +408,11 @@ function rgbToHex(rgbColor) {
     return "#" + hexArray.join("");
 }
 
-function openWarning(){
-    document.getElementById('warning-full-name').style.display = 'flex'; 
+function openWarning() {
+    document.getElementById('warning-full-name').style.display = 'flex';
 }
 
-function closeWarningContact(){
+function closeWarningContact() {
     document.getElementById('warning-full-name').style.display = 'none';
 }
 

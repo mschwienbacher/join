@@ -19,7 +19,8 @@ function loadUserNameForGreeting() {
         document.getElementById('username-input').innerText = `, ${username}`;
         document.getElementById('username-input-smartphone').innerText = ` ${username}`;
     } else {
-        console.log('Username')
+        document.getElementById('good-morging-smartphone').style.fontSize ='44px'
+        document.getElementById('good-morging-smartphone').style.fontWeight ='700'
     }
 }
 
