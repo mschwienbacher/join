@@ -46,7 +46,8 @@ margin-right: 35px;
 .status{
     display: flex;
     flex-direction: column; 
-    width: 40%; 
+    width: 35%; 
+    align-items: center;
 }
 
 .status-headline{
@@ -355,7 +356,7 @@ height: 15px;
     right: 0;
     align-items: center;
     justify-content: center;
-    overflow-y: hidden;
+    overflow-y: auto;
 }
 
 .edit-task{
@@ -431,4 +432,61 @@ height: 15px;
     flex-direction: row;
     align-items: center;
     justify-content: left;
+}
+
+@media(max-width: 1350px){
+    .status-bar{
+        flex-wrap: wrap;
+    }
+}
+
+@media(max-width: 1140px){
+    .details{
+        bottom: 75px;
+    }
+
+    .menu-bar{
+        justify-content: center;
+    }
+    
+    .status-bar{
+        justify-content: center;
+        align-items: center;
+    }
+
+    .status{
+        justify-content: center;
+    }
+}
+
+@media(max-width:800px){
+    .status-bar{
+        flex-direction: column;
+    }
+}
+
+@media(max-width:550px){
+    .menu-bar{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .search-bar{
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 12px;
+        margin-right: 0;
+    }
+
+    .add-task-btn{
+        display: flex;
+        justify-content: center;
+    }
+}
+
+@media(max-width: 370px){
+    .details{
+        bottom: 110px;
+    }
 }
