@@ -25,9 +25,9 @@
         </div>
         <div class="category-add-task">
             <span>Category</span>
-            <div class="select-category" id="select-contacts-to-assign">
+            <div class="select-category" id="select-contacts-to-assign" onclick="openTaskCategory(); renderListTaskCategory()">
                 <span>Select task category</span>
-                <img src="assets/img/dropdown.svg" onclick="openTaskCategory(); renderListTaskCategory()">
+                <img src="assets/img/dropdown.svg">
             </div>
             <div id="list-task-category" class="dropdown-check-list d-none" tabindex="100">
                 <ul class="items" id="category-row">

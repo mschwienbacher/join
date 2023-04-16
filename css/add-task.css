@@ -33,7 +33,6 @@ body {
 
 .title input {
     background-color: #f9f9f9;
-    /* width: 30%; */
     height: 48px;
     font-style: normal;
     font-weight: 400;
@@ -55,7 +54,6 @@ body {
     font-weight: 400;
     font-size: 19px;
     line-height: 120%;
-    /* width: 32%; */
     padding-left: 21px;
     padding-top: 13px;
     padding-bottom: 13px;
@@ -72,7 +70,6 @@ body {
     font-style: normal;
     font-weight: 400;
     font-size: 19px;
-    /* width: 90%; */
 }
 
 .due-date {
@@ -85,7 +82,6 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    /* width: 32%; */
 }
 
 .due-date input {
@@ -111,8 +107,6 @@ body {
 
 ::-webkit-calendar-picker-indicator {
     opacity: 0;
-    /* cursor: pointer; */
-    z-index: -10;
 }
 
 .date-picker {
@@ -133,7 +127,6 @@ body {
     justify-content: space-between;
     align-items: flex-start;
     padding-top: 12px;
-    /* width: 32%; */
     background-color: #f9f9f9;
     box-sizing: border-box;
 }
@@ -158,7 +151,6 @@ body {
 
 .priority {
     background-color: #f9f9f9;
-    /* width: 32%; */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -166,12 +158,10 @@ body {
 
 .priority button {
     margin-top: 50px;
-    /* width: 30%; */
     height: 46px;
     font-style: normal;
     font-weight: 400;
     font-size: 19px;
-    /* line-height: 120%; */
     padding: 12px;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.16);
     border-radius: 10px;
@@ -185,7 +175,6 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    /* width: 30%; */
     background-color: #f9f9f9;
 }
 
@@ -205,7 +194,6 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    /* width: 32%; */
     background-color: #f9f9f9;
 }
 
@@ -350,7 +338,6 @@ body {
     justify-content:center ;
     align-items: center;
     margin-left: 0;
-    /* margin-left: -25px; */
    }
 
    .wrapper{

@@ -95,26 +95,6 @@ height: 15px;
     color: white;
 }
 
-/* .category-Design{
-    background: #FF7A00;
-}
-
-.category-Sales{
-    background: #FC71FF;
-}
-
-.category-Backoffice{
-    background: #1FD7C1;
-}
-
-.category-Media{
-    background: #FFC701;
-}
-
-.category-Marketing{
-    background: #0038FF;
-} */
-
 .headline-task-detail{
     color: #4589FF;
     font-style: normal;
@@ -347,7 +327,7 @@ height: 15px;
 
 .details{
     background-color: rgba(0, 0, 0, 0.2);
-    z-index: 100;
+    z-index: 1000;
     display: flex;
     position: fixed;
     top: 0;
@@ -356,7 +336,7 @@ height: 15px;
     right: 0;
     align-items: center;
     justify-content: center;
-    overflow-y: auto;
+    overflow-y: scroll;
 }
 
 .edit-task{
