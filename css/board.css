@@ -448,7 +448,7 @@ height: 15px;
     .menu-bar{
         justify-content: center;
     }
-    
+
     .status-bar{
         justify-content: center;
         align-items: center;
@@ -482,6 +482,19 @@ height: 15px;
     .add-task-btn{
         display: flex;
         justify-content: center;
+    }
+
+    .priority-edit{
+        justify-content: space-around;
+    }
+
+    .priority-edit button{
+        font-size: 12px;
+        padding: 6px;
+    }
+
+    .priority-edit button img{
+        margin-left: 6px;
     }
 }
 
