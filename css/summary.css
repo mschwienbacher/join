@@ -17,7 +17,6 @@
 #time-and-tasks {
     display: flex;
     justify-content: space-between;
-    width: 100%;
 }
 
 #time-and-tasks a{
@@ -26,13 +25,13 @@
 
 #tasks-and-status {
     display: flex;
-    width: 97%;
     margin-top: 17.5px;
-    justify-content: space-between;
+
 }
 
 #tasks-and-status a {
     text-decoration: none; 
+    padding: 0 10px;
 }
 
 .task-text-size {
