@@ -1,47 +1,6 @@
 
 // list of contacts
-let contacts = [/*{
-    "name": "Tim",
-    "second-name": "Mellentin",
-    "email": "tim.spiele1@freenet.de",
-    "tel": "0491094309434"
-},
-{
-    "name": "Max",
-    "second-name": "Mustermann",
-    "email": "max.mannmuster@freenet.de",
-    "tel": "049109454345"
-},
-{
-    "name": "Freddy",
-    "second-name": "Mercury",
-    "email": "antotherone@bite-the-dust.de",
-    "tel": "04919461991"
-},
-{
-    "name": "Marianen",
-    "second-name": "Graben",
-    "email": "Marianen@freenet.de",
-    "tel": "04924002500"
-},
-{
-    "name": "Ti",
-    "second-name": "Anic",
-    "email": "ti.tanic@freenet.de",
-    "tel": "04910031912"
-},
-{
-    "name": "Andi",
-    "second-name": "Myer",
-    "email": "andi.myer@freenet.de",
-    "tel": "049100345345"
-},
-{
-    "name": "Rudolf",
-    "second-name": "Rentier",
-    "email": "rudolf.coKG@freenet.de",
-    "tel": "049100334532"
-}*/]
+let contacts = []
 
 
 async function loadContactFromBackEnd() {
@@ -73,7 +32,6 @@ function renderTheQuestContacts() {
     </div>`}
 }
 
-
 // function for giving back the first letter of the firstname and the surename
 function getTheFirstLetterOfName(x) {
     let firstname = sortedContacts[x]['name'].charAt(0).toUpperCase()
@@ -81,7 +39,6 @@ function getTheFirstLetterOfName(x) {
     let firstletterFullName = firstname + surename
     return firstletterFullName
 }
-
 
 // sorting the contacts
 function sortContactsAndSave(contacts) {
@@ -115,10 +72,14 @@ function showDetail(j) {
         </div>
     </div>
     <div id="contact-information-info-container">
-        <p><span class="contact-information-designe">Contact Information</span><span class="clickable" onclick="openEdit(${j})"><img src="assets/img/edit-contact.svg" alt=""></span></p>
+        <p><span class="contact-information-designe">Contact Information</span><span class="clickable" onclick="openEdit(${j})"><img class="edit-pic" src="assets/img/edit-contact.svg" alt=""></span></p>
         <p class="detail-email-designe"><span class="email-mobile-designe">Email</span><span class="add-task-desgine">${sortedContacts[j]['email']}</span></p>
         <p class="detail-email-designe"><span class="email-mobile-designe">Mobil</span><span>${sortedContacts[j]['tel']}</span></p>
+        <div onclick="openEdit(${j})" id="edit-smartphone-button">
+            <img src="assets/img/edit-button.svg" alt="">
+        </div>
     </div>`
+
 }
 
 
@@ -255,8 +216,6 @@ function removeBackgroundFromUnchosed(k) {
         }
     }
 }
-
-
 // load the letters of the first name into an array and return the letter
 // if the letter counter bigger than 1 he return nothing
 let letterCounter = [];
@@ -281,7 +240,6 @@ function countLetter(arr, letter) {
     }
     return count;
 }
-
 
 // open the add contact window
 function openAdd() {
@@ -362,7 +320,7 @@ function openAddTask() {
     if (window.innerWidth > 600) {
         document.getElementById('add-task-to-contact-container').style.width = '600px'
     }
-    else{
+    else {
         document.getElementById('add-task-to-contact-container').style.width = '100%'
     }
 }
@@ -379,8 +337,6 @@ function getRandomColor() {
     const randomIndex = Math.floor(Math.random() * colors.length);
     return colors[randomIndex];
 }
-
-
 
 
 function getBackgroundColor(element) {
@@ -415,16 +371,3 @@ function openWarning() {
 function closeWarningContact() {
     document.getElementById('warning-full-name').style.display = 'none';
 }
-
-/*Delete in the future*/
-/*function setContact() {
-    backend.setItem('contacts', JSON.stringify(contacts))
-}
-
-function deleteContacts() {
-    backend.deleteItem('contacts');
-}*/
-
-
-// deleteContacts()
-// setContact()

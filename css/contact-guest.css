@@ -520,3 +520,12 @@
 #closeBTN-warning:hover{
     cursor: pointer;
 }
+
+
+#edit-smartphone-button{
+    position: absolute;
+    right: 50px;
+    bottom: 250px;
+    z-index: 3;
+    cursor: pointer;
+}

@@ -30,6 +30,10 @@
     #contact-information-info-container p {
         margin-top: 10px;
     }
+
+    .edit-pic{
+        display: none;
+    }
 }
 
 
@@ -71,6 +75,7 @@
         transition: 525ms;
     }
 }
+
 
 
 @media screen and (min-width:521px) and (max-width:800px) {
