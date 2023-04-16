@@ -19,7 +19,7 @@
     justify-content: space-between;
 }
 
-#time-and-tasks a{
+#time-and-tasks a {
     text-decoration: none;
 }
 
@@ -30,7 +30,7 @@
 }
 
 #tasks-and-status a {
-    text-decoration: none; 
+    text-decoration: none;
     padding: 0 10px;
 }
 
@@ -149,11 +149,11 @@
     border: solid rgba(0, 0, 0, 0.103) 1px;
 }
 
-#tasks-to-to:hover .task-number-size{
+#tasks-to-to:hover .task-number-size {
     color: #4589FF;
 }
 
-#tasks-to-to:hover p{
+#tasks-to-to:hover p {
     color: #4589FF;
 }
 
@@ -167,7 +167,7 @@
     align-items: center;
     font-weight: 700;
     font-size: 33px;
-    
+
 }
 
 #deadline-upcoming {
@@ -202,11 +202,11 @@
     color: white;
 }
 
-.task-container .task-number-size{
+.task-container .task-number-size {
     color: black;
 }
 
-.task-container:hover .task-number-size{
+.task-container:hover .task-number-size {
     color: white;
 }
 
@@ -221,4 +221,47 @@
     margin-bottom: 7px;
     border: solid white 3px;
     border-radius: 40px;
+}
+
+#full-screen-greeting {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: white;
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.gretting-smartphone-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.gretting-smartphone-container h2{
+    color: black;
+    font-weight: 100;
+}
+
+.greeting {
+    animation: goodMorningAnimation 3s ease-in-out;
+}
+
+@keyframes goodMorningAnimation {
+    0% {
+        opacity: 1;
+    }
+
+    80% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
 }

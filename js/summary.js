@@ -17,6 +17,7 @@ const username = getUsernameFromLocalStorage();
 function loadUserNameForGreeting() {
     if (checkUsernameInUrl(username)) {
         document.getElementById('username-input').innerText = `, ${username}`;
+        document.getElementById('username-input-smartphone').innerText = ` ${username}`;
     } else {
         console.log('Username')
     }
@@ -108,6 +109,15 @@ function checkForMatchingDates() {
     }
 }
 
+function greetingOnSmartDevice() {
+    if (window.innerWidth < 1140) {
+        document.getElementById('full-screen-greeting').style.display = 'flex';
+        setTimeout(() => {
+            document.getElementById('full-screen-greeting').style.display = 'none';
+        }, 3000);
+    }
+}
+
 
 function checkMonthName(M) {
     if (M == 1) {
@@ -153,3 +163,4 @@ loadTasksFromForSummary()
 setCurrentDay()
 getUsernameFromLocalStorage()
 loadUserNameForGreeting()
+greetingOnSmartDevice()

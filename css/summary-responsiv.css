@@ -29,6 +29,7 @@
         padding: 30px;
         border: solid rgba(0, 0, 0, 0) 1px;
         width: 88%;
+        margin-top: 43px;
     }
 
     #tasks-to-to:hover {
@@ -47,6 +48,7 @@
         cursor: pointer;
         border: solid rgba(0, 0, 0, 0.103) 1px;
         width: 88%;
+        margin-top: 43px;
     }
 
     #tasks-and-status {
@@ -105,6 +107,7 @@
         padding: 30px;
         border: solid rgba(0, 0, 0, 0) 1px;
         width: 83%;
+        margin-top: 33px;
     }
 
     #tasks-to-to:hover {
@@ -123,6 +126,7 @@
         cursor: pointer;
         border: solid rgba(0, 0, 0, 0.103) 1px;
         width: 83%;
+        margin-top: 33px;
     }
 
     #tasks-and-status {
@@ -269,6 +273,7 @@
         padding: 30px;
         border: solid rgba(0, 0, 0, 0) 1px;
         width: 78%;
+        margin-top: 33px;
     }
 
     #tasks-to-to:hover {
@@ -287,6 +292,7 @@
         cursor: pointer;
         border: solid rgba(0, 0, 0, 0.103) 1px;
         width: 78%;
+        margin-top: 33px;
     }
 
     .task-container {
@@ -335,7 +341,7 @@
         height: 150px;
         margin: 17.5px;
         border-radius: 30px;
-        padding: 26px 12px 26px 12px;
+        padding: 15px 12px 15px 12px;
         transition: 125ms;
     }
 
@@ -350,7 +356,7 @@
         height: 150px;
         margin: 17.5px;
         border-radius: 0px 30px 30px 30px;
-        padding: 26px 12px 26px 12px;
+        padding: 15px 12px 15px 12px;
         cursor: pointer;
         border: solid rgba(0, 0, 0, 0.103) 1px;
     }
@@ -369,6 +375,7 @@
         padding: 30px;
         border: solid rgba(0, 0, 0, 0) 1px;
         width: 74%;
+        margin-top: 33px;
     }
 
     #tasks-to-to:hover {
@@ -387,6 +394,7 @@
         cursor: pointer;
         border: solid rgba(0, 0, 0, 0.103) 1px;
         width: 74%;
+        margin-top: 33px;
     }
 
     #tasks-and-status {
