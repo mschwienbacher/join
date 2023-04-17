@@ -226,7 +226,7 @@ function checkDoneTasks(i, taskStatus) {
  * @param {string} selectedPerson 
  */
 function fxNbOfInCharge(nbOfInCharge, selectedPerson){
-    if (nbOfInCharge > 2){
+    if (nbOfInCharge > 3){
         nbMore = nbOfInCharge-3;
         selectedPerson.innerHTML +=`
         <div class="initials-icon bg3">+${nbMore}</div>`;
