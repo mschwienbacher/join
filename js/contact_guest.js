@@ -1,7 +1,5 @@
-
-// list of contacts
 let contacts = []
-
+let sortedContacts = sortContactsAndSave(contacts);
 
 async function loadContactFromBackEnd() {
     setTimeout(() => {
@@ -108,6 +106,7 @@ function openEdit(o) {
     closeAdd()
 }
 
+
 function closeDetail() {
     if (window.innerWidth > 1340 && activShowingContact == true) {
         activShowingContact = false;
@@ -120,6 +119,7 @@ function closeDetail() {
         document.getElementById('close-detail-arrow').style.position = 'initial';
     }
 }
+
 
 function fillEditInput(x) {
     document.getElementById(`nameInputEdit${x}`).value = `${sortedContacts[x]['name'].concat(" ") + sortedContacts[x]['second-name']}`
@@ -204,7 +204,6 @@ window.addEventListener('resize', () => {
     }
 })
 
-
 // the function remove and add the blue background in the contact list
 function removeBackgroundFromUnchosed(k) {
     for (let index = 0; index < sortedContacts.length; index++) {
@@ -261,9 +260,6 @@ function closeAdd() {
 }
 
 
-let sortedContacts = sortContactsAndSave(contacts);
-
-
 function splitWords(inputValue) {
     const wordsArray = inputValue.split(" ");
     const firstWord = wordsArray[0];
@@ -300,9 +296,11 @@ function addNewContact() {
     }
 }
 
+
 async function addContactToBackend() {
     await backend.setItem('contacts', JSON.stringify(sortedContacts))
 }
+
 
 function clearTheAddInput() {
     nameAdd = document.getElementById('addNameInput').value = ``
@@ -360,13 +358,14 @@ function rgbToHex(rgbColor) {
         const hexValue = parseInt(rgbArray[i]).toString(16);
         hexArray.push(hexValue.length === 1 ? "0" + hexValue : hexValue);
     }
-
     return "#" + hexArray.join("");
 }
+
 
 function openWarning() {
     document.getElementById('warning-full-name').style.display = 'flex';
 }
+
 
 function closeWarningContact() {
     document.getElementById('warning-full-name').style.display = 'none';

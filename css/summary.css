@@ -82,6 +82,7 @@
     border-radius: 30px;
     padding: 28px 48px 28px 48px;
     transition: 125ms;
+    border: solid rgba(255, 255, 255, 0.103) 1px;
 }
 
 #taks-urgent:hover {
@@ -101,7 +102,11 @@
 }
 
 #taks-urgent p {
-    padding: 10px;
+    padding: 0px;
+}
+
+#task-urgent-emblem-number{
+    margin-right: 40px;
 }
 
 

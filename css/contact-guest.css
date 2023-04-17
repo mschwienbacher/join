@@ -29,7 +29,7 @@
 .add-contact-button {
     position: absolute;
     right: 48px;
-    bottom: 64px;
+    bottom: 84px;
     padding: 18px 10px 18px 10px;
     width: 197px;
     border-radius: 10px;
@@ -340,6 +340,9 @@
     display: flex;
     transition: 225ms;
     z-index: 2;
+    display:flow-root;
+    overflow: scroll;
+    z-index: 1000;
 }
 
 #add-taks-content-guest{
@@ -348,7 +351,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 87%;
     padding: 36px;
 }
 
@@ -360,7 +363,7 @@
     position: absolute;
     right: 0;
     top: 23px;
-    right: 29px;
+    right: 100px;
     cursor: pointer;
 }
 
@@ -520,7 +523,6 @@
 #closeBTN-warning:hover{
     cursor: pointer;
 }
-
 
 #edit-smartphone-button{
     position: absolute;
