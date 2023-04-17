@@ -31,7 +31,7 @@
         margin-top: 10px;
     }
 
-    .edit-pic{
+    .edit-pic {
         display: none;
     }
 }
@@ -146,6 +146,17 @@
         overflow: hidden;
         transition: 525ms;
     }
+
+    #add-taks-content-guest {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        padding: 0;
+    }
+
 
     .detail-embleme {
         display: flex;

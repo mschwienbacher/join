@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="css\handy-sidebar.css">
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/board-add-task-template.css">
+    <link rel="stylesheet" href="css/contact-guest-add-task.css">
     <script src="js/mini_backend.js"></script>
     <!-- Insert dedicated JS script -->
     <script src="js/main.js"></script>
@@ -119,13 +120,14 @@
                     </div>
                     <!--window for adding a new contact-->
 
-                    
+
                     <!--window for adding a task-->
                     <!--Add task form written by Jörg Betz-->
                     <!--Add task form written by Jörg Betz-->
                     <div id="add-task-to-contact-container">
+                        <h1 style="color: black;">Add Task</h1>
                         <div id="add-taks-content-guest">
-                            <span onclick="closeAddTaskContact()" id="close-btn-add-task">X</span>
+                            <span onclick="closeAddTaskContact()" id="close-btn-add-task"><img src="assets/img/close-btn-add-taskt.svg" alt=""></span>
                             <form onsubmit="addTask(); return false;">
                                 <div class="title">
                                     <input type="text" placeholder="Enter a title" id="task-title" required>
