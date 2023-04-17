@@ -255,6 +255,8 @@ function filterToDo(search) {
     document.getElementById('to-do-container').innerHTML = '';
     for (let i = 0; i < tasksToDo.length; i++) {
         if (tasksToDo[i]['titel'].toLowerCase().includes(search)) {
+            let category = tasksToDo[i]['category'];
+            getCategoryColor(`${category}`);
             checkDoneTasks(i, 'tasksToDo');
             const widthProgressBar = nbDone / tasksToDo[i]['subtasks'].length * 100;
             document.getElementById('to-do-container').innerHTML +=
@@ -273,6 +275,8 @@ function filterInProgress(search) {
     document.getElementById('in-progress-container').innerHTML = '';
     for (let i = 0; i < tasksInProgress.length; i++) {
         if (tasksInProgress[i]['titel'].toLowerCase().includes(search)) {
+            let category = tasksInProgress[i]['category'];
+            getCategoryColor(`${category}`);
             checkDoneTasks(i, 'tasksInProgress');
             const widthProgressBar = nbDone / tasksInProgress[i]['subtasks'].length * 100;
             document.getElementById('in-progress-container').innerHTML +=
@@ -291,6 +295,8 @@ function filterAwaitFeedback(search) {
     document.getElementById('await-feedback-container').innerHTML = '';
     for (let i = 0; i < tasksAwaitFeedback.length; i++) {
         if (tasksAwaitFeedback[i]['titel'].toLowerCase().includes(search)) {
+            let category = tasksAwaitFeedback[i]['category'];
+            getCategoryColor(`${category}`);
             checkDoneTasks(i, 'tasksAwaitFeedback');
             const widthProgressBar = nbDone / tasksAwaitFeedback[i]['subtasks'].length * 100;
             document.getElementById('await-feedback-container').innerHTML +=
@@ -309,6 +315,8 @@ function filterDone(search) {
     document.getElementById('done-container').innerHTML = '';
     for (let i = 0; i < tasksDone.length; i++) {
         if (tasksDone[i]['titel'].toLowerCase().includes(search)) {
+            let category = tasksDone[i]['category'];
+            getCategoryColor(`${category}`);
             checkDoneTasks(i, 'tasksDone');
             const widthProgressBar = nbDone / tasksDone[i]['subtasks'].length * 100;
             document.getElementById('done-container').innerHTML +=

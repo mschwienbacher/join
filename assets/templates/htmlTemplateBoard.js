@@ -1,4 +1,4 @@
-function htmlTemplateTasksToDo(i, widthProgressBar, nbDone, bgColor){
+function htmlTemplateTasksToDo(i, widthProgressBar, nbDone){
     return `
     <div draggable="true" ondragstart=" startDragging(${i}, 'tasksToDo')" class="task-container-detail" onclick="openDetailCardToDo(${i})">
         <div class="category" style="background:${bgColor}">${tasksToDo[i]['category']}</div>

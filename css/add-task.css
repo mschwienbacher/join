@@ -352,31 +352,38 @@ body {
 }
 
 @media(max-width: 550px){
-    .select-category{
-        justify-content: space-around;
+    .add-task-form{
+        width: 95vw;
+    }
+    .content{
+        margin-left: 6px;
+    }
+    .title{
+        width: 90%
     }
 
-    .due-date{
-        justify-content: space-around;
-        align-items: center;
+    .title input{
+        width: 90%
+    }
+    .select-category{
+        width: 90%;
     }
 
     .date-picker{
-        justify-content: center;
-        align-items: center; 
+        justify-content: flex-start;
+        width: 90%
        }
     
        .date-picker img{
-        margin-left: -32%;
+        margin-left: -10%;
        }
 
     .select-contacts-to-assign{
-        justify-content: space-around;
+        width: 90%;
     }
 
     .category-add-task{
         justify-content: center;
-        align-items: center;
     }
 
     .priority{
@@ -389,7 +396,6 @@ body {
 
     .description{
         justify-content: center;
-        align-items: center;
     }
     .description textarea{
         display: flex;
@@ -400,12 +406,17 @@ body {
 
     .subtasks{
         justify-content: center;
-        align-items: center;
     }
 
     .dropdown-check-list{
         display: flex;
         justify-content: space-around;
+    }
+
+    .execute-buttons button{
+        font-size: 19px;
+        padding: 6px;
+        margin-inline: 6px;
     }
 }
 

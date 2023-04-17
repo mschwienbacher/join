@@ -71,8 +71,8 @@ height: 15px;
 }
 
 .task-container{
-    min-height: 300px;
-    width: 250px;
+    min-height: 200px;
+    width: 240px;
 }
 
 .task-container-detail{
@@ -434,18 +434,18 @@ height: 15px;
 
     .status-bar{
         justify-content: center;
-        align-items: center;
     }
-
-    .status{
-        justify-content: center;
-    }
-}
 
 @media(max-width:800px){
     .status-bar{
         flex-direction: column;
+        align-items: center;
     }
+
+    .task-container{
+        margin-left: 25px;
+    }
+}
 }
 
 @media(max-width:550px){
