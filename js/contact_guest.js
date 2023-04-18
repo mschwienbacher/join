@@ -319,8 +319,24 @@ function openAddTask() {
     }
     else {
         document.getElementById('add-task-to-contact-container').style.width = '100%'
+        document.getElementById('task-add-btn').style.position = 'absolute';
+        document.getElementById('task-add-btn').style.top = '20px';
+        document.getElementById('task-add-btn').style.right = '-10px';
     }
 }
+
+window.addEventListener('resize', ()=>{
+    if(window.innerWidth > 600){
+        document.getElementById('add-task-to-contact-container').style.width = '600px'
+        document.getElementById('task-add-btn').style.position = 'inherit';
+    }
+    else{
+        document.getElementById('add-task-to-contact-container').style.width = '100%'
+        document.getElementById('task-add-btn').style.position = 'absolute';
+        document.getElementById('task-add-btn').style.top = '20px';
+        document.getElementById('task-add-btn').style.right = '-10px';
+    }
+})
 
 // check for two words in the string
 function containsTwoWords(inputString) {

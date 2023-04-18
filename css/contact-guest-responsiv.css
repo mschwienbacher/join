@@ -132,6 +132,41 @@
         font-size: 23px;
         cursor: pointer;
     }
+
+
+}
+
+@media screen and (max-width:600px) {
+    #add-task-to-contact-container {
+        position: absolute;
+        height: 125%;
+        right: 0;
+        top: -102px;
+        bottom: 0;
+        background-color: #ffffff;
+        border: solid rgba(0, 0, 0, 0.171) 1px;
+        border-radius: 0;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        display: flex;
+        transition: 225ms;
+        z-index: 2;
+        display: flow-root;
+        overflow: scroll;
+        z-index: 1000;
+    }
+
+    .execute-buttons {
+        padding-top: 35px;
+    }
+
+    #close-btn-add-task {
+        position: absolute;
+        right: 0;
+        top: 120px;
+        right: 40px;
+        cursor: pointer;
+    }
 }
 
 @media screen and (max-width:520px) {

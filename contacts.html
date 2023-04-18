@@ -17,11 +17,12 @@
     <link rel="stylesheet" href="css/inner-page-responsive.css">
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/contact-guest.css">
-    <link rel="stylesheet" href="css\contact-guest-responsiv.css">
+    
     <link rel="stylesheet" href="css\handy-sidebar.css">
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/board-add-task-template.css">
     <link rel="stylesheet" href="css/contact-guest-add-task.css">
+    <link rel="stylesheet" href="css\contact-guest-responsiv.css">
     <script src="js/mini_backend.js"></script>
     <!-- Insert dedicated JS script -->
     <script src="js/main.js"></script>
@@ -129,10 +130,10 @@
                             <span onclick="closeAddTaskContact(); clearAddTaskForm()" id="close-btn-add-task"><img
                                     src="assets/img/close-btn-add-taskt.svg" alt=""></span>
                             <form onsubmit="addTaskWithTimeOut(); showAddPopUp();return false;">
-                                <div class="execute-buttons" >
+                                <div class="execute-buttons">
                                     <h1 style="color: black;">Add Task</h1>
-                                    <button class="addTaskBTN">Create<img
-                                            src="assets/img/check.svg" alt="check"></button>
+                                    <button id="task-add-btn" class="addTaskBTN">Create<img src="assets/img/check.svg"
+                                            alt="check"></button>
                                 </div>
                                 <div class="title">
                                     <input type="text" placeholder="Enter a title" id="task-title" required>
@@ -191,7 +192,7 @@
                                 <div class="checkbox-subtasks" id="ckeckbox-subtasks">
                                     <!-- htmlTemplateSubtasks -->
                                 </div>
-                                
+
                             </form>
                         </div>
                     </div>
