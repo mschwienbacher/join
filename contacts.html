@@ -32,7 +32,7 @@
     <!--Javascript by Jörg Betz-->
 </head>
 
-<body class="contacts-page" onload="initBackend(); initAddTask()">
+<body class="contacts-page" onload="initBackend(); ">
     <header class="header">
         <div class="container">
             <div class="center">
@@ -125,10 +125,15 @@
                     <!--Add task form written by Jörg Betz-->
                     <!--Add task form written by Jörg Betz-->
                     <div id="add-task-to-contact-container">
-                        <h1 style="color: black;">Add Task</h1>
                         <div id="add-taks-content-guest">
-                            <span onclick="closeAddTaskContact()" id="close-btn-add-task"><img src="assets/img/close-btn-add-taskt.svg" alt=""></span>
-                            <form onsubmit="addTask(); return false;">
+                            <span onclick="closeAddTaskContact(); clearAddTaskForm()" id="close-btn-add-task"><img
+                                    src="assets/img/close-btn-add-taskt.svg" alt=""></span>
+                            <form onsubmit="addTaskWithTimeOut(); showAddPopUp();return false;">
+                                <div class="execute-buttons" >
+                                    <h1 style="color: black;">Add Task</h1>
+                                    <button class="addTaskBTN">Create<img
+                                            src="assets/img/check.svg" alt="check"></button>
+                                </div>
                                 <div class="title">
                                     <input type="text" placeholder="Enter a title" id="task-title" required>
                                 </div>
@@ -144,7 +149,7 @@
                                 </div>
                                 <div class="due-date">
                                     <span>Due date</span>
-                                    <div class="date-picker">
+                                    <div class="date-picker" id="date-picker">
                                         <input type="date" id="due-date" name="trip-start" value=""
                                             onfocus="this.showPicker()" required>
                                         <img src="/assets/img/calendar.svg">
@@ -186,12 +191,7 @@
                                 <div class="checkbox-subtasks" id="ckeckbox-subtasks">
                                     <!-- htmlTemplateSubtasks -->
                                 </div>
-                                <div class="execute-buttons">
-                                    <button type="button" style="color: #647188" onclick="clearAddTaskForm()">Clear
-                                        X</button>
-                                    <button style="background-color: #4589FF; color: white;">Create <img
-                                            src="assets/img/check.svg" alt="check"></button>
-                                </div>
+                                
                             </form>
                         </div>
                     </div>
@@ -252,6 +252,13 @@
                     </div>
                     <!--dont forget to link handy-sidebar.css-->
                     <!--Here goes the handysidebar-->
+                </div>
+
+                <div id="popup-container">
+                    <div id="position-container-popup">
+                        <img id="popup-pic" class="popupClassAnimation" src="assets/img/taskt-added-to-board.svg"
+                            alt="">
+                    </div>
                 </div>
             </div>
         </div>

@@ -87,7 +87,6 @@ function setTheNumbersInHtml() {
 
 
 function checkForMatchingDates() {
-    console.log(today())
     for (i = 0; i < tasksToDo.length; i++) {
         if (tasksToDo[i]['dueDate'] === today()) {
             deadlinecounter++

@@ -14,7 +14,7 @@
     border-radius: 30px;
     max-height: 100%;
     overflow-y: scroll;
-} 
+}
 
 .title {
     width: 100%;
@@ -242,7 +242,7 @@
     Width: 136px;
     Height: 30px;
     border-radius: 10px;
-    Padding: 18px, 10px, 18px, 10px;
+    padding: 18px 10px 18px 10px;
     Gap: 10px;
     margin-right: 35px;
     font-weight: 400;
@@ -304,7 +304,7 @@ button:hover {
     padding: 6px;
 }
 
-::-webkit-scrollbar{
+::-webkit-scrollbar {
     width: 1px;
 }
 
@@ -318,31 +318,31 @@ button:hover {
     }
 }
 
-@media(max-width: 1200px){
+@media(max-width: 1200px) {
     .add-task-popup {
         width: 45vw;
     }
 }
 
-@media(max-width: 800px){
+@media(max-width: 800px) {
     .add-task-popup {
         width: 55vw;
     }
 }
 
-@media(max-width: 650px){
+@media(max-width: 650px) {
     .add-task-popup {
         width: 65vw;
     }
 }
 
-@media(max-width: 550px){
+@media(max-width: 550px) {
     .add-task-popup {
         width: 80vw;
     }
 }
 
-@media(max-width: 450px){
+@media(max-width: 450px) {
     .add-task-popup {
         width: 100vw;
     }

@@ -66,7 +66,7 @@ function showDetail(j) {
         </div>
         <div>
             <p class="detail-name"><span>${sortedContacts[j]['name']}</span><span> ${sortedContacts[j]['second-name']}</span></p>
-            <p onclick="openAddTask(${j})" class="add-task-desgine clickable">Add Task</p>
+            <p onclick="openAddTask(${j}); initAddTask()" class="add-task-desgine clickable">Add Task</p>
         </div>
     </div>
     <div id="contact-information-info-container">
@@ -283,7 +283,6 @@ function addNewContact() {
         let emailAdd = document.getElementById('addEmailInput').value
         let telephoneAdd = document.getElementById('addTelephoneInput').value
         let newContact = { "name": `${nameAdd[0]}`, "second-name": `${nameAdd[1]}`, "email": `${emailAdd}`, "tel": `${telephoneAdd}` }
-        console.log(nameAdd)
         sortedContacts.push(newContact)
         letterCounter = [];
         addContactToBackend()
@@ -369,4 +368,22 @@ function openWarning() {
 
 function closeWarningContact() {
     document.getElementById('warning-full-name').style.display = 'none';
+}
+
+function showAddPopUp() {
+    document.getElementById('popup-container').style.display = 'flex';
+    document.getElementById('popup-pic').classList.add('popupClassAnimation')
+    setTimeout(() => {
+        document.getElementById('popup-container').style.display = 'none';
+        document.getElementById('popup-pic').classList.remove('popupClassAnimation')
+    }, 1900)
+}
+
+function addTaskWithTimeOut() {
+    closeAddTaskContact()
+    showAddPopUp()
+    setTimeout(() => {
+        addTask()
+    }, 2000)
+
 }

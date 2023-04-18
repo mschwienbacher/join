@@ -25,6 +25,7 @@
         right: 60px;
         top: 125px;
         cursor: pointer;
+        display: block;
     }
 
     #contact-information-info-container p {
