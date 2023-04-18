@@ -102,6 +102,7 @@ h2 {
     text-align: center;
     box-shadow: 0px 2px 5px #ececec;
     display: none;
+    z-index: 999;
 }
 
 .showit {

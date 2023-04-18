@@ -3,9 +3,9 @@
 ########### CONFIG ###############
 
 $recipient = $_POST['email'];
-$link = "https://michael-schwienbacher.developerakademie.net/modul-10/reset_pw.html?email=" . $recipient;
+$link = "https://gruppenarbeit-503-join.developerakademie.net/reset_pw.html?email=" . $recipient;
 $message = 'Someone requested to reset the password for the account ' . $recipient . '. Please click on ' . $link . ' to reset your password. If it wasn\'t you, just ignore this email.';
-$redirect = 'https://michael-schwienbacher.developerakademie.net/modul-10/index.html';
+$redirect = 'https://gruppenarbeit-503-join.developerakademie.net/index.html';
 ########### CONFIG END ###########
 
 
@@ -41,7 +41,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
         header("Access-Control-Allow-Origin: *");
 
         $subject = "Password change request";
-        $headers = "From:  noreply@devgroup.me";
+        $headers = "From:  noreply@gruppenarbeit-503.net";
 
         mail($_POST['email'], $subject, $message, $headers);
         header("Location: " . $redirect); 
