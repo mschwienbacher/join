@@ -1,5 +1,5 @@
 let ellipses = ['assets/img/ellipse-lightblue.svg', 'assets/img/ellipse-green.svg', 'assets/img/ellipse-red.svg', 'assets/img/ellipse-blue.svg', 'assets/img/ellipse-orange.svg', 'assets/img/ellipse-violet.svg'];
-let ellipsesColors = ['lightblue', 'green', 'red', 'blue', 'orange', 'violet'];
+let ellipsesColors = ['#8AA4FF', '#2AD300', '#FF0000', '#0038FF', '#FF8A00', '#E200BE'];
 /* let categories = ['Backoffice', 'Design', 'Marketing', 'Media', 'Sales'];
 let categoriesBackground = ['lightblue', 'green', 'red', 'blue', 'orange'];
 let categoryColors = ['assets/img/ellipse-lightblue.svg', 'assets/img/ellipse-green.svg', 'assets/img/ellipse-red.svg', 'assets/img/ellipse-blue.svg', 'assets/img/ellipse-orange.svg']; */
