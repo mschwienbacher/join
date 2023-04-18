@@ -310,14 +310,16 @@ function clearTheAddInput() {
 
 function closeAddTaskContact() {
     document.getElementById('add-task-to-contact-container').style.width = '0px'
+    open--
 }
 
 
 function openAddTask() {
-    if (window.innerWidth > 600) {
+    open++
+    if (window.innerWidth > 600 && open == 1) {
         document.getElementById('add-task-to-contact-container').style.width = '600px'
     }
-    else {
+    else if (window.innerWidth < 600 && open == 1) {
         document.getElementById('add-task-to-contact-container').style.width = '100%'
         document.getElementById('task-add-btn').style.position = 'absolute';
         document.getElementById('task-add-btn').style.top = '20px';
@@ -325,12 +327,13 @@ function openAddTask() {
     }
 }
 
-window.addEventListener('resize', ()=>{
-    if(window.innerWidth > 600){
+let open = 0;
+window.addEventListener('resize', () => {
+    if (window.innerWidth > 600 && open == 1) {
         document.getElementById('add-task-to-contact-container').style.width = '600px'
         document.getElementById('task-add-btn').style.position = 'inherit';
     }
-    else{
+    else if (window.innerWidth < 600 && open == 1) {
         document.getElementById('add-task-to-contact-container').style.width = '100%'
         document.getElementById('task-add-btn').style.position = 'absolute';
         document.getElementById('task-add-btn').style.top = '20px';
