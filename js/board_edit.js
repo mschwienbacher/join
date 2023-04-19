@@ -16,7 +16,7 @@ function editTask(taskStatus, x) {
             titleEdit = tasksToDo[x]['titel'];
             textEdit = tasksToDo[x]['text'];
             dueDateEdit = tasksToDo[x]['dueDate'];
-            priorityEdit = tasksToDo[x]['priority'];
+            priorityEdit = tasksToDo[x]['priorityByName'];
             assignedToEdit = tasksToDo[x]['initials'];
             subtasksToEdit = tasksToDo[x]['subtasks'];
             subtasksToEditAlreadyDone = tasksToDo[x]['alreadyDone'];
@@ -26,7 +26,7 @@ function editTask(taskStatus, x) {
             titleEdit = tasksInProgress[x]['titel'];
             textEdit = tasksInProgress[x]['text'];
             dueDateEdit = tasksInProgress[x]['dueDate'];
-            priorityEdit = tasksInProgress[x]['priority'];
+            priorityEdit = tasksInProgress[x]['priorityByName'];
             assignedToEdit = tasksInProgress[x]['initials'];
             subtasksToEdit = tasksInProgress[x]['subtasks'];
             subtasksToEditAlreadyDone = tasksInProgress[x]['alreadyDone'];
@@ -36,7 +36,7 @@ function editTask(taskStatus, x) {
             titleEdit = tasksAwaitFeedback[x]['titel'];
             textEdit = tasksAwaitFeedback[x]['text'];
             dueDateEdit = tasksAwaitFeedback[x]['dueDate'];
-            priorityEdit = tasksAwaitFeedback[x]['priority'];
+            priorityEdit = tasksAwaitFeedback[x]['priorityByName'];
             assignedToEdit = tasksAwaitFeedback[x]['initials'];
             subtasksToEdit = tasksAwaitFeedback[x]['subtasks'];
             subtasksToEditAlreadyDone = tasksAwaitFeedback[x]['alreadyDone'];
@@ -46,13 +46,14 @@ function editTask(taskStatus, x) {
             titleEdit = tasksDone[x]['titel'];
             textEdit = tasksDone[x]['text'];
             dueDateEdit = tasksDone[x]['dueDate'];
-            priorityEdit = tasksDone[x]['priority'];
+            priorityEdit = tasksDone[x]['priorityByName'];
             assignedToEdit = tasksDone[x]['initials'];
             subtasksToEdit = tasksDone[x]['subtasks'];
             subtasksToEditAlreadyDone = tasksDone[x]['alreadyDone'];
             break;
     }
     renderEditTaskCard(taskStatus, titleEdit, textEdit, dueDateEdit, subtasksToEdit, subtasksToEditAlreadyDone, x);
+    setPriority(`${priorityEdit}`);
 }
 
 /**

@@ -424,10 +424,6 @@ height: 15px;
 }
 
 @media(max-width: 1140px){
-    .details{
-        bottom: 75px;
-    }
-
     .menu-bar{
         justify-content: center;
     }
@@ -478,11 +474,5 @@ height: 15px;
 
     .priority-edit button img{
         margin-left: 6px;
-    }
-}
-
-@media(max-width: 370px){
-    .details{
-        bottom: 110px;
     }
 }
