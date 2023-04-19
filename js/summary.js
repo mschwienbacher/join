@@ -1,18 +1,19 @@
-let deadlinecounter = 0;
+let urgentCounter = 0;
+let dateList = [];
 
 function getUsernameFromLocalStorage() {
-    const username = localStorage.getItem('username');
+    let username = localStorage.getItem('username');
     return username;
 }
 
 
 function checkUsernameInUrl(name) {
-    const urlParams = new URLSearchParams(window.location.search);
-    const username = urlParams.get('name');
+    let urlParams = new URLSearchParams(window.location.search);
+    let username = urlParams.get('name');
     return username === name;
 }
 
-const username = getUsernameFromLocalStorage();
+let username = getUsernameFromLocalStorage();
 
 function loadUserNameForGreeting() {
     if (checkUsernameInUrl(username)) {
@@ -28,33 +29,74 @@ function loadUserNameForGreeting() {
 }
 
 
-function getCurrentDate() {
-    const today = new Date();
-    const date = today.getDate();
-    const month = today.getMonth() + 1;
-    const year = today.getFullYear();
+function getCurrentDate(x) {
+    let today = new Date();
+    let date = x.getDate();
+    let month = x.getMonth() + 1;
+    let year = x.getFullYear();
 
     return `${checkMonthName(month)} ${date}, ${year}`;
 }
 
+function formatDate(dateString) {
+    let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    let date = new Date(dateString);
+    let monthIndex = date.getMonth();
+    let monthName = months[monthIndex];
+    let day = date.getDate();
+    let year = date.getFullYear();
+    let formattedDate = `${monthName} ${day}, ${year}`;
+    return formattedDate;
+}
+
 
 function setCurrentDay() {
-    document.getElementById('deadline-date').innerText = `${getCurrentDate()}`;
+    document.getElementById('deadline-date').innerText = `${formatDate(nextClosestDate(today(), dateList))}`;
+}
+
+
+function nextClosestDate(date, dateList) {
+    let closest = dateList[0];
+    let diff = Math.abs(date - closest);
+    for (let i = 1; i < dateList.length; i++) {
+        let newDiff = Math.abs(date - dateList[i]);
+        if (newDiff < diff) {
+            diff = newDiff;
+            closest = dateList[i];
+        }
+    }
+    return closest;
+}
+
+
+function loadTasksDates() {
+    for (i = 0; i < tasksToDo.length; i++) {
+        dateList.push(tasksToDo[i]['dueDate'])
+    }
+    for (i = 0; i < tasksInProgress.length; i++) {
+        dateList.push(tasksInProgress[i]['dueDate'])
+    }
+    for (i = 0; i < tasksAwaitFeedback.length; i++) {
+        dateList.push(tasksAwaitFeedback[i]['dueDate'])
+    }
+    for (i = 0; i < tasksDone.length; i++) {
+        dateList.push(tasksDone[i]['dueDate'])
+    }
 }
 
 
 function today() {
-    const today = new Date();
-    const date = today.getDate();
-    const month = today.getMonth() + 8;
-    const year = today.getFullYear();
+    let today = new Date();
+    let date = today.getDate();
+    let month = today.getMonth() + 8;
+    let year = today.getFullYear();
     return `${today.getFullYear()}-${checkForZero()}${(today.getMonth() + 1)}-${today.getDate()}`
 }
 
 
 function checkForZero() {
-    const today = new Date();
-    const month = today.getMonth() + 1;
+    let today = new Date();
+    let month = today.getMonth() + 1;
     if ((today.getMonth() + 1) < 10) {
         return `0`
     }
@@ -73,7 +115,9 @@ async function loadTasksFromForSummary() {
     tasksAwaitFeedback = JSON.parse(taskstringAwaitFeedback) || [];
     tasksDone = JSON.parse(taskstringDone) || [];
     setTheNumbersInHtml()
-    checkForMatchingDates()
+    checkForUrgentTasks()
+    loadTasksDates()
+    setCurrentDay()
 }
 
 
@@ -86,29 +130,29 @@ function setTheNumbersInHtml() {
 }
 
 
-function checkForMatchingDates() {
+function checkForUrgentTasks() {
     for (i = 0; i < tasksToDo.length; i++) {
-        if (tasksToDo[i]['dueDate'] === today()) {
-            deadlinecounter++
-            document.getElementById('tasks-urgent-counter').innerText = deadlinecounter;
+        if (tasksToDo[i]['priorityByName'] === 'urgent') {
+            urgentCounter++
+            document.getElementById('tasks-urgent-counter').innerText = urgentCounter;
         }
     }
     for (i = 0; i < tasksInProgress.length; i++) {
-        if (tasksInProgress[i]['dueDate'] === today()) {
-            deadlinecounter++
-            document.getElementById('tasks-urgent-counter').innerText = deadlinecounter;
+        if (tasksInProgress[i]['priorityByName'] === 'urgent') {
+            urgentCounter++
+            document.getElementById('tasks-urgent-counter').innerText = urgentCounter;
         }
     }
     for (i = 0; i < tasksAwaitFeedback.length; i++) {
-        if (tasksAwaitFeedback[i]['dueDate'] === today()) {
-            deadlinecounter++
-            document.getElementById('tasks-urgent-counter').innerText = deadlinecounter;
+        if (tasksAwaitFeedback[i]['priorityByName'] === 'urgent') {
+            urgentCounter++
+            document.getElementById('tasks-urgent-counter').innerText = urgentCounter;
         }
     }
     for (i = 0; i < tasksDone.length; i++) {
-        if (tasksDone[i]['dueDate'] === today()) {
-            deadlinecounter++
-            document.getElementById('tasks-urgent-counter').innerText = deadlinecounter;
+        if (tasksDone[i]['priorityByName'] === 'urgent') {
+            urgentCounter++
+            document.getElementById('tasks-urgent-counter').innerText = urgentCounter;
         }
     }
 }
@@ -164,8 +208,11 @@ function checkMonthName(M) {
 }
 
 
+
+
+
+
 loadTasksFromForSummary()
-setCurrentDay()
 getUsernameFromLocalStorage()
 loadUserNameForGreeting()
 greetingOnSmartDevice()

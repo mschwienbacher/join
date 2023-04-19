@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="css/inner-page-responsive.css">
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/contact-guest.css">
-    
+
     <link rel="stylesheet" href="css\handy-sidebar.css">
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/board-add-task-template.css">
@@ -84,12 +84,15 @@
                     <!--Add a new contact button-->
 
                     <!--window for the contact edit-->
-                    <div id="edit-window"></div>
+                    <div id="edit-window">
+                        
+                    </div>
                     <!--window for the contact edit-->
 
 
                     <!--window for adding a new contact-->
-                    <div class="add-contact-window" id="add-window">
+
+                    <form onsubmit="addNewContact(); return false" class="add-contact-window" id="add-window" action="">
                         <div id="close-container">
                             <p class="close-add-btn" onclick="closeAdd()" id="close-add-btn">
                                 <img src="assets/img/close-btn-edit.svg" alt="close-btn">
@@ -102,23 +105,26 @@
                         </div>
                         <div class="embleme-and-input">
                             <p class="embleme-add "><img src="assets/img/dummy.svg" alt=""></p>
-                            <form>
-                                <div class="input-container"><input id="addNameInput" required
-                                        placeholder="First - and Lastname" type="text"><img
-                                        src="assets/img/contact-dummy-name.svg" alt=""></div>
-                                <div class="input-container"><input id="addEmailInput" required placeholder="Email"
-                                        type="email"><img src="assets/img/email-contacts.svg" alt=""></div>
-                                <div class="input-container"><input id="addTelephoneInput" required placeholder="Phone"
-                                        type="number"><img src="assets/img/telephone-contacts.svg" alt=""></div>
-                            </form>
+                            <div class="input-container"><input id="addNameInput" required
+                                    placeholder="First - and Lastname" type="text"><img
+                                    src="assets/img/contact-dummy-name.svg" alt=""></div>
+                            <div class="input-container">
+                                <input id="addEmailInput" required placeholder="Email" type="email"><img
+                                    src="assets/img/email-contacts.svg" alt="">
+                            </div>
+                            <div class="input-container"><input id="addTelephoneInput" required placeholder="Phone"
+                                    type="number"><img src="assets/img/telephone-contacts.svg" alt=""></div>
+
                             <div class="btn-designe-add-contact">
                                 <p onclick="closeAdd()" id="cancel-btn">Cancel<img src="assets/img/Vector.svg"
                                         alt="close button"></p>
-                                <p onclick="addNewContact()" class="save-edit-btn" id="save-add-btn">Create contact <img
-                                        src="assets/img/hook.svg" alt=""></p>
+                                <button class="save-edit-btn" id="save-add-btn">Create contact
+                                    <img src="assets/img/hook.svg" alt="">
+                                </button>
                             </div>
                         </div>
-                    </div>
+                    </form>
+
                     <!--window for adding a new contact-->
 
 

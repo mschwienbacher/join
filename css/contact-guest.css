@@ -222,6 +222,11 @@
     border-bottom: solid 1px gray;
 }
 
+.input-container input{
+    border: none;
+    padding: 20px;
+}
+
 
 #cancel-btn {
     padding: 18px 10px 18px 10px;

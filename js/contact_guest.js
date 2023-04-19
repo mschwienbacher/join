@@ -9,7 +9,7 @@ async function loadContactFromBackEnd() {
     }, 300)
 }
 
-loadContactFromBackEnd()
+
 
 
 // render the contacts
@@ -83,24 +83,25 @@ function showDetail(j) {
 
 function openEdit(o) {
     document.getElementById('edit-window').innerHTML = `
-    <div id="close-container">
-        <p onclick="closeEdit()" id="close-edit-btn">
-            <img src="assets/img/close-btn-edit.svg" alt="close-btn">
-        </p>
-    </div>
-    <div class="edit-join-symbol-and-text">
-        <img src="assets/img/logo-join-small.svg" alt="join symbol">
-        <p>Edit contact</p>
-    </div>
-    <div class="embleme-and-input">
-        <p style="background-color:${getBackgroundColor(document.getElementById(`userBackgroundId${o}`))};" class="embleme-edit ">${getTheFirstLetterOfName(o)}</p>
-        <form>
-        <div id="edit-input-field" class="input-container"><input id="nameInputEdit${o}" placeholder="Name" type="text"><img src="assets/img/contact-dummy-name.svg" alt=""></div>
-        <div class="input-container"><input id="emailInputEdit${o}" placeholder="Email" type="email"><img src="assets/img/email-contacts.svg" alt=""></div>
-        <div class="input-container"><input id="phoneInputEdit${o}" placeholder="Phone" type="number"><img src="assets/img/telephone-contacts.svg" alt=""></div>
-    </form>
-        <p onclick="saveTheEdit(${o})" class="save-edit-btn" id="save-edit-btn">Save</p>
-    </div>`
+    <form style="height:100%"; onsubmit="saveTheEdit(${o}); return false" >
+        <div id="close-container">
+            <p onclick="closeEdit()" id="close-edit-btn">
+                <img src="assets/img/close-btn-edit.svg" alt="close-btn">
+            </p>
+        </div>
+        <div class="edit-join-symbol-and-text">
+            <img src="assets/img/logo-join-small.svg" alt="join symbol">
+            <p>Edit contact</p>
+        </div>
+        <div class="embleme-and-input">
+            <p style="background-color:${getBackgroundColor(document.getElementById(`userBackgroundId${o}`))};" class="embleme-edit ">${getTheFirstLetterOfName(o)}</p>
+            
+            <div id="edit-input-field" class="input-container"><input id="nameInputEdit${o}" required placeholder="Name" type="text"><img src="assets/img/contact-dummy-name.svg" alt=""></div>
+            <div class="input-container"><input id="emailInputEdit${o}" required placeholder="Email" type="email"><img src="assets/img/email-contacts.svg" alt=""></div>
+            <div class="input-container"><input id="phoneInputEdit${o}" required placeholder="Phone" type="number"><img src="assets/img/telephone-contacts.svg" alt=""></div>
+        <button class="save-edit-btn" id="save-edit-btn">Save</button>
+        </div>
+    </form>`
     document.getElementById('edit-window').style.left = '0';
     fillEditInput(o);
     closeAdd()
@@ -261,17 +262,17 @@ function closeAdd() {
 
 
 function splitWords(inputValue) {
-    const wordsArray = inputValue.split(" ");
-    const firstWord = wordsArray[0];
-    const secondWord = wordsArray[1];
-    const resultArray = [firstWord, secondWord];
+    let wordsArray = inputValue.split(" ");
+    let firstWord = wordsArray[0];
+    let secondWord = wordsArray[1];
+    let resultArray = [firstWord, secondWord];
     return resultArray;
 }
 
 
 function firstAndSecondNameUpdate(inputVal, number) {
-    const input = inputVal;
-    const result = splitWords(input);
+    let input = inputVal;
+    let result = splitWords(input);
     sortedContacts[number]['name'] = result[0]
     sortedContacts[number]['second-name'] = result[1]
 }
@@ -318,6 +319,7 @@ function openAddTask() {
     open++
     if (window.innerWidth > 600 && open == 1) {
         document.getElementById('add-task-to-contact-container').style.width = '600px'
+        document.getElementById('task-add-btn').style.position = 'inherit';
     }
     else if (window.innerWidth < 600 && open == 1) {
         document.getElementById('add-task-to-contact-container').style.width = '100%'
@@ -343,37 +345,37 @@ window.addEventListener('resize', () => {
 
 // check for two words in the string
 function containsTwoWords(inputString) {
-    const words = inputString.trim().split(' ');
+    let words = inputString.trim().split(' ');
     return words.length === 2 && !words.includes('');
 }
 
 
 function getRandomColor() {
-    const colors = ["#FF4136", "#FF851B", "#FFDC00", "#2ECC40", "#0074D9", "#B10DC9", "#01FF70", "#F012BE", "#85144b", "#7FDBFF", "#001f3f", "#39CCCC", "#3D9970", "#2ECC40", "#01FF70", "#FFDC00", "#FF4136", "#85144b", "#F012BE", "#111111"];
-    const randomIndex = Math.floor(Math.random() * colors.length);
+    let colors = ["#FF4136", "#FF851B", "#FFDC00", "#2ECC40", "#0074D9", "#B10DC9", "#01FF70", "#F012BE", "#85144b", "#7FDBFF", "#001f3f", "#39CCCC", "#3D9970", "#2ECC40", "#01FF70", "#FFDC00", "#FF4136", "#85144b", "#F012BE", "#111111"];
+    let randomIndex = Math.floor(Math.random() * colors.length);
     return colors[randomIndex];
 }
 
 
 function getBackgroundColor(element) {
-    const style = window.getComputedStyle(element);
-    const backgroundColor = style.getPropertyValue("background-color");
+    let style = window.getComputedStyle(element);
+    let backgroundColor = style.getPropertyValue("background-color");
 
     if (backgroundColor.indexOf("rgb") !== -1) {
         return backgroundColor;
     } else {
-        const hexColor = rgbToHex(backgroundColor);
+        let hexColor = rgbToHex(backgroundColor);
         return hexColor;
     }
 }
 
 
 function rgbToHex(rgbColor) {
-    const rgbArray = rgbColor.substring(4, rgbColor.length - 1).split(",");
-    const hexArray = [];
+    let rgbArray = rgbColor.substring(4, rgbColor.length - 1).split(",");
+    let hexArray = [];
 
     for (let i = 0; i < rgbArray.length; i++) {
-        const hexValue = parseInt(rgbArray[i]).toString(16);
+        let hexValue = parseInt(rgbArray[i]).toString(16);
         hexArray.push(hexValue.length === 1 ? "0" + hexValue : hexValue);
     }
     return "#" + hexArray.join("");
@@ -398,11 +400,14 @@ function showAddPopUp() {
     }, 1900)
 }
 
+
 function addTaskWithTimeOut() {
     closeAddTaskContact()
     showAddPopUp()
     setTimeout(() => {
         addTask()
     }, 2000)
-
 }
+
+
+loadContactFromBackEnd()
